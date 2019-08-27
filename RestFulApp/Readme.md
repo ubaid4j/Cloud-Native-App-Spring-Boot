@@ -29,12 +29,11 @@
     so we can expose all static methods of this class</li>
     <li>Create a link using</li>
     <ol>
-    	<li>Create a resource<Object> of Hateous ~simply do new<li>
+    	<li>Create a resource<Object> of Hateous ~simply do new</li>
     	<li>ControllerBuilder linkto = linkto(methodOn(class).methodName)</li>
     	<li>now create link using Link link = linkto.withRel("name")</li>
     	<li>Now add in the resource<li>
-    <ol>
-    <li></li>    
+    </ol>
 </ol>
 
 
