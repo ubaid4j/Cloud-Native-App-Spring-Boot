@@ -32,8 +32,22 @@
     	<li>Create a resource<Object> of Hateous ~simply do new</li>
     	<li>ControllerBuilder linkto = linkto(methodOn(class).methodName)</li>
     	<li>now create link using Link link = linkto.withRel("name")</li>
-    	<li>Now add in the resource<li>
+    	<li>Now add in the resource</li>
     </ol>
 </ol>
 
+<br>
+<h1>Advanced Topics</h1>
+<br>
+
+<h2 align="center">Internationalization</h2>
+<ol>
+    <li>Create a LocaleResolver Bean <small>In order for our application to be able to determine which locale is currently being used, we need to add a LocaleResolver bean</small></li>
+    <li>Create ResourceBundleMessageSource <small>this bean get the folder in which we have defined our lang based messages</small></li>
+    <li>Get a local in the controller parameter using <small>@RequestHeader(value = "accept-language", defaultValue = "us", required = false) Locale locale</small></li>
+    <li>and return the message using message resource <small>Using dependency injection</small></li>
+    <li>If we use <small>AcceptHeaderLocaleResolver resolver = new AcceptHeaderLocaleResolver();
+    </small> then there is no need of @RequestHeader annotation. We can simply use <small>LocaleContextHolder.getLocale()</small></li>
+    <li>We can use <small>spring.messages.basename</small> in application.properties and there is no need of ResourceBundleMessageSource bean</li>
+</ol>
 

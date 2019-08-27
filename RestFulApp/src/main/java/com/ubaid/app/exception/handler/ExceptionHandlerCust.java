@@ -2,6 +2,7 @@ package com.ubaid.app.exception.handler;
 
 import java.util.Date;
 
+import org.springframework.context.NoSuchMessageException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,5 +43,10 @@ public class ExceptionHandlerCust extends ResponseEntityExceptionHandler
 		return new ResponseEntity<Object>(response, status);
 	}
 	
-	
+	@ExceptionHandler(value = NoSuchMessageException.class)
+	public ResponseEntity<Object> handle(NoSuchMessageException exp)
+	{
+		ExceptionResponse response = new ExceptionResponse(exp.getMessage(), exp.getLocalizedMessage(), new Date());
+		return new ResponseEntity<Object>(response, HttpStatus.FAILED_DEPENDENCY);
+	}
 }
