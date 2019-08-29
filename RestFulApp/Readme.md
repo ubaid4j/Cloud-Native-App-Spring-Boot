@@ -51,3 +51,39 @@
     <li>We can use <small>spring.messages.basename</small> in application.properties and there is no need of ResourceBundleMessageSource bean</li>
 </ol>
 
+
+
+<h2 align="center">Content Negotiation</h2>
+<ol>
+	<li>You are required only to add <strong>jackson-dataformat-xml</strong> in the pom.xml file</li>
+	<li>The server is expected to respond based on the Accept header, change the accept header to <strong>application/xml</strong></li>	
+</ol>
+
+<h2 align="center">Swagger</h2>
+<ol>
+	<li>Swagger is basically REST API docs</li>
+	<li>You are required only to add <strong>springfox-swagger2
+	</strong> and <strong>springfox-swagger-ui</strong> in the pom.xml file to include swagger, give latest version</li>
+	<li>Now, add Configuration and EnableSwagger2 Annotation and define Docket bean</li>	
+	<li>Check it out at <strong>com.ubaid.app.RestFulAppApplication.api()</strong></li>
+	<li>the json path is: /v2/api-docs</li>
+	<li>the ui path is /swagger-ui.html#</li>
+	<li>Tags group our resources</li>
+	<li>We can add app info and produced and consumes in our docket instance</li>
+	<li>furthermore, we can use @ApiModel and @ApiModelProperty in the entity class for description of class and methods respectively </li>	
+</ol>
+
+<h2 align="center">Actuator</h2>
+<ol>
+	<li>Actuator is used for monitoring our restfull app</li>
+	<li>Add <strong>spring-boot-starter-actuator</strong> for Actuator</li>
+	<li>Add <strong>management.endpoints.web.exposure.include=*</strong> for exposure of paths</li>
+	<li>You can check using /actuator/{name} etc.</li>
+</ol>
+
+
+<h2></h2>
+<ol>
+	<li></li>
+</ol>
+
