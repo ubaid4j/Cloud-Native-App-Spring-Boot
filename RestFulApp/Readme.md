@@ -82,8 +82,17 @@
 </ol>
 
 
-<h2></h2>
+<h2 align="center">Filtering</h2>
 <ol>
-	<li></li>
+	<h3>Static Filtering</h3>
+	<li>Use @JsonIgnore annotation in the fieds to filter them out</li>
+	<li>or use @JsonIgnoreProperties in class level annotation</li>
+	<h3>Dynamic Filtering</h3>
+	<li>In the request mapping method, create a filter using <small>SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("var");</small></li>
+	<li>then create filters using <small>FilterProvider filters = new SimpleFilterProvider().addFilter("name of filter", filter);
+	</small></li>
+	<li>Create mapping using <small>MappingJacksonValue mapping = new MappingJacksonValue(object being sent);</small></li>
+	<li>set filters with mapping and return mapping</li>
+	<li>add class level annotation @JsonFilter("name of fiter") at the class of object being sent</li>
 </ol>
 
