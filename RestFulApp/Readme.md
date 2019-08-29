@@ -96,3 +96,21 @@
 	<li>add class level annotation @JsonFilter("name of fiter") at the class of object being sent</li>
 </ol>
 
+<h2 align="center">Versioning</h2>
+<ol>
+	<h3>Versioning through URI Path</h3>
+	<li>simply change url using /v1/ or /v2/ etc</li>
+	<h3>Versioning through query parameters</h3>
+	<li>use params in @GetMapping(value="url", params="version=1")</li>
+	<li>if your url is /url?version=1 then it will execute</li>
+	<h3>Versioning through custom headers</h3>
+	<li>we can create custom header in @RequestMapping(value="url", headers="ver=2") etc</li>
+	<h3>Versioning through content negotiation</h3>
+	<li>Here we use accept header and fil @RequestMapping(value="url", produces="application/version_name+json")</li>
+</ol>
+
+<h2 align="center">Cons of different type of versioning</h2>
+<ol>
+	<li>URL and params based produce URL pollutions</li>
+	<li>Content Negotiation and Custome header violating HTTP protocol and these type of url can't be cached</li>
+</ol>
