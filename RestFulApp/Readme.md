@@ -118,9 +118,16 @@
 
 <h2 align="center">Security</h2>
 <ol>
-	<li>Basic Authentication<li>
+	<li>Basic Authentication</li>
 	<li>Simply add <small>spring-boot-starter-security</small></li>
 	<li>It will generate password while default username is user</li>
 	<li>using security.user.name and security.user.password we can set own custom password </li>
 </ol>
 
+<h2 align="center">Spring Data with Spring Security</h2>
+<ol>
+	<li>Configure your datasource as well as JPA in application.properties file</li>
+	<li>disable csrf and cors and configure cors source as defined in <small>com.ubaid.app.security.Config.corsConfigurationSource()</small></li>
+	<li>Schema will automatically created on application launch. You can add schema.sql and dislabe auto creation to create your own schema</li>
+	<li>You can add data.sql to populate your database and add initialization mode always</li>
+</ol>
