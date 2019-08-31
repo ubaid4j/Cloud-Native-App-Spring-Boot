@@ -114,3 +114,13 @@
 	<li>URL and params based produce URL pollutions</li>
 	<li>Content Negotiation and Custome header violating HTTP protocol and these type of url can't be cached</li>
 </ol>
+
+
+<h2 align="center">Security</h2>
+<ol>
+	<li>Basic Authentication<li>
+	<li>Simply add <small>spring-boot-starter-security</small></li>
+	<li>It will generate password while default username is user</li>
+	<li>using security.user.name and security.user.password we can set own custom password </li>
+</ol>
+

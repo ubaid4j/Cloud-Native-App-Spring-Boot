@@ -10,4 +10,5 @@ public interface IUserService
 	public User findOne(int id);
 	public User save(User user);
 	public User delete(int id);
+	public User update(User user);
 }

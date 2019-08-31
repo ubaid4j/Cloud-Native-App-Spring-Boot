@@ -30,3 +30,10 @@
     <li>Dynamic Scalling</li>
     <li>Faster Release Cycle</li>
 </ol>
+
+<ol>
+    <h3>Project metadata</h3>
+    <li>com.ubaid.ms</li>
+    <li>limits-service</li>
+    <li></li>
+</ol>

@@ -2,21 +2,34 @@ package com.ubaid.app.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+@Entity
 @ApiModel(description = "This is the User class")
+@Table(name = "user")
 public class User
 {
+	@Column(name = "id")
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@Column(name = "name")
 	@ApiModelProperty(notes = "This is name, name should have size greater than 2")
 	@Size(min = 2, message = "The size of name must be greater than 2")
 	private String name;
 	
+	@Column(name = "birth_date")
 	@ApiModelProperty(notes = "This is date, data should not be in past")
 	@Past(message = "The date should be in past")
 	private Date birthDate;

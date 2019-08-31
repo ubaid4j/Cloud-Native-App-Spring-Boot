@@ -38,4 +38,10 @@ public class UserService implements IUserService
 	{
 		return dao.delete(id);
 	}
+
+	@Override
+	public User update(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

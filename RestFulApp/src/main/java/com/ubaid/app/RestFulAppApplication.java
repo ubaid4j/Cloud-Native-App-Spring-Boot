@@ -6,10 +6,10 @@ import java.util.Locale;
 import java.util.Set;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 
@@ -25,6 +25,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @Configuration
 @EnableSwagger2
+@EnableAutoConfiguration
 public class RestFulAppApplication
 {
 
@@ -42,7 +43,7 @@ public class RestFulAppApplication
 	public LocaleResolver localeResolver()
 	{
 //		SessionLocaleResolver resolver = new SessionLocaleResolver();
-
+ 
 		AcceptHeaderLocaleResolver resolver = new AcceptHeaderLocaleResolver();
 		resolver.setDefaultLocale(Locale.US);
 		return resolver;
