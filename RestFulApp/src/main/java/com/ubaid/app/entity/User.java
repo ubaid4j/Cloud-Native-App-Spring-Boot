@@ -1,12 +1,16 @@
 package com.ubaid.app.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
@@ -33,6 +37,9 @@ public class User
 	@ApiModelProperty(notes = "This is date, data should not be in past")
 	@Past(message = "The date should be in past")
 	private Date birthDate;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	private List<Post> posts;
 	
 	public User(Integer id, String name, Date birthDate) {
 		this.id = id;
@@ -70,7 +77,7 @@ public class User
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", birthDate=" + birthDate + "]";
+		return "User [id=" + id + ", name=" + name + ", birthDate=" + birthDate + ", posts=" + posts + "]";
 	}
 
 	@Override
@@ -96,5 +103,23 @@ public class User
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}	
+	
+	public void addPost(Post post)
+	{
+		if(posts == null)
+		{
+			posts = new ArrayList<Post>();
+		}
+		post.setUser(this);
+		posts.add(post);
+	}
 }

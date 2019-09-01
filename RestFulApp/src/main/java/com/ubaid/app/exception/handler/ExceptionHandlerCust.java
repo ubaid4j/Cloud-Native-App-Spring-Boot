@@ -14,6 +14,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.ubaid.app.entity.ExceptionResponse;
+import com.ubaid.app.exception.PostNotFound;
 import com.ubaid.app.exception.UserNotFoundException;
 
 @RestController
@@ -48,5 +49,12 @@ public class ExceptionHandlerCust extends ResponseEntityExceptionHandler
 	{
 		ExceptionResponse response = new ExceptionResponse(exp.getMessage(), exp.getLocalizedMessage(), new Date());
 		return new ResponseEntity<Object>(response, HttpStatus.FAILED_DEPENDENCY);
+	}
+	
+	@ExceptionHandler(value = PostNotFound.class)
+	public ResponseEntity<ExceptionResponse> handlerPostNotFoundException(PostNotFound exp, WebRequest req)
+	{
+		ExceptionResponse response = new ExceptionResponse(exp.getMessage(), exp.getLocalizedMessage(), new Date());
+		return new ResponseEntity<ExceptionResponse>(response, HttpStatus.NOT_FOUND);
 	}
 }

@@ -130,4 +130,5 @@
 	<li>disable csrf and cors and configure cors source as defined in <small>com.ubaid.app.security.Config.corsConfigurationSource()</small></li>
 	<li>Schema will automatically created on application launch. You can add schema.sql and dislabe auto creation to create your own schema</li>
 	<li>You can add data.sql to populate your database and add initialization mode always</li>
+	<li>You should get more experience in Hibernate Relationships </li>
 </ol>
