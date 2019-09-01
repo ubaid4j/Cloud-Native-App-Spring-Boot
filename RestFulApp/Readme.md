@@ -132,3 +132,13 @@
 	<li>You can add data.sql to populate your database and add initialization mode always</li>
 	<li>You should get more experience in Hibernate Relationships </li>
 </ol>
+
+<h2 align="center">Richardson Maturity Model</h2>
+<ol>
+	<li>Consumer First</li>
+	<li>Documentations</li>
+	<li>Right HTTP methods</li>
+	<li>Proper response status</li>
+	<li>Use Plurals</li>
+	<li>Think about nouns</li>
+</ol>
