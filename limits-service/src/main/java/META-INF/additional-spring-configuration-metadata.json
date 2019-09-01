@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "limits-service.max",
+    "type": "java.lang.String",
+    "description": "A description for 'limits-service.max'"
+  },
+  {
+    "name": "limits-service.min",
+    "type": "java.lang.String",
+    "description": "A description for 'limits-service.min'"
+  }
+]}
