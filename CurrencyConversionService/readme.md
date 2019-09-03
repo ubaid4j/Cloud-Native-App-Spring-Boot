@@ -25,6 +25,14 @@
 	<li>Now: create a any mapping for this service</li>
 </ol>
 
+<h2 align="center">Netflix-Ribbon</h2>
+<ol>
+	<li>@RibbonClient(name="name of service which you want to talk")</li>
+	<li>Remove the url from @FiegnClient</li>
+	<li>Add `name of the service which you want to talk from this service`.ribbon.listofServers=http://localhost:`port of service which you want to talk', more and, more</li>
+</ol>
+
+
 
 
 <h2 align="center">Notes: </h2>
