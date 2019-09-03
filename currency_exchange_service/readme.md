@@ -7,3 +7,8 @@
 	<li>create simple getMappign of /currency-exchange/from/{from}/to/{to}<li>
 	<li>To get Port, we can add Environment.getProperty("local.server.port")</li>
 </ol>
+
+<h2 align="center">Run on different port</h2>
+<ol>
+	<li>Right Click -> run configuration -> argumetns -> vm arguments -> add <strong>-Dserver.port=port-number</strong></li>
+</ol>
