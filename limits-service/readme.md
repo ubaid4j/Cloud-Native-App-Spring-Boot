@@ -14,3 +14,10 @@
 	<li>It will fetch default profile</li>
 	<li>To change profile add spring.profiles.active=profile_name in the bootstrap.properties file</li>
 </ol>
+
+<h2 align="center">Registering Eureka Client</h2>
+<ol>
+	<li>Add dependency <strong>spring-cloud-starter-netflix-eureka-client</strong></li>
+	<li>Annotate application with <strong>@EnableDiscoveryClient</strong></li>
+	<li>Add in bootstrap.properties <strong>eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/</strong></li>
+</ol>
