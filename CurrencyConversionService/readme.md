@@ -32,7 +32,13 @@
 	<li>Add `name of the service which you want to talk from this service`.ribbon.listofServers=http://localhost:`port of service which you want to talk', more and, more</li>
 </ol>
 
-
+<h2 align="center">Adding Netflix Eureka Naming server Client</h2>
+<ol>
+	<li>Add <strong>spring-cloud-starter-netflix-eureka-client</strong></li>
+	<li>Annotate Application with <strong>@EnableDiscoveryClient</strong></li>
+	<li>Add in applicaiton.properties <strong>eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka</strong></li>
+	<li>You can remove ribbon.listOfServers after registering with Eureka Naming server</li>
+</ol>
 
 
 <h2 align="center">Notes: </h2>
