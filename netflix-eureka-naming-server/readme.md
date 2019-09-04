@@ -4,10 +4,17 @@
 <ol>
 	<li>Dependencies</li>
 	<ol>
-		<li>Eureka Server</li>
+		<li>spring-cloud-starter-netflix-eureka-server</li>
+		<li>spring-boot-starter-jersey</li>
 		<li>Client Config</li>
 		<li>Actuator</li>
 		<li>Dev Tools</li>		
+	</ol>
+	<li>Euraka Server need JAXB implementations, for this we will add three dependencies</li>
+	<ol>
+		<li>jaxb-api</li>
+		<li>jaxb-runtime</li>
+		<li>activation</li>
 	</ol>
 	<li>Annotate Application with @EnableEurekaServer</li>
 </ol>
