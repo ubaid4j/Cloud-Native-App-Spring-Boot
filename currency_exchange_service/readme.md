@@ -20,3 +20,5 @@
 <ol>
 	<li>Right Click -> run configuration -> argumetns -> vm arguments -> add <strong>-Dserver.port=port-number</strong></li>
 </ol>
+
+

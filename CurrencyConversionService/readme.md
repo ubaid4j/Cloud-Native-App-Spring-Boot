@@ -41,6 +41,17 @@
 </ol>
 
 
+<h2 align="center">Calling currency-exchange-service from API gateway </h2>
+<ol>
+	<li>We will change the @FeignClient name param to API gateway</li>
+	<li>As well change the getMapping in FiegnProxy and append the application name (targeted service name)</li>
+	<li>our API gateway talk the eureka naming server and get the service which is mentioned</li>
+	<li>Simply call this service, then this service call api gate-way server to call the currency exchange service</li>
+	<li>To call this service from the api gateway server, simply change the port and append service name</li>
+	<li>http://localhost:8755/currency-conversion-service/currency-conversion-feign/from/USD/to/PKR/quantity/1000</li>
+</ol>
+
+
 <h2 align="center">Notes: </h2>
 <ol>
 	<li>For deserialization of POJO, we can use @JsonAlias for different names of a field</li>
