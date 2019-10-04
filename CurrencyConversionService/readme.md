@@ -68,3 +68,9 @@
 <ol>
 	<li>For deserialization of POJO, we can use @JsonAlias for different names of a field</li>
 </ol>
+
+<h2 align="center">com.netflix.discovery.shared.transport.TransportException</h2>
+<ol>
+	<h4>When we add dependency of spring-cloud-starter-netflix-eureka-client (Eureka Client) but did not </h4>
+	<li>Cannot execute request on any known server</li>
+</ol>

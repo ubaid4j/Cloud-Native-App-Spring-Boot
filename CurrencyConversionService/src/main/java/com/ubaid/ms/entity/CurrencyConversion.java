@@ -11,6 +11,7 @@ public class CurrencyConversion
 	private String from;
 	private String to;
 	
+	//if conversionMultiple has other name coming from another server
 	@JsonAlias(value = {"exchangeRate"})
 	private BigDecimal conversionMultiple;
 	private BigDecimal quantity;

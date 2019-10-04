@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.netflix.zuul.context.RequestContext;
+//TODO uncomment
+//import com.netflix.zuul.context.RequestContext;
 import com.ubaid.ms.entity.CurrencyConversion;
 import com.ubaid.ms.feignProxy.FeignProxy;
 
@@ -33,9 +34,9 @@ public class CurrenyConversionControllerFeign
 	{
 		CurrencyConversion currencyConversion = proxy.getCurrentConversion(from, to);
 		currencyConversion.setQuantity(quantity);
-		
-		HttpServletResponse response = RequestContext.getCurrentContext().getResponse();
-		logger.info("response =========> {}", response);
+//TODO uncomment		
+//		HttpServletResponse response = RequestContext.getCurrentContext().getResponse();
+//		logger.info("response =========> {}", response);
 		return currencyConversion;
 	}
 	

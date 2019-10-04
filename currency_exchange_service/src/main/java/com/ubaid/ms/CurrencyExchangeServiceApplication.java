@@ -5,10 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 
-import brave.sampler.Sampler;
+//TODO uncomment
+//import brave.sampler.Sampler;
 
 @SpringBootApplication
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 public class CurrencyExchangeServiceApplication
 {
 
@@ -17,9 +18,10 @@ public class CurrencyExchangeServiceApplication
 		SpringApplication.run(CurrencyExchangeServiceApplication.class, args);
 	}
 
-	@Bean
-	public Sampler defaultSampler()
-	{
-		return Sampler.ALWAYS_SAMPLE;
-	}
+//TODO uncomment	
+//	@Bean
+//	public Sampler defaultSampler()
+//	{
+//		return Sampler.ALWAYS_SAMPLE;
+//	}
 }
