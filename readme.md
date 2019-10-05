@@ -37,3 +37,12 @@
     <li>limits-service</li>
     <li></li>
 </ol>
+
+
+<h2>Most Important Note About Networking<h2>
+<ol>
+    <h3>These three lines helps te maintain ip:port correct </h3>
+    <li>eureka.instance.prefer-ip-address=true</li>
+    <li>eureka.instance.instance-id=${spring.cloud.client.ip-address}:${server.port}</li>
+    <li>eureka.instance.hostname=${spring.cloud.client.ip-address}</li>
+</ol>
