@@ -11,8 +11,7 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @EnableFeignClients(basePackages = {"com.ubaid.ms"})
-//TODO uncomment
-//@EnableDiscoveryClient
+@EnableDiscoveryClient
 public class CurrencyConversionServiceApplication {
 
 	public static void main(String[] args) {

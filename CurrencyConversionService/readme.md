@@ -1,4 +1,4 @@
-<h2 align="center">Configuration</h2>
+<h2 align="center">Configuration Bypassing Ribbon LoadBalancer</h2>
 <ol>
 	<li>Dependencies: Web, Dev tools, Actuator, Config Client, OpenFeign</li>
 	<li>application.name = currency-conversion-service</li>

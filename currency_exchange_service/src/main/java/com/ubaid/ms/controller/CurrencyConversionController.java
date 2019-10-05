@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.netflix.zuul.context.RequestContext;
 //TODO uncomment
 //import com.netflix.zuul.context.RequestContext;
 import com.ubaid.ms.entity.ExchangeValue;
@@ -37,9 +38,9 @@ public class CurrencyConversionController
 		ExchangeValue exchangeValue = service.getExchangeValue(from, to);
 		if(exchangeValue != null)
 			exchangeValue.setPort(port);
-		//TODO uncomment		
-//		HttpServletResponse response = RequestContext.getCurrentContext().getResponse();
-//		logger.info("respose ==========> {}", response);
+
+		HttpServletResponse response = RequestContext.getCurrentContext().getResponse();
+		logger.info("respose ==========> {}", response);
 		
 		return exchangeValue;
 	}
