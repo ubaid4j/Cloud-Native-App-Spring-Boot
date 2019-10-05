@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.netflix.zuul.context.RequestContext;
-//TODO uncomment
-//import com.netflix.zuul.context.RequestContext;
 import com.ubaid.ms.entity.ExchangeValue;
 import com.ubaid.ms.service.ExchangeValueService;
 

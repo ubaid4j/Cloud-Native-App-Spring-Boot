@@ -11,12 +11,12 @@ import com.ubaid.ms.entity.CurrencyConversion;
 //name: the name of service which we want to talk
 //url: where this service is hosted 
 //@FeignClient(name = "currency-exchange-service", url = "localhost:8000")
-@FeignClient(name="currency-exchange-service")
+//@FeignClient(name="currency-exchange-service")
 
 //now name is pointing to api gateway server and 
 //this api gateway server will talk to eureka naming server 
 //now append service name in the getMapping 
-//@FeignClient(name = "netflix-zuul-api-gateway-server")
+@FeignClient(name = "netflix-zuul-api-gateway-server")
 
 
 //ribbon is used to connect this service to the other service, which link is in our props file
@@ -24,8 +24,8 @@ import com.ubaid.ms.entity.CurrencyConversion;
 @RibbonClient(name = "currency-exchange-service")
 public interface FeignProxy
 {
-//	@GetMapping("currency-exchange-service/currency-exchange/from/{from}/to/{to}")
-	@GetMapping("/currency-exchange/from/{from}/to/{to}")	
+	@GetMapping("currency-exchange-service/currency-exchange/from/{from}/to/{to}")
+//	@GetMapping("/currency-exchange/from/{from}/to/{to}")	
 	public CurrencyConversion getCurrentConversion(
 			@PathVariable("from") String from,
 			@PathVariable("to") String to);

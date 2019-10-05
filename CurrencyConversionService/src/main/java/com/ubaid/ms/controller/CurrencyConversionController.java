@@ -13,8 +13,9 @@ import org.springframework.web.client.RestTemplate;
 
 import com.ubaid.ms.entity.CurrencyConversion;
 
+@Deprecated
 @RestController
-@RequestMapping("currency-conversion")
+@RequestMapping("currency-conversion-do not use it")
 public class CurrencyConversionController
 {
 	@GetMapping(value = "from/{from}/to/{to}/quantity/{quantity}")
