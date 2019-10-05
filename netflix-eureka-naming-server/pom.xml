@@ -31,6 +31,8 @@
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
 		
+		
+		
 
 <!-- ===================================================================================================================== -->		
 <!-- ON the error of  java.lang.TypeNotPresentException: Type javax.xml.bind.JAXBContext not present Include the below ones-->		

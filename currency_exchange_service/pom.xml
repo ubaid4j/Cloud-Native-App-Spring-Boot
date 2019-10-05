@@ -43,6 +43,7 @@
 		    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 
+		<!-- Unique ID for request -->
 		<dependency>
 	        <groupId>org.springframework.cloud</groupId>
 	        <artifactId>spring-cloud-starter-sleuth</artifactId>
@@ -52,6 +53,19 @@
 	        <groupId>org.springframework.cloud</groupId>
 	        <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
 	    </dependency>
+
+
+		<!-- Getting tracing to rabbitMQ -->
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+		</dependency>
+
+		<dependency>
+	        <groupId>org.springframework.cloud</groupId>
+	        <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+	    </dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -69,6 +83,8 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		
 	</dependencies>
 
 	<dependencyManagement>
