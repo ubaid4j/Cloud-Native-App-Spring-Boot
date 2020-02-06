@@ -1,8 +1,8 @@
-<h1 align="center">Spring Cloud Configuration Server<h1>
+<h1 align="center">Spring Cloud Configuration Server</h1>
 <ol>
 	<li>Dependencies: Server Config and Dev Tools</li>
 	<li>In application.properties add application.name and server.port</li>
-	<li>Add @EnableConfigServer at main clas</li>
+	<li>Add @EnableConfigServer at main class</li>
 	<li>Link a local repository as Source</li>
 	<li>Create a file in local repository about limits-service.properties</li>
 	<li>Add limits-service.max and limits-service.min in this file</li>

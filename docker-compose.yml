@@ -17,12 +17,34 @@ services:
         - "9411:9411"
         expose:
         - "9411"
-        depends_on:
-        - rabbitmq
-        environment:
-        - "RABBIT_URI=amqp://guest:guest@rabbitmq:5672"
+        # depends_on:
+        # - rabbitmq
+        # environment:
+        # - "RABBIT_URI=amqp://guest:guest@rabbitmq:5672"
         networks: 
-        - sn    
+        - sn
+    config-server:
+        build: ./spring-cloud-config-server
+        expose:
+        - 8888
+        ports:
+        - 8888:8888    
+        networks:
+        - sn
+    limits-service:
+        build: ./limits-service
+        expose:
+        - 8666
+        ports:
+        - 8666:8666
+        depends_on: 
+        - rabbitmq
+        - zipkin
+        - config-server
+        volumes: 
+        - ./limits-service:/volume
+        networks:
+        - sn
     eureka-naming-server:
         build: ./netflix-eureka-naming-server
         networks: 
