@@ -1,15 +1,15 @@
 version: '3'
 services:
-    # rabbitmq:
-    #     image: rabbitmq:management
-    #     restart: on-failure
-    #     expose:
-    #       - "5672"
-    #     ports:
-    #       - 5672:5672
-    #       - 15672:15672
-    #     networks: 
-    #       - my-shared-network
+    rabbitmq:
+        image: rabbitmq:management
+        restart: on-failure
+        expose:
+          - "5672"
+        ports:
+          - 5672:5672
+          - 15672:15672
+        networks: 
+          - sn
     # zipking:
     #     image: openzipkin/zipkin
     #     restart: on-failure
@@ -22,31 +22,62 @@ services:
     #     environment:
     #     - "RABBIT_URI=amqp://guest:guest@rabbitmq:5672"
     #     networks: 
-    #     - my-shared-network    
-    eureka-naming-service:
+    #     - sn    
+    eureka-naming-server:
         build: ./netflix-eureka-naming-server
+        networks: 
+        - sn
         expose:
         - 8761
         ports:
         - 8761:8761
-    # db:
-    #     image: mysql:8.0.18
-    #     restart: always
-    #     environment:
-    #         MYSQL_DATABASE: 'db'
-    #         MYSQL_USER: 'root'
-    #         MYSQL_PASSWORD: 'password'
-    #         MYSQL_ROOT_PASSWORD: 'password'
-    #     ports:
-    #     - '3306:3306'
-    #     expose:Ø
-    #     - '3306'
-    #     volumes:
-    #     - jtechdb:/var/lib/mysql
-    #     networks:
-    #     - my-shared-network
-    volumes:
-        vc1:
-    networks:
-        sn: {}
+    netflix-zuul-api-gateway-server:
+        build: ./netflix-zuul-api-gateway-server
+        expose:
+        - 8755
+        ports:
+        - 8755:8755
+        volumes:
+        - ./netflix-zuul-api-gateway-server:/volume         
+        networks: 
+        - sn
+        depends_on:
+        - eureka-naming-server
+        # - zipking
+        - rabbitmq        
+    currency-exchnage-service:
+        build: ./currency_exchange_service
+        expose:
+        - 8000
+        ports:
+        - 8000:8000
+        volumes:
+        - ./currency_exchange_service:/volume         
+        networks: 
+        - sn
+        depends_on:
+        - eureka-naming-server
+        - netflix-zuul-api-gateway-server
+        # - zipking
+        - rabbitmq            
+    db:
+        image: mysql:8.0.18
+        restart: always
+        environment:
+            MYSQL_DATABASE: 'db'
+            MYSQL_USER: 'root'
+            MYSQL_PASSWORD: 'password'
+            MYSQL_ROOT_PASSWORD: 'password'
+        ports:
+        - '3306:3306'
+        expose:
+        - '3306'
+        volumes:
+        - vc1:/var/lib/mysql
+        networks:
+        - sn
+volumes:
+    vc1:
+networks:
+    sn: {}
               

@@ -1,4 +1,5 @@
-cd ./netflix-eureka-naming-server
-mvn clean package -DskipTests
-cd ..
-docker-compose up --build
+call buildEureka.bat
+
+call buildApigateway.bat
+
+call composeup.bat
