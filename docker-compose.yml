@@ -1,8 +1,52 @@
 version: '3'
 services:
+    # rabbitmq:
+    #     image: rabbitmq:management
+    #     restart: on-failure
+    #     expose:
+    #       - "5672"
+    #     ports:
+    #       - 5672:5672
+    #       - 15672:15672
+    #     networks: 
+    #       - my-shared-network
+    # zipking:
+    #     image: openzipkin/zipkin
+    #     restart: on-failure
+    #     ports:
+    #     - "9411:9411"
+    #     expose:
+    #     - "9411"
+    #     depends_on:
+    #     - rabbitmq
+    #     environment:
+    #     - "RABBIT_URI=amqp://guest:guest@rabbitmq:5672"
+    #     networks: 
+    #     - my-shared-network    
     eureka-naming-service:
         build: ./netflix-eureka-naming-server
         expose:
-            - 8761
+        - 8761
         ports:
-            - 8761:8761
+        - 8761:8761
+    # db:
+    #     image: mysql:8.0.18
+    #     restart: always
+    #     environment:
+    #         MYSQL_DATABASE: 'db'
+    #         MYSQL_USER: 'root'
+    #         MYSQL_PASSWORD: 'password'
+    #         MYSQL_ROOT_PASSWORD: 'password'
+    #     ports:
+    #     - '3306:3306'
+    #     expose:Ø
+    #     - '3306'
+    #     volumes:
+    #     - jtechdb:/var/lib/mysql
+    #     networks:
+    #     - my-shared-network
+    volumes:
+        vc1:
+    networks:
+        sn: {}
+              
