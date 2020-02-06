@@ -5,12 +5,11 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
-
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.hateoas.Resource;
-import org.springframework.hateoas.mvc.ControllerLinkBuilder;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -47,7 +46,7 @@ public class UserController
 	}
 	
 	@GetMapping("users/{id_}")
-	public Resource<User> getUser(@PathVariable(value = "id_") int id)
+	public EntityModel<User> getUser(@PathVariable(value = "id_") int id)
 	{
 		User user = null;
 		try
@@ -60,9 +59,9 @@ public class UserController
 		}
 		if(user != null)
 		{
-			Resource<User> resource = new Resource<User>(user);
+			EntityModel<User> resource = new EntityModel<User>(user);
 
-			ControllerLinkBuilder linkTo = linkTo(methodOn(this.getClass()).getAllUsers());
+			WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).getAllUsers());
 			resource.add(linkTo.withRel("all-users"));			
 			return resource;			
 		}
@@ -124,13 +123,13 @@ public class UserController
 	}
 	
 	@PutMapping("users")
-	public Resource<User> update(@RequestBody User user)
+	public EntityModel<User> update(@RequestBody User user)
 	{
 		try
 		{
 			user = service2.update(user);			
-			Resource<User> response = new Resource<User>(user);
-			ControllerLinkBuilder linkto = linkTo(methodOn(getClass()).getUser(user.getId()));
+			EntityModel<User> response = new EntityModel<User>(user);
+			WebMvcLinkBuilder linkto = linkTo(methodOn(getClass()).getUser(user.getId()));
 			response.add(linkto.withRel("same-user"));
 			return response;
 		}

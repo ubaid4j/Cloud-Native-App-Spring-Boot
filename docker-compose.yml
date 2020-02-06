@@ -1,0 +1,121 @@
+version: '3'
+services:
+    rabbitmq:
+        image: rabbitmq:management
+        restart: on-failure
+        expose:
+          - "5672"
+        ports:
+          - 5672:5672
+          - 15672:15672
+        networks: 
+          - sn
+    zipkin:
+        image: openzipkin/zipkin
+        restart: on-failure
+        ports:
+        - "9411:9411"
+        expose:
+        - "9411"
+        # depends_on:
+        # - rabbitmq
+        # environment:
+        # - "RABBIT_URI=amqp://guest:guest@rabbitmq:5672"
+        networks: 
+        - sn
+    config-server:
+        build: ./spring-cloud-config-server
+        expose:
+        - 8888
+        ports:
+        - 8888:8888    
+        networks:
+        - sn
+    limits-service:
+        build: ./limits-service
+        expose:
+        - 8666
+        ports:
+        - 8666:8666
+        depends_on: 
+        - rabbitmq
+        - zipkin
+        - config-server
+        volumes: 
+        - ./limits-service:/volume
+        networks:
+        - sn
+    eureka-naming-server:
+        build: ./netflix-eureka-naming-server
+        networks: 
+        - sn
+        expose:
+        - 8761
+        ports:
+        - 8761:8761
+    netflix-zuul-api-gateway-server:
+        build: ./netflix-zuul-api-gateway-server
+        expose:
+        - 8755
+        ports:
+        - 8755:8755
+        volumes:
+        - ./netflix-zuul-api-gateway-server:/volume         
+        networks: 
+        - sn
+        depends_on:
+        - eureka-naming-server
+        - zipkin
+        - rabbitmq        
+    currency-exchnage-service:
+        build: ./currency_exchange_service
+        expose:
+        - 8000
+        ports:
+        - 8000:8000
+        volumes:
+        - ./currency_exchange_service:/volume         
+        networks: 
+        - sn
+        depends_on:
+        - eureka-naming-server
+        - netflix-zuul-api-gateway-server
+        - zipkin
+        - rabbitmq            
+    currency-conversion-service:
+        build: ./CurrencyConversionService
+        expose:
+        - 8100
+        ports:
+        - 8100:8100
+        volumes:
+        - ./CurrencyConversionService:/volume         
+        networks: 
+        - sn
+        depends_on:
+        - eureka-naming-server
+        - netflix-zuul-api-gateway-server
+        - currency-exchnage-service
+        - zipkin
+        - rabbitmq            
+    db:
+        image: mysql:8.0.18
+        restart: always
+        environment:
+            MYSQL_DATABASE: 'db'
+            MYSQL_USER: 'root'
+            MYSQL_PASSWORD: 'password'
+            MYSQL_ROOT_PASSWORD: 'password'
+        ports:
+        - '3306:3306'
+        expose:
+        - '3306'
+        volumes:
+        - vc1:/var/lib/mysql
+        networks:
+        - sn
+volumes:
+    vc1:
+networks:
+    sn: {}
+              

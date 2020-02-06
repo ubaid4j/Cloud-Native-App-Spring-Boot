@@ -3,13 +3,13 @@ package com.ubaid.app.controller;
 import java.net.URI;
 import java.util.List;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
-
+//import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
-import org.springframework.hateoas.Resource;
-import org.springframework.hateoas.mvc.ControllerLinkBuilder;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -44,14 +44,14 @@ public class PostController
 	
 	//read
 	@GetMapping("{id}/posts/{post_id}")
-	public Resource<Post> getPost(@PathVariable("id") int userId, @PathVariable("post_id") int post_id)
+	public EntityModel<Post> getPost(@PathVariable("id") int userId, @PathVariable("post_id") int post_id)
 	{
 		try
 		{
 			Post post = service.getPost(userId, post_id);
-			Resource<Post> resource = new Resource<Post>(post);
+			EntityModel<Post> resource = new EntityModel<Post>(post);
 			
-			ControllerLinkBuilder linkto = linkTo(methodOn(getClass()).getPost(userId, post_id));
+			WebMvcLinkBuilder linkto = linkTo(methodOn(getClass()).getPost(userId, post_id));
 			Link link = linkto.withSelfRel();
 			resource.add(link);
 			return resource;
