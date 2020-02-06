@@ -10,19 +10,19 @@ services:
           - 15672:15672
         networks: 
           - sn
-    # zipking:
-    #     image: openzipkin/zipkin
-    #     restart: on-failure
-    #     ports:
-    #     - "9411:9411"
-    #     expose:
-    #     - "9411"
-    #     depends_on:
-    #     - rabbitmq
-    #     environment:
-    #     - "RABBIT_URI=amqp://guest:guest@rabbitmq:5672"
-    #     networks: 
-    #     - sn    
+    zipkin:
+        image: openzipkin/zipkin
+        restart: on-failure
+        ports:
+        - "9411:9411"
+        expose:
+        - "9411"
+        depends_on:
+        - rabbitmq
+        environment:
+        - "RABBIT_URI=amqp://guest:guest@rabbitmq:5672"
+        networks: 
+        - sn    
     eureka-naming-server:
         build: ./netflix-eureka-naming-server
         networks: 
@@ -43,7 +43,7 @@ services:
         - sn
         depends_on:
         - eureka-naming-server
-        # - zipking
+        - zipkin
         - rabbitmq        
     currency-exchnage-service:
         build: ./currency_exchange_service
@@ -58,7 +58,23 @@ services:
         depends_on:
         - eureka-naming-server
         - netflix-zuul-api-gateway-server
-        # - zipking
+        - zipkin
+        - rabbitmq            
+    currency-conversion-service:
+        build: ./CurrencyConversionService
+        expose:
+        - 8100
+        ports:
+        - 8100:8100
+        volumes:
+        - ./CurrencyConversionService:/volume         
+        networks: 
+        - sn
+        depends_on:
+        - eureka-naming-server
+        - netflix-zuul-api-gateway-server
+        - currency-exchnage-service
+        - zipkin
         - rabbitmq            
     db:
         image: mysql:8.0.18
