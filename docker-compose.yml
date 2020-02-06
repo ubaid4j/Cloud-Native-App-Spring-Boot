@@ -1,0 +1,8 @@
+version: '3'
+services:
+    eureka-naming-service:
+        build: ./netflix-eureka-naming-server
+        expose:
+            - 8761
+        ports:
+            - 8761:8761
