@@ -87,7 +87,7 @@ services:
         expose:
         - 8100
         ports:
-        - 8100:8100
+        - 8100
         volumes:
         - ./CurrencyConversionService:/volume         
         networks: 
