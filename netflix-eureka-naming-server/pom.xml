@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.4.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-	<groupId>com.ubaid.ms</groupId>
-	<artifactId>netflix-eureka-naming-server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>netflix-eureka-naming-server</name>
-	<description>This is Netflix Eureka Naming Server</description>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.3.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.ubaid.ms</groupId>
+    <artifactId>netflix-eureka-naming-server</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>netflix-eureka-naming-server</name>
+    <description>This is Netflix Eureka Naming Server</description>
 
-	<properties>
-		<java.version>13</java.version>
-		<spring-cloud.version>Hoxton.SR1</spring-cloud.version>
-	</properties>
+    <properties>
+        <java.version>14</java.version>
+        <spring-cloud.version>Hoxton.SR7</spring-cloud.version>
+    </properties>
 
     <dependencies>
         <!-- Cloud Config and eureka Server -->
