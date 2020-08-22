@@ -26,6 +26,12 @@
             <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
 
+        <!--        Dev Tools   -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
+
         <!--		Tests		-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
