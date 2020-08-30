@@ -1,0 +1,7 @@
+spring:
+    cloud:
+        config:
+            server:
+                git:
+                    uri: file://${user.home}/dev/test/public-repo
+                    skip-ssl-validation: true

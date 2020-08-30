@@ -9,7 +9,7 @@ services:
           - 5672:5672
           - 15672:15672
         networks: 
-          - sn
+          - cloud-native-network
     zipkin:
         image: openzipkin/zipkin
         restart: on-failure
@@ -17,12 +17,8 @@ services:
         - "9411:9411"
         expose:
         - "9411"
-        # depends_on:
-        # - rabbitmq
-        # environment:
-        # - "RABBIT_URI=amqp://guest:guest@rabbitmq:5672"
         networks: 
-        - sn
+        - cloud-native-network
     config-server:
         build: ./spring-cloud-config-server
         expose:
@@ -30,7 +26,7 @@ services:
         ports:
         - 8888:8888    
         networks:
-        - sn
+        - cloud-native-network
     limits-service:
         build: ./limits-service
         expose:
@@ -44,11 +40,11 @@ services:
         volumes: 
         - ./limits-service:/volume
         networks:
-        - sn
+        - cloud-native-network
     eureka-naming-server:
         build: ./netflix-eureka-naming-server
         networks: 
-        - sn
+        - cloud-native-network
         expose:
         - 8761
         ports:
@@ -62,7 +58,7 @@ services:
         volumes:
         - ./netflix-zuul-api-gateway-server:/volume         
         networks: 
-        - sn
+        - cloud-native-network
         depends_on:
         - eureka-naming-server
         - zipkin
@@ -76,7 +72,7 @@ services:
         volumes:
         - ./currency_exchange_service:/volume         
         networks: 
-        - sn
+        - cloud-native-network
         depends_on:
         - eureka-naming-server
         - netflix-zuul-api-gateway-server
@@ -87,17 +83,33 @@ services:
         expose:
         - 8100
         ports:
-        - 8100:8100
+        - 8100
         volumes:
         - ./CurrencyConversionService:/volume         
         networks: 
-        - sn
+        - cloud-native-network
         depends_on:
         - eureka-naming-server
         - netflix-zuul-api-gateway-server
         - currency-exchnage-service
         - zipkin
-        - rabbitmq            
+        - rabbitmq    
+    client-service:
+        build: ./currency-conversion-client
+        expose:
+        - 5200
+        ports:
+        - 5200:5200
+        volumes:
+        - ./currency-conversion-client:/volume
+        networks:
+        - cloud-native-network
+        depends_on: 
+        - eureka-naming-server
+        - netflix-zuul-api-gateway-server
+        - currency-conversion-service
+        - zipkin
+        - rabbitmq    
     db:
         image: mysql:8.0.18
         restart: always
@@ -111,11 +123,11 @@ services:
         expose:
         - '3306'
         volumes:
-        - vc1:/var/lib/mysql
+        - cloud-native-volume:/var/lib/mysql
         networks:
-        - sn
+        - cloud-native-network
 volumes:
-    vc1:
+    cloud-native-volume:
 networks:
-    sn: {}
+    cloud-native-network: {}
               
