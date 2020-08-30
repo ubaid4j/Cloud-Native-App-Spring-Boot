@@ -25,7 +25,7 @@ public class CurrencyConversionController
 			@PathVariable("quantity") BigDecimal quantity)
 	{
 
-		Map<String, String> urlMap = new HashMap<String, String>();
+		Map<String, String> urlMap = new HashMap<>();
 		urlMap.put("to", to);
 		urlMap.put("from", from);
 		
@@ -36,6 +36,7 @@ public class CurrencyConversionController
 						CurrencyConversion.class, urlMap);
 	
 		CurrencyConversion currencyConversion = responseEntity.getBody();
+		assert currencyConversion != null;
 		currencyConversion.setQuantity(quantity);
 		System.out.println(currencyConversion);
 		return currencyConversion;
