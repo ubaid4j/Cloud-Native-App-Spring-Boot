@@ -1,2 +1,2 @@
 ./compile.sh
-docker-compose -f docker-compose-dev up --build;
+docker-compose -f docker-compose-dev.yml up --build;
