@@ -1,3 +1,9 @@
+Requirements
+-----------
+- Maven 3.6.3 or later
+- Docker 19.03.8 or later
+- JDK 14 or later
+
 How to Run
 ----------
 -   ``` git clone https://github.com/UbaidurRehman1/SpringServices_Rest_Micro```
