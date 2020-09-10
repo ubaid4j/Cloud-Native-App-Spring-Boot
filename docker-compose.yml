@@ -111,7 +111,7 @@ services:
         - zipkin
         - rabbitmq    
     db:
-        image: mysql:8.0.18
+        image: mysql
         restart: always
         environment:
             MYSQL_DATABASE: 'db'
