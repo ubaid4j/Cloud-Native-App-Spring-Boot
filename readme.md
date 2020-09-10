@@ -1,7 +1,8 @@
 How to Run
 ----------
--   get clone https://github.com/UbaidurRehman1/SpringServices_Rest_Micro
--   ./run.sh
+-   ``` git clone https://github.com/UbaidurRehman1/SpringServices_Rest_Micro```
+-   ``` cd SpringServices_Rest_Micro ```
+-   ``` ./run.sh ```
 
 Naming Server
 -------------
