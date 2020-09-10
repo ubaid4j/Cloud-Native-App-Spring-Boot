@@ -20,13 +20,31 @@ services:
         networks:
             - cloud-native-network
     eureka-naming-server:
-        image: ubaidurehman/netflix-eureka-naming-server:latest
+        build:
+            context: ./netflix-eureka-naming-server
+            dockerfile: Dockerfile
         networks:
             - cloud-native-network
         expose:
             - 8761
         ports:
             - 8761:8761
+    netflix-zuul-api-gateway-server:
+        build:
+            context: ./netflix-zuul-api-gateway-server
+            dockerfile: Dockerfile
+        expose:
+            - 8755
+        ports:
+            - 8755:8755
+        volumes:
+            - cloud-native-volume:/tmp
+        networks:
+            - cloud-native-network
+        depends_on:
+            - eureka-naming-server
+            - zipkin
+            - rabbitmq
     db:
         image: mysql
         restart: always
@@ -46,4 +64,4 @@ services:
 volumes:
     cloud-native-volume:
 networks:
-    cloud-native-network: {}
+    cloud-native-network: { }
