@@ -26,6 +26,19 @@
             <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
 
+<!--        &lt;!&ndash;		responsible to broadcast state change &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-bus-amqp</artifactId>-->
+<!--        </dependency>-->
+
+        <!--      Actuator    -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+
         <!--        Dev Tools   -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

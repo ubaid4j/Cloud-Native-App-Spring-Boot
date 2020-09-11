@@ -1,4 +1,4 @@
-FROM openjdk:13-alpine
+FROM openjdk
 LABEL maintainer="urehman.bese16seecs@seecs.edu.pk"
 VOLUME /tmp
 EXPOSE 8888

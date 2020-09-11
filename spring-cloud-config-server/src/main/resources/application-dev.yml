@@ -5,3 +5,4 @@ spring:
                 git:
                     uri: https://github.com/UbaidurRehman1/public-repo.git
                     skip-ssl-validation: true
+                    timeout: 60

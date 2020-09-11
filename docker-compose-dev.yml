@@ -1,34 +1,5 @@
 version: '3'
 services:
-    rabbitmq:
-        image: rabbitmq:management
-        restart: on-failure
-        expose:
-            - "5672"
-        ports:
-            - 5672:5672
-            - 15672:15672
-        networks:
-            - cloud-native-network
-    zipkin:
-        image: openzipkin/zipkin
-        restart: on-failure
-        ports:
-            - "9411:9411"
-        expose:
-            - "9411"
-        networks:
-            - cloud-native-network
-    eureka-naming-server:
-        build:
-            context: ./netflix-eureka-naming-server
-            dockerfile: Dockerfile
-        networks:
-            - cloud-native-network
-        expose:
-            - 8761
-        ports:
-            - 8761:8761
     netflix-zuul-api-gateway-server:
         build:
             context: ./netflix-zuul-api-gateway-server
@@ -40,28 +11,21 @@ services:
         volumes:
             - cloud-native-volume:/tmp
         networks:
-            - cloud-native-network
-        depends_on:
-            - eureka-naming-server
-            - zipkin
-            - rabbitmq
-    db:
-        image: mysql
-        restart: always
-        environment:
-            MYSQL_DATABASE: 'db'
-            MYSQL_USER: 'root'
-            MYSQL_PASSWORD: 'password'
-            MYSQL_ROOT_PASSWORD: 'password'
-        ports:
-            - '3306:3306'
+            - envcn_cloud-native-network
+    limits-service:
+        build:
+            context: ./limits-service
+            dockerfile: Dockerfile
         expose:
-            - '3306'
+            - 8666
+        ports:
+            - 8666:8666
         volumes:
-            - cloud-native-volume:/var/lib/mysql
+            - cloud-native-volume:/tmp
         networks:
-            - cloud-native-network
+            - envcn_cloud-native-network
 volumes:
     cloud-native-volume:
 networks:
-    cloud-native-network: { }
+    envcn_cloud-native-network:
+        external: true
