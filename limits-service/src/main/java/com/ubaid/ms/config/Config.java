@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @author UbaidurRehman
  */
 
-@ConfigurationProperties(prefix = "limits-service")
+@ConfigurationProperties(prefix = "ls")
 @Component
 @Data
 @NoArgsConstructor

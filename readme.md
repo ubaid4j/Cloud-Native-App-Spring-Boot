@@ -7,8 +7,9 @@ Requirements
 How to Run
 ----------
 -   ``` git clone https://github.com/UbaidurRehman1/SpringServices_Rest_Micro```
--   ``` cd SpringServices_Rest_Micro ```
--   ``` ./run.sh ```
+-   ``` cd SpringServices_Rest_Micro/envcn ```
+-   ``` ./run.sh ``` (it will run all tools which our services needs such as naming server, db, zipkin etc)
+-   ```cd ../run.sh```
 
 Naming Server
 -------------

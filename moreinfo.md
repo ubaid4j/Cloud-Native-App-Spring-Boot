@@ -76,9 +76,8 @@ Spring Cloud Config
 here comes spring cloud bus
 ---------------------------
 
--  add dependency: spring-cloud-starter-bus-amqp in Config server as well as
-    limits service
--  management.endpoints.web.exposure.include=\* add in prop both
+-  add dependency: spring-cloud-starter-bus-amqp in limits service
+-  management.endpoints.web.exposure.include=\* add in prop
 -  post http://localhost:8080/actuator/bus-refresh to refresh all the
     instances (without any commit)
 
