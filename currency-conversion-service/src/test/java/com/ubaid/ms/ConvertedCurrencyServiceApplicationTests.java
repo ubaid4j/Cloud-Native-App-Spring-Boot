@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CurrencyConversionServiceApplicationTests {
+public class ConvertedCurrencyServiceApplicationTests {
 
 	@Test
 	public void contextLoads() {
