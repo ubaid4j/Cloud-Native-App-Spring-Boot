@@ -38,7 +38,20 @@ services:
             - envcn_cloud-native-network
         depends_on:
             - netflix-zuul-api-gateway-server
-
+    currency-conversion-service:
+        build:
+            context: currency-conversion-service
+            dockerfile: Dockerfile
+        expose:
+            - 8100
+        ports:
+            - 8100
+        volumes:
+            - cloud-native-volume:/tmp
+        networks:
+            - envcn_cloud-native-network
+        depends_on:
+            - netflix-zuul-api-gateway-server
 volumes:
     cloud-native-volume:
 networks:
