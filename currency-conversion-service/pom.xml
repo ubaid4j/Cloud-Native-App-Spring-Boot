@@ -12,9 +12,7 @@
     <artifactId>currency-conversion-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Currency Conversion Service</name>
-    <description>This service talks with Currency Exchange Service and calculate the amount from one currency to another
-        currency
-    </description>
+    <description>This Service simply convert the currency with given rate</description>
 
     <properties>
         <java.version>14</java.version>
@@ -31,22 +29,10 @@
         </dependency>
 
         <!--		##########################	Cloud Start	########################## 		-->
-        <!--		Rest Client 	-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-
         <!--		Naming Server Client	-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
-
-        <!--		Load Balancer		-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
         </dependency>
 
         <!--		Intelligent Routing -->
@@ -73,7 +59,7 @@
             <artifactId>spring-cloud-starter-bus-amqp</artifactId>
         </dependency>
 
-        <!--		##########################	Cloud Start	End########################## 		-->
+        <!--		##########################	Cloud End########################## 		-->
 
         <!--		Dev Ops-->
         <dependency>
@@ -106,6 +92,31 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <activatedProperties>local</activatedProperties>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <activatedProperties>dev</activatedProperties>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <activatedProperties>prod</activatedProperties>
+            </properties>
+        </profile>
+    </profiles>
+
 
     <dependencyManagement>
         <dependencies>

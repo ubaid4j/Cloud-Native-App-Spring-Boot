@@ -1,44 +1,36 @@
 package com.ubaid.ms.controller;
 
-import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.springframework.http.ResponseEntity;
+import com.netflix.zuul.context.RequestContext;
+import com.ubaid.ms.dto.ConvertedCurrency;
+import com.ubaid.ms.service.CurrencyConversionService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
-import com.ubaid.ms.entity.CurrencyConversion;
+import javax.servlet.http.HttpServletResponse;
 
-@Deprecated
 @RestController
-@RequestMapping("currency-conversion-do not use it")
-public class CurrencyConversionController
-{
-	@GetMapping(value = "from/{from}/to/{to}/quantity/{quantity}")
-	public CurrencyConversion getCurrencyConversion(
-			@PathVariable("to") String to, 
-			@PathVariable("from") String from,
-			@PathVariable("quantity") BigDecimal quantity)
-	{
+@RequestMapping("currency-conversion")
+@Slf4j
+public class CurrencyConversionController {
 
-		Map<String, String> urlMap = new HashMap<>();
-		urlMap.put("to", to);
-		urlMap.put("from", from);
-		
-		
-		ResponseEntity<CurrencyConversion> responseEntity
-			= new RestTemplate().getForEntity(
-					"http://localhost:8000/currency-exchange/from/{from}/to/{to}",
-						CurrencyConversion.class, urlMap);
-	
-		CurrencyConversion currencyConversion = responseEntity.getBody();
-		assert currencyConversion != null;
-		currencyConversion.setQuantity(quantity);
-		System.out.println(currencyConversion);
-		return currencyConversion;
-	}
+    private final CurrencyConversionService currencyConversionService;
+
+    @Autowired
+    public CurrencyConversionController(CurrencyConversionService currencyConversionService) {
+        this.currencyConversionService = currencyConversionService;
+    }
+
+    @GetMapping("/currency/{currency}/rate/{conversion-rate}")
+    public ConvertedCurrency getCurrencyConversion(
+            @PathVariable("currency") Integer currency,
+            @PathVariable("conversion-rate") Integer conversionRate) {
+        HttpServletResponse response = RequestContext.getCurrentContext().getResponse();
+        log.info("response =========> {}", response);
+        return currencyConversionService.convert(currency, conversionRate);
+    }
+
 }
