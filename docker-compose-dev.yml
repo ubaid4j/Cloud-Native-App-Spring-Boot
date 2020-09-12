@@ -24,6 +24,21 @@ services:
             - cloud-native-volume:/tmp
         networks:
             - envcn_cloud-native-network
+    currency-exchnage-service:
+        build:
+            context: ./currency-exchange-service
+            dockerfile: Dockerfile
+        expose:
+            - 8000
+        ports:
+            - 8000:8000
+        volumes:
+            - cloud-native-volume:/tmp
+        networks:
+            - envcn_cloud-native-network
+        depends_on:
+            - netflix-zuul-api-gateway-server
+
 volumes:
     cloud-native-volume:
 networks:
