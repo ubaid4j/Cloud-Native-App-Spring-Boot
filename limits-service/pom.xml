@@ -55,7 +55,7 @@
 		</dependency>
 
 
-		<!--		auto-configuration for distributed tracing		-->
+		<!--		unique id for each request for distributed tracing		-->
 		<dependency>
 	        <groupId>org.springframework.cloud</groupId>
 	        <artifactId>spring-cloud-starter-sleuth</artifactId>
