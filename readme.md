@@ -53,9 +53,7 @@ Response code: 200; Time: 107ms; Content length: 110 bytes
 
 Swagger UI
 ----------
-- [Go here to check API docs about Client Service](http://localhost:5200/swagger-ui.html#/exchange-controller)
-
-
+- [Go here to check API docs about Currency Conversion API](http://localhost:5200/swagger-ui.html#/exchange-controller)
 
 Naming Server
 -------------
@@ -65,15 +63,26 @@ Zipkin Server
 ------------
 - [Go Here to see tracing of micro-services](http://localhost:9411/zipkin/)
 
+API
+---
+-   [Currency Conversion API](http://localhost:5200/actuator/health)
+
 Micro-Services
---------
--   NETFLIX-ZUUL-API-GATEWAY-SERVER
--   LIMITS-SERVICE
--   CURRENCY-EXCHANGE-SERVICE
--   CURRENCY-CONVERSION-SERVICE
--   CLIENT-SERVICE
+--------------
+-   [LIMITS-SERVICE](http://localhost:8666/actuator/health)
+-   [CURRENCY-EXCHANGE-SERVICE](http://localhost:8000/actuator/health)
+-   [CURRENCY-CONVERSION-SERVICE](http://localhost:8100/actuator/health)
 
+Servers
+-------
+-   [NETFLIX-ZUUL-API-GATEWAY-SERVER](http://localhost:8755/actuator/health)
+-   [NETFLIX-EUREKA-NAMING-SERVER](http://localhost:8761/)
+-   [CONFIG-SERVER](http://localhost:8888/actuator/health)
+-   [ZIPKIN SERVER](http://localhost:9411/zipkin/)
+-   [RABBIT MQ SERVER *Username & Password: guest*](http://localhost:15672/)
 
-
+Config Repo
+-----------
+- [Public Config Repo](https://github.com/UbaidurRehman1/public-repo)
 
 [To get More info about this repo](./moreinfo.md)
