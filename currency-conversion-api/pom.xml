@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ubaid.ms</groupId>
-    <artifactId>currency-conversion-client</artifactId>
+    <artifactId>currency-conversion-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>currency-conversion-client</name>
-    <description>This is a client for currency conversion.</description>
+    <name>Currency Conversion API</name>
+    <description>This is an API for currency conversion which interact with several micro-services</description>
 
     <properties>
         <java.version>14</java.version>

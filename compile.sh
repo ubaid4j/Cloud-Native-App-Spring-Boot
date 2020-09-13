@@ -1,4 +1,10 @@
-folders_to_compile=(netflix-eureka-naming-server netflix-zuul-api-gateway-server spring-cloud-config-server limits-service currency-exchange-service currency-conversion-service currency-conversion-client)
+folders_to_compile=(netflix-eureka-naming-server
+                        netflix-zuul-api-gateway-server
+                        spring-cloud-config-server
+                        limits-service
+                        currency-exchange-service
+                        currency-conversion-service
+                        currency-conversion-api)
 #iteration on above folders
 for folder in "${folders_to_compile[@]}"
 do
