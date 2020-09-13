@@ -52,9 +52,9 @@ services:
             - envcn_cloud-native-network
         depends_on:
             - netflix-zuul-api-gateway-server
-    client-service:
+    currency-conversion-api:
         build:
-            context: currency-conversion-client
+            context: currency-conversion-api
             dockerfile: Dockerfile
         expose:
             - 5200
