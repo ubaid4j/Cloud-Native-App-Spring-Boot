@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class LimitsConfig {
     private int max;
     private int min;
+    private int port;
 }
