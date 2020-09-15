@@ -21,7 +21,6 @@
 
     <dependencies>
 
-
         <!--		Web 		-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -29,36 +28,17 @@
         </dependency>
 
         <!--		##########################	Cloud Start	########################## 		-->
-        <!--		Naming Server Client	-->
+        <!--		Eureka Client 		-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
-        <!--		Intelligent Routing -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-sleuth</artifactId>
-        </dependency>
-
         <!--		Distributed Management 		-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
         </dependency>
-
-        <!--		Distributed Management with Zipkin -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
-        </dependency>
-
-        <!--		Broadcaster for config changes		-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
-        </dependency>
-
         <!--		##########################	Cloud End########################## 		-->
 
         <!--		Dev Ops-->
