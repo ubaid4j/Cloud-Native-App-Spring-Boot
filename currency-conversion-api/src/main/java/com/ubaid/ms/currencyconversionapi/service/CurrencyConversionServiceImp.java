@@ -1,9 +1,9 @@
-package com.ubaid.ms.currencyconversionclient.service;
+package com.ubaid.ms.currencyconversionapi.service;
 
-import com.ubaid.ms.currencyconversionclient.dto.ConvertedCurrency;
-import com.ubaid.ms.currencyconversionclient.dto.ExchangeValueDTO;
-import com.ubaid.ms.currencyconversionclient.feignProxy.CurrencyConversionServiceProxy;
-import com.ubaid.ms.currencyconversionclient.feignProxy.CurrencyExchangeServiceProxy;
+import com.ubaid.ms.currencyconversionapi.dto.ConvertedCurrency;
+import com.ubaid.ms.currencyconversionapi.dto.ExchangeValueDTO;
+import com.ubaid.ms.currencyconversionapi.feignProxy.CurrencyConversionServiceProxy;
+import com.ubaid.ms.currencyconversionapi.feignProxy.CurrencyExchangeServiceProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
