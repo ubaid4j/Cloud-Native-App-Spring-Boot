@@ -5,10 +5,14 @@ I will populate a database with all available exchange rates each 15 minutes usi
 
 About
 ----
-- Cloud Native App which convert currency from given counter to targeted counter. 
-- Client Service is actual responsible to interact with micro-services using api-gateway-server. 
+- Cloud Native App which convert currency from given country code to targeted country code. 
+- Currency Conversion API  is actual responsible to interact with micro-services using ```api-gateway-server```. 
 - We send a request to client service, it interacts with *CURRENCY-EXCHANGE-SERVICE* to get exchange rate and then *CURRENCY-CONVERSION-SERVICE* to convert this currency
-- For more info see wiki.
+- ![Micro Service Architecture](resource/micro-service-architecture.png)
+- In above diagram, We have 
+    - Three micro-services in which two ```currency-exchange-service```  and ```currency-conversion-service``` helps us to convert currency from one country code to another country code.
+    - One api-gateway-server
+    - One API which expose their URLs to Clients
 
 Requirements
 -----------
@@ -85,4 +89,7 @@ Config Repo
 -----------
 - [Public Config Repo](https://github.com/UbaidurRehman1/public-repo)
 
-[To get More info about this repo](./moreinfo.md)
+Note
+----
+- You can read about each micro-service by going inside each folder
+- [To get More info about this repo](./moreinfo.md)
