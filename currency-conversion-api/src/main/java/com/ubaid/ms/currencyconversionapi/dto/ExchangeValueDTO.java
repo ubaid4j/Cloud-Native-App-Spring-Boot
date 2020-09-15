@@ -1,9 +1,7 @@
-package com.ubaid.ms.currencyconversionclient.dto;
+package com.ubaid.ms.currencyconversionapi.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
 
 @Data
 @NoArgsConstructor

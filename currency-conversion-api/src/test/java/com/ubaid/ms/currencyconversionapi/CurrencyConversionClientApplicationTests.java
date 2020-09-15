@@ -1,4 +1,4 @@
-package com.ubaid.ms.currencyconversionclient;
+package com.ubaid.ms.currencyconversionapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
