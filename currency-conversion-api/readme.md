@@ -14,6 +14,8 @@ Dependencies
     - ##### spring-cloud-starter-netflix-ribbon
     - ##### spring-cloud-starter-openfeign
     - ##### spring-cloud-starter-zipkin
+- #### AOP
+    - spring-boot-starter-aop
 - #### Swagger
     - springfox-swagger2
     - springfox-swagger-ui
@@ -70,3 +72,8 @@ Distributed Tracing
 7.  We have to run rabbit-mq and zipkin-server and  over-ride two properties
     1. ```spring.rabbitmq.addresses=amqp://localhost:5672/```
     2. ```spring.zipkin.base-url=http://localhost:9411/```
+
+AOP
+---
+- Add ```@EnableAspectJAutoProxy``` in Config File
+- Add ```@Aspect``` to make aspect file
