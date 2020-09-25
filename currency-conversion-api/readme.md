@@ -1,3 +1,13 @@
+About
+=====
+- [Rest API](http://localhost:5200/swagger-ui.html#/exchange-controller)
+    - Exposes URLs to Clients
+    - Interact with micro-services to return desired result
+    
+Logging
+=======
+- To get Logs into the file: run ```docker logs -f springservices_rest_micro_currency-conversion-api_1 &> rest-api.log &```
+
 Dependencies
 ============
 
@@ -38,6 +48,15 @@ Feign Rest Client
         - ```@FeignClient``` gets one argument
             - ```name``` the name of api-gateway-server
     - Add request mapping inside this interface (prefixed with the name of service in case of gateway-server)   
+
+How Feign Client its work
+------------
+- We have
+    - Eureka Naming Server
+    - Zuul Api gateway Server
+    - Feign Client 
+- When we call a service from feign clients, then our request goes to API gateway server, it talks with eureka naming server and get the service which is being called.
+- We can simply directly call a service from our API gateway just prepending the name of being called service and change port to API gateway.
     
 Netflix-Ribbon
 --------------
@@ -49,15 +68,6 @@ Netflix-Ribbon
 Rest Template
 -------------
 - RestTemplate is a wrapper which provide Http methods
-
-How its work
-------------
-- We have
-    - Eureka Naming Server
-    - Zuul Api gateway Server
-    - Feign Client 
-- When we call a service from feign clients, then our request goes to API gateway server, it talks with eureka naming server and get the service which is being called.
-- We can simply directly call a service from our API gateway just prepending the name of being called service and change port to API gateway.
 
 Distributed Tracing
 -------------------
