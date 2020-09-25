@@ -41,7 +41,7 @@ services:
             - 8761:8761
     db:
         image: mysql
-        restart: always
+        restart: on-failure
         environment:
             MYSQL_DATABASE: 'db'
             MYSQL_USER: 'root'
