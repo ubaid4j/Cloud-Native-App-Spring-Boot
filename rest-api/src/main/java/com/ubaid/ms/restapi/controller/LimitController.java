@@ -1,8 +1,7 @@
 package com.ubaid.ms.restapi.controller;
 
 
-import com.ubaid.ms.restapi.entity.Limit;
-import com.ubaid.ms.restapi.feignProxy.LimitProxy;
+import com.ubaid.ms.restapi.config.Config;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,19 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "splgbi")
+@RequestMapping(value = "config")
 @Slf4j
 public class LimitController {
 
-    private final LimitProxy proxy;
+    private final Config config;
 
     @Autowired
-    public LimitController(LimitProxy proxy) {
-        this.proxy = proxy;
+    public LimitController(Config config) {
+        this.config = config;
     }
 
     @GetMapping("/limits")
-    public Limit getCurrencyConversion() {
-        return proxy.getLimitConfig();
+    public Config getCurrencyConversion() {
+        return config;
     }
 }
