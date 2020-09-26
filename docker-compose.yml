@@ -94,8 +94,8 @@ services:
         - currency-exchnage-service
         - zipkin
         - rabbitmq    
-    currency-conversion-api:
-        build: ./currency-conversion-api
+    rest-api:
+        build: ./rest-api
         expose:
         - 5200
         ports:
