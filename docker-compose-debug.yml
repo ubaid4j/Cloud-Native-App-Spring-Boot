@@ -12,18 +12,6 @@ services:
             - cloud-native-volume:/tmp
         networks:
             - envcn_cloud-native-network
-    limits-service:
-        build:
-            context: ./limits-service
-            dockerfile: Dockerfile
-        expose:
-            - 8666
-        ports:
-            - 8666:8666
-        volumes:
-            - cloud-native-volume:/tmp
-        networks:
-            - envcn_cloud-native-network
     currency-exchnage-service:
         build:
             context: ./currency-exchange-service
