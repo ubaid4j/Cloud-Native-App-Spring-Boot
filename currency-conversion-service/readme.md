@@ -12,6 +12,10 @@ Dependencies
 - #### Cloud
     - ##### spring-cloud-starter-netflix-eureka-client
     - ##### spring-cloud-starter-zipkin
+- #### AOP
+    - spring-boot-starter-aop
+- #### Cache
+    - caffeine
 - #### Test
     - spring-boot-starter-test
 
