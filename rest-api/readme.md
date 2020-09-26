@@ -70,6 +70,14 @@ Rest Template
 -------------
 - RestTemplate is a wrapper which provide Http methods
 
+Connecting rest api to Spring Cloud Config Server
+-------------------------------------------------------
+1.  Change name of ```application.properties``` to ```bootstrap.properties```
+2.  Add ```spring.cloud.uri.config=http://localhost:8888```
+3.  It will fetch default profile (or application.properties)
+4.  To change profile add ```spring.profiles.active=profile_name``` in the bootstrap.properties file
+
+
 Distributed Tracing
 -------------------
 1.  Add dependency ```spring-cloud-starter-zipkin```
@@ -88,3 +96,17 @@ AOP
 ---
 - Add ```@EnableAspectJAutoProxy``` in Config File
 - Add ```@Aspect``` to make aspect file
+
+AMQP BUS
+----------
+- Message Buses responsible to broadcast config changes to all instances
+- Add in prop file ```management.endpoints.web.exposure.include=*``` to disable security for actuator
+- POST to ```http://localhost:5200/actuator/bus-refresh``` to refresh all instances
+
+Notes
+-------------
+
+1.  We can create our custom pairs in the application.properties
+2.  We get them using @ConfigurationProperties and defining its prefix
+3.  Then create the same name fields to retrieve the same entities
+    defined in the application.properties
