@@ -73,6 +73,7 @@ API
 
 Micro-Services
 --------------
+-   [LIMITS-SERVICE](http://localhost:8666/actuator/health)
 -   [CURRENCY-EXCHANGE-SERVICE](http://localhost:8000/actuator/health)
 -   [CURRENCY-CONVERSION-SERVICE](http://localhost:8100/actuator/health)
 
