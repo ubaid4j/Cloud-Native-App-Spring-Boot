@@ -27,6 +27,20 @@ services:
         - 8888:8888    
         networks:
         - cloud-native-network
+    limits-service:
+        build: ./limits-service
+        expose:
+        - 8666
+        ports:
+        - 8666:8666
+        depends_on: 
+        - rabbitmq
+        - zipkin
+        - config-server
+        volumes: 
+        - ./limits-service:/volume
+        networks:
+        - cloud-native-network
     eureka-naming-server:
         build: ./netflix-eureka-naming-server
         networks: 
