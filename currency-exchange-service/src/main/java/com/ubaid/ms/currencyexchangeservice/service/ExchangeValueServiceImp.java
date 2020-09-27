@@ -16,7 +16,7 @@ public class ExchangeValueServiceImp implements ExchangeValueService {
     private final ExchangeValueRepo dao;
 
     @Autowired
-    private ExchangeValueServiceImp(Environment env, ExchangeValueRepo exchangeValueRepo) {
+    public ExchangeValueServiceImp(Environment env, ExchangeValueRepo exchangeValueRepo) {
         this.env = env;
         this.dao = exchangeValueRepo;
     }
