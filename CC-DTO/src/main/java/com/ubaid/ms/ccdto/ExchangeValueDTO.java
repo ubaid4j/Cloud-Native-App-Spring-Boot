@@ -1,4 +1,4 @@
-package com.ubaid.ms.currencyexchangeservice.dto;
+package com.ubaid.ms.ccdto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +10,9 @@ import java.math.BigDecimal;
 public class ExchangeValueDTO {
     private Long id;
     private String from;
+    private Integer quantity;
     private String to;
-    private BigDecimal exchangeRate;
+    private Integer exchangeRate;
+    private Integer exchangedCurrencyQuantity;
     private Integer port;
 }

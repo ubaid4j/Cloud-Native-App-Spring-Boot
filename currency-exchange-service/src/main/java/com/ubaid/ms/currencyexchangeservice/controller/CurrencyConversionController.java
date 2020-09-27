@@ -1,6 +1,6 @@
 package com.ubaid.ms.currencyexchangeservice.controller;
 
-import com.ubaid.ms.currencyexchangeservice.dto.ExchangeValueDTO;
+import com.ubaid.ms.ccdto.ExchangeValueDTO;
 import com.ubaid.ms.currencyexchangeservice.service.ExchangeValueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

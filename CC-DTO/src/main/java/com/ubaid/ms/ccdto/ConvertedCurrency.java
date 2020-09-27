@@ -1,4 +1,4 @@
-package com.ubaid.ms.currencyconversionservice.dto;
+package com.ubaid.ms.ccdto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

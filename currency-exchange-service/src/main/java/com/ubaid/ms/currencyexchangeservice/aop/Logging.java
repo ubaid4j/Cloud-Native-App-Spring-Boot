@@ -1,6 +1,6 @@
 package com.ubaid.ms.currencyexchangeservice.aop;
 
-import com.ubaid.ms.currencyexchangeservice.dto.ExchangeValueDTO;
+import com.ubaid.ms.ccdto.ExchangeValueDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

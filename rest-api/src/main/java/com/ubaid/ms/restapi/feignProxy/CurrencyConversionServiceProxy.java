@@ -1,6 +1,6 @@
 package com.ubaid.ms.restapi.feignProxy;
 
-import com.ubaid.ms.restapi.dto.ConvertedCurrency;
+import com.ubaid.ms.ccdto.ConvertedCurrency;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,11 +1,11 @@
 package com.ubaid.ms.currencyexchangeservice.entity;
 
-import com.ubaid.ms.currencyexchangeservice.dto.ExchangeValueDTO;
+import com.ubaid.ms.ccdto.ExchangeValueDTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
+
 
 @Entity
 @Table
@@ -17,7 +17,7 @@ public class ExchangeValue {
     private Long id;
     private String fromCurrency;
     private String toCurrency;
-    private BigDecimal exchangeRate;
+    private Integer exchangeRate;
 
     public ExchangeValueDTO createDTO() {
         ExchangeValueDTO exchangeValueDTO = new ExchangeValueDTO();

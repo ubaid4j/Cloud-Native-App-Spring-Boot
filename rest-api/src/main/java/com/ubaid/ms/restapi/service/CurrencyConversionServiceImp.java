@@ -1,9 +1,9 @@
 package com.ubaid.ms.restapi.service;
 
+import com.ubaid.ms.ccdto.ConvertedCurrency;
+import com.ubaid.ms.ccdto.ExchangeValueDTO;
 import com.ubaid.ms.restapi.feignProxy.CurrencyConversionServiceProxy;
 import com.ubaid.ms.restapi.feignProxy.CurrencyExchangeServiceProxy;
-import com.ubaid.ms.restapi.dto.ConvertedCurrency;
-import com.ubaid.ms.restapi.dto.ExchangeValueDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
