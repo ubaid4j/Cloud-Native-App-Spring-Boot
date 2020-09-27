@@ -1,6 +1,6 @@
 package com.ubaid.ms.restapi.controller;
 
-import com.ubaid.ms.restapi.dto.ExchangeValueDTO;
+import com.ubaid.ms.ccdto.ExchangeValueDTO;
 import com.ubaid.ms.restapi.service.CurrencyConversionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

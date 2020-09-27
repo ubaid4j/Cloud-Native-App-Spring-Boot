@@ -1,6 +1,6 @@
 package com.ubaid.ms.currencyconversionservice.service;
 
-import com.ubaid.ms.currencyconversionservice.dto.ConvertedCurrency;
+import com.ubaid.ms.ccdto.ConvertedCurrency;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;

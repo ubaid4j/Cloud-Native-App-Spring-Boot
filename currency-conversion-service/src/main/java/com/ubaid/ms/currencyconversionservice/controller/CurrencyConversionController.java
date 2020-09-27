@@ -1,7 +1,7 @@
 package com.ubaid.ms.currencyconversionservice.controller;
 
+import com.ubaid.ms.ccdto.ConvertedCurrency;
 import com.ubaid.ms.currencyconversionservice.service.CurrencyConversionService;
-import com.ubaid.ms.currencyconversionservice.dto.ConvertedCurrency;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
