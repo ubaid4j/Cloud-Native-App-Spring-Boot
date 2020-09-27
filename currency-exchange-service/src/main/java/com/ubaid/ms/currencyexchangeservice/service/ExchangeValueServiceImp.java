@@ -1,7 +1,7 @@
 package com.ubaid.ms.currencyexchangeservice.service;
 
+import com.ubaid.ms.ccdto.ExchangeValueDTO;
 import com.ubaid.ms.currencyexchangeservice.dao.ExchangeValueRepo;
-import com.ubaid.ms.currencyexchangeservice.dto.ExchangeValueDTO;
 import com.ubaid.ms.currencyexchangeservice.entity.ExchangeValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
