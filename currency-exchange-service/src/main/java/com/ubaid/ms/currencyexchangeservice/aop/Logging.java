@@ -1,6 +1,7 @@
 package com.ubaid.ms.currencyexchangeservice.aop;
 
 import com.ubaid.ms.ccdto.ExchangeValueDTO;
+import com.ubaid.ms.module.ccexception.CCException;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -24,7 +25,7 @@ public class Logging extends TargetMethods {
 
         } catch (Exception exp) {
             log.error("Exception Occurred: Message: [{}]", exp.getMessage());
-            throw new RuntimeException("Unknown Exception");
+            throw new CCException(exp);
         }
         return result;
     }
