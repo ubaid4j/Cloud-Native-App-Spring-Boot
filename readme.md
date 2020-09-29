@@ -24,7 +24,7 @@ How to Run
 ----------
 -   ``` git clone https://github.com/UbaidurRehman1/SpringServices_Rest_Micro```
 -   ``` cd SpringServices_Rest_Micro ```
--   ```./compile.sh```
+-   ```mvn clean install -DskipTests```
 -   ```cd envcn```
 -   ```./run.sh``` (it will run all tools which our services needs such as naming server, db, zipkin etc)
 -   ``` cd ..``` 
