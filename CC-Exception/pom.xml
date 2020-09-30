@@ -9,7 +9,7 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
-        <java.verison>14</java.verison>
+        <java.verison>15</java.verison>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
