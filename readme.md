@@ -16,9 +16,10 @@ About
 
 Requirements
 -----------
-- Maven 3.6.3 or later
-- Docker 19.03.8 or later
-- JDK 14 or later
+- [Maven 3.6.3 or later](./resource/install-require-softwares.md)
+- [Docker 19.03.8 or later](./resource/install-require-softwares.md)
+- [JDK 15 or later](./resource/install-require-softwares.md)
+- [Set JAVA_HOME](./resource/install-require-softwares.md)
 
 How to Run
 ----------
