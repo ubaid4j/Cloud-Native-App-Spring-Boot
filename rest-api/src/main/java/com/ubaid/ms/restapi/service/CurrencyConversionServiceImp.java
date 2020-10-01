@@ -21,10 +21,18 @@ public class CurrencyConversionServiceImp implements CurrencyConversionService {
 
     @Override
     public ExchangeValueDTO convertCurrency(String fromCurrency, String toCurrency, Integer quantity) {
-        ExchangeValueDTO exchangeValueDTO = exchangeServiceProxy.getCurrencyExchangeRate(fromCurrency, toCurrency);
-        ConvertedCurrency convertedCurrency = conversionServiceProxy.convert(quantity, exchangeValueDTO.getExchangeRate());
+        ExchangeValueDTO exchangeValueDTO = getExchangeRate(fromCurrency, toCurrency);
+        ConvertedCurrency convertedCurrency = getConvertedCurrency(quantity, exchangeValueDTO);
         exchangeValueDTO.setExchangedCurrencyQuantity(convertedCurrency.getConvertedCurrency());
         exchangeValueDTO.setQuantity(quantity);
         return exchangeValueDTO;
+    }
+
+    ConvertedCurrency getConvertedCurrency(Integer quantity, ExchangeValueDTO exchangeValueDTO) {
+        return conversionServiceProxy.convert(quantity, exchangeValueDTO.getExchangeRate());
+    }
+
+    ExchangeValueDTO getExchangeRate(String fromCurrency, String toCurrency) {
+        return exchangeServiceProxy.getCurrencyExchangeRate(fromCurrency, toCurrency);
     }
 }
