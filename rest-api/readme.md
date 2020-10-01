@@ -103,6 +103,10 @@ AMQP BUS
 - Add in prop file ```management.endpoints.web.exposure.include=*``` to disable security for actuator
 - POST to ```http://localhost:5200/actuator/bus-refresh``` to refresh all instances
 
+Test
+----------
+- Up all services to run rest-api tests
+
 Notes
 -------------
 
