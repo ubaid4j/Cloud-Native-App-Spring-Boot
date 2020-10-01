@@ -1,3 +1,16 @@
+Abstract
+========
+- Cloud Native App represent basic reference for different stacks such as
+    - micro-service architecture 
+    - gateway server
+    - naming server
+    - aop
+    - logging
+    - distributed tracing with zipkin
+    - containerization
+    - swagger implementation
+- My aim is to remain up to date with each stack such as Java 15, Spring Boot 2.3.4 and Spring Cloud HOXTON SR8
+
 Note
 ---
 For now: It only converts USD to PKR as there is only one entry in a database.
@@ -6,13 +19,13 @@ I will populate a database with all available exchange rates each 15 minutes usi
 About
 ----
 - Cloud Native App which convert currency from given country code to targeted country code. 
-- Currency Conversion API  is actual responsible to interact with micro-services using ```api-gateway-server```. 
-- We send a request to client service, it interacts with *CURRENCY-EXCHANGE-SERVICE* to get exchange rate and then *CURRENCY-CONVERSION-SERVICE* to convert this currency
+- Currency Conversion Rest API  is actual responsible to interact with micro-services using ```api-gateway-server```. 
+- An Actor (React Client, Angular Client etc ) can  send a request to rest-api, it interacts with *CURRENCY-EXCHANGE-SERVICE*  micro-service to get exchange rate and then *CURRENCY-CONVERSION-SERVICE* micro-service to convert this currency
 - ![Micro Service Architecture](resource/micro-service-architecture.png)
-- In above diagram, We have 
-    - Three micro-services in which two ```currency-exchange-service```  and ```currency-conversion-service``` helps us to convert currency from one country code to another country code.
+- In above diagram [You Can Access it here: Pre-Req: Run the App First](http://localhost:9411/zipkin/), We have 
+    - Two micro-services in which ```currency-exchange-service```  and ```currency-conversion-service``` helps us to convert currency from one country code to another country code.
     - One api-gateway-server
-    - One API which expose their URLs to Clients
+    - One rest-api which expose their URLs to Clients
 
 Requirements
 -----------
@@ -33,28 +46,7 @@ How to Run
 
 How it works
 ------------
-```
-GET http://localhost:5200/exchange/USD/to/PKR/q/20
-
-HTTP/1.1 200 
-Content-Type: application/json
-Transfer-Encoding: chunked
-Date: Sat, 12 Sep 2020 19:04:46 GMT
-Keep-Alive: timeout=60
-Connection: keep-alive
-
-{
-  "id": 1,
-  "from": "USD",
-  "quantity": 20,
-  "to": "PKR",
-  "exchangeRate": 166,
-  "exchangedCurrencyQuantity": 3320,
-  "port": 8000
-}
-
-Response code: 200; Time: 107ms; Content length: 110 bytes
-```
+- Simply go to Swagger UI and interact with different end points.
 
 Swagger UI
 ----------
@@ -66,10 +58,10 @@ Naming Server
 
 Zipkin Server
 ------------
-- [Go Here to see tracing of micro-services](http://localhost:9411/zipkin/)
+- [Go Here to trace the micro-services](http://localhost:9411/zipkin/)
 
-API
----
+REST API
+--------
 -   [Currency Conversion API](http://localhost:5200/actuator/health)
 
 Micro-Services
