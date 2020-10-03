@@ -36,8 +36,8 @@ Requirements
 
 How to Run
 ----------
--   ``` git clone https://github.com/UbaidurRehman1/SpringServices_Rest_Micro```
--   ``` cd SpringServices_Rest_Micro ```
+-   ``` git clone https://github.com/UbaidurRehman1/Cloud-Native-App-Spring-Boot```
+-   ``` cd Cloud-Native-App-Spring-Boot```
 -   ```mvn clean install -DskipTests```
 -   ```cd envcn```
 -   ```./run.sh``` (it will run all tools which our services needs such as naming server, db, zipkin etc)
