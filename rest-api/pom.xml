@@ -65,6 +65,13 @@
             <version>2.9.2</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>com.github.piomin</groupId>
+            <artifactId>logstash-logging-spring-boot-starter</artifactId>
+            <version>1.2.2.RELEASE</version>
+        </dependency>
+
         <dependency>
             <groupId>com.ubaid.ms.modules</groupId>
             <artifactId>CC-DTO</artifactId>
