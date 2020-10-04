@@ -30,6 +30,13 @@
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
         <!--		################################## Cloud Start End ##################################		-->
+        <dependency>
+            <groupId>com.github.piomin</groupId>
+            <artifactId>logstash-logging-spring-boot-starter</artifactId>
+            <version>1.2.2.RELEASE</version>
+        </dependency>
+
+
     </dependencies>
 
 </project>

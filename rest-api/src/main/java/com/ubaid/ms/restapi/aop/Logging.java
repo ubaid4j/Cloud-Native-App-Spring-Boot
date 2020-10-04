@@ -20,7 +20,7 @@ public class Logging extends TargetMethods {
             String fromCurrency = (String) args[0];
             String toCurrency = (String) args[1];
             Integer quantity = (Integer) args[2];
-            log.info("Converting {} {} to {}", quantity, fromCurrency, toCurrency);
+            log.debug("Converting {} {} to {}", quantity, fromCurrency, toCurrency);
             result = joinPoint.proceed();
 
         } catch (Exception exp) {
