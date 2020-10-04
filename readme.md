@@ -4,8 +4,8 @@ Abstract
     - micro-service architecture 
     - gateway server
     - naming server
-    - aop
-    - logging
+    - AOP
+    - ELK stack
     - distributed tracing with zipkin
     - containerization
     - swagger implementation
@@ -51,6 +51,14 @@ How it works
 Swagger UI
 ----------
 - [Go here to check API docs about Currency Conversion API](http://localhost:5200/swagger-ui.html#/exchange-controller)
+
+Kibana Dashboard (For Centralized Logging)
+------------------------------------------
+- [Go here to view centralized logs](http://localhost:5601/app/discover#)
+- username : elastic
+- password : changeme
+- Select logstash-* index pattern like below graphic and then you will see the logs
+- ![Kibana Dashboard](resource/kibana-dashboard.png)
 
 Naming Server
 -------------
