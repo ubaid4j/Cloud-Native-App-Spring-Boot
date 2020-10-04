@@ -1,4 +1,4 @@
-package com.ubaid.ms.gatewayserver;
+package com.ubaid.ms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
