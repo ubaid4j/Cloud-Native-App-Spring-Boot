@@ -22,6 +22,7 @@ public class LimitController {
 
     @GetMapping("/limits")
     public Config getCurrencyConversion() {
+        log.debug("Config: {}", config);
         return config;
     }
 }
