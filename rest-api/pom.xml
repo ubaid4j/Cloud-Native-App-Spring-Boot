@@ -36,10 +36,10 @@
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
         <!--		responsible to  broadcast config state change -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-bus-amqp</artifactId>-->
+<!--        </dependency>-->
         <!--		Distributed tracing using Zipkin		-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
