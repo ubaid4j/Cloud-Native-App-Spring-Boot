@@ -50,7 +50,7 @@ How it works
 
 Swagger UI
 ----------
-- [Go here to check API docs about Currency Conversion API](http://localhost:5200/swagger-ui.html#/exchange-controller)
+- [Go here to check API docs about Currency Conversion API](http://localhost:5200/swagger-ui/index.html#/exchange-controller)
 
 Kibana Dashboard (For Centralized Logging)
 ------------------------------------------
