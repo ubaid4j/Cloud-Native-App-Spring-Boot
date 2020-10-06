@@ -8,6 +8,8 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Slf4j
 @Component
 @Aspect
@@ -15,7 +17,7 @@ public class Logging extends TargetMethods {
 
     @Around("convertCurrency()")
     public ExchangeValueDTO doLog(ProceedingJoinPoint joinPoint) throws Throwable {
-        ExchangeValueDTO result = null;
+        ExchangeValueDTO result;
         try {
             Object[] args = joinPoint.getArgs();
             String fromCurrency = (String) args[0];
@@ -31,4 +33,20 @@ public class Logging extends TargetMethods {
         }
         return result;
     }
+
+    @Around("getAllCountries()")
+    public List<?> countryLogger(ProceedingJoinPoint joinPoint) throws Throwable {
+        List<?> result;
+        try {
+            log.debug("Getting All Country Codes");
+            result = (List<?>) joinPoint.proceed();
+            log.debug("Got {} Country Codes", result.size());
+
+        } catch (Exception exp) {
+            log.error("Exception Occurred: Message: [{}]", exp.getMessage());
+            throw new CCException(exp.getMessage(), exp);
+        }
+        return result;
+    }
+
 }

@@ -2,7 +2,7 @@ version: '3'
 services:
     netflix-zuul-api-gateway-server:
         build:
-            context: ./netflix-zuul-api-gateway-server
+            context: netflix-zuul-api-gateway-server
             dockerfile: Dockerfile
         expose:
             - 8755
@@ -14,7 +14,7 @@ services:
             - envcn_cloud-native-network
     currency-exchnage-service:
         build:
-            context: ./currency-exchange-service
+            context: currency-exchange-service
             dockerfile: Dockerfile
         expose:
             - 8000
@@ -33,7 +33,21 @@ services:
         expose:
             - 8100
         ports:
-            - 8100
+            - 8100:8100
+        volumes:
+            - cloud-native-volume:/tmp
+        networks:
+            - envcn_cloud-native-network
+        depends_on:
+            - netflix-zuul-api-gateway-server
+    country-service:
+        build:
+            context: country-service
+            dockerfile: Dockerfile
+        expose:
+            - 8300
+        ports:
+            - 8300:8300
         volumes:
             - cloud-native-volume:/tmp
         networks:
