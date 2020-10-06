@@ -7,4 +7,8 @@ public abstract class TargetMethods {
     @Pointcut("execution(* com.ubaid.ms.restapi.service.CurrencyConversionService.convertCurrency(String, String, Integer))")
     public void convertCurrency() {
     }
+
+    @Pointcut("execution(* com.ubaid.ms.restapi.service.CountryService.getAll())")
+    public void getAllCountries() {}
+
 }

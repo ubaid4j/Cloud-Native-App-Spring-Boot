@@ -1,119 +1,75 @@
 version: '3'
 services:
-    rabbitmq:
-        image: rabbitmq:management
-        restart: on-failure
-        expose:
-          - "5672"
-        ports:
-          - 5672:5672
-          - 15672:15672
-        networks: 
-          - cloud-native-network
-    zipkin:
-        image: openzipkin/zipkin
-        restart: on-failure
-        ports:
-        - "9411:9411"
-        expose:
-        - "9411"
-        networks: 
-        - cloud-native-network
-    config-server:
-        build: ./spring-cloud-config-server
-        expose:
-        - 8888
-        ports:
-        - 8888:8888    
-        networks:
-        - cloud-native-network
-    eureka-naming-server:
-        build: ./netflix-eureka-naming-server
-        networks: 
-        - cloud-native-network
-        expose:
-        - 8761
-        ports:
-        - 8761:8761
     netflix-zuul-api-gateway-server:
-        build: ./netflix-zuul-api-gateway-server
+        build:
+            context: netflix-zuul-api-gateway-server
+            dockerfile: Dockerfile
         expose:
-        - 8755
+            - 8755
         ports:
-        - 8755:8755
+            - 8755:8755
         volumes:
-        - ./netflix-zuul-api-gateway-server:/volume         
-        networks: 
-        - cloud-native-network
-        depends_on:
-        - eureka-naming-server
-        - zipkin
-        - rabbitmq        
+            - cloud-native-volume:/tmp
+        networks:
+            - envcn_cloud-native-network
     currency-exchnage-service:
-        build: ./currency_exchange_service
+        build:
+            context: currency-exchange-service
+            dockerfile: Dockerfile
         expose:
-        - 8000
+            - 8000
         ports:
-        - 8000:8000
+            - 8000:8000
         volumes:
-        - ./currency_exchange_service:/volume         
-        networks: 
-        - cloud-native-network
+            - cloud-native-volume:/tmp
+        networks:
+            - envcn_cloud-native-network
         depends_on:
-        - eureka-naming-server
-        - netflix-zuul-api-gateway-server
-        - zipkin
-        - rabbitmq            
+            - netflix-zuul-api-gateway-server
     currency-conversion-service:
-        build: ./CurrencyConversionService
+        build:
+            context: currency-conversion-service
+            dockerfile: Dockerfile
         expose:
-        - 8100
+            - 8100
         ports:
-        - 8100
+            - 8100:8100
         volumes:
-        - ./CurrencyConversionService:/volume         
-        networks: 
-        - cloud-native-network
+            - cloud-native-volume:/tmp
+        networks:
+            - envcn_cloud-native-network
         depends_on:
-        - eureka-naming-server
-        - netflix-zuul-api-gateway-server
-        - currency-exchnage-service
-        - zipkin
-        - rabbitmq    
+            - netflix-zuul-api-gateway-server
+    country-service:
+        build:
+            context: country-service
+            dockerfile: Dockerfile
+        expose:
+            - 8300
+        ports:
+            - 8300:8300
+        volumes:
+            - cloud-native-volume:/tmp
+        networks:
+            - envcn_cloud-native-network
+        depends_on:
+            - netflix-zuul-api-gateway-server
     rest-api:
-        build: ./rest-api
+        build:
+            context: rest-api
+            dockerfile: Dockerfile
         expose:
-        - 5200
+            - 5200
         ports:
-        - 5200:5200
+            - 5200:5200
         volumes:
-        - ./currency-conversion-client:/volume
+            - cloud-native-volume:/tmp
         networks:
-        - cloud-native-network
-        depends_on: 
-        - eureka-naming-server
-        - netflix-zuul-api-gateway-server
-        - currency-conversion-service
-        - zipkin
-        - rabbitmq    
-    db:
-        image: mysql
-        restart: always
-        environment:
-            MYSQL_DATABASE: 'db'
-            MYSQL_USER: 'root'
-            MYSQL_PASSWORD: 'password'
-            MYSQL_ROOT_PASSWORD: 'password'
-        ports:
-        - '3306:3306'
-        expose:
-        - '3306'
-        volumes:
-        - cloud-native-volume:/var/lib/mysql
-        networks:
-        - cloud-native-network
+            - envcn_cloud-native-network
+        depends_on:
+            - netflix-zuul-api-gateway-server
 volumes:
     cloud-native-volume:
 networks:
-    cloud-native-network: {}
-              
+    envcn_cloud-native-network:
+        external: true
