@@ -5,16 +5,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 
 @Entity
 @Table
 @Data
 @NoArgsConstructor
-public class ExchangeValue {
+public class ExchangeRate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Date timestamp;
     private String fromCurrency;
     private String toCurrency;
     private Integer exchangeRate;

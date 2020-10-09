@@ -3,9 +3,9 @@ package com.ubaid.ms.currencyexchangeservice.aop;
 import com.ubaid.ms.ccdto.ExchangeValueDTO;
 import com.ubaid.ms.module.ccexception.CCException;
 import lombok.extern.slf4j.Slf4j;
+import org.aopalliance.intercept.Joinpoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -28,5 +28,21 @@ public class Logging extends TargetMethods {
             throw new CCException(exp);
         }
         return result;
+    }
+
+    @Before("fetchExchangeRatesFromFixerDotIO()")
+    public void bLogFetchExchangeRatesFromFixerDotIO() {
+        log.debug("Executing Task to fetch all rates from http://data.fixer.io/");
+    }
+
+    @After("fetchExchangeRatesFromFixerDotIO()")
+    public void rLogFetchExchangeRatesFromFixerDotIO() {
+        log.debug("Task to fetch all rates from http://data.fixer.io/ finished");
+    }
+
+    @AfterThrowing(value = "fetchExchangeRatesFromFixerDotIO()", throwing = "exception")
+    public void tLogFetchExchangeRatesFromFixerDotIO(CCException exception) {
+        log.error(exception.getMessage());
+        log.error("Task to fetch all rates from http://data.fixer.io/ produced some errors");
     }
 }

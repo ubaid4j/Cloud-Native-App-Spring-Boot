@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("currency-exchange")
-public class CurrencyConversionController {
+public class CurrencyExchangeController {
 
     private final ExchangeValueService service;
 
     @Autowired
-    public CurrencyConversionController(ExchangeValueService exchangeValueService) {
+    public CurrencyExchangeController(ExchangeValueService exchangeValueService) {
         this.service = exchangeValueService;
     }
 

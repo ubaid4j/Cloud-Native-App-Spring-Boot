@@ -2,7 +2,7 @@ package com.ubaid.ms.currencyexchangeservice.service;
 
 import com.ubaid.ms.ccdto.ExchangeValueDTO;
 import com.ubaid.ms.currencyexchangeservice.dao.ExchangeValueRepo;
-import com.ubaid.ms.currencyexchangeservice.entity.ExchangeValue;
+import com.ubaid.ms.currencyexchangeservice.entity.ExchangeRate;
 import com.ubaid.ms.module.ccexception.ExchangeValueNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -27,10 +27,9 @@ public class ExchangeValueServiceImp implements ExchangeValueService {
     @Override
     public ExchangeValueDTO getExchangeValue(String from, String to) {
         int port = Integer.parseInt(Objects.requireNonNull(env.getProperty("local.server.port")));
-        ExchangeValue exchangeValue = dao.findByFromCurrencyAndToCurrency(from, to)
-                .orElseThrow(() -> new ExchangeValueNotFound(EXCHANGE_VALUE_NOT_FOUNT));
-        ExchangeValueDTO exchangeValueDTO = exchangeValue.createDTO();
-        exchangeValueDTO.setPort(port);
-        return exchangeValueDTO;
+
+
+
+        return null;
     }
 }
