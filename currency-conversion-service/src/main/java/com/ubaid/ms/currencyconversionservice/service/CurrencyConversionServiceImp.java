@@ -19,8 +19,8 @@ public class CurrencyConversionServiceImp implements CurrencyConversionService {
     }
 
     @Override
-    public ConvertedCurrency convert(Integer currency, Integer conversionRate) {
-        Integer convertedCurrency = currency * conversionRate;
+    public ConvertedCurrency convert(Double currency, Double conversionRate) {
+        Double convertedCurrency = currency * conversionRate;
         int port = Integer.parseInt(Objects.requireNonNull(env.getProperty("local.server.port")));
 
         ConvertedCurrency cc = new ConvertedCurrency();

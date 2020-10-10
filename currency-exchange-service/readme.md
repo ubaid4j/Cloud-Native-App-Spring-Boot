@@ -13,6 +13,7 @@ Dependencies
     - spring-boot-starter-data-jpa
     - mysql-connector-java
 - #### Cloud
+    - ##### spring-cloud-starter-config
     - ##### spring-cloud-starter-netflix-eureka-client
     - ##### spring-cloud-starter-zipkin
 - #### Test

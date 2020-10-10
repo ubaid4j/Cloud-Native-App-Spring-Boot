@@ -11,5 +11,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface CurrencyConversionServiceProxy {
 
     @GetMapping("currency-conversion-service/currency-conversion/currency/{currency}/rate/{conversion-rate}")
-    ConvertedCurrency convert(@PathVariable("currency") Integer currency, @PathVariable("conversion-rate") Integer rate);
+    ConvertedCurrency convert(@PathVariable("currency") Double currency, @PathVariable("conversion-rate") Double rate);
 }

@@ -25,7 +25,7 @@ public class ExchangeController {
     public ExchangeValueDTO getCurrencyConversion(
             @PathVariable("from") String from,
             @PathVariable("to") String to,
-            @PathVariable("quantity") Integer quantity) {
+            @PathVariable("quantity") Double quantity) {
         return currencyConversionService.convertCurrency(from, to, quantity);
     }
 
