@@ -19,7 +19,7 @@ public class ExchangeRate {
     private Date timestamp;
     private String fromCurrency;
     private String toCurrency;
-    private Integer exchangeRate;
+    private Double exchangeRate;
 
     public ExchangeValueDTO createDTO() {
         ExchangeValueDTO exchangeValueDTO = new ExchangeValueDTO();

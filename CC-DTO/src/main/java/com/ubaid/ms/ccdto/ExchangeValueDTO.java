@@ -3,16 +3,32 @@ package com.ubaid.ms.ccdto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
+
+import java.util.Objects;
 
 @Data
 @NoArgsConstructor
 public class ExchangeValueDTO {
     private Long id;
     private String from;
-    private Integer quantity;
+    private Double quantity;
     private String to;
-    private Integer exchangeRate;
-    private Integer exchangedCurrencyQuantity;
+    private Double exchangeRate;
+    private Double exchangedCurrencyQuantity;
     private Integer port;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ExchangeValueDTO that = (ExchangeValueDTO) o;
+        return from.equals(that.from) &&
+                to.equals(that.to) &&
+                exchangeRate.equals(that.exchangeRate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(from, to, exchangeRate);
+    }
 }

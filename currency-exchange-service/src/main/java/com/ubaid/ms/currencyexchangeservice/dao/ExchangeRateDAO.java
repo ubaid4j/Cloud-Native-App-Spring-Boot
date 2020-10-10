@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface ExchangeValueRepo extends JpaRepository<ExchangeRate, Long> {
+public interface ExchangeRateDAO extends JpaRepository<ExchangeRate, Long> {
     Optional<ExchangeRate> findByFromCurrencyAndToCurrency(String from, String to);
 }

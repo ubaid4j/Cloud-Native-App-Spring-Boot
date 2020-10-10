@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ConvertedCurrency {
     private Integer port;
-    private Integer convertedCurrency;
+    private Double convertedCurrency;
 }
