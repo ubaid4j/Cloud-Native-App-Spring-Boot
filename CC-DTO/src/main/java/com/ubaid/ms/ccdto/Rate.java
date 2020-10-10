@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class ConvertedCurrency {
-    private Integer port;
-    private Double convertedCurrency;
+public class Rate {
+    private String code;
+    private Double value;
 }

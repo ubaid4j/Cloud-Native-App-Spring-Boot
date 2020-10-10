@@ -20,6 +20,7 @@ Dependencies
 - #### Dev Ops
     - spring-boot-starter-actuator
 - #### Cloud
+    - ####  spring-cloud-starter-config
     - ##### spring-cloud-starter-netflix-eureka-client
     - ##### spring-cloud-starter-openfeign
     - ##### spring-cloud-starter-zipkin

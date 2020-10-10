@@ -20,7 +20,7 @@ public class CurrencyConversionServiceImp implements CurrencyConversionService {
     }
 
     @Override
-    public ExchangeValueDTO convertCurrency(String fromCurrency, String toCurrency, Integer quantity) {
+    public ExchangeValueDTO convertCurrency(String fromCurrency, String toCurrency, Double quantity) {
         ExchangeValueDTO exchangeValueDTO = getExchangeRate(fromCurrency, toCurrency);
         ConvertedCurrency convertedCurrency = getConvertedCurrency(quantity, exchangeValueDTO);
         exchangeValueDTO.setExchangedCurrencyQuantity(convertedCurrency.getConvertedCurrency());
@@ -28,7 +28,7 @@ public class CurrencyConversionServiceImp implements CurrencyConversionService {
         return exchangeValueDTO;
     }
 
-    ConvertedCurrency getConvertedCurrency(Integer quantity, ExchangeValueDTO exchangeValueDTO) {
+    ConvertedCurrency getConvertedCurrency(Double quantity, ExchangeValueDTO exchangeValueDTO) {
         return conversionServiceProxy.convert(quantity, exchangeValueDTO.getExchangeRate());
     }
 

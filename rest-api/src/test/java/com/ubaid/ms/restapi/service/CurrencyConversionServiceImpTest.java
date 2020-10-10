@@ -16,9 +16,9 @@ class CurrencyConversionServiceImpTest {
     private final CurrencyConversionServiceImp currencyConversionService;
     private ExchangeValueDTO exchangeValueDTO;
 
-    private final int PKR_CURRENCY_VALUE = 20;
-    private final int PKR_USD_EXCHANGE_RATE=156;
-    private final int USD_CURRENCY_VALUE = PKR_CURRENCY_VALUE * PKR_USD_EXCHANGE_RATE;
+    private final double PKR_CURRENCY_VALUE = 20;
+    private final double PKR_USD_EXCHANGE_RATE=156;
+    private final double USD_CURRENCY_VALUE = PKR_CURRENCY_VALUE * PKR_USD_EXCHANGE_RATE;
     private final String PKR_CODE = "PKR";
     private final String USD_CODE = "USD";
 

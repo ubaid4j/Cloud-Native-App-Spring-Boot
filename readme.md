@@ -11,10 +11,6 @@ Abstract
     - swagger implementation
 - My aim is to remain up to date with each stack such as Java 15, Spring Boot 2.3.4 and Spring Cloud HOXTON SR8
 
-Note
----
-For now: It only converts USD to PKR as there is only one entry in a database.
-I will populate a database with all available exchange rates each 15 minutes using another micro-service.
 
 About
 ----

@@ -23,8 +23,8 @@ public class CurrencyConversionController {
 
     @GetMapping("/currency/{currency}/rate/{conversion-rate}")
     public ConvertedCurrency getCurrencyConversion(
-            @PathVariable("currency") Integer currency,
-            @PathVariable("conversion-rate") Integer conversionRate) {
+            @PathVariable("currency") Double currency,
+            @PathVariable("conversion-rate") Double conversionRate) {
         return currencyConversionService.convert(currency, conversionRate);
     }
 
