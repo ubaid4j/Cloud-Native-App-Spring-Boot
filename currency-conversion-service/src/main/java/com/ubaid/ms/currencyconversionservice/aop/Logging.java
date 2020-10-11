@@ -19,8 +19,8 @@ public class Logging extends TargetMethods {
         ConvertedCurrency result;
         try {
             Object[] args = joinPoint.getArgs();
-            Integer quantity = (Integer) args[0];
-            Integer conversionRate = (Integer) args[1];
+            Double quantity = (Double) args[0];
+            Double conversionRate = (Double) args[1];
             result = (ConvertedCurrency) joinPoint.proceed();
             log.debug("Currency Value: {} * Conversion Rate: {} = Converted Currency: {}", quantity, conversionRate, result.getConvertedCurrency());
 
