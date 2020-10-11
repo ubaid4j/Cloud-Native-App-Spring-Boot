@@ -22,7 +22,7 @@ public class Logging extends TargetMethods {
             Object[] args = joinPoint.getArgs();
             String fromCurrency = (String) args[0];
             String toCurrency = (String) args[1];
-            Integer quantity = (Integer) args[2];
+            Double quantity = (Double) args[2];
             log.debug("Converting {} {} to {}", quantity, fromCurrency, toCurrency);
             result = (ExchangeValueDTO) joinPoint.proceed();
             log.debug("The Converted Currency is: {}", result);

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 
 @Entity
@@ -28,5 +29,19 @@ public class ExchangeRate {
         exchangeValueDTO.setTo(toCurrency);
         exchangeValueDTO.setExchangeRate(exchangeRate);
         return exchangeValueDTO;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ExchangeRate that = (ExchangeRate) o;
+        return fromCurrency.equals(that.fromCurrency) &&
+                toCurrency.equals(that.toCurrency);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fromCurrency, toCurrency);
     }
 }
