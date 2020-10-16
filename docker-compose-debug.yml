@@ -1,6 +1,7 @@
 version: '3'
 services:
     netflix-zuul-api-gateway-server:
+        container_name: api-gateway
         build:
             context: netflix-zuul-api-gateway-server
             dockerfile: Dockerfile
@@ -13,6 +14,8 @@ services:
         networks:
             - envcn_cloud-native-network
 #    currency-exchnage-service:
+#        container_name: c-exchnage-service
+
 #        build:
 #            context: currency-exchange-service
 #            dockerfile: Dockerfile
@@ -27,6 +30,7 @@ services:
 #        depends_on:
 #            - netflix-zuul-api-gateway-server
     currency-conversion-service:
+        container_name: c-conversion-service
         build:
             context: currency-conversion-service
             dockerfile: Dockerfile
@@ -41,6 +45,7 @@ services:
         depends_on:
             - netflix-zuul-api-gateway-server
     country-service:
+        container_name: country-service
         build:
             context: country-service
             dockerfile: Dockerfile
@@ -55,6 +60,7 @@ services:
         depends_on:
             - netflix-zuul-api-gateway-server
     rest-api:
+        container_name: rest-api
         build:
             context: rest-api
             dockerfile: Dockerfile

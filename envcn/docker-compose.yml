@@ -1,6 +1,7 @@
 version: '3.2'
 services:
     rabbitmq:
+        container_name: rabbitmq
         image: rabbitmq:management
         restart: on-failure
         expose:
@@ -11,6 +12,7 @@ services:
         networks:
             - cloud-native-network
     zipkin:
+        container_name: zipkin
         image: openzipkin/zipkin
         restart: on-failure
         ports:
@@ -20,6 +22,7 @@ services:
         networks:
             - cloud-native-network
     elasticsearch:
+        container_name: elasticsearch
         build:
             context: elasticsearch/
             args:
@@ -43,6 +46,7 @@ services:
             - cloud-native-network
 
     logstash:
+        container_name: logstash
         build:
             context: logstash/
             args:
@@ -67,6 +71,7 @@ services:
         depends_on:
             - elasticsearch
     kibana:
+        container_name: kibana
         build:
             context: kibana/
             args:
@@ -84,6 +89,7 @@ services:
             - elasticsearch
 
     config-server:
+        container_name: config-server
         build:
             context: ../spring-cloud-config-server
             dockerfile: Dockerfile
@@ -94,6 +100,7 @@ services:
         networks:
             - cloud-native-network
     eureka-naming-server:
+        container_name: naming-server
         build:
             context: ../netflix-eureka-naming-server
             dockerfile: Dockerfile
@@ -104,6 +111,7 @@ services:
         ports:
             - 8761:8761
     db:
+        container_name: cn-db
         image: mysql
         restart: on-failure
         environment:
