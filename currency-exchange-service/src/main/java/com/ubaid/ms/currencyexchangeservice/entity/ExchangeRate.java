@@ -15,8 +15,7 @@ import java.util.Objects;
 @NoArgsConstructor
 public class ExchangeRate {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
     private Date timestamp;
     private String fromCurrency;
     private String toCurrency;
@@ -24,7 +23,6 @@ public class ExchangeRate {
 
     public ExchangeValueDTO createDTO() {
         ExchangeValueDTO exchangeValueDTO = new ExchangeValueDTO();
-        exchangeValueDTO.setId(id);
         exchangeValueDTO.setFrom(fromCurrency);
         exchangeValueDTO.setTo(toCurrency);
         exchangeValueDTO.setExchangeRate(exchangeRate);
