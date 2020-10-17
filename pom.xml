@@ -16,8 +16,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>CC-DTO</module>
-        <module>CC-Exception</module>
+        <module>cc-modules</module>
         <module>spring-cloud-config-server</module>
         <module>netflix-eureka-naming-server</module>
         <module>netflix-zuul-api-gateway-server</module>
