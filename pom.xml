@@ -73,6 +73,21 @@
             </exclusions>
         </dependency>
 
+        <!--        Modules Dependency      -->
+        <dependency>
+            <groupId>com.ubaid.ms.modules</groupId>
+            <artifactId>cc-exception</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ubaid.ms.modules</groupId>
+            <artifactId>cc-dto</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+
+
     </dependencies>
 
     <profiles>
