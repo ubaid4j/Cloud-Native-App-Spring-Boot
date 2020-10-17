@@ -21,6 +21,7 @@ public class ExchangeRateDTOConverter {
            ExchangeRate exchangeRate = getExchangeRateInitializedWithValues(exchangeRateDTO.getTimestamp(), exchangeRateDTO.getBase());
            exchangeRate.setToCurrency(entry.getKey());
            exchangeRate.setExchangeRate(entry.getValue());
+           exchangeRate.setId(exchangeRate.getFromCurrency() + "_" + exchangeRate.getToCurrency());
            return exchangeRate;
         }).collect(Collectors.toList());
     }

@@ -112,7 +112,6 @@ class PopulateDBWithExchangeRatesTest {
     @Order(9)
     @DisplayName("Checking if exchange rates are saved in db")
     void saveAll() {
-        dao.deleteAll();
         ExchangeRateDTO dto = populateDBWithExchangeRates.getResponseData();
         List<ExchangeRate> exchangeRates = populateDBWithExchangeRates.convert(dto);
         populateDBWithExchangeRates.saveAll(exchangeRates);
