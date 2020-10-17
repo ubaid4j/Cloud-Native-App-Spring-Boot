@@ -44,18 +44,6 @@
             <version>1.2.2.RELEASE</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.ubaid.ms.modules</groupId>
-            <artifactId>CC-DTO</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.ubaid.ms.modules</groupId>
-            <artifactId>CC-Exception</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
     </dependencies>
 
 </project>
