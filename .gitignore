@@ -3,3 +3,5 @@
 .vscode
 /currency-conversion-client
 /currency-conversion-api
+/CC-DTO
+/CC-Exception

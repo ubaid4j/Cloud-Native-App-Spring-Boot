@@ -2,14 +2,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.ubaid.ms.modules</groupId>
-    <artifactId>CC-Exception</artifactId>
+    <artifactId>cc-modules</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <name>Currency Conversion Modules</name>
+    <description>A Parent Module for all modules of Currency Conversion App</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>cc-dto</module>
+        <module>cc-exception</module>
+    </modules>
 
     <properties>
-        <java.verison>15</java.verison>
+        <java.version>15</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -22,7 +31,6 @@
         </dependency>
     </dependencies>
 
-
     <build>
         <plugins>
             <plugin>
@@ -30,12 +38,11 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>15</source>
-                    <target>15</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 
 </project>
