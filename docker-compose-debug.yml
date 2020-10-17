@@ -15,7 +15,6 @@ services:
             - envcn_cloud-native-network
 #    currency-exchnage-service:
 #        container_name: c-exchnage-service
-
 #        build:
 #            context: currency-exchange-service
 #            dockerfile: Dockerfile
