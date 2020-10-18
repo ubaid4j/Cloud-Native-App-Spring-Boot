@@ -29,13 +29,22 @@ Advantages of Microservices Architecture
 
 Distributed Tracing
 -------------------
-- ### Updated
-    - Add `spring-cloud-starter-zipkin` dependency
-    - Add following in application.properties
-        - `spring.rabbitmq.addresses=amqp://localhost:5672/`
-        - `spring.zipkin.base-url=http://localhost:9411/`
-    - Run Zipkin and Rabbit MQ Services
-    - Access [Zipkin Dashboard](http://localhost:9411/zipkin/) to see traces of micro-services
+1. Pre-Req
+    1. Run [Rabbit MQ Service](./envcn/docker-compose.yml)
+    2. Run [Zipkin Service](./envcn/docker-compose.yml)
+2.  Add dependency ```spring-cloud-starter-zipkin```
+    1. It compiles two dependencies
+        1. ```spring-cloud-starter-sleuth```
+        2. ```spring-cloud-sleuth-zipkin```
+    2.  Sleuth will assign a unique id to each request
+    3.  Sleuth-Zipkin create Zipkin-compatible traces via HTTP
+3.  Create a bean which return ```Sampler.ALWAYS_SAMPLE```
+4.  Zipkin needs a message broker and by default it is ```rabbit-mq```
+5.  We have to run rabbit-mq and zipkin-server and  over-ride two properties
+    1. ```spring.rabbitmq.addresses=amqp://localhost:5672/```
+    2. ```spring.zipkin.base-url=http://localhost:9411/```
+6. Access [Zipkin Dashboard](http://localhost:9411/zipkin/) to see traces of micro-services
+
     
 Spring Cloud Config
 -------------------
