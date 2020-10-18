@@ -27,10 +27,33 @@ Advantages of Microservices Architecture
 - Dynamic Scaling
 - Faster Release Cycle
 
-
 Distributed Tracing
 -------------------
+- ### Updated
+    - Add `spring-cloud-starter-zipkin` dependency
+    - Add following in application.properties
+        - `spring.rabbitmq.addresses=amqp://localhost:5672/`
+        - `spring.zipkin.base-url=http://localhost:9411/`
+    - Run Zipkin and Rabbit MQ Services
+    - Access [Zipkin Dashboard](http://localhost:9411/zipkin/) to see traces of micro-services
+    
+Spring Cloud Config
+-------------------
+- We need `spring-cloud-starter-config` dependency and ` management.endpoints.web.exposure.include=\*` to expose some end points
+-  When our micro service is running, and we don't want to stop them
+    to change the config
+-  Use Post method http://${host}:${port}/actuator/refresh to refresh the configuration
+-  It will update the config for specific port number
 
+To Update All Instances in on Post Request
+-----------------------------------------
+
+-  Add dependency: spring-cloud-starter-bus-amqp in your service
+-  Post `http://${host}:${port}/actuator/bus-refresh` to refresh all the
+    instances.
+
+Request Identification
+----------------------
 To Identify a request in the service we need:
 
 -  spring-cloud-starter-sleuth
@@ -44,46 +67,9 @@ To Identify a request in the service we need:
       This response will have unique identity
     ```
 
-Zipkin Centralized Dashboard
-----------------------------
 
--  Install rabbit
--  Go to Zipkin quick start and download zipkin using Java
--  run SET RABBIT\_URI=amqp://localhost in environments
--  now run the Zipkin jar, now this jar will be connected to rabbit mq
-
-Getting trace to rabbit mq
---------------------------
-
-Here, we set our services to set their traces to rabbit mq and this
-queue is taking by Zipkin server
-
-Add two dependencies to each service
-
--  spring-cloud-sleuth-zipkin (to interact with zipkin)
--  spring-cloud-starter-bus-amqp (to broadcast message)
-
-Spring Cloud Config
--------------------
-
--  When our config service is running, and we don't want to stop them
-    to change the config
--  Use Post method http://localhost:8080/actuator/refresh while you
-    have added management.endpoints.web.exposure.include=\*
--  To refresh the configuration. (commit must be done)
--  It will update the config for specific port number
-
-here comes spring cloud bus
----------------------------
-
--  add dependency: spring-cloud-starter-bus-amqp in rest-api
--  management.endpoints.web.exposure.include=\* add in prop
--  post http://localhost:8080/actuator/bus-refresh to refresh all the
-    instances (without any commit)
-
-Most Important Note About Networking
-------------------------------------
-
+Numeric IPs
+-----------
 -  eureka.instance.prefer-ip-address=true
 -  eureka.instance.instance-id=\${spring.cloud.client.ip-address}:\${server.port}
 -  eureka.instance.hostname=\${spring.cloud.client.ip-address}
