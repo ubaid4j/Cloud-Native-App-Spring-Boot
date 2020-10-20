@@ -1,6 +1,6 @@
-SET FOREIGN_KEY_CHECKS = 0;
-TRUNCATE TABLE country_code;
-SET FOREIGN_KEY_CHECKS = 1;
+-- liquibase formatted sql
+-- changeset  ubaid:18Oct2020_2009
+-- comment populating db with  countries
 insert into country_code(country, currency_name, currency_code, number) values('AFGHANISTAN', 'Afghani','AFN',971);
 insert into country_code(country, currency_name, currency_code, number) values('ÅLAND ISLANDS', 'Euro','EUR',978);
 insert into country_code(country, currency_name, currency_code, number) values('ALBANIA', 'Lek','ALL',008);
@@ -269,3 +269,4 @@ insert into country_code(country, currency_name, currency_code, number) values('
 insert into country_code(country, currency_name, currency_code, number) values('YEMEN', 'Yemeni Rial','YER',886);
 insert into country_code(country, currency_name, currency_code, number) values('ZAMBIA', 'Zambian Kwacha','ZMW',967);
 insert into country_code(country, currency_name, currency_code, number) values('ZIMBABWE', 'Zimbabwe Dollar','ZWL',932);
+

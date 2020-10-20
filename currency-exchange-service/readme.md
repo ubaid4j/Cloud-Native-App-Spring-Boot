@@ -16,6 +16,11 @@ Dependencies
     - ##### spring-cloud-starter-config
     - ##### spring-cloud-starter-netflix-eureka-client
     - ##### spring-cloud-starter-zipkin
+- ### ELK
+    - logstash-logging-spring-boot-starter
+- ### Database Migration (Liquibase)
+    - liquibase-core
+    - jackson-module-jaxb-annotations
 - #### Test
     - spring-boot-starter-test
 

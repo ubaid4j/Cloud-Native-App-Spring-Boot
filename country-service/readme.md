@@ -16,7 +16,10 @@ Dependencies
 - #### AOP
     - spring-boot-starter-aop
 - #### Logstash (Sending logs to Logstash)
-    - logstash-logging-spring-boot-starter    
+    - logstash-logging-spring-boot-starter
+- ### Migration (Liquibase)
+    - liquibase-core
+    - jackson-module-jaxb-annotations    
 - #### Dev Tools
     - spring-boot-devtools
     - lombok
