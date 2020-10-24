@@ -9,7 +9,7 @@
     </parent>
     <artifactId>currency-conversion-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Currency Conversion Service</name>
+    <name>3CN Currency Conversion Service</name>
     <description>This Service simply convert the currency with given rate</description>
 
     <dependencies>

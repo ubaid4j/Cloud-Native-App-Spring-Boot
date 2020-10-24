@@ -9,7 +9,7 @@
     </parent>
     <artifactId>country-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>country-service</name>
+    <name>3CN Country Service</name>
     <description>A service which expose an end point to get all the countries which their currency code.</description>
 
     <dependencies>

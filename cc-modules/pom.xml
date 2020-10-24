@@ -8,7 +8,7 @@
     <groupId>com.ubaid.ms.modules</groupId>
     <artifactId>cc-modules</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Currency Conversion Modules</name>
+    <name>3CN Modules</name>
     <description>A Parent Module for all modules of Currency Conversion App</description>
     <packaging>pom</packaging>
 

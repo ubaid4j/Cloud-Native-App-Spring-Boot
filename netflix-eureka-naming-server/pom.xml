@@ -9,7 +9,7 @@
     </parent>
     <artifactId>netflix-eureka-naming-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>netflix-eureka-naming-server</name>
+    <name>3CN Netflix Eureka Naming Server</name>
     <description>This is Netflix Eureka Naming Server</description>
 
     <dependencies>
