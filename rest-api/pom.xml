@@ -9,7 +9,7 @@
     </parent>
     <artifactId>rest-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>REST API</name>
+    <name>3CN REST API</name>
     <description>This is an REST API for currency conversion which interact with several micro-services</description>
 
     <dependencies>

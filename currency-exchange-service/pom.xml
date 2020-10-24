@@ -9,7 +9,7 @@
     </parent>
     <artifactId>currency-exchange-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Currency Exchange Service</name>
+    <name>3CN Currency Exchange Service</name>
     <description>This service get name of two countries and response the conversion factor</description>
 
     <dependencies>
