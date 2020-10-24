@@ -10,7 +10,7 @@
 
     <artifactId>spring-cloud-config-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-cloud-config-server</name>
+    <name>3CN Spring Cloud Config Server</name>
     <description>Configuration Server</description>
 
     <dependencies>

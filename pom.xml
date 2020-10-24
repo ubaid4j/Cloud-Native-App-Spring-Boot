@@ -11,7 +11,7 @@
     <groupId>com.ubaid.ms</groupId>
     <artifactId>CC-CN-APP</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>CC-CN-App</name>
+    <name>3CN App</name>
     <description>Currency Conversion Cloud Native App</description>
     <packaging>pom</packaging>
 

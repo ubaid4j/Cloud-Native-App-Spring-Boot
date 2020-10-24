@@ -9,7 +9,8 @@
     </parent>
     <artifactId>netflix-zuul-api-gateway-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>netflix-zuul-api-gateway-server</name>
+<!--    <name>netflix-zuul-api-gateway-server</name>-->
+    <name>3CN Netflix Zuul API Gateway Server</name>
     <description>Implementing API gate way server</description>
 
     <dependencies>
