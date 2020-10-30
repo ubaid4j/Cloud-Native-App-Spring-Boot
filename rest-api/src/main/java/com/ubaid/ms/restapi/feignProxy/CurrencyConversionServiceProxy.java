@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RibbonClient(name = "currency-conversion-service")
 public interface CurrencyConversionServiceProxy {
 
-    @GetMapping("currency-conversion-service/currency-conversion/currency/{currency}/rate/{conversion-rate}")
+    @GetMapping("currency-conversion/currency/{currency}/rate/{conversion-rate}")
     ConvertedCurrency convert(@PathVariable("currency") Double currency, @PathVariable("conversion-rate") Double rate);
 }

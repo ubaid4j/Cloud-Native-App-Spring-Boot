@@ -11,6 +11,6 @@ import java.util.List;
 @RibbonClient("country-service")
 public interface CountryServiceProxy {
 
-    @GetMapping("country-service/country/code")
+    @GetMapping("/country/code")
     List<CountryCodeDTO> getAll();
 }
