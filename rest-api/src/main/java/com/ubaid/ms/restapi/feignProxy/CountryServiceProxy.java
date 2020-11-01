@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-@FeignClient("netflix-zuul-api-gateway-server")
+@FeignClient("spring-cloud-api-gateway-server")
 @RibbonClient("country-service")
 public interface CountryServiceProxy {
 
