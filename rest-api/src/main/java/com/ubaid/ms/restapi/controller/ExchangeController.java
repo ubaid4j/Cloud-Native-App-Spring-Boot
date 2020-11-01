@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "exchange")
+@RequestMapping(value = "/api/exchange")
 @Slf4j
 public class ExchangeController {
 

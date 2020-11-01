@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("country")
+@RequestMapping("/api/country")
 public class CountryController {
     private final CountryService countryService;
 

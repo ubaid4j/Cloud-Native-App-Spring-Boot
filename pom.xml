@@ -19,7 +19,7 @@
         <module>cc-modules</module>
         <module>spring-cloud-config-server</module>
         <module>netflix-eureka-naming-server</module>
-        <module>netflix-zuul-api-gateway-server</module>
+        <module>spring-cloud-api-gateway-server</module>
         <module>currency-exchange-service</module>
         <module>currency-conversion-service</module>
         <module>country-service</module>
