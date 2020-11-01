@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Bean;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-public class NetflixZuulApiGatewayServerApplication {
+public class SpringCloudApiGatewayServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(NetflixZuulApiGatewayServerApplication.class, args);
+        SpringApplication.run(SpringCloudApiGatewayServerApplication.class, args);
     }
 
     @Bean

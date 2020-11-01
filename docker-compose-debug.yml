@@ -1,9 +1,9 @@
 version: '3'
 services:
-    netflix-zuul-api-gateway-server:
+    spring-cloud-api-gateway-server:
         container_name: api-gateway
         build:
-            context: netflix-zuul-api-gateway-server
+            context: spring-cloud-api-gateway-server
             dockerfile: Dockerfile
         expose:
             - 8755
@@ -27,7 +27,7 @@ services:
 #        networks:
 #            - envcn_cloud-native-network
 #        depends_on:
-#            - netflix-zuul-api-gateway-server
+#            - spring-cloud-api-gateway-server
     currency-conversion-service:
         container_name: c-conversion-service
         build:
@@ -42,7 +42,7 @@ services:
         networks:
             - envcn_cloud-native-network
         depends_on:
-            - netflix-zuul-api-gateway-server
+            - spring-cloud-api-gateway-server
     country-service:
         container_name: country-service
         build:
@@ -57,7 +57,7 @@ services:
         networks:
             - envcn_cloud-native-network
         depends_on:
-            - netflix-zuul-api-gateway-server
+            - spring-cloud-api-gateway-server
     rest-api:
         container_name: rest-api
         build:
@@ -72,7 +72,7 @@ services:
         networks:
             - envcn_cloud-native-network
         depends_on:
-            - netflix-zuul-api-gateway-server
+            - spring-cloud-api-gateway-server
 
 volumes:
     cloud-native-volume:

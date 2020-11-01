@@ -8,7 +8,7 @@
         <artifactId>CC-CN-APP</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>netflix-zuul-api-gateway-server</artifactId>
+    <artifactId>spring-cloud-api-gateway-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>3CN Spring Cloud Gateway Server</name>
     <description>Gateway Server</description>
