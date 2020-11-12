@@ -11,4 +11,5 @@ public class CountryCodeDTO {
     private String currencyName;
     private String currencyCode;
     private Integer number;
+    private String isoCode;
 }
