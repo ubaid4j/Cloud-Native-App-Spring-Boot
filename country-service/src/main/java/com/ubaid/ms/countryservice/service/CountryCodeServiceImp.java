@@ -41,6 +41,7 @@ public class CountryCodeServiceImp implements CountryCodeService {
             countryCodeDTO.setCurrencyName(countryCode.getCurrencyName());
             countryCodeDTO.setId(countryCode.getId());
             countryCodeDTO.setNumber(countryCode.getNumber());
+            countryCodeDTO.setIsoCode(countryCode.getIsoCode());
         }
     }
 }

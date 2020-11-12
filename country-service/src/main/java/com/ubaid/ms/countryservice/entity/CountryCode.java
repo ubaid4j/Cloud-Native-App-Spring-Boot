@@ -23,4 +23,6 @@ public class CountryCode {
 
     private Integer number;
 
+    private String isoCode;
+
 }
