@@ -1,16 +1,19 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
+import {useSelector} from 'react-redux';
 
 // ISO 3166-1 alpha-2
 // ⚠️ No support for IE 11
 function countryToFlag(isoCode) {
     return typeof String.fromCodePoint !== 'undefined'
-        ? isoCode
-            .toUpperCase()
-            .replace(/./g, (char) => String.fromCodePoint(char.charCodeAt(0) + 127397))
-        : isoCode;
+        ? isoCode !== null ?
+            isoCode
+                .toUpperCase()
+                .replace(/./g, (char) => String.fromCodePoint(char.charCodeAt(0) + 127397))
+            : isoCode : null;
 }
 
 const useStyles = makeStyles({
@@ -23,28 +26,30 @@ const useStyles = makeStyles({
     },
 });
 
-const countries = [
-    { code: 'AD', label: 'Andorra', phone: '376' },
-    { code: 'AE', label: 'United Arab Emirates', phone: '971' },
-];
+// const countries = [
+//     { code: 'AD', label: 'Andorra', phone: '376' },
+//     { code: 'AE', label: 'United Arab Emirates', phone: '971' },
+// ];
 
-const CountrySelect = () => {
+const CountrySelect = ({id}) => {
     const classes = useStyles();
+
+    const countries = useSelector(state => state.country.countries);
 
     return (
         <Autocomplete
-            id="country-select-demo"
+            id={id}
             style={{ width: 300 }}
             options={countries}
             classes={{
                 option: classes.option,
             }}
             autoHighlight
-            getOptionLabel={option => option.label}
+            getOptionLabel={option => option.country}
             renderOption={option => (
                 <>
-                    <span>{countryToFlag(option.code)}</span>
-                    {option.label} ({option.code}) +{option.phone}
+                    <span>{countryToFlag(option.isoCode)}</span>
+                    {option.currencyName} ({option.currencyCode})
                 </>
             )}
             renderInput={params => (
@@ -62,5 +67,9 @@ const CountrySelect = () => {
     );
 };
 export default CountrySelect;
+
+CountrySelect.propTypes = {
+    id: PropTypes.string
+};
 
 
