@@ -10,7 +10,7 @@ const initialState = {
     loading: false
 };
 
-const CountryReducer = (state = initialState, action) => {
+const PopulateCountryReducer = (state = initialState, action) => {
 
     switch (action.type) {
     case POPULATE_COUNTRIES_FINISHED:
@@ -23,4 +23,4 @@ const CountryReducer = (state = initialState, action) => {
         return state;
     }
 };
-export default CountryReducer;
+export default PopulateCountryReducer;

@@ -7,14 +7,18 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import 'index.css';
 import App from 'App';
 import reportWebVitals from 'reportWebVitals';
-import CountryReducer from 'store/reducers/CountryReducer';
+import PopulateCountryReducer from 'store/reducers/PopulateCountryReducer';
+import {SelectCountryReducer} from 'store/reducers/SelectCountryReducer';
+import ConvertCurrencyReducer from 'store/reducers/ConvertCurrencyReducer';
 
 
 const env = process.env.NODE_ENV === 'development';
 
 const rootReducer = combineReducers(
     {
-        country: CountryReducer
+        countries: PopulateCountryReducer,
+        selectCountry: SelectCountryReducer,
+        convertCurrency: ConvertCurrencyReducer
     }
 );
 

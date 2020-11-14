@@ -31,14 +31,17 @@ const useStyles = makeStyles({
 //     { code: 'AE', label: 'United Arab Emirates', phone: '971' },
 // ];
 
-const CountrySelect = ({id}) => {
+const CountrySelect = ({id, value, onChangeValue}) => {
     const classes = useStyles();
 
-    const countries = useSelector(state => state.country.countries);
+    const countries = useSelector(state => state.countries.countries);
+
 
     return (
         <Autocomplete
             id={id}
+            value={value}
+            onChange={(event, newValue) => {console.log(newValue); onChangeValue(newValue);}}
             style={{ width: 300 }}
             options={countries}
             classes={{
@@ -69,7 +72,9 @@ const CountrySelect = ({id}) => {
 export default CountrySelect;
 
 CountrySelect.propTypes = {
-    id: PropTypes.string
+    id: PropTypes.string,
+    value: PropTypes.object,
+    onChangeValue: PropTypes.func
 };
 
 
