@@ -1,13 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {applyMiddleware, combineReducers, createStore} from 'redux';
+import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
+import {composeWithDevTools} from 'redux-devtools-extension';
+import 'index.css';
+import App from 'App';
+import reportWebVitals from 'reportWebVitals';
+import PopulateCountryReducer from 'store/reducers/PopulateCountryReducer';
+import {SelectCountryReducer} from 'store/reducers/SelectCountryReducer';
+import ConvertCurrencyReducer from 'store/reducers/ConvertCurrencyReducer';
+
+
+const env = process.env.NODE_ENV === 'development';
+
+const rootReducer = combineReducers(
+    {
+        countries: PopulateCountryReducer,
+        selectCountry: SelectCountryReducer,
+        convertCurrency: ConvertCurrencyReducer
+    }
+);
+
+let store;
+if (env) {
+    store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+} else {
+    store = createStore(rootReducer, applyMiddleware(thunk));
+}
+
 
 ReactDOM.render(
-    <React.StrictMode>
-        <App/>
-    </React.StrictMode>,
+    <Provider store={store}>
+        <React.StrictMode>
+            <App/>
+        </React.StrictMode>,
+    </Provider>,
     document.getElementById('root')
 );
 
