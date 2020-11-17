@@ -1,0 +1,31 @@
+<mxfile host="app.diagrams.net" modified="2020-11-12T15:11:02.156Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36" etag="Hg6M_r2PakzkSWy4xclt" version="13.9.7" type="github">
+  <diagram id="XjpE6w5yDsE20Qyw0DXi" name="Main Page">
+    <mxGraphModel dx="1038" dy="610" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="FZ8xP7OAdiEZMmR2GYFd-6" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="180" y="70" width="630" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="FZ8xP7OAdiEZMmR2GYFd-1" value="" style="whiteSpace=wrap;html=1;" parent="FZ8xP7OAdiEZMmR2GYFd-6" vertex="1">
+          <mxGeometry width="630" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="FZ8xP7OAdiEZMmR2GYFd-3" value="&amp;nbsp; &amp;nbsp; &amp;nbsp;3C" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="FZ8xP7OAdiEZMmR2GYFd-6" vertex="1">
+          <mxGeometry width="630" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="FZ8xP7OAdiEZMmR2GYFd-4" value="Powered by Spring Framework micro-services&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" parent="FZ8xP7OAdiEZMmR2GYFd-6" vertex="1">
+          <mxGeometry y="380" width="630" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FZ8xP7OAdiEZMmR2GYFd-5" value="From Currency" style="rounded=0;whiteSpace=wrap;html=1;" parent="FZ8xP7OAdiEZMmR2GYFd-6" vertex="1">
+          <mxGeometry x="104" y="110" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FZ8xP7OAdiEZMmR2GYFd-7" value="To Currency" style="rounded=0;whiteSpace=wrap;html=1;" parent="FZ8xP7OAdiEZMmR2GYFd-6" vertex="1">
+          <mxGeometry x="370" y="110" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FZ8xP7OAdiEZMmR2GYFd-8" value="From Currency * Conversion Rate = To Currency" style="rounded=0;whiteSpace=wrap;html=1;" parent="FZ8xP7OAdiEZMmR2GYFd-6" vertex="1">
+          <mxGeometry x="184" y="180" width="266" height="140" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
