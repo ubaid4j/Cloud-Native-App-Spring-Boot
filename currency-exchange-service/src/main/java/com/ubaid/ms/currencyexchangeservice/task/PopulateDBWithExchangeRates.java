@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -19,8 +20,8 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -125,13 +126,19 @@ public class PopulateDBWithExchangeRates {
         if (responseFileInResource.exists()) {
             return readResponseFile(responseFileInResource);
         } else {
-            throw new RuntimeException("ExchangeRates.json is not present in resources. Severe Error");
+            throw new RuntimeException("Severe Error Cannot Get Exchange Rate from the Resources");
         }
     }
 
     File getResponseFileFromResource() {
-        URL responseFileInResourceURL = getClass().getResource("/exchangeRates.json");
-        return new File(responseFileInResourceURL.getFile());
+        try {
+            InputStream inputStream = new ClassPathResource("exchangeRates.json").getInputStream();
+            File tempFile = File.createTempFile("exchangeRates", ".json");
+            FileUtils.copyInputStreamToFile(inputStream, tempFile);
+            return tempFile;
+        } catch(IOException exp) {
+            throw new RuntimeException("Severe Error. Cannot get exchangeRates.json file from resources");
+        }
     }
 
 
