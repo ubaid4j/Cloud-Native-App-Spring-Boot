@@ -85,8 +85,7 @@ class PopulateDBWithExchangeRatesTest {
     @Order(6)
     @DisplayName("Checking if we get data form the resource")
     void getResponseDataFromResources() {
-        File file = populateDBWithExchangeRates.getResponseFileFromResource();
-        ExchangeRateDTO exchangeRateDTO = populateDBWithExchangeRates.readResponseFile(file);
+        ExchangeRateDTO exchangeRateDTO = populateDBWithExchangeRates.getResponseDataFromResources();
         testExchangeRateValidity(exchangeRateDTO);
     }
 
