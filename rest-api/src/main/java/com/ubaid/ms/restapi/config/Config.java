@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * and define the prefix
- * same as in the bootstrap.properties file
+ * same as in the application.properties file
  *
  * @author UbaidurRehman
  */
