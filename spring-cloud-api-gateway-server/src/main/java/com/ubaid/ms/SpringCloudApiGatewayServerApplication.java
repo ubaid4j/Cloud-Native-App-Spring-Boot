@@ -20,13 +20,16 @@ public class SpringCloudApiGatewayServerApplication {
         return builder.routes()
 
                 .route(r -> r.path("/country/**")
-                        .uri("lb://COUNTRY-SERVICE"))
+                        .uri("lb://COUNTRY-SERVICE")
+                        .id("country-service"))
 
                 .route(r -> r.path("/currency-conversion/**")
-                        .uri("lb://CURRENCY-CONVERSION-SERVICE"))
+                        .uri("lb://CURRENCY-CONVERSION-SERVICE")
+                        .id("currency-conversion-service"))
 
                 .route(r -> r.path("/currency-exchange/**")
-                        .uri("lb://CURRENCY-EXCHANGE-SERVICE"))
+                        .uri("lb://CURRENCY-EXCHANGE-SERVICE")
+                        .id("currency-exchange-service"))
 
                 .build();
     }
