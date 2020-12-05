@@ -16,8 +16,8 @@ Dependencies
     - ##### spring-cloud-starter-config
     - ##### spring-cloud-starter-netflix-eureka-client
     - ##### spring-cloud-starter-zipkin
-- ### ELK
-    - logstash-logging-spring-boot-starter
+- #### Logstash (Sending logs to Logstash)
+  - logstash-logging-spring-boot-starter
 - ### Database Migration (Liquibase)
     - liquibase-core
     - jackson-module-jaxb-annotations
@@ -26,6 +26,8 @@ Dependencies
 
 [Distributed Tracing](./../moreinfo.md#distributed-tracing)
 -----------------------------------------------------------
+[ELK Stack](./../moreinfo.md#elk-stack)
+---------------------------------------
 
 Run on different port
 ---------------------

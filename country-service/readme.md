@@ -33,3 +33,5 @@ Dependencies
 
 [Distributed Tracing](./../moreinfo.md#distributed-tracing)
 -----------------------------------------------------------
+[ELK Stack](./../moreinfo.md#elk-stack)
+---------------------------------------
