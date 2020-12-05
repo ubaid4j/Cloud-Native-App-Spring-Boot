@@ -26,6 +26,8 @@ Dependencies
     - ##### spring-cloud-starter-zipkin
 - #### Cache
     - ##### caffeine 
+- #### Logstash (Sending logs to Logstash)
+  - logstash-logging-spring-boot-starter
 - #### AOP
     - spring-boot-starter-aop
 - #### Swagger
@@ -81,6 +83,9 @@ Connecting rest api to Spring Cloud Config Server
 
 [Distributed Tracing](./../moreinfo.md#distributed-tracing)
 -----------------------------------------------------------
+[ELK Stack](./../moreinfo.md#elk-stack)
+---------------------------------------
+
 AOP
 ---
 - Add ```@EnableAspectJAutoProxy``` in Config File

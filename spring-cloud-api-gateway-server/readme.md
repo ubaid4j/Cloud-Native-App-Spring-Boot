@@ -17,6 +17,9 @@ Dependencies
     - ##### spring-cloud-starter-netflix-eureka-client
     - ##### spring-cloud-starter-zipkin
     - ##### spring-cloud-starter-netflix-zuul
+- #### Logstash (Sending logs to Logstash)
+  - reactive-logstash-logging-spring-boot-starter
+
 
 Configuration
 -------------
@@ -24,3 +27,5 @@ Configuration
 
 [Distributed Tracing](./../moreinfo.md#distributed-tracing)
 -----------------------------------------------------------
+[ELK Stack](./../moreinfo.md#elk-stack)
+---------------------------------------

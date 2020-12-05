@@ -12,6 +12,8 @@ Dependencies
 - #### Cloud
     - ##### spring-cloud-starter-netflix-eureka-client
     - ##### spring-cloud-starter-zipkin
+- #### Logstash (Sending logs to Logstash)
+  - logstash-logging-spring-boot-starter
 - #### AOP
     - spring-boot-starter-aop
 - #### Cache
@@ -21,6 +23,8 @@ Dependencies
 
 [Distributed Tracing](./../moreinfo.md#distributed-tracing)
 -----------------------------------------------------------
+[ELK Stack](./../moreinfo.md#elk-stack)
+---------------------------------------
 
 Notes
 -----
