@@ -1,28 +1,24 @@
+About
+=====
+- Implement `/from/{from}/to/{to}` end point which get two countries name and return exchange rate between them
+
 Dependencies
 ============
-
 - #### Web (embedded tomcat + MVC)
     - spring-boot-starter-web
-- #### Dev Tools
-    - spring-boot-devtools
-    - lombok
-    - spring-boot-configuration-processor
-- #### Dev Ops
-    - spring-boot-starter-actuator
-- #### Data
-    - spring-boot-starter-data-jpa
-    - mysql-connector-java
 - #### Cloud
-    - ##### spring-cloud-starter-config
-    - ##### spring-cloud-starter-netflix-eureka-client
-    - ##### spring-cloud-starter-zipkin
+  - ##### spring-cloud-starter-config
+  - ##### Naming Server Client
+    - spring-cloud-starter-netflix-eureka-client
+  - ##### Distributed Tracing
+    - spring-cloud-sleuth-zipkin
+    - spring-cloud-starter-sleuth
 - #### Logstash (Sending logs to Logstash)
   - logstash-logging-spring-boot-starter
 - ### Database Migration (Liquibase)
-    - liquibase-core
-    - jackson-module-jaxb-annotations
-- #### Test
-    - spring-boot-starter-test
+  - liquibase-core
+  - jackson-module-jaxb-annotations
+- #### [Dependencies From Parent](./../moreinfo.md#Dependencies-from-parent)
 
 [Distributed Tracing](./../moreinfo.md#distributed-tracing)
 -----------------------------------------------------------

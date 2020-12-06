@@ -4,32 +4,25 @@ About
 
 Dependencies
 ============
-
 - #### Web (embedded tomcat + MVC)
     - spring-boot-starter-web
 - #### Data
     - spring-boot-starter-data-jpa
     - mysql-connector-java
 - #### Cloud
-    - ##### spring-cloud-starter-netflix-eureka-client
-    - ##### spring-cloud-starter-zipkin
+    - ##### Naming Server Client
+      - spring-cloud-starter-netflix-eureka-client
+    - ##### Distributed Tracing
+      - spring-cloud-sleuth-zipkin
+      - spring-cloud-starter-sleuth
 - #### AOP
     - spring-boot-starter-aop
 - #### Logstash (Sending logs to Logstash)
     - logstash-logging-spring-boot-starter
-- ### Migration (Liquibase)
+- ### Database Migration (Liquibase)
     - liquibase-core
     - jackson-module-jaxb-annotations    
-- #### Dev Tools
-    - spring-boot-devtools
-    - lombok
-    - spring-boot-configuration-processor
-- #### Dev Ops
-    - spring-boot-starter-actuator
-- #### Cache
-    - caffeine
-- #### Test
-    - spring-boot-starter-test
+- #### [Dependencies From Parent](./../moreinfo.md#Dependencies-from-parent)
 
 [Distributed Tracing](./../moreinfo.md#distributed-tracing)
 -----------------------------------------------------------

@@ -1,13 +1,16 @@
+About
+=====
+- Naming Server for Application
+
 Eureka Naming Server
 ====================
 
 Dependencies
 ------------
 - #### Cloud
-    - ##### spring-cloud-starter-netflix-eureka-server
-    - ##### caffeine (optional)
-- #### Test
-    - spring-boot-starter-test
+  - ##### Naming Server Server
+    - spring-cloud-starter-netflix-eureka-client
+- #### [Dependencies From Parent](./../moreinfo.md#Dependencies-from-parent)
 
 Configurations
 --------------

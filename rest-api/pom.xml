@@ -64,6 +64,7 @@
             <version>3.0.0</version>
         </dependency>
 
+        <!--        Sending Logs to Logstash    -->
         <dependency>
             <groupId>com.github.piomin</groupId>
             <artifactId>logstash-logging-spring-boot-starter</artifactId>
