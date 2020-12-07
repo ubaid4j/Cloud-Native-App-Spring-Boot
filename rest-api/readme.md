@@ -3,11 +3,7 @@ About
 - [Rest API](http://localhost:5200/swagger-ui.html#/exchange-controller)
     - Exposes URLs to Clients
     - Interact with micro-services to return desired result
-    
-Logging
-=======
-- To get Logs into the file: run ```docker logs -f springservices_rest_micro_rest-api_1 &> rest-api.log &```
-
+  
 Dependencies
 ============
 - #### Web (embedded tomcat + MVC)
