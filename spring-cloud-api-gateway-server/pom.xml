@@ -27,7 +27,7 @@
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
 
-        <!--		Distributed Management 		-->
+        <!--		Distributed Tracing Management 		-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-sleuth-zipkin</artifactId>
@@ -38,6 +38,7 @@
         </dependency>
         <!--		################################## Cloud Start End ##################################		-->
 
+        <!--        Sending Logs to Logstash    -->
         <dependency>
             <groupId>com.github.piomin</groupId>
             <artifactId>reactive-logstash-logging-spring-boot-starter</artifactId>

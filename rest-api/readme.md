@@ -3,37 +3,30 @@ About
 - [Rest API](http://localhost:5200/swagger-ui.html#/exchange-controller)
     - Exposes URLs to Clients
     - Interact with micro-services to return desired result
-    
-Logging
-=======
-- To get Logs into the file: run ```docker logs -f springservices_rest_micro_rest-api_1 &> rest-api.log &```
-
+  
 Dependencies
 ============
-
 - #### Web (embedded tomcat + MVC)
     - spring-boot-starter-web
-- #### Dev Tools
-    - spring-boot-devtools
-    - lombok
-    - spring-boot-configuration-processor
-- #### Dev Ops
-    - spring-boot-starter-actuator
 - #### Cloud
-    - ####  spring-cloud-starter-config
-    - ##### spring-cloud-starter-netflix-eureka-client
-    - ##### spring-cloud-starter-openfeign
-    - ##### spring-cloud-starter-zipkin
-- #### Cache
-    - ##### caffeine 
+  - ##### Naming Server Client
+    - spring-cloud-starter-netflix-eureka-client
+  - ##### Rest Client
+    - spring-cloud-starter-openfeign
+  - ##### Cloud Config
+    - spring-cloud-starter-config
+  - ##### Distributed Tracing
+    - spring-cloud-sleuth-zipkin
+    - spring-cloud-starter-sleuth
+  - ##### ~Cloud Bus~
+    - ~spring-cloud-starter-bus-amqp~
 - #### AOP
-    - spring-boot-starter-aop
-- #### Swagger
-    - springfox-swagger2
-    - springfox-swagger-ui
-- #### Test
-    - spring-boot-starter-test
-
+  - spring-boot-starter-aop
+- #### Swagger (API Docx)
+  - springfox-boot-starter
+- #### Logstash (Sending logs to Logstash)
+  - logstash-logging-spring-boot-starter
+- #### [Dependencies From Parent](./../moreinfo.md#Dependencies-from-parent)
 
 Feign Rest Client
 ----------------
@@ -81,6 +74,9 @@ Connecting rest api to Spring Cloud Config Server
 
 [Distributed Tracing](./../moreinfo.md#distributed-tracing)
 -----------------------------------------------------------
+[ELK Stack](./../moreinfo.md#elk-stack)
+---------------------------------------
+
 AOP
 ---
 - Add ```@EnableAspectJAutoProxy``` in Config File

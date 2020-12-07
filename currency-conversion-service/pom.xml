@@ -25,7 +25,7 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
-        <!--		Distributed Management 		-->
+        <!--		Distributed Tracing Management 		-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-sleuth-zipkin</artifactId>
@@ -42,6 +42,7 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
+        <!--		Logstash (Sending logs to Logstash) 	-->
         <dependency>
             <groupId>com.github.piomin</groupId>
             <artifactId>logstash-logging-spring-boot-starter</artifactId>

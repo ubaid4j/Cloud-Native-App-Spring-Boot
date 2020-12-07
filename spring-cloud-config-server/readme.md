@@ -1,7 +1,17 @@
+About
+=====
+1. Config Server which automatically injects configurations where we import participant configs to our apps
+
+Dependencies
+============
+- #### Cloud
+    - ##### Config Server
+        - spring-cloud-config-server
+- #### [Dependencies From Parent](./../moreinfo.md#Dependencies-from-parent)
+
 Spring Cloud Configuration Server
 =================================
 
-1.  Dependencies: Server Config and Dev Tools
 2.  In application.properties add application.name and server.port
 3.  Add @EnableConfigServer at main class
 4.  Link a local repository as Source

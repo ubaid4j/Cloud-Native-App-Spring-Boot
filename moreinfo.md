@@ -45,7 +45,20 @@ Distributed Tracing
     2. ```spring.zipkin.base-url=http://localhost:9411/```
 6. Access [Zipkin Dashboard](http://localhost:9411/zipkin/) to see traces of micro-services
 
-    
+ELK Stack
+-------------------
+### Pre-Requisite
+1. Pre-Req
+    1. Run [Elastic Search](./envcn/docker-compose.yml)
+    2. Run [Logstash](./envcn/docker-compose.yml)
+    3. Run [Kibana](./envcn/docker-compose.yml)
+2. Add dependency `logstash-logging-spring-boot-starter`
+3. Add following Properties in props file:
+    1. `logging.logstash.enabled=true`
+    2. `logging.logstash.url=logstash:5000`
+4. Access [Kibana Dashboard](http://localhost:5601) to see the logs    
+
+
 Spring Cloud Config
 -------------------
 - We need `spring-cloud-starter-config` dependency and ` management.endpoints.web.exposure.include=\*` to expose some end points
@@ -83,3 +96,18 @@ Numeric IPs
 -  eureka.instance.instance-id=\${spring.cloud.client.ip-address}:\${server.port}
 -  eureka.instance.hostname=\${spring.cloud.client.ip-address}
 
+Dependencies From Parent
+------------------------
+- #### Dev Ops
+    - spring-boot-starter-actuator
+- #### Cache
+    - caffeine
+- #### Dev Tools
+    - spring-boot-devtools
+    - lombok
+    - spring-boot-configuration-processor
+- #### Test
+    - spring-boot-starter-test
+- ### App Modules
+    - cc-exception
+    - cc-dto
