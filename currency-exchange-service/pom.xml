@@ -44,7 +44,7 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
-        <!--		Distributed Management 		-->
+        <!--		Distributed Tracing Management 		-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-sleuth-zipkin</artifactId>
@@ -78,8 +78,6 @@
             <artifactId>jackson-module-jaxb-annotations</artifactId>
         </dependency>
 
-
     </dependencies>
-
 
 </project>

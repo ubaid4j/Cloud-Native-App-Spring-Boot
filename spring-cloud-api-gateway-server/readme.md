@@ -1,29 +1,19 @@
-### API Gateway Server
+### About
 - A server which is responsible to reroute request to the required micro-service
-- Port Number: 8755
-Logging
-=======
-- To get Logs into the file: run ```docker logs -f  springservices_rest_micro_netflix-zuul-api-gateway-server_1 &> gateway-server.log &```
 
 Dependencies
 ------------
-- #### Dev Tools
-    - spring-boot-devtools
-    - lombok
-    - spring-boot-configuration-processor
-- #### Dev Ops
-    - spring-boot-starter-actuator
 - #### Cloud
-    - ##### spring-cloud-starter-netflix-eureka-client
-    - ##### spring-cloud-starter-zipkin
-    - ##### spring-cloud-starter-netflix-zuul
+  - ##### Naming Server Client
+    - spring-cloud-starter-netflix-eureka-client
+  - ##### API Gateway
+    - spring-cloud-starter-gateway
+  - ##### Distributed Tracing
+    - spring-cloud-sleuth-zipkin
+    - spring-cloud-starter-sleuth
 - #### Logstash (Sending logs to Logstash)
   - reactive-logstash-logging-spring-boot-starter
-
-
-Configuration
--------------
-- add ```@EnableZuulProxy``` to enable gateway server
+- #### [Dependencies From Parent](./../moreinfo.md#Dependencies-from-parent)
 
 [Distributed Tracing](./../moreinfo.md#distributed-tracing)
 -----------------------------------------------------------

@@ -96,3 +96,18 @@ Numeric IPs
 -  eureka.instance.instance-id=\${spring.cloud.client.ip-address}:\${server.port}
 -  eureka.instance.hostname=\${spring.cloud.client.ip-address}
 
+Dependencies From Parent
+------------------------
+- #### Dev Ops
+    - spring-boot-starter-actuator
+- #### Cache
+    - caffeine
+- #### Dev Tools
+    - spring-boot-devtools
+    - lombok
+    - spring-boot-configuration-processor
+- #### Test
+    - spring-boot-starter-test
+- ### App Modules
+    - cc-exception
+    - cc-dto
