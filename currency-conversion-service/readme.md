@@ -7,6 +7,8 @@ Dependencies
 - #### Web (embedded tomcat + MVC)
     - spring-boot-starter-web
 - #### Cloud
+  - ##### Config Server Client
+      - spring-cloud-starter-config
   - ##### Naming Server Client
     - spring-cloud-starter-netflix-eureka-client
   - ##### Distributed Tracing
