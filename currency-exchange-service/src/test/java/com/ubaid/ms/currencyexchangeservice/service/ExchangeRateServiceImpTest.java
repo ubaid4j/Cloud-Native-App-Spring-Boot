@@ -91,7 +91,7 @@ class ExchangeRateServiceImpTest {
         ExchangeValueDTO exchangeRate = exchangeRateService.calculateExchangeRate("PKR", "INR");
 
         ExchangeValueDTO expectedExchangeValueDTO = new ExchangeValueDTO();
-        expectedExchangeValueDTO.setExchangeRate(0.45);
+        expectedExchangeValueDTO.setExchangeRate(0.46);
         expectedExchangeValueDTO.setFrom("PKR");
         expectedExchangeValueDTO.setTo("INR");
 
