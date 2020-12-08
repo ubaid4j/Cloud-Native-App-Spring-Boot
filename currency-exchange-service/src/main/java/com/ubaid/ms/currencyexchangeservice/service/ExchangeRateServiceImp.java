@@ -1,32 +1,21 @@
 package com.ubaid.ms.currencyexchangeservice.service;
 
-import com.ubaid.ms.ccdto.ExchangeRateDTO;
 import com.ubaid.ms.ccdto.ExchangeValueDTO;
 import com.ubaid.ms.currencyexchangeservice.dao.ExchangeRateDAO;
 import com.ubaid.ms.currencyexchangeservice.entity.ExchangeRate;
 import com.ubaid.ms.module.ccexception.ExchangeValueNotFound;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
-import java.util.Objects;
 
 @Service
+@RequiredArgsConstructor
 public class ExchangeRateServiceImp implements ExchangeRateService {
 
-    private final static String EXCHANGE_VALUE_NOT_FOUNT = "Exchange value not found for given currencies";
-
-    private final Environment env;
     private final ExchangeRateDAO dao;
-
-    @Autowired
-    public ExchangeRateServiceImp(Environment env, ExchangeRateDAO exchangeRateDAO) {
-        this.env = env;
-        this.dao = exchangeRateDAO;
-    }
 
     @Override
     public ExchangeValueDTO getExchangeValue(String from, String to) {
@@ -44,7 +33,6 @@ public class ExchangeRateServiceImp implements ExchangeRateService {
         return exchangeValueDTO;
     }
 
-
     Double calculateTargetExchangeRate(BigDecimal fromCountryExchangeRateWrtEUR,
                                        BigDecimal toCountryExchangeRateWrtEUR) {
         return toCountryExchangeRateWrtEUR.divide(fromCountryExchangeRateWrtEUR, 5, RoundingMode.HALF_EVEN).setScale(2, RoundingMode.HALF_EVEN).doubleValue();
@@ -57,7 +45,6 @@ public class ExchangeRateServiceImp implements ExchangeRateService {
         });
         return exchangeRate.getExchangeRate();
     }
-
 
     @Override
     public void saveAll(List<ExchangeRate> exchangeRates) {
