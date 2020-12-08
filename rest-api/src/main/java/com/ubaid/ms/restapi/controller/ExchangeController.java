@@ -2,8 +2,8 @@ package com.ubaid.ms.restapi.controller;
 
 import com.ubaid.ms.ccdto.ExchangeValueDTO;
 import com.ubaid.ms.restapi.service.CurrencyConversionService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.cors.CorsConfiguration;
 
@@ -11,14 +11,10 @@ import org.springframework.web.cors.CorsConfiguration;
 @RequestMapping(value = "/api/exchange")
 @Slf4j
 @CrossOrigin(value = CorsConfiguration.ALL)
+@RequiredArgsConstructor
 public class ExchangeController {
 
     private final CurrencyConversionService currencyConversionService;
-
-    @Autowired
-    public ExchangeController(CurrencyConversionService currencyConversionService) {
-        this.currencyConversionService = currencyConversionService;
-    }
 
     @GetMapping("/{from}/to/{to}/q/{quantity}")
     public ExchangeValueDTO getCurrencyConversion(
@@ -27,5 +23,4 @@ public class ExchangeController {
             @PathVariable("quantity") Double quantity) {
         return currencyConversionService.convertCurrency(from, to, quantity);
     }
-
 }

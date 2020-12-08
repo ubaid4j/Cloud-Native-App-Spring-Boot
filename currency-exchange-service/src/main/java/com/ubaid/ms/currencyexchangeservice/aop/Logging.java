@@ -3,7 +3,6 @@ package com.ubaid.ms.currencyexchangeservice.aop;
 import com.ubaid.ms.ccdto.ExchangeValueDTO;
 import com.ubaid.ms.module.ccexception.CCException;
 import lombok.extern.slf4j.Slf4j;
-import org.aopalliance.intercept.Joinpoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;

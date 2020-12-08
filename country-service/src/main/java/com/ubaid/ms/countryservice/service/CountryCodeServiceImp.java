@@ -4,21 +4,17 @@ import com.ubaid.ms.ccdto.CountryCodeDTO;
 import com.ubaid.ms.countryservice.dao.CountryCodeDAO;
 import com.ubaid.ms.countryservice.entity.CountryCode;
 import lombok.Getter;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class CountryCodeServiceImp implements CountryCodeService {
 
     private final CountryCodeDAO countryCodeDAO;
-
-    @Autowired
-    public CountryCodeServiceImp(CountryCodeDAO countryCodeDAO) {
-        this.countryCodeDAO = countryCodeDAO;
-    }
 
     @Override
     public List<CountryCodeDTO> getAll() {

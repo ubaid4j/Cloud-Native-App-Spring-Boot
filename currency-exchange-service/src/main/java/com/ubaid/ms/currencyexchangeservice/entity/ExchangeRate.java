@@ -1,13 +1,11 @@
 package com.ubaid.ms.currencyexchangeservice.entity;
 
-import com.ubaid.ms.ccdto.ExchangeValueDTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
-
 
 @Entity
 @Table
@@ -20,14 +18,6 @@ public class ExchangeRate {
     private String fromCurrency;
     private String toCurrency;
     private Double exchangeRate;
-
-    public ExchangeValueDTO createDTO() {
-        ExchangeValueDTO exchangeValueDTO = new ExchangeValueDTO();
-        exchangeValueDTO.setFrom(fromCurrency);
-        exchangeValueDTO.setTo(toCurrency);
-        exchangeValueDTO.setExchangeRate(exchangeRate);
-        return exchangeValueDTO;
-    }
 
     @Override
     public boolean equals(Object o) {

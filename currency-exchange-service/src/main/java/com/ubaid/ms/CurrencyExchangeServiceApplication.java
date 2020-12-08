@@ -14,10 +14,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class CurrencyExchangeServiceApplication {
 
-    // TODO: 10/7/20  check this api https://freecurrencyrates.com/ 
-    // TODO: 10/7/20 check this one https://exchangeratesapi.io/ 
-    // TODO: 10/7/20 check this too  https://fixer.io/product
-    
     public static void main(String[] args) {
         SpringApplication.run(CurrencyExchangeServiceApplication.class, args);
     }
