@@ -4,6 +4,8 @@
 Dependencies
 ------------
 - #### Cloud
+  - ##### Config Client
+    - spring-cloud-starter-config
   - ##### Naming Server Client
     - spring-cloud-starter-netflix-eureka-client
   - ##### API Gateway
