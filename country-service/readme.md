@@ -10,6 +10,8 @@ Dependencies
     - spring-boot-starter-data-jpa
     - mysql-connector-java
 - #### Cloud
+    - ##### Config Client
+      - spring-cloud-starter-config
     - ##### Naming Server Client
       - spring-cloud-starter-netflix-eureka-client
     - ##### Distributed Tracing
