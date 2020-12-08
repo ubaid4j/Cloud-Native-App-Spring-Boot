@@ -34,7 +34,6 @@ public class PopulateDBWithExchangeRates {
     private final Config config;
     private final ExchangeRateService exchangeRateService;
 
-
     @Autowired
     @Lazy
     public PopulateDBWithExchangeRates(RestTemplate restTemplate,
@@ -44,7 +43,6 @@ public class PopulateDBWithExchangeRates {
         this.config = config;
         this.exchangeRateService = exchangeRateService;
     }
-
 
     @Async
     @Scheduled(initialDelay = 10000, fixedDelay = 43200000)
@@ -81,7 +79,6 @@ public class PopulateDBWithExchangeRates {
             throw new RuntimeException("Error in writing response in " + responseFile.getAbsolutePath());
         }
     }
-
 
     void saveResponseIntoDatabase() {
         try {
@@ -140,7 +137,6 @@ public class PopulateDBWithExchangeRates {
             throw new RuntimeException("Severe Error. Cannot get exchangeRates.json file from resources");
         }
     }
-
 
     List<ExchangeRate> convert(ExchangeRateDTO exchangeRateDTO) {
         ExchangeRateDTOConverter converter = new ExchangeRateDTOConverter(exchangeRateDTO);

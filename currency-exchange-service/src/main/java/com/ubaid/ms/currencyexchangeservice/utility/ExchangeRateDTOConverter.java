@@ -3,7 +3,6 @@ package com.ubaid.ms.currencyexchangeservice.utility;
 import com.ubaid.ms.ccdto.ExchangeRateDTO;
 import com.ubaid.ms.currencyexchangeservice.entity.ExchangeRate;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;

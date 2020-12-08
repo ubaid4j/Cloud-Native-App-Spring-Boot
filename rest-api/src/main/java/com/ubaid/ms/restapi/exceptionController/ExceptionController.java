@@ -2,7 +2,6 @@ package com.ubaid.ms.restapi.exceptionController;
 
 import com.ubaid.ms.ccdto.ExceptionDTO;
 import com.ubaid.ms.module.ccexception.CCException;
-import com.ubaid.ms.restapi.exception.UnknownException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

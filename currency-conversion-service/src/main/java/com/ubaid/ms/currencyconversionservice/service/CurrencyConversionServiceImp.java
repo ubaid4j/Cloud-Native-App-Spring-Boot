@@ -1,22 +1,17 @@
 package com.ubaid.ms.currencyconversionservice.service;
 
 import com.ubaid.ms.ccdto.ConvertedCurrency;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 
 @Service
+@RequiredArgsConstructor
 public class CurrencyConversionServiceImp implements CurrencyConversionService {
 
-
     private final Environment env;
-
-    @Autowired
-    public CurrencyConversionServiceImp(Environment env) {
-        this.env = env;
-    }
 
     @Override
     public ConvertedCurrency convert(Double currency, Double conversionRate) {
