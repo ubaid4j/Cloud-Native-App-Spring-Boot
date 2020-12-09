@@ -9,7 +9,7 @@ Abstract
     - distributed tracing with zipkin
     - containerization
     - swagger implementation
-- My aim is to remain up to date with each stack such as Java 15, Spring Boot 2.3.4, Spring Cloud HOXTON SR8 and ELK_VERSION=7.9.2
+- My aim is to remain up to date with each stack such as Java 15, Spring Boot 2.4.0, Spring Cloud 2020.0.0-M6 and ELK_VERSION=7.10.0
 
 
 About
@@ -22,13 +22,13 @@ About
     - Five micro-services in which
         - Two micro-services ```currency-exchange-service```  and ```currency-conversion-service``` helps us to convert currency from one country code to another country code.
         - An api-gateway-server (which is responsible to redirect requests to micro-services)
-        - A Country Micro-Service which returns all Country with their respect Code
-        - A rest-api which expose their URLs to Clients (and is interact with API gateway server)
+        - A ```country-micro-service``` which returns all countries with their respect Code
+        - A rest-api which expose their URLs to Clients (and is interacts with API gateway server)
 
 Requirements
 -----------
 - [Maven 3.6.3 or later](./resource/install-require-softwares.md)
-- [Docker 19.03.8 or later](./resource/install-require-softwares.md)
+- [Docker 19.03.13 or later](./resource/install-require-softwares.md)
 - [JDK 15 or later](./resource/install-require-softwares.md)
 - [Set JAVA_HOME](./resource/install-require-softwares.md)
 
@@ -38,9 +38,9 @@ How to Run
 -   ``` cd Cloud-Native-App-Spring-Boot```
 -   ```mvn clean install -DskipTests```
 -   ```cd envcn```
--   ```./run.sh``` (it will run all tools which our services needs such as naming server, db, zipkin etc)
+-   ```./run.sh``` (it will run all tools which our services needs such as naming server, db, zipkin, rabbitmq and elk-stack)
 -   ``` cd ..``` 
--   ``` ./run.sh ``` 
+-   ``` ./run.sh ``` (it will up the micro-services)
 
 How it works
 ------------
@@ -80,7 +80,7 @@ Micro-Services
 
 Servers
 -------
--   [NETFLIX ZUUL API GATEWAY SERVER](http://localhost:8755/actuator/health)
+-   [SPRING API GATEWAY SERVER](http://localhost:8755/actuator/health)
 -   [NETFLIX EUREKA NAMING SERVER](http://localhost:8761/)
 -   [CONFIG SERVER](http://localhost:8888/actuator/health)
 -   [ZIPKIN SERVER](http://localhost:9411/zipkin/)
