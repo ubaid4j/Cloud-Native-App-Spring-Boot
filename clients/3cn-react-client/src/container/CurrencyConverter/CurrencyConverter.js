@@ -8,6 +8,7 @@ import {PopulateCountryCodes} from 'store/actions/PopulateCountryAction';
 import ConversionPaper from 'component/convertionPaper/ConversionPaper';
 import {SelectFromCountry, SelectToCountry} from 'store/actions/SelectCountryAction';
 import {ConvertCurrency} from 'store/actions/ConvertCurrencyAction';
+import {Redirect} from 'react-router';
 
 const CurrencyConverter = () => {
 
@@ -16,19 +17,22 @@ const CurrencyConverter = () => {
     const populateCountryCodes = useCallback(() => dispatch(PopulateCountryCodes()), []);
     const selectFromCountry = useCallback((country) => dispatch(SelectFromCountry(country)), []);
     const selectToCountry = useCallback((country) => dispatch(SelectToCountry(country)), []);
+    const convertCurrency = useCallback((fromCountry, toCountry, amount) => dispatch(ConvertCurrency(fromCountry.currencyCode, toCountry.currencyCode, amount)), []);
 
     const toCountry = useSelector(state => state.selectCountry.toCountry);
     const fromCountry = useSelector(state => state.selectCountry.fromCountry);
     const convertedData = useSelector(state => state.convertCurrency.convertedData);
+    const populateCountriesError = useSelector(state => state.countries.error);
 
     const [amount, setAmount] = useState(0);
-
-    const convertCurrency = useCallback((fromCountry, toCountry, amount) => dispatch(ConvertCurrency(fromCountry.currencyCode, toCountry.currencyCode, amount)), []);
-
 
     useEffect(() => {
         populateCountryCodes();
     }, []);
+
+    if (populateCountriesError) {
+        return <Redirect to='/down' />;
+    }
 
     return (
         <>
