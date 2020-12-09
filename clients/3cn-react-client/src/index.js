@@ -7,6 +7,7 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import 'index.css';
 import App from 'App';
 import reportWebVitals from 'reportWebVitals';
+import {BrowserRouter} from 'react-router-dom';
 import PopulateCountryReducer from 'store/reducers/PopulateCountryReducer';
 import {SelectCountryReducer} from 'store/reducers/SelectCountryReducer';
 import ConvertCurrencyReducer from 'store/reducers/ConvertCurrencyReducer';
@@ -32,9 +33,11 @@ if (env) {
 
 ReactDOM.render(
     <Provider store={store}>
-        <React.StrictMode>
-            <App/>
-        </React.StrictMode>,
+        <BrowserRouter>
+            <React.StrictMode>
+                <App/>
+            </React.StrictMode>,
+        </BrowserRouter>
     </Provider>,
     document.getElementById('root')
 );
