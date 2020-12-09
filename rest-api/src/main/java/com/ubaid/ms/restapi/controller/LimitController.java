@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.cors.CorsConfiguration;
 
+import javax.annotation.security.RolesAllowed;
+
 @RestController
 @RequestMapping(value = "/api/config")
 @Slf4j
@@ -20,8 +22,15 @@ public class LimitController {
     private final Config config;
 
     @GetMapping("/limits")
+    @RolesAllowed("user")
     public Config getCurrencyConversion() {
         log.debug("Config: {}", config);
         return config;
+    }
+
+    @GetMapping("/public")
+    public String check() {
+        log.info("Public Request");
+        return "Public Request";
     }
 }

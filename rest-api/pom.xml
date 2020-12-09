@@ -71,6 +71,19 @@
             <version>1.2.2.RELEASE</version>
         </dependency>
 
+        <!--        Auth        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-spring-boot-starter</artifactId>
+            <version>11.0.3</version>
+        </dependency>
+
+
     </dependencies>
 
 </project>
