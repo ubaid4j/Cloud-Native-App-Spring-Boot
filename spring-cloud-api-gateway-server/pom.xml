@@ -51,6 +51,23 @@
             <version>1.3.0.RELEASE</version>
         </dependency>
 
+        <!--		=============================Auth=============================		-->
+        <!--        Spring Cloud Security                    -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-security</artifactId>
+        </dependency>
+        <!--        OAuth2  Resource Server                  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+        </dependency>
+        <!--        OAuth2  Resource Client                  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-client</artifactId>
+        </dependency>
+        <!--		=============================Auth End=======================		-->
     </dependencies>
 
 </project>
