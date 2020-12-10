@@ -44,6 +44,7 @@ public class KeyCloakSecurityConfig extends KeycloakWebSecurityConfigurerAdapter
         super.configure(http);
         http
                 .authorizeRequests()
+                .antMatchers("/api/auth/login").permitAll()
                 .anyRequest()
                 .authenticated();
         http
