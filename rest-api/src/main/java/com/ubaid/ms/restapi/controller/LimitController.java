@@ -2,8 +2,12 @@ package com.ubaid.ms.restapi.controller;
 
 
 import com.ubaid.ms.restapi.config.Config;
+import com.ubaid.ms.restapi.feignProxy.TestServiceProxy;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.keycloak.KeycloakPrincipal;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +24,7 @@ import javax.annotation.security.RolesAllowed;
 public class LimitController {
 
     private final Config config;
+    private final TestServiceProxy testServiceProxy;
 
     @GetMapping("/limits")
     @RolesAllowed("user")
@@ -29,8 +34,20 @@ public class LimitController {
     }
 
     @GetMapping("/public")
-    public String check() {
+    public String helloPublic() {
         log.info("Public Request");
-        return "Public Request";
+        return testServiceProxy.helloPublic();
     }
+
+    @GetMapping("/private")
+    @RolesAllowed("user")
+    public String helloPrivate() {
+        log.info("Private Request");
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        KeycloakPrincipal<?> principal = (KeycloakPrincipal<?>) authentication.getPrincipal();
+        String token = principal.getKeycloakSecurityContext().getTokenString();
+        log.info("------------------Token----------------------{}", token);
+        return testServiceProxy.helloPrivate("Bearer " + token);
+    }
+
 }

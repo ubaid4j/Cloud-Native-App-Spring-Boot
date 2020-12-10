@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.cors.CorsConfiguration;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -20,6 +21,7 @@ public class CountryController {
     private final CountryService countryService;
 
     @GetMapping(value = "code")
+    @RolesAllowed("user")
     public List<CountryCodeDTO> getAll() {
         return countryService.getAll();
     }
