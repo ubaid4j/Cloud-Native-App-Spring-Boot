@@ -71,18 +71,19 @@
             <version>1.2.2.RELEASE</version>
         </dependency>
 
-        <!--        Auth        -->
+        <!--		=============================Auth=============================		-->
+        <!--        Spring Cloud Security                     -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-security</artifactId>
         </dependency>
-
+        <!--        KeyCloak Adapter                          -->
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-spring-boot-starter</artifactId>
             <version>11.0.3</version>
         </dependency>
-
+        <!--		=============================Auth End=======================		-->
 
     </dependencies>
 
