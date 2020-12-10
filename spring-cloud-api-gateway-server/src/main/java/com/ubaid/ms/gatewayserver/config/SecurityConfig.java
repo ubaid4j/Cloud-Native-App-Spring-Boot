@@ -9,7 +9,6 @@ import org.springframework.security.oauth2.jwt.ReactiveJwtDecoder;
 import org.springframework.security.oauth2.jwt.ReactiveJwtDecoders;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
-
 @Configuration
 @EnableWebFluxSecurity
 @EnableGlobalMethodSecurity(jsr250Enabled = true)
