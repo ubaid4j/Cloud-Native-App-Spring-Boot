@@ -1,7 +1,7 @@
 package com.ubaid.ms.restapi.controller;
 
 import com.ubaid.ms.ccdto.auth.LoginCred;
-import com.ubaid.ms.restapi.service.AuthService;
+import com.ubaid.ms.restapi.service.LoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,12 +10,12 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
-public class AuthController {
+public class LoginController {
 
-    private final AuthService authService;
+    private final LoginService loginService;
 
     @PostMapping(value = "login")
-    public Map<String, ?> auth(@RequestBody LoginCred loginCred) {
-        return authService.login(loginCred.getUsername(), loginCred.getPassword());
+    public Map<String, ?> login(@RequestBody LoginCred loginCred) {
+        return loginService.login(loginCred.getUsername(), loginCred.getPassword());
     }
 }
