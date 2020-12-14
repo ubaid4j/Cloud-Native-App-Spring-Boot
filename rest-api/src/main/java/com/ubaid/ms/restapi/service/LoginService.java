@@ -3,10 +3,9 @@ package com.ubaid.ms.restapi.service;
 import java.util.Map;
 
 /**
- * Return a bearer token in full format
+ * get the access token from the keycloak
  * @author ubaid
  */
-public interface AuthService {
-    String getBearerToken();
+public interface LoginService {
     Map<String, ?> login(String username, String password);
 }

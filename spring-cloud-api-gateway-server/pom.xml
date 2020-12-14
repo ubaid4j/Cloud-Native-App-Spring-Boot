@@ -14,7 +14,7 @@
     <description>Gateway Server</description>
 
     <dependencies>
-        <!--		################################## Cloud Start  ##################################		-->
+        <!--		================================== Cloud Start  ==================================		-->
         <!--        Config Client       -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -42,14 +42,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
-        <!--		################################## Cloud Start End ##################################		-->
-
-        <!--        Sending Logs to Logstash    -->
-        <dependency>
-            <groupId>com.github.piomin</groupId>
-            <artifactId>reactive-logstash-logging-spring-boot-starter</artifactId>
-            <version>1.3.0.RELEASE</version>
-        </dependency>
+        <!--		================================== Cloud Start End ==================================		-->
 
         <!--		=============================Auth=============================		-->
         <!--        Spring Cloud Security                    -->
@@ -62,12 +55,20 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
         </dependency>
-        <!--        OAuth2  Resource Client                  -->
+        <!--        OAuth2 Client Server                 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-client</artifactId>
         </dependency>
         <!--		=============================Auth End=======================		-->
+        
+        <!--        Sending Logs to Logstash    -->
+        <dependency>
+            <groupId>com.github.piomin</groupId>
+            <artifactId>reactive-logstash-logging-spring-boot-starter</artifactId>
+            <version>1.3.0.RELEASE</version>
+        </dependency>
+
     </dependencies>
 
 </project>

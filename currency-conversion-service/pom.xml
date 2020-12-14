@@ -18,8 +18,8 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--		##########################	Cloud Start	########################## 		-->
 
+        <!--		==========================	Cloud Start	========================== 		-->
         <!--        Config Client       -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -41,20 +41,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
-        <!--		##########################	Cloud End########################## 		-->
-
-        <!--        AOP     -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-
-        <!--		Logstash (Sending logs to Logstash) 	-->
-        <dependency>
-            <groupId>com.github.piomin</groupId>
-            <artifactId>logstash-logging-spring-boot-starter</artifactId>
-            <version>1.2.2.RELEASE</version>
-        </dependency>
+        <!--		==========================	Cloud End========================== 		-->
 
         <!--		=============================Auth=============================		-->
         <!--        Spring Cloud Security                    -->
@@ -68,6 +55,19 @@
             <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
         </dependency>
         <!--		=============================Auth End=======================		-->
+        
+        <!--        AOP     -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <!--		Logstash (Sending logs to Logstash) 	-->
+        <dependency>
+            <groupId>com.github.piomin</groupId>
+            <artifactId>logstash-logging-spring-boot-starter</artifactId>
+            <version>1.2.2.RELEASE</version>
+        </dependency>
     </dependencies>
 
 </project>

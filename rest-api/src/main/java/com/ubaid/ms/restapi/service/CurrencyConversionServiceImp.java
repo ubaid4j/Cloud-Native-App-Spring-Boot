@@ -13,7 +13,7 @@ public class CurrencyConversionServiceImp implements CurrencyConversionService {
 
     private final CurrencyExchangeServiceProxy exchangeServiceProxy;
     private final CurrencyConversionServiceProxy conversionServiceProxy;
-    private final AuthService authService;
+    private final TokenService tokenService;
 
     @Override
     public ExchangeValueDTO convertCurrency(String fromCurrency, String toCurrency, Double quantity) {
@@ -25,10 +25,10 @@ public class CurrencyConversionServiceImp implements CurrencyConversionService {
     }
 
     ConvertedCurrency getConvertedCurrency(Double quantity, ExchangeValueDTO exchangeValueDTO) {
-        return conversionServiceProxy.convert(authService.getBearerToken(), quantity, exchangeValueDTO.getExchangeRate());
+        return conversionServiceProxy.convert(tokenService.getBearerToken(), quantity, exchangeValueDTO.getExchangeRate());
     }
 
     ExchangeValueDTO getExchangeRate(String fromCurrency, String toCurrency) {
-        return exchangeServiceProxy.getCurrencyExchangeRate(authService.getBearerToken(), fromCurrency, toCurrency);
+        return exchangeServiceProxy.getCurrencyExchangeRate(tokenService.getBearerToken(), fromCurrency, toCurrency);
     }
 }
