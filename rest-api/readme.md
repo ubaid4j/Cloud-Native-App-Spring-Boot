@@ -20,6 +20,13 @@ Dependencies
     - spring-cloud-starter-sleuth
   - ##### ~Cloud Bus~
     - ~spring-cloud-starter-bus-amqp~
+- #### Security
+  - ##### [Cloud Security](./../moreinfo.md#Spring-cloud-security-starter)
+    - spring-cloud-starter-security
+  - ##### [KeyCloak Adapter](https://www.keycloak.org/docs/latest/securing_apps/#_spring_boot_adapter)
+    - keycloak-spring-boot-starter
+  - ##### Spring Security Tests
+    - spring-security-test
 - #### AOP
   - spring-boot-starter-aop
 - #### Swagger (API Docx)

@@ -35,7 +35,7 @@ public class KeyCloakSecurityConfig extends KeycloakWebSecurityConfigurerAdapter
 
 
     /**
-     * authorize all requests & disable csrf
+     * authenticate all requests except /login & disable csrf
      * @param http httpSecurity
      * @throws Exception exception
      */

@@ -14,6 +14,11 @@ Dependencies
   - ##### Distributed Tracing
     - spring-cloud-sleuth-zipkin
     - spring-cloud-starter-sleuth
+- #### Security
+  - ##### [Cloud Security](./../moreinfo.md#Spring-cloud-security-starter)
+    - spring-cloud-starter-security
+  - ##### [OAuth2 Resource Server](./../moreinfo.md#Resource-server)
+    - spring-boot-starter-oauth2-resource-server
 - #### Logstash (Sending logs to Logstash)
   - logstash-logging-spring-boot-starter
 - ### Database Migration (Liquibase)

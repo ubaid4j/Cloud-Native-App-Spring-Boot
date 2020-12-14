@@ -19,7 +19,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!--	################################Cloud Start################################				-->
+        <!--	================================Cloud Start================================				-->
         <!--		Eureka Client 		-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -49,27 +49,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
-        <!--	################################Cloud Start End################################				-->
-
-        <!--        AOP     -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-
-        <!--        Swagger    -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-
-        <!--        Sending Logs to Logstash    -->
-        <dependency>
-            <groupId>com.github.piomin</groupId>
-            <artifactId>logstash-logging-spring-boot-starter</artifactId>
-            <version>1.2.2.RELEASE</version>
-        </dependency>
+        <!--	================================Cloud Start End================================				-->
 
         <!--		=============================Auth=============================		-->
         <!--        Spring Cloud Security                     -->
@@ -89,7 +69,27 @@
             <scope>test</scope>
         </dependency>
         <!--		=============================Auth End=======================		-->
+        
+        <!--        AOP     -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
 
+        <!--        Swagger    -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+        <!--        Sending Logs to Logstash    -->
+        <dependency>
+            <groupId>com.github.piomin</groupId>
+            <artifactId>logstash-logging-spring-boot-starter</artifactId>
+            <version>1.2.2.RELEASE</version>
+        </dependency>
+        
     </dependencies>
 
 </project>
