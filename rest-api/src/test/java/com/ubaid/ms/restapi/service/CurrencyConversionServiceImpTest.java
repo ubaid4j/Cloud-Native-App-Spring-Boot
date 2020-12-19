@@ -27,7 +27,7 @@ class CurrencyConversionServiceImpTest {
     private ExchangeValueDTO exchangeValueDTO;
 
     private final double PKR_CURRENCY_VALUE = 20;
-    private final double PKR_USD_EXCHANGE_RATE = 160.03;
+    private final double PKR_USD_EXCHANGE_RATE = 160.1;
     private final double USD_CURRENCY_VALUE = PKR_CURRENCY_VALUE * PKR_USD_EXCHANGE_RATE;
     private final String PKR_CODE = "PKR";
     private final String USD_CODE = "USD";
