@@ -50,7 +50,8 @@ About
     
 How it works
 ------------
-- Simply go to [Postman collection](https://www.getpostman.com/collections/567dafcda4e68e8ab855) and play with end points.
+- [Go to Swagger](resource/how-to-use-swagger.md) 
+- ~~Simply go to [Postman collection](https://www.getpostman.com/collections/567dafcda4e68e8ab855) and play with end points~~.
 
 Swagger UI
 ----------
