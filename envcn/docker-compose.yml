@@ -3,7 +3,6 @@ services:
     rabbitmq:
         container_name: rabbitmq
         image: rabbitmq:management
-        restart: on-failure
         expose:
             - "5672"
         ports:
@@ -14,7 +13,6 @@ services:
     zipkin:
         container_name: zipkin
         image: openzipkin/zipkin
-        restart: on-failure
         ports:
             - "9411:9411"
         expose:
@@ -113,7 +111,6 @@ services:
     db:
         container_name: cn-db
         image: mysql
-        restart: on-failure
         environment:
             MYSQL_DATABASE: 'db'
             MYSQL_USER: 'root'
@@ -130,14 +127,15 @@ services:
     auth-server:
         container_name: auth-server
         image: jboss/keycloak
-        restart: on-failure
+        depends_on:
+            - auth-db
         environment:
             KEYCLOAK_USER: 'ubaid'
             KEYCLOAK_PASSWORD: 'changeme'
-            DB_ADDR: 'db'
+            DB_ADDR: 'auth-db'
             DB_VENDOR: 'mysql'
             KEYCLOAK_LOGLEVEL: 'WARN'
-            DB_USER: 'root'
+            DB_USER: 'keycloak'
             DB_PORT: '3306'
         ports:
             - '9898:8080'
@@ -145,6 +143,24 @@ services:
             - '8080'
         networks:
             - cloud-native-network
+            - auth-db-network
+    auth-db:
+        container_name: auth-db
+        image: mysql
+        environment:
+            MYSQL_DATABASE: 'keycloak'
+            MYSQL_USER: 'keycloak'
+            MYSQL_PASSWORD: 'password'
+            MYSQL_ROOT_PASSWORD: 'password'
+        ports:
+            - '3311:3306'
+        expose:
+            - '3306'
+        volumes:
+            - ./sql/dump.sql:/docker-entrypoint-initdb.d/dump.sql
+        networks:
+            - auth-db-network
+
 
 volumes:
     elasticsearch:
@@ -152,3 +168,4 @@ volumes:
     cloud-native-volume:
 networks:
     cloud-native-network:
+    auth-db-network:
