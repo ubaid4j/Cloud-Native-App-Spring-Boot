@@ -22,6 +22,12 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 @EnableGlobalMethodSecurity(jsr250Enabled = true) //allows us to use the @RoleAllowed annotation
 public class KeyCloakSecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 
+    private final String[] SWAGGER_URLS = {"/v3/api-docs",
+            "/configuration/ui", "/swagger-resources/**",
+            "/configuration/security", "/swagger-ui/index.html",
+            "/webjars/**", "/swagger-ui/**"};
+    private final String[] LOGIN_URLS = {"/api/auth/login"};
+
     /**
      * register the keycloak authentication provider with spring authentication manager
      * @param authenticationManagerBuilder spring authentication manager
@@ -44,7 +50,8 @@ public class KeyCloakSecurityConfig extends KeycloakWebSecurityConfigurerAdapter
         super.configure(http);
         http
                 .authorizeRequests()
-                .antMatchers("/api/auth/login").permitAll()
+                .antMatchers(LOGIN_URLS).permitAll()
+                .antMatchers(SWAGGER_URLS).permitAll()
                 .anyRequest()
                 .authenticated();
         http
