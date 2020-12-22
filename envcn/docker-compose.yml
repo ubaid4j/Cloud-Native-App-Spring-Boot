@@ -3,7 +3,6 @@ services:
     rabbitmq:
         container_name: rabbitmq
         image: rabbitmq:management
-        restart: on-failure
         expose:
             - "5672"
         ports:
@@ -14,7 +13,6 @@ services:
     zipkin:
         container_name: zipkin
         image: openzipkin/zipkin
-        restart: on-failure
         ports:
             - "9411:9411"
         expose:
@@ -113,7 +111,6 @@ services:
     db:
         container_name: cn-db
         image: mysql
-        restart: on-failure
         environment:
             MYSQL_DATABASE: 'db'
             MYSQL_USER: 'root'
@@ -127,9 +124,48 @@ services:
             - cloud-native-volume:/var/lib/mysql
         networks:
             - cloud-native-network
+    auth-server:
+        container_name: auth-server
+        image: jboss/keycloak
+        depends_on:
+            - auth-db
+        environment:
+            KEYCLOAK_USER: 'ubaid'
+            KEYCLOAK_PASSWORD: 'changeme'
+            DB_ADDR: 'auth-db'
+            DB_VENDOR: 'mysql'
+            KEYCLOAK_LOGLEVEL: 'WARN'
+            DB_USER: 'keycloak'
+            DB_PORT: '3306'
+        ports:
+            - '9898:8080'
+        expose:
+            - '8080'
+        networks:
+            - cloud-native-network
+            - auth-db-network
+    auth-db:
+        container_name: auth-db
+        build:
+            context: auth-db/
+        environment:
+            MYSQL_DATABASE: 'keycloak'
+            MYSQL_USER: 'keycloak'
+            MYSQL_PASSWORD: 'password'
+            MYSQL_ROOT_PASSWORD: 'password'
+        ports:
+            - '3311:3306'
+        expose:
+            - '3306'
+        volumes:
+            - auth-db-volume:/var/lib/mysql
+        networks:
+            - auth-db-network
 volumes:
     elasticsearch:
     flebeat:
     cloud-native-volume:
+    auth-db-volume:
 networks:
     cloud-native-network:
+    auth-db-network:

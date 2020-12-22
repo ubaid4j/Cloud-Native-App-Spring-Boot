@@ -89,6 +89,41 @@ To Identify a request in the service we need:
       This response will have unique identity
     ```
 
+Spring Cloud Security Starter
+-----------------------------
+- According to Spring Cloud Security Official Page: 
+`Spring Cloud Security offers a set of primitives for building secure applications and services with minimum fuss`
+
+Resource Server
+---------------
+- According to aws docs
+`A resource server is a server for access-protected resources. It handles authenticated requests from an app that has an access token. Typically the resource server provides a CRUD API for making these access requests.`
+- Security Config Class (to create a Resource Server)
+```java
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(jsr250Enabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests(authorize -> authorize.anyRequest().authenticated())
+                .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
+    }
+}
+```
+- Explanation
+    1. `@Configuration` Indicates that a class declares one or more `@Bean` methods and may be processed by the Spring container to generate bean definitions and service requests for those beans at runtime.
+    2. `@EnableWebSecurity` Add this annotation to an `@Configuration` class to have the Spring Security configuration defined in any WebSecurityConfigurer or more likely by extending the WebSecurityConfigurerAdapter base class and overriding individual methods:
+    3. `EnableGlobalMethodSecurity` Enables Spring Security global method security
+    4. `The jsr250Enabled` property allows us to use the `@RoleAllowed` annotation on methods
+    5. We are overriding `configure` method of `WebSecurityConfigurerAdapter` to authenticating all requests and adding `OAuth 2.0` Resource Server support. 
+    6. Add `spring.security.oauth2.resourceserver.jwt.issuer-uri` issuer (Auth Server) URI
+
+OAuth2 Client
+-------------
+- According to Stackoverflow:
+`A client is an application that will interact with the authorization server or the resource server`
 
 Numeric IPs
 -----------
