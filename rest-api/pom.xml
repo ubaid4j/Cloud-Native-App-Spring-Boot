@@ -57,6 +57,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-security</artifactId>
         </dependency>
+        <!--  KeyCloak Adapter -->
         <!--  Same Dependencies for keycloak-spring-boot-starter -->
         <!--  As, in latest KeyCloak Spring Boot Adapter, there is exception for JDK 15 -->
         <!--  https://github.com/keycloak/keycloak/pull/7533 -->
@@ -161,15 +162,6 @@
         </dependency>
         
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
     <repositories>
         <repository>
