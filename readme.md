@@ -92,3 +92,8 @@ Note
 ----
 - You can read about each micro-service by going inside each folder
 - [To get More info about this repo](./moreinfo.md)
+
+Implementation Note:
+--------------------
+- I have added local dependencies of `KeyCloak Adapter for Spring Boot` in `rest-api` module
+- See the [reason](https://github.com/keycloak/keycloak/pull/7533#issuecomment-749705232)
