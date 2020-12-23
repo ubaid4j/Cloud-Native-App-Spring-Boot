@@ -112,8 +112,8 @@ services:
         container_name: cn-db
         image: mysql
         environment:
-            MYSQL_DATABASE: 'db'
-            MYSQL_USER: 'root'
+            MYSQL_DATABASE: 'spring_dev'
+            MYSQL_USER: 'spring'
             MYSQL_PASSWORD: 'password'
             MYSQL_ROOT_PASSWORD: 'password'
         ports:
