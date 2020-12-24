@@ -12,9 +12,10 @@ import java.util.List;
 public class CountryServiceImp implements CountryService{
 
     private final CountryServiceProxy countryServiceProxy;
+    private final TokenService tokenService;
 
     @Override
     public List<CountryCodeDTO> getAll() {
-        return countryServiceProxy.getAll();
+        return countryServiceProxy.getAll(tokenService.getBearerToken());
     }
 }

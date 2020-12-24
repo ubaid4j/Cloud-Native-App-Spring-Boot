@@ -5,11 +5,21 @@ import com.ubaid.ms.ccdto.ExchangeValueDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author ubaid
+ * @implNote Note that, these integration tests will pass,
+ * when all the services are up,
+ * I have not implemented the graceful tests fail (when services are down_
+ */
 @SpringBootTest
 class CurrencyConversionServiceImpTest {
 
@@ -17,10 +27,20 @@ class CurrencyConversionServiceImpTest {
     private ExchangeValueDTO exchangeValueDTO;
 
     private final double PKR_CURRENCY_VALUE = 20;
-    private final double PKR_USD_EXCHANGE_RATE=160.26;
+    private final double PKR_USD_EXCHANGE_RATE = 160.1;
     private final double USD_CURRENCY_VALUE = PKR_CURRENCY_VALUE * PKR_USD_EXCHANGE_RATE;
     private final String PKR_CODE = "PKR";
     private final String USD_CODE = "USD";
+
+
+    String token = null;
+
+    @Autowired
+    private LoginService loginService;
+
+    @MockBean
+    private TokenService tokenService;
+
 
     @Autowired
     public CurrencyConversionServiceImpTest(CurrencyConversionServiceImp currencyConversionService) {
@@ -28,7 +48,11 @@ class CurrencyConversionServiceImpTest {
     }
 
     @BeforeEach
-    void setUp() {
+    public void init() {
+        Map<String, ?> response = loginService.login("ubaid", "changeme");
+        token = (String) response.get("access_token");
+        Mockito.when(tokenService.getBearerToken()).thenReturn("Bearer " + token);
+
         exchangeValueDTO = new ExchangeValueDTO();
         exchangeValueDTO.setQuantity(PKR_CURRENCY_VALUE);
         exchangeValueDTO.setExchangeRate(PKR_USD_EXCHANGE_RATE);

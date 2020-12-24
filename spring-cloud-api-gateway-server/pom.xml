@@ -14,7 +14,7 @@
     <description>Gateway Server</description>
 
     <dependencies>
-        <!--		################################## Cloud Start  ##################################		-->
+        <!--		================================== Cloud Start  ==================================		-->
         <!--        Config Client       -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -42,8 +42,26 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
-        <!--		################################## Cloud Start End ##################################		-->
+        <!--		================================== Cloud Start End ==================================		-->
 
+        <!--		=============================Auth=============================		-->
+        <!--        Spring Cloud Security                    -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-security</artifactId>
+        </dependency>
+        <!--        OAuth2  Resource Server                  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+        </dependency>
+        <!--        OAuth2 Client Server                 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-client</artifactId>
+        </dependency>
+        <!--		=============================Auth End=======================		-->
+        
         <!--        Sending Logs to Logstash    -->
         <dependency>
             <groupId>com.github.piomin</groupId>
