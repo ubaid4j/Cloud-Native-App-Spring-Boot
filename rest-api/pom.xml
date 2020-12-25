@@ -54,8 +54,8 @@
         <!--		=============================Auth=============================		-->
         <!--        Spring Cloud Security                     -->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-security</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <!--  KeyCloak Adapter -->
         <!--  Same Dependencies for keycloak-spring-boot-starter -->
