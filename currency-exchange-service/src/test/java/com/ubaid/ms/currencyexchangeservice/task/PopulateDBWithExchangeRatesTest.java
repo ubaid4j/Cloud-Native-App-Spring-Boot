@@ -5,7 +5,6 @@ import com.ubaid.ms.currencyexchangeservice.config.Config;
 import com.ubaid.ms.currencyexchangeservice.dao.ExchangeRateDAO;
 import com.ubaid.ms.currencyexchangeservice.entity.ExchangeRate;
 import org.apache.commons.io.FileUtils;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;

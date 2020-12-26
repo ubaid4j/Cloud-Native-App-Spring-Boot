@@ -6,7 +6,6 @@ import com.ubaid.ms.currencyexchangeservice.dao.ExchangeRateDAO;
 import com.ubaid.ms.currencyexchangeservice.entity.ExchangeRate;
 import com.ubaid.ms.currencyexchangeservice.task.PopulateDBWithExchangeRates;
 import com.ubaid.ms.currencyexchangeservice.utility.ExchangeRateDTOConverter;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -61,7 +60,7 @@ class ExchangeRateServiceImpTest {
         exchangeRateService.saveAll(exchangeRates);
         ExchangeValueDTO exchangeRate = exchangeRateService.getExchangeValue("INR", "PKR");
         assertNotNull(exchangeRate);
-        assertTrue(exchangeRate.getExchangeRate() > 1 && exchangeRate.getExchangeRate() < 3, "INR to PKR exchange rate is greater than 150");
+        assertTrue(exchangeRate.getExchangeRate() > 1 && exchangeRate.getExchangeRate() < 3, "INR to PKR exchange rate is greater than 1 and smaller than 3");
     }
 
     @Test
@@ -77,12 +76,16 @@ class ExchangeRateServiceImpTest {
     }
 
     @Test
+    @Order(4)
+    @DisplayName("Test Calculate Target Exchange Rate Method")
     void calculateTargetExchangeRate() {
         Double calculatedER = exchangeRateService.calculateTargetExchangeRate(new BigDecimal("193.73"), new BigDecimal("86.32"));
         assertEquals(0.45, calculatedER);
     }
 
     @Test
+    @Order(5)
+    @DisplayName("Test Calculate Exchange Rate Method")
     void calculateExchangeRate() {
         dao.deleteAll();
         List<ExchangeRate> exchangeRates = getExchangeRates();
