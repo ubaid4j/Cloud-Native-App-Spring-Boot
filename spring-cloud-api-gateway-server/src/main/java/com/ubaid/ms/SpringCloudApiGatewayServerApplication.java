@@ -23,8 +23,10 @@ public class SpringCloudApiGatewayServerApplication {
                         .filters(f -> f.filter(filterFactory.apply()))
                         .uri("lb://COUNTRY-SERVICE"))
                 .route(r -> r.path("/currency-conversion/**")
+                        .filters(f -> f.filter(filterFactory.apply()))
                         .uri("lb://CURRENCY-CONVERSION-SERVICE"))
                 .route(r -> r.path("/currency-exchange/**")
+                        .filters(f -> f.filter(filterFactory.apply()))
                         .uri("lb://CURRENCY-EXCHANGE-SERVICE"))
                 .build();
     }
