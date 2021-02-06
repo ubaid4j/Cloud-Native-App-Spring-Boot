@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.cors.CorsConfiguration;
 
+import javax.annotation.security.RolesAllowed;
+
 @RestController
 @RequestMapping(value = "/api/exchange")
 @Slf4j
@@ -17,6 +19,7 @@ public class ExchangeController {
     private final CurrencyConversionService currencyConversionService;
 
     @GetMapping("/{from}/to/{to}/q/{quantity}")
+    @RolesAllowed("user")
     public ExchangeValueDTO getCurrencyConversion(
             @PathVariable("from") String from,
             @PathVariable("to") String to,

@@ -20,7 +20,6 @@ public class CurrencyConversionController {
 
     private final CurrencyConversionService currencyConversionService;
 
-    @RolesAllowed(value = {"user"})
     @PreAuthorize("hasAuthority('SCOPE_currency-conversion')")
     @GetMapping("/currency/{currency}/rate/{conversion-rate}")
     public ConvertedCurrency getCurrencyConversion(

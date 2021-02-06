@@ -19,7 +19,6 @@ public class MainController {
 
     private final CountryCodeService countryCodeService;
 
-    @RolesAllowed(value = {"user"})
     @PreAuthorize("hasAuthority('SCOPE_countries')")
     @GetMapping("code")
     public List<CountryCodeDTO> getAll() {
