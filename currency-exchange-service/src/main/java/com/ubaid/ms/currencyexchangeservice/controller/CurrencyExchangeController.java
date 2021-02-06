@@ -18,7 +18,6 @@ public class CurrencyExchangeController {
 
     private final ExchangeRateService service;
 
-    @RolesAllowed(value = {"user"})
     @PreAuthorize("hasAuthority('SCOPE_exchange-rate')")
     @GetMapping("/from/{from}/to/{to}")
     public ExchangeValueDTO getExchangeValue(@PathVariable("from") String from,
