@@ -6,7 +6,6 @@ const initialState = {
 };
 
 export const SelectCountryReducer = (state = initialState, action) => {
-    console.log('Select Country Reducer: state ---> ', state, ', action: ----> ', action);
     switch (action.type) {
     case SELECT_FROM_COUNTRY:
         return {...state, fromCountry: action.country};

@@ -11,6 +11,7 @@ import {BrowserRouter} from 'react-router-dom';
 import PopulateCountryReducer from 'store/reducers/PopulateCountryReducer';
 import {SelectCountryReducer} from 'store/reducers/SelectCountryReducer';
 import ConvertCurrencyReducer from 'store/reducers/ConvertCurrencyReducer';
+import {AuthReducer} from 'store/reducers/AuthReducer';
 
 
 const env = process.env.NODE_ENV === 'development';
@@ -19,7 +20,8 @@ const rootReducer = combineReducers(
     {
         countries: PopulateCountryReducer,
         selectCountry: SelectCountryReducer,
-        convertCurrency: ConvertCurrencyReducer
+        convertCurrency: ConvertCurrencyReducer,
+        auth: AuthReducer
     }
 );
 
