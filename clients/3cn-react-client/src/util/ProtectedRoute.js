@@ -6,8 +6,10 @@ import PropTypes from 'prop-types';
 
 const ProtectedRoute = ({ component: Component, roles, ...rest }) => {
     const {initialized, keycloak} = useKeycloak();
-    // console.log('Is keycloak initialized ', initialized);
+
     const isAuthorized = (roles) => {
+        console.log('---------------------------keycloak: ', keycloak);
+        console.log('---------------------------roles: ', roles);
         if (keycloak && roles) {
             const isAuth = roles.some(r => {
                 const realm =  keycloak.hasRealmRole(r);
@@ -31,7 +33,7 @@ const ProtectedRoute = ({ component: Component, roles, ...rest }) => {
             render={props => {
                 return isAuthorized(roles)
                     ? <Component {...props} />
-                    : <Redirect to={{ pathname: '/auth', }} />;
+                    : <Redirect to={'/'} />;
             }}
         />
     );
