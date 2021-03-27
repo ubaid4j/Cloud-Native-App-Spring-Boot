@@ -5,14 +5,10 @@ import {useDispatch} from 'react-redux';
 import {AddAccessToken} from 'store/actions/AuthAction';
 
 const Authenticate = () => {
-    console.log('--------------------------------------------Authenticate-----------------------------------');
 
     const {initialized, keycloak} = useKeycloak();
     const dispatch = useDispatch();
     const addAccessToken = useCallback((accessToken) => dispatch(AddAccessToken(accessToken)), []);
-
-    console.log('In Authenticate: initialized', initialized);
-    console.log('In Authenticate: keycloak', keycloak);
 
     if (initialized && keycloak && !keycloak.authenticated) {
         console.log('In Authenticate: Login called');
@@ -28,11 +24,11 @@ const Authenticate = () => {
     }
 
     if (initialized && keycloak && keycloak.authenticated) {
-        console.log('-----------------------In Authenticate---------------', keycloak);
+        console.log('-----------------------In Authenticate--------------- Adding access token in state');
         addAccessToken(keycloak.token);
 
         return (
-            <Redirect to={'/home'} />
+            <Redirect to={'/converter'} />
         );
     }
 };

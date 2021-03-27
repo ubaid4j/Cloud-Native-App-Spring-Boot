@@ -5,10 +5,19 @@ import {
 } from 'store/ActionTypes';
 import RequestHandler from 'http/RequestHandler';
 
-export const PopulateCountryCodes = () => {
+export const PopulateCountryCodes = (accessToken) => {
+
+    let config = {
+        headers: {
+            'Authorization': 'Bearer ' + accessToken,
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json'
+        }
+    };
+
     return dispatch => {
         dispatch(populateCountryCodeStart());
-        RequestHandler.get('country/code')
+        RequestHandler.get('country/code', config)
             .then(res => {
                 console.log(res);
                 dispatch(populateCountryFinished(res.data));

@@ -9,6 +9,9 @@ const UserInfo = () => {
         return (
             <div>
                 Hello {keycloak.tokenParsed.preferred_username}
+                <div>
+                    <a href='/converter'>Click here to go for Converter</a>
+                </div>
             </div>
         );
     } else {

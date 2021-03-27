@@ -8,8 +8,6 @@ const ProtectedRoute = ({ component: Component, roles, ...rest }) => {
     const {initialized, keycloak} = useKeycloak();
 
     const isAuthorized = (roles) => {
-        console.log('---------------------------keycloak: ', keycloak);
-        console.log('---------------------------roles: ', roles);
         if (keycloak && roles) {
             const isAuth = roles.some(r => {
                 const realm =  keycloak.hasRealmRole(r);
