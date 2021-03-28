@@ -6,10 +6,15 @@ import {
 
 import RequestHandler from 'http/RequestHandler';
 
-export const ConvertCurrency = (from, to_, quantity) => {
+export const ConvertCurrency = ({fromCountryCode, toCountryCode, amount, accessToken}) => {
+    let config = {
+        headers: {
+            'Authorization': 'Bearer ' + accessToken,
+        }
+    };
     return dispatch => {
         dispatch(convertCurrencyStart());
-        RequestHandler.get(`exchange/${from}/to/${to_}/q/${quantity}`)
+        RequestHandler.get(`exchange/${fromCountryCode}/to/${toCountryCode}/q/${amount}`, config)
             .then(res => {
                 console.log(res);
                 dispatch(convertCurrencyComplete(res.data));
