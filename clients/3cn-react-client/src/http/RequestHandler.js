@@ -6,7 +6,7 @@ let baseURL;
 if (env) {
     baseURL = 'http://localhost:5200/api/';
 } else {
-    baseURL = 'https://b5ada40c55b9.ngrok.io/api/';
+    baseURL = 'https://rest-api:5200/api/';
 }
 
 const RequestHandler = axios.create({
