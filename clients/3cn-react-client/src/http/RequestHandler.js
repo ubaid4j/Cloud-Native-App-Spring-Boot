@@ -6,7 +6,7 @@ let baseURL;
 if (env) {
     baseURL = 'http://localhost:5200/api/';
 } else {
-    baseURL = 'https://rest-api:5200/api/';
+    baseURL = 'http://localhost:5200/api/';
 }
 
 const RequestHandler = axios.create({

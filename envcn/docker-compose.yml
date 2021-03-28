@@ -137,6 +137,7 @@ services:
             KEYCLOAK_LOGLEVEL: 'WARN'
             DB_USER: 'keycloak'
             DB_PORT: '3306'
+            KEYCLOAK_FRONTEND_URL: http://auth-server-3cn.loca.lt/auth
         ports:
             - '9898:8080'
         expose:
