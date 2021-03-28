@@ -73,6 +73,16 @@ services:
             - envcn_cloud-native-network
         depends_on:
             - spring-cloud-api-gateway-server
+    react-client:
+        container_name: react-client
+        build:
+            context: ./clients/3cn-react-client/
+        depends_on:
+            - rest-api
+        ports:
+            - '3000:80'
+        networks:
+            - envcn_cloud-native-network
 volumes:
     cloud-native-volume:
 networks:

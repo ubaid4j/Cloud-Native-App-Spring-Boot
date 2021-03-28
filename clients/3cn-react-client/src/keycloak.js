@@ -1,5 +1,4 @@
 import Keycloak from 'keycloak-js';
-
 // Setup Keycloak instance as needed
 // Pass initialization options as required or leave blank to load from 'keycloak-dev.json'
 const env = process.env.NODE_ENV === 'development';
