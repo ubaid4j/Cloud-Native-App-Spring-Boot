@@ -10,8 +10,6 @@ export const ConvertCurrency = ({fromCountryCode, toCountryCode, amount, accessT
     let config = {
         headers: {
             'Authorization': 'Bearer ' + accessToken,
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json'
         }
     };
     return dispatch => {

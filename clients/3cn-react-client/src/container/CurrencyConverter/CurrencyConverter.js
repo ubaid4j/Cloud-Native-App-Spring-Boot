@@ -31,7 +31,6 @@ const CurrencyConverter = () => {
     const [amount, setAmount] = useState(0);
 
     useEffect(() => {
-        console.log('CurrencyConverter: Access Token:', accessToken);
         populateCountryCodes(accessToken);
     }, []);
 

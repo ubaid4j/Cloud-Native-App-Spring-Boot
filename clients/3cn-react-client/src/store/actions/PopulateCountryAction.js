@@ -10,8 +10,6 @@ export const PopulateCountryCodes = (accessToken) => {
     let config = {
         headers: {
             'Authorization': 'Bearer ' + accessToken,
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json'
         }
     };
 

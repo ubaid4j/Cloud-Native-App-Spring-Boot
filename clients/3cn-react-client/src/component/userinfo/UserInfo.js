@@ -1,5 +1,4 @@
 import {useKeycloak} from '@react-keycloak/web';
-import {Redirect} from 'react-router-dom';
 import React from 'react';
 
 const UserInfo = () => {
@@ -14,8 +13,6 @@ const UserInfo = () => {
                 </div>
             </div>
         );
-    } else {
-        return (<Redirect to={{ pathname: '/', }} />);
     }
 };
 export default UserInfo;

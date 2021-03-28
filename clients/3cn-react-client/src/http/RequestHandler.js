@@ -9,18 +9,6 @@ if (env) {
     baseURL = 'https://b5ada40c55b9.ngrok.io/api/';
 }
 
-// const select = (state) => {
-//     return state.auth.accessToken;
-// };
-//
-//
-// const listener = () => {
-//     axios.defaults.headers.common['Authorization'] = select(store.getState());
-//     console.log('-------------------------Request Handler----------------------------> ', store.getState());
-// };
-
-// store.subscribe(listener);
-
 const RequestHandler = axios.create({
     baseURL: baseURL,
     headers: {
