@@ -4,7 +4,7 @@ services:
         container_name: api-gateway
         build:
             context: spring-cloud-api-gateway-server
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.tnl
         expose:
             - 8755
         ports:
@@ -17,7 +17,7 @@ services:
         container_name: c-exchnage-service
         build:
             context: currency-exchange-service
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.tnl
         expose:
             - 8000
         ports:
@@ -32,7 +32,7 @@ services:
         container_name: c-conversion-service
         build:
             context: currency-conversion-service
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.tnl
         expose:
             - 8100
         ports:
@@ -47,7 +47,7 @@ services:
         container_name: country-service
         build:
             context: country-service
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.tnl
         expose:
             - 8300
         ports:
@@ -62,7 +62,7 @@ services:
         container_name: rest-api
         build:
             context: rest-api
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.tnl
         expose:
             - 5200
         ports:
@@ -80,7 +80,7 @@ services:
         depends_on:
             - rest-api
         ports:
-            - '3000:3000'
+            - '3000:80'
         networks:
             - envcn_cloud-native-network
 volumes:
