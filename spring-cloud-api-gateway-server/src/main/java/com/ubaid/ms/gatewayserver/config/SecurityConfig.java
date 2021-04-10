@@ -7,6 +7,15 @@ import org.springframework.security.config.annotation.web.reactive.EnableWebFlux
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
+/**
+ * <pre>
+ * 1. Configure
+ *      a. Authorize only authenticated requests
+ *      b. OAuth 2.0 Resource Server support
+ * 2. Disable CSRF
+ *</pre>
+ * @author ubaid
+ */
 @Configuration
 @EnableWebFluxSecurity
 @EnableGlobalMethodSecurity(jsr250Enabled = true)

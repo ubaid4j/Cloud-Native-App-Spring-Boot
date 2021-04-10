@@ -11,3 +11,12 @@ It authorizes the user on its user roles.
 3. `rest-api` first validate this request using the `Keycloak Adpater`. `rest-api` then check the user-role for the protected resource.
 4. After validating the request and validate the user-role, `rest-api` get the required resource from the protected resource-server hidden behind the `api-gateway-server`.
 5. `rest-api` request first goes to `api-gateway-server` which validate the request and re-route this request to respective `resource server`
+
+Validation
+==========
+1. #### User Role Validation
+In 3cn App, we are validating User Roles at `Clients` and `Rest-API` level
+2. #### Scope Validation
+In 3cn App, we are validating Scopes in `resource-server` level only.
+3. #### Audience Validation
+In 3cn App, we are validating Audience in `resource-server` level only.

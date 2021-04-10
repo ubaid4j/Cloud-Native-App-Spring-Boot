@@ -17,12 +17,6 @@ public class SecurityConfig {
 
         return http.build();
     }
-
-    @Bean
-    public ReactiveJwtDecoder reactiveJwtDecoder() {
-        return ReactiveJwtDecoders.fromOidcIssuerLocation("http://localhost:9898/auth/realms/3cn");
-    }
-
 }
 ```
 
@@ -31,5 +25,5 @@ public class SecurityConfig {
     2. `@EnableWebFluxSecurity` As Spring Cloud API Gateway is based upon Reactor Project, so enabling `WebFluxSecurity`
     3. `@EnableGlobalMethodSecurity(jsr250Enabled = true)` property allows us to use the `@RoleAllowed` annotation on methods
     4. `SecurityWebFilterChain` bean which configuring security to authenticate all requests and adding support of `OAuth2` Server, (It is behaving both Client and Resource Server)
-    5. `ReactiveJwtDecoder` OIDC issuer Location 
+    5. `spring.security.oauth2.resourceserver.jwt.issuer-uri` `ReactiveJwtDecoder` OIDC issuer Location 
     6. Along with this, we have to add a provider (Auth Server) and Clients (Resource Servers) (check the props files)
