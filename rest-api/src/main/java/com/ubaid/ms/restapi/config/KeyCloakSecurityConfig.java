@@ -18,6 +18,14 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 import org.springframework.web.cors.CorsConfiguration;
 
 
+/**
+ * <pre>
+ * 1. Configure
+ *      a. Authorize only authenticated requests except {@link KeyCloakSecurityConfig#LOGIN_URLS} and {@link KeyCloakSecurityConfig#SWAGGER_URLS}
+ * 2. Disable CSRF
+ *</pre>
+ * @author ubaid
+ */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(jsr250Enabled = true) //allows us to use the @RoleAllowed annotation

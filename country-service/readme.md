@@ -35,3 +35,5 @@ Dependencies
 -----------------------------------------------------------
 [ELK Stack](./../moreinfo.md#elk-stack)
 ---------------------------------------
+[Audience Validation](./../moreinfo.md#audience-validation)
+------------------------

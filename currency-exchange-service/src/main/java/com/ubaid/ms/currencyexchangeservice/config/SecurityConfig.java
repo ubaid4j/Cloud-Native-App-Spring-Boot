@@ -13,6 +13,15 @@ import org.springframework.security.oauth2.core.DelegatingOAuth2TokenValidator;
 import org.springframework.security.oauth2.core.OAuth2TokenValidator;
 import org.springframework.security.oauth2.jwt.*;
 
+/**
+ * <pre>
+ * 1. Configure
+ *      a. Authorize only authenticated requests
+ *      b. OAuth 2.0 Resource Server support
+ * 2. Validate <code>aud</code> with the help of {@link AudienceValidator}
+ *</pre>
+ * @author ubaid
+ */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(jsr250Enabled = true, prePostEnabled = true)
