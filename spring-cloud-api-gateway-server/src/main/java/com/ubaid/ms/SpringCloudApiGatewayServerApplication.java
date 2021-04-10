@@ -8,6 +8,10 @@ import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 
+/**
+ * Re-routes the incoming request to down-stream services according to the URL match pattern.
+ * @author ubaid
+ */
 @EnableDiscoveryClient
 @SpringBootApplication
 public class SpringCloudApiGatewayServerApplication {

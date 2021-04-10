@@ -106,7 +106,7 @@ Resource Server
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(HttpSecurity http) {
         http.authorizeRequests(authorize -> authorize.anyRequest().authenticated())
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
     }
@@ -124,6 +124,13 @@ OAuth2 Client
 -------------
 - According to Stackoverflow:
 `A client is an application that will interact with the authorization server or the resource server`
+
+Audience Validation
+-------------------
+- According to [Key Cloak Docx](https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/audience.adoc), Audience validation should be done in service side.
+- We can add audience by adding at least one role of respective service in the user roles.
+- For more inf please see [Key Cloak Docx](https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/audience.adoc)
+
 
 Numeric IPs
 -----------
