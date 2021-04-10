@@ -13,6 +13,10 @@ Abstract
   - ELK Stack Version 7.10.0
   - KeyCloak Server (Authorization Server) 11.0
     
+Auth Flow
+=========
+- [Please visit here](./resource/auth/auth-flow.md)
+
 Requirements
 -----------
 - [Maven 3.6.3 or later](./resource/install-require-softwares.md)
