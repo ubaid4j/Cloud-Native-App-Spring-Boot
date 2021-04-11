@@ -4,29 +4,17 @@ Install Docker
 - [For Mac](https://docs.docker.com/docker-for-mac/install/)
 - [For Windows](https://docs.docker.com/docker-for-windows/install/)
 
-Install Java
-============
-- [For Ubuntu](https://www.linuxuprising.com/2020/09/how-to-install-oracle-java-15-on-ubuntu.html)
-    ```
-       sudo add-apt-repository ppa:linuxuprising/java
-       sudo apt update
-       sudo apt install oracle-java15-installer
-       export JAVA_HOME=/usr/lib/jvm/java-15-oracle/
-    ```
-- [For Mac](https://www.oracle.com/java/technologies/javase-jdk15-downloads.html)
-- [For Windows](https://www.oracle.com/java/technologies/javase-jdk15-downloads.html)
 
-Install Maven
-=============
-- For Ubuntu
-    ```
-    sudo apt update
-    sudo apt install maven
-    ```
+Install Maven and JDK-16 
+=======================
+- For Linux, simply run the command `./install-maven-jdk16.sh`. It will install `OpenJDK 16` and `Maven 3.8.1`
 - For Mac
-    ```
-    brew update
-    brew install maven
-    ```
+  - Download [JDK-16 tar.gz from jdk.java.net](https://download.java.net/java/GA/jdk16/7863447f0ab643c585b9bdebf67c69db/36/GPL/openjdk-16_osx-x64_bin.tar.gz)
+  - Extract it and set `JAVA_HOME` by running `export JAVA_HOME=/path/to/extracted/jdk16/tar`
+  - Install the latest [Maven 3.8.1](https://downloads.apache.org/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz)
+  - Set MAVEN_HOME and M2_HOME and are pointing to maven-3.8.1 root directory
 - For Windows
-    - [Follow this link](https://www.javatpoint.com/how-to-install-maven)
+  - Download [JDK-16 tar.gz from jdk.java.net](https://download.java.net/java/GA/jdk16/7863447f0ab643c585b9bdebf67c69db/36/GPL/openjdk-16_windows-x64_bin.zip)
+  - Extract it and set `JAVA_HOME` using `Environment Variable`
+  - Install the latest [Maven 3.8.1](https://downloads.apache.org/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz)
+  - Set `MAVEN_HOME` and `M2_HOME` using `Environment Variable`
