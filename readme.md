@@ -7,9 +7,9 @@ Abstract
     - [ELK Stack]()
     - [Distributed Tracing]()
 - Following are the Tools and technologies which I am using:
-  - Java 15
-  - Spring Boot 2.4.3
-  - Spring Cloud 2020.0.1 (Security, Config Server, Service Discovery and Distributed Tracing)
+  - Java 16
+  - Spring Boot 2.4.4
+  - Spring Cloud 2020.0.2 (Security, Config Server, Service Discovery and Distributed Tracing)
   - ELK Stack Version 7.10.0
   - KeyCloak Server (Authorization Server) 11.0
     
@@ -19,10 +19,11 @@ Auth Flow
 
 Requirements
 -----------
-- [Maven 3.6.3 or later](./resource/install-require-softwares.md)
-- [Docker 19.03.13 or later](./resource/install-require-softwares.md)
-- [JDK 15 or later](./resource/install-require-softwares.md)
-- [Set JAVA_HOME](./resource/install-require-softwares.md)
+- [Maven 3.8.1 or later](./resource/install-require-softwares.md#install-maven-and-jdk-16)
+- [Docker 19.03.13 or later](./resource/install-require-softwares.md#install-docker)
+- [JDK 16 or later](./resource/install-require-softwares.md#install-maven-and-jdk-16)
+- [Set JAVA_HOME](./resource/install-require-softwares.md#install-maven-and-jdk-16)
+- [Set MAVEN_HOME and M2_HOME](./resource/install-require-softwares.md#install-maven-and-jdk-16)
 
 How to Run
 ----------
