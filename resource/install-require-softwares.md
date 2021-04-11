@@ -7,7 +7,7 @@ Install Docker
 
 Install Maven and JDK-16 
 =======================
-- For Linux, simply run the command `./install-maven-jdk16.sh`. It will install `OpenJDK 16` and `Maven 3.8.1`
+- For Linux, simply run the command `./install-maven-jdk16.sh`. It will install `OpenJDK 16` and `Maven 3.8.1`. If you are still seeing the old JDK when executing `mvn --version` then please execute `export JAVA_HOME=/opt/java`
 - For Mac
   - Download [JDK-16 tar.gz from jdk.java.net](https://download.java.net/java/GA/jdk16/7863447f0ab643c585b9bdebf67c69db/36/GPL/openjdk-16_osx-x64_bin.tar.gz)
   - Extract it and set `JAVA_HOME` by running `export JAVA_HOME=/path/to/extracted/jdk16/tar`
