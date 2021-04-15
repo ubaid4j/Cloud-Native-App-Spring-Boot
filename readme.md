@@ -11,7 +11,7 @@ Abstract
   - Spring Boot 2.4.4
   - Spring Cloud 2020.0.2 (Security, Config Server, Service Discovery and Distributed Tracing)
   - ELK Stack Version 7.10.0
-  - KeyCloak Server (Authorization Server) 11.0
+  - KeyCloak Server (Authorization Server) 12.0.1
     
 Auth Flow
 =========
