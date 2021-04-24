@@ -18,7 +18,12 @@ public class CountryCodeServiceImp implements CountryCodeService {
 
     @Override
     public List<CountryCodeDTO> getAll() {
-        return countryCodeDAO.findAll().stream().map(countryCode -> new ConvertCountryCodeTODTO(countryCode).getCountryCodeDTO()).collect(Collectors.toList());
+        return countryCodeDAO
+                .findAll()
+                .stream()
+                .map(countryCode -> new ConvertCountryCodeTODTO(countryCode)
+                        .getCountryCodeDTO())
+                .collect(Collectors.toList());
     }
 
     @Getter
