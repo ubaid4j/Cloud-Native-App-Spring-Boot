@@ -17,7 +17,7 @@ public class TokenController {
     private final AccessTokenService accessTokenService;
 
     @PostMapping(value = "token")
-    public Map<String, ?> login(@RequestBody LoginCred loginCred) {
+    public Map<String, ?> getAccessToken(@RequestBody LoginCred loginCred) {
         return accessTokenService.getAccessToken(loginCred.getUsername(), loginCred.getPassword());
     }
 }

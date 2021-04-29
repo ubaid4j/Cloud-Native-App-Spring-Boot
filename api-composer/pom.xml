@@ -9,7 +9,7 @@
     </parent>
     <artifactId>api-composer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>3CN REST API</name>
+    <name>3CN API COMPOSER</name>
     <description>This is an API composer for currency conversion which interact with several micro-services</description>
 
     <dependencies>
