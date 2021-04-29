@@ -1,4 +1,4 @@
-package com.ubaid.ms.restapi.feignProxy;
+package com.ubaid.ms.apicomposer.feignProxy;
 
 import com.ubaid.ms.ccdto.ConvertedCurrency;
 import org.springframework.cloud.openfeign.FeignClient;

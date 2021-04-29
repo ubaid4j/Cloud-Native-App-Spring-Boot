@@ -1,8 +1,7 @@
-package com.ubaid.ms.restapi.service;
+package com.ubaid.ms.apicomposer.service;
 
-import com.ubaid.ms.restapi.feignProxy.AuthTokenServiceProxy;
+import com.ubaid.ms.apicomposer.feignProxy.AuthTokenServiceProxy;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

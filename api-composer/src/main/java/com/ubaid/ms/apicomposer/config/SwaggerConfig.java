@@ -1,4 +1,4 @@
-package com.ubaid.ms.restapi.config;
+package com.ubaid.ms.apicomposer.config;
 
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;

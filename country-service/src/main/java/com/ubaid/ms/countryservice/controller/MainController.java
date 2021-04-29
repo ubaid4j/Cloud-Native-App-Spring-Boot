@@ -17,7 +17,6 @@ import java.util.List;
 @RestController
 @RequestMapping("country")
 @RequiredArgsConstructor
-//@CrossOrigin(value = CorsConfiguration.ALL)
 public class MainController {
 
     private final CountryCodeService countryCodeService;

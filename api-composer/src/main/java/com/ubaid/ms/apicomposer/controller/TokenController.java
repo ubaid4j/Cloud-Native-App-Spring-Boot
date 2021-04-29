@@ -1,7 +1,7 @@
-package com.ubaid.ms.restapi.controller;
+package com.ubaid.ms.apicomposer.controller;
 
 import com.ubaid.ms.ccdto.auth.LoginCred;
-import com.ubaid.ms.restapi.service.AccessTokenService;
+import com.ubaid.ms.apicomposer.service.AccessTokenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.cors.CorsConfiguration;

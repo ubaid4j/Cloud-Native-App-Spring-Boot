@@ -1,4 +1,4 @@
-package com.ubaid.ms.restapi.feignProxy;
+package com.ubaid.ms.apicomposer.feignProxy;
 
 import static org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VALUE;
 import feign.codec.Encoder;

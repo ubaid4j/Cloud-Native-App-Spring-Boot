@@ -1,4 +1,4 @@
-package com.ubaid.ms.restapi.entity;
+package com.ubaid.ms.apicomposer.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.ubaid.ms.restapi.config;
+package com.ubaid.ms.apicomposer.config;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

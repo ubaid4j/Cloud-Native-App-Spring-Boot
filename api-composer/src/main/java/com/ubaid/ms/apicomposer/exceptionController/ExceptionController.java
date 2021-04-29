@@ -1,4 +1,4 @@
-package com.ubaid.ms.restapi.exceptionController;
+package com.ubaid.ms.apicomposer.exceptionController;
 
 import com.ubaid.ms.ccdto.ExceptionDTO;
 import com.ubaid.ms.module.ccexception.CCException;

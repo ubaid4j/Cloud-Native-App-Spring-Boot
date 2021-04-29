@@ -10,8 +10,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @EnableFeignClients(basePackages = {"com.ubaid.ms"})
 @EnableDiscoveryClient
 @EnableAspectJAutoProxy
-public class RestAPI {
+public class APIComposer {
     public static void main(String[] args) {
-        SpringApplication.run(RestAPI.class, args);
+        SpringApplication.run(APIComposer.class, args);
     }
 }

@@ -1,12 +1,11 @@
-package com.ubaid.ms.restapi.service;
+package com.ubaid.ms.apicomposer.service;
 
 import com.ubaid.ms.ccdto.ConvertedCurrency;
 import com.ubaid.ms.ccdto.ExchangeValueDTO;
-import com.ubaid.ms.restapi.feignProxy.CurrencyConversionServiceProxy;
-import com.ubaid.ms.restapi.feignProxy.CurrencyExchangeServiceProxy;
+import com.ubaid.ms.apicomposer.feignProxy.CurrencyConversionServiceProxy;
+import com.ubaid.ms.apicomposer.feignProxy.CurrencyExchangeServiceProxy;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 

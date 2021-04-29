@@ -1,4 +1,4 @@
-package com.ubaid.ms.restapi.util;
+package com.ubaid.ms.apicomposer.util;
 
 import lombok.Data;
 
