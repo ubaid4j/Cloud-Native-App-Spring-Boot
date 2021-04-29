@@ -40,13 +40,13 @@ About
 ----
 - Cloud Native App which convert currency from given country code to targeted country code. 
 - Currency Conversion Rest API  is actual responsible to interact with micro-services using ```api-gateway-server```. 
-- An Actor (React Client, React Native Client) can  send a request to rest-api, it interacts with *CURRENCY-EXCHANGE-SERVICE*  micro-service to get exchange rate and then *CURRENCY-CONVERSION-SERVICE* micro-service to convert this currency
+- An Actor (React Client, React Native Client) can  send a request to api-composer, it interacts with *CURRENCY-EXCHANGE-SERVICE*  micro-service to get exchange rate and then *CURRENCY-CONVERSION-SERVICE* micro-service to convert this currency
 - ![Micro Service Architecture](resource/3cnAuthFlow.png)
 - In above diagram, We have 
     - Two micro-services ```currency-exchange-service```  and ```currency-conversion-service``` helps us to convert currency from one country code to another country code.
     - An api-gateway-server (which is responsible to redirect requests to micro-services)
     - A ```country-micro-service``` which returns all countries with their respect Code
-    - A rest-api which expose their URLs to Clients (and is interacts with API gateway server)
+    - An api-composer which expose their URLs to Clients (and is interacts with API gateway server)
     - ELK Stack, for Centralized Logging
     - Auth Server (For OAuth2 Authentication and Authorization)
     - Naming Server (For services discovery)
@@ -97,8 +97,3 @@ Note
 ----
 - You can read about each micro-service by going inside each folder
 - [To get More info about this repo](./moreinfo.md)
-
-Implementation Note:
---------------------
-- I have added local dependencies of `KeyCloak Adapter for Spring Boot` in `rest-api` module
-- See the [reason](https://github.com/keycloak/keycloak/pull/7533#issuecomment-749705232)
