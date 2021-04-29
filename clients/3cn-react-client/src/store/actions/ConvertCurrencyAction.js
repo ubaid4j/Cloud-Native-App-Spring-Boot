@@ -14,7 +14,7 @@ export const ConvertCurrency = ({fromCountryCode, toCountryCode, amount, accessT
     };
     return dispatch => {
         dispatch(convertCurrencyStart());
-        RequestHandler.get(`exchange/${fromCountryCode}/to/${toCountryCode}/q/${amount}`, config)
+        RequestHandler.get(`convert/${fromCountryCode}/to/${toCountryCode}/q/${amount}`, config)
             .then(res => {
                 console.log(res);
                 dispatch(convertCurrencyComplete(res.data));
