@@ -15,7 +15,7 @@ import java.util.*;
 
 
 @Configuration
-@EnableOpenApi
+//@EnableOpenApi
 @Slf4j
 public class SwaggerConfig {
 

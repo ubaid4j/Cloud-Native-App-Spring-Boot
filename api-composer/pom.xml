@@ -76,13 +76,6 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
-        <!--        Swagger    -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-
         <!--        Sending Logs to Logstash    -->
         <dependency>
             <groupId>com.github.piomin</groupId>
