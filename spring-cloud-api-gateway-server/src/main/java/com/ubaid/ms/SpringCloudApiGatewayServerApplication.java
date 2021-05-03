@@ -1,6 +1,5 @@
 package com.ubaid.ms;
 
-import com.google.common.collect.Lists;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -8,13 +7,6 @@ import org.springframework.cloud.gateway.filter.factory.TokenRelayGatewayFilterF
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
-import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.oas.annotations.EnableOpenApi;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.ApiKey;
-import springfox.documentation.service.Contact;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
 
 /**
  * Re-routes the incoming request to down-stream services according to the URL match pattern.
@@ -22,7 +14,6 @@ import springfox.documentation.spring.web.plugins.Docket;
  */
 @EnableDiscoveryClient
 @SpringBootApplication
-@EnableOpenApi
 public class SpringCloudApiGatewayServerApplication {
 
     public static void main(String[] args) {
@@ -63,37 +54,5 @@ public class SpringCloudApiGatewayServerApplication {
                                 .filters(f -> f.rewritePath("/currency-exchange-service", ""))
                             .uri("lb://CURRENCY-EXCHANGE-SERVICE"))
                 .build();
-    }
-
-
-    public static final String AUTHORIZATION_HEADER = "Authorization";
-
-    @Bean
-    public Docket swaggerSpringfoxDocket() {
-        return new Docket(DocumentationType.OAS_30)
-                .apiInfo(apiInfo())
-                .securitySchemes(Lists.newArrayList(apiKey()))
-                .useDefaultResponseMessages(false)
-                .select()
-                .build();
-    }
-
-
-    private ApiKey apiKey() {
-        return new ApiKey(AUTHORIZATION_HEADER, AUTHORIZATION_HEADER, "header");
-    }
-
-    /**
-     *
-     * @return ApiInfo
-     */
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("Authentication API").description("")
-                .contact(new Contact("Ubaid ur Rehman", "https://www.linkedin.com/in/ubaid-ur-rehman-5a0118119/", "urehman.bese16seecs@seecs.edu.pk"))
-                .license("Open Source")
-                .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0")
-                .version("1.0.0")
-                .build();
-
     }
 }

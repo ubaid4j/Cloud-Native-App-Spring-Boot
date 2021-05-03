@@ -27,10 +27,21 @@ public class SecurityConfig {
 
     private final static String[] DOWN_STREAM_SERVICES_PATHS = {"/token/**", "/convert/**", "/currency-conversion/**", "/currency-exchange/**", "/country/code/**", "/config/limits/**"};
     private final static String[] UNPROTECTED_PATHS = {"/token/**"};
-    private final String[] SWAGGER_URLS = {"/v3/api-docs", "/country-service/v3/api-docs", "/api-composer/v3/api-docs", "/currency-conversion-service/v3/api-docs", "/currency-exchange-service/v3/api-docs", "spring-cloud-api-gateway-server/v3/api-docs",
+    private final static String[] SWAGGER_URLS = {"/v3/api-docs", "/country-service/v3/api-docs", "/api-composer/v3/api-docs", "/currency-conversion-service/v3/api-docs", "/currency-exchange-service/v3/api-docs",
             "/configuration/ui", "/swagger-resources/**",
             "/configuration/security", "/swagger-ui/index.html",
             "/webjars/**", "/swagger-ui/**"};
+    private final static String[] CSRF_DISABLED_PATHS = new String[DOWN_STREAM_SERVICES_PATHS.length + SWAGGER_URLS.length];
+
+    static {
+        int counter = 0;
+        for (String csrfDisabledPath : DOWN_STREAM_SERVICES_PATHS) {
+            CSRF_DISABLED_PATHS[counter++] = csrfDisabledPath;
+        }
+        for (String csrfDisabledPath : SWAGGER_URLS) {
+            CSRF_DISABLED_PATHS[counter++] = csrfDisabledPath;
+        }
+    }
 
 
 
@@ -39,8 +50,7 @@ public class SecurityConfig {
 
         http
                 .csrf()
-                    .requireCsrfProtectionMatcher(getNegatedMatcherForDownStreamServices())
-                    .requireCsrfProtectionMatcher(getNegatedMatcherForSwagger())
+                    .requireCsrfProtectionMatcher(getNegatedMatcherForDisabledCSRF())
                 .and()
                 .authorizeExchange()
                 .pathMatchers(UNPROTECTED_PATHS).permitAll()
@@ -55,8 +65,8 @@ public class SecurityConfig {
         return http.build();
     }
 
-    public NegatedServerWebExchangeMatcher getNegatedMatcherForDownStreamServices() {
-        return new NegatedServerWebExchangeMatcher(exchange -> ServerWebExchangeMatchers.pathMatchers(DOWN_STREAM_SERVICES_PATHS).matches(exchange));
+    public NegatedServerWebExchangeMatcher getNegatedMatcherForDisabledCSRF() {
+        return new NegatedServerWebExchangeMatcher(exchange -> ServerWebExchangeMatchers.pathMatchers(CSRF_DISABLED_PATHS).matches(exchange));
     }
 
     public NegatedServerWebExchangeMatcher getNegatedMatcherForSwagger() {
