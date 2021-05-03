@@ -41,6 +41,18 @@ public class SpringCloudApiGatewayServerApplication {
                 .route(r -> r.path("/currency-exchange/**")
                                 .filters(f -> f.filter(filterFactory.apply()))
                             .uri("lb://CURRENCY-EXCHANGE-SERVICE"))
+                .route(r -> r.path("/country-service/v3/api-docs")
+                                .filters(f -> f.rewritePath("/country-service", ""))
+                            .uri("lb://COUNTRY-SERVICE"))
+                .route(r -> r.path("/api-composer/v3/api-docs")
+                                .filters(f -> f.rewritePath("/api-composer", ""))
+                            .uri("lb://API-COMPOSER"))
+                .route(r -> r.path("/currency-conversion-service/v3/api-docs")
+                                .filters(f -> f.rewritePath("/currency-conversion-service", ""))
+                            .uri("lb://CURRENCY-CONVERSION-SERVICE"))
+                .route(r -> r.path("/currency-exchange-service/v3/api-docs")
+                                .filters(f -> f.rewritePath("/currency-exchange-service", ""))
+                            .uri("lb://CURRENCY-EXCHANGE-SERVICE"))
                 .build();
     }
 }
