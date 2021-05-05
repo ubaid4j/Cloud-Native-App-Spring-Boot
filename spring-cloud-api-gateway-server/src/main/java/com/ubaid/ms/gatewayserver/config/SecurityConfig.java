@@ -25,9 +25,9 @@ import org.springframework.security.web.server.util.matcher.ServerWebExchangeMat
 @EnableGlobalMethodSecurity(jsr250Enabled = true)
 public class SecurityConfig {
 
-    private final static String[] DOWN_STREAM_SERVICES_PATHS = {"/token/**", "/convert/**", "/currency-conversion/**", "/currency-exchange/**", "/country/code/**", "/config/limits/**"};
-    private final static String[] UNPROTECTED_PATHS = {"/token/**"};
-    private final static String[] SWAGGER_URLS = {"/v3/api-docs", "/country-service/v3/api-docs", "/api-composer/v3/api-docs", "/currency-conversion-service/v3/api-docs", "/currency-exchange-service/v3/api-docs",
+    private final static String[] DOWN_STREAM_SERVICES_PATHS = {"/user-service/oauth/token", "/convert/**", "/currency-conversion/**", "/currency-exchange/**", "/country/code/**", "/config/limits/**"};
+    private final static String[] UNPROTECTED_PATHS = {"/user-service/oauth/token"};
+    private final static String[] SWAGGER_URLS = {"**/v3/api-docs/**", "/user-service/v3/api-docs", "/country-service/v3/api-docs", "/api-composer/v3/api-docs", "/currency-conversion-service/v3/api-docs", "/currency-exchange-service/v3/api-docs",
             "/configuration/ui", "/swagger-resources/**",
             "/configuration/security", "/swagger-ui/index.html",
             "/webjars/**", "/swagger-ui/**"};
