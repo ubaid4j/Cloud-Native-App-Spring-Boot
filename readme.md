@@ -27,6 +27,7 @@ Requirements
         ![JAVA HOME](resource/java-home.png)
     - make sure `MAVEN` pointing to correct `jdk` which is `jdk-16` like below:
         ![mvn --version](resource/mvn-version.png)
+        
 How to Run
 ----------
 -   ``` git clone https://github.com/UbaidurRehman1/Cloud-Native-App-Spring-Boot```
