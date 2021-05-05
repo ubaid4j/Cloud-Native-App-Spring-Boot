@@ -57,7 +57,7 @@ public class SwaggerConfig {
      * @return ApiInfo
      */
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("Authentication API").description("")
+        return new ApiInfoBuilder().title("Currency Exchange API").description("This API return the exchange rate form one currency to another currency")
                 .contact(new Contact("Ubaid ur Rehman", "https://www.linkedin.com/in/ubaid-ur-rehman-5a0118119/", "urehman.bese16seecs@seecs.edu.pk"))
                 .license("Open Source")
                 .licenseUrl("https://github.com/UbaidurRehman1/Cloud-Native-App-Spring-Boot/blob/master/LICENSE")

@@ -1,6 +1,6 @@
 About
 =====
-- Implement `/currency/{currency}/rate/{conversion-rate}` end point which get currency (amount) and conversion rate and return the resultant currency
+- [Currency Conversion Server](http://localhost:8755/swagger-ui/index.html?urls.primaryName=currency-conversion-service)
 
 Dependencies
 ============
@@ -15,7 +15,7 @@ Dependencies
     - spring-cloud-sleuth-zipkin
     - spring-cloud-starter-sleuth
 - #### Security
-  - ##### [Cloud Security](./../moreinfo.md#Spring-cloud-security-starter)
+  - ##### Spring Security
     - spring-cloud-starter-security
   - ##### [OAuth2 Resource Server](./../moreinfo.md#Resource-server)
     - spring-boot-starter-oauth2-resource-server
