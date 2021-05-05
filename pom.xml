@@ -23,7 +23,8 @@
         <module>currency-exchange-service</module>
         <module>currency-conversion-service</module>
         <module>country-service</module>
-        <module>rest-api</module>
+        <module>api-composer</module>
+        <module>user-service</module>
     </modules>
 
     <properties>
@@ -59,6 +60,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
+
+        <!--        Swagger    -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
         </dependency>
 
         <!--		Tests		-->
@@ -131,10 +139,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <!--        To  include local jars for rest-api         -->
-                <configuration>
-                    <includeSystemScope>true</includeSystemScope>
-                </configuration>
             </plugin>
         </plugins>
     </build>

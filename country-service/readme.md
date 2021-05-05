@@ -1,6 +1,6 @@
 About
 =====
-- Implement [End Point](http://localhost:5200/swagger-ui/index.html#/country-controller) which return all countries 
+- [Country Service](http://localhost:8755/swagger-ui/index.html?urls.primaryName=country-service) 
 
 Dependencies
 ============
@@ -18,7 +18,7 @@ Dependencies
       - spring-cloud-sleuth-zipkin
       - spring-cloud-starter-sleuth
 - #### Security
-  - ##### [Cloud Security](./../moreinfo.md#Spring-cloud-security-starter)
+  - ##### Spring Security
     - spring-cloud-starter-security
   - ##### [OAuth2 Resource Server](./../moreinfo.md#Resource-server)
     - spring-boot-starter-oauth2-resource-server

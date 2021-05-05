@@ -1,12 +1,12 @@
 # Microservices with Spring Cloud
 
-Micro Service
+Why micro-services architecture
 -------------
 - RestFul
 - Small Deployable Units
 - Cloud Enabled
 
-Challenges
+Challenges in monolith App
 ----------
 - Bounded Context
 - Configuration Management
@@ -14,12 +14,11 @@ Challenges
 - Visibility
 - Pack of cards
 
-Spring Cloud
+Here, comes Spring Cloud
 ------------
 - Spring Cloud Config ~Management
 - Eureka ~Dynamic Scaling
-- Zipkin and Netflix API ~Visibility and Monitoring
-- Hystrix ~Fault Tolerance
+- Zipkin && Sleuth ~Visibility and Monitoring
 
 Advantages of Microservices Architecture
 ----------------------------------------
@@ -30,8 +29,8 @@ Advantages of Microservices Architecture
 Distributed Tracing
 -------------------
 1. Pre-Req
-    1. Run [Rabbit MQ Service](./envcn/docker-compose.yml)
-    2. Run [Zipkin Service](./envcn/docker-compose.yml)
+    1. **Rabbit MQ Service**
+    2. **Zipkin Service**
 2.  Add dependency ```spring-cloud-starter-zipkin```
     1. It compiles two dependencies
         1. ```spring-cloud-starter-sleuth```
@@ -49,9 +48,9 @@ ELK Stack
 -------------------
 ### Pre-Requisite
 1. Pre-Req
-    1. Run [Elastic Search](./envcn/docker-compose.yml)
-    2. Run [Logstash](./envcn/docker-compose.yml)
-    3. Run [Kibana](./envcn/docker-compose.yml)
+    1. **Elastic Search**
+    2. **Logstash**
+    3. **Kibana**
 2. Add dependency `logstash-logging-spring-boot-starter`
 3. Add following Properties in props file:
     1. `logging.logstash.enabled=true`
@@ -61,38 +60,9 @@ ELK Stack
 
 Spring Cloud Config
 -------------------
-- We need `spring-cloud-starter-config` dependency and ` management.endpoints.web.exposure.include=\*` to expose some end points
--  When our micro service is running, and we don't want to stop them
-    to change the config
--  Use Post method http://${host}:${port}/actuator/refresh to refresh the configuration
--  It will update the config for specific port number
-
-To Update All Instances in on Post Request
------------------------------------------
-
--  Add dependency: spring-cloud-starter-bus-amqp in your service
--  Post `http://${host}:${port}/actuator/bus-refresh` to refresh all the
-    instances.
-
-Request Identification
-----------------------
-To Identify a request in the service we need:
-
--  spring-cloud-starter-sleuth
--  spring-cloud-starter-netflix-zuul
--  Sample Bean -\> Sampler.ALWAYS\_SAMPLER
-- code
-    ```
-      import com.netflix.zuul.context.RequestContext;
-      import javax.servlet.http.HttpServletResponse;
-      HttpServletResponse response = RequestContext.getCurrentContext().getResponse();
-      This response will have unique identity
-    ```
-
-Spring Cloud Security Starter
------------------------------
-- According to Spring Cloud Security Official Page: 
-`Spring Cloud Security offers a set of primitives for building secure applications and services with minimum fuss`
+-  There is need to centralize the configurations for difference environments (dev, local, prod, qa) 
+-  Here comes Spring Cloud Config, it provides a config client and a config server
+-  We have to setup the config server to point to cloud repo (in our case github) and then make our config client to point to our config server to get the configurations from the config server  
 
 Resource Server
 ---------------

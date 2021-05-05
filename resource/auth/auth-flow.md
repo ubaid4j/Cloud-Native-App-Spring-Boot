@@ -2,21 +2,20 @@
 
 Detail:
 ======
-1. For User End Clients (Like web browser), We have registered a public client in KC auth server like blow. When a user login into the web browser and access this 3cn app, then first it redirects to KC server login page to authorize itself.
-It authorizes the user on its user roles.
+1. For User End Clients (Like web browser), We have registered a public client (**3cn-react-client**) in KC auth server. When a user login into the web browser, then first it redirects to KC server login page for authentication.  When a user provider correct auth credentials (username and password) then KC auth server returns an `access-token` to the end client.
 ![3CN React Client](3cn-react-client.png)
 ![3CN React Client Access Type](3cn-react-client-access-type.png)
    
-2. When user access protected resource, then this client request to `rest-api` to get processed protected resource. 
-3. `rest-api` first validate this request using the `Keycloak Adpater`. `rest-api` then check the user-role for the protected resource.
-4. After validating the request and validate the user-role, `rest-api` get the required resource from the protected resource-server hidden behind the `api-gateway-server`.
-5. `rest-api` request first goes to `api-gateway-server` which validate the request and re-route this request to respective `resource server`
+2.This end client will create request to the `resource servers` by appending this `access-token` in `Authorization` header. 
+   
+3.The `resource servers` validate this access token by the help of same `Authorization Server` and then server the request.
+   
 
 Validation
 ==========
 1. #### User Role Validation
-In 3cn App, we are validating User Roles at `Clients` and `Rest-API` level
+   We are validating User Roles in `client` level.
 2. #### Scope Validation
-In 3cn App, we are validating Scopes in `resource-server` level only.
+   We are validating Scopes in `resource-server` level.
 3. #### Audience Validation
-In 3cn App, we are validating Audience in `resource-server` level only.
+   We are validating Audience in `resource-server` level.
