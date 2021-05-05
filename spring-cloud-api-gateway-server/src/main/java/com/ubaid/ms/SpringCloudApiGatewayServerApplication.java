@@ -32,9 +32,9 @@ public class SpringCloudApiGatewayServerApplication {
                 .route(r -> r.path("/config/limits")
                                 .filters(f -> f.filter(filterFactory.apply()))
                             .uri("lb://API-COMPOSER"))
-                .route(r -> r.path("/token/**")
+                .route(r -> r.path("/user-service/oauth/token")
                                 .filters(f -> f.filter(filterFactory.apply()))
-                            .uri("lb://API-COMPOSER"))
+                            .uri("lb://USER-SERVICE"))
                 .route(r -> r.path("/currency-conversion/**")
                                .filters(f -> f.filter(filterFactory.apply()))
                             .uri("lb://CURRENCY-CONVERSION-SERVICE"))
@@ -53,6 +53,9 @@ public class SpringCloudApiGatewayServerApplication {
                 .route(r -> r.path("/currency-exchange-service/v3/api-docs")
                                 .filters(f -> f.rewritePath("/currency-exchange-service", ""))
                             .uri("lb://CURRENCY-EXCHANGE-SERVICE"))
+                .route(r -> r.path("/user-service/v3/api-docs")
+                                .filters(f -> f.rewritePath("/user-service", ""))
+                            .uri("lb://USER-SERVICE"))
                 .build();
     }
 }

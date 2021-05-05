@@ -1,10 +1,10 @@
-package com.ubaid.ms.currency_conversion_service.restapi;
+package com.ubaid.ms.userservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CurrencyConversionClientApplicationTests {
+class UserServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

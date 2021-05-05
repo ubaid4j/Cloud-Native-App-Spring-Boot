@@ -20,7 +20,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 @EnableGlobalMethodSecurity(jsr250Enabled = true, prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final static String[] ALLOWED_PATHS = {"/token/**", "/v3/api-docs"};
+    private final static String[] ALLOWED_PATHS = {"/v3/api-docs"};
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

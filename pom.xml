@@ -24,6 +24,7 @@
         <module>currency-conversion-service</module>
         <module>country-service</module>
         <module>api-composer</module>
+        <module>user-service</module>
     </modules>
 
     <properties>
