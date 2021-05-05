@@ -14,7 +14,7 @@ Dependencies
     - spring-cloud-sleuth-zipkin
     - spring-cloud-starter-sleuth
 - #### Security
-  - ##### [Cloud Security](./../moreinfo.md#Spring-cloud-security-starter)
+  - ##### Spring Security
     - spring-cloud-starter-security
   - ##### [OAuth2 Resource Server](./../moreinfo.md#Resource-server)
     - spring-boot-starter-oauth2-resource-server

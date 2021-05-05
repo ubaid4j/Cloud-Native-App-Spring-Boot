@@ -35,11 +35,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
-        <!--		responsible to  broadcast config state change -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-bus-amqp</artifactId>-->
-<!--        </dependency>-->
         <!--		Distributed Management 		-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -52,7 +47,7 @@
         <!--	================================Cloud Start End================================				-->
 
         <!--		=============================Auth=============================		-->
-        <!--        Spring Cloud Security                     -->
+        <!--        Spring Security                         -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>

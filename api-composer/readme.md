@@ -1,8 +1,6 @@
 About
 =====
-- [Rest API](http://localhost:5200/swagger-ui.html#/exchange-controller)
-    - Exposes URLs to Clients
-    - Interact with micro-services to return desired result
+- [API Composer](http://localhost:8755/swagger-ui/index.html?urls.primaryName=api-composer)
   
 Dependencies
 ============
@@ -18,13 +16,11 @@ Dependencies
   - ##### Distributed Tracing
     - spring-cloud-sleuth-zipkin
     - spring-cloud-starter-sleuth
-  - ##### ~Cloud Bus~
-    - ~spring-cloud-starter-bus-amqp~
 - #### Security
-  - ##### [Cloud Security](./../moreinfo.md#Spring-cloud-security-starter)
-    - spring-cloud-starter-security
-  - ##### [KeyCloak Adapter](https://www.keycloak.org/docs/latest/securing_apps/#_spring_boot_adapter)
-    - keycloak-spring-boot-starter
+  - ##### Spring Security
+    - spring-boot-starter-security
+  - ##### [OAUTH2 Resource Server](./../moreinfo.md#Resource-Server) 
+    - spring-boot-starter-oauth2-resource-server
   - ##### Spring Security Tests
     - spring-security-test
 - #### AOP
@@ -49,34 +45,10 @@ Feign Rest Client
     - ##### Config (With gateway-server and registered with naming server)
         - ```@FeignClient``` gets one argument
             - ```name``` the name of api-gateway-server
-    - Add request mapping inside this interface (prefixed with the name of service in case of gateway-server)   
-
-How Feign Client its work
-------------
-- We have
-    - Eureka Naming Server
-    - Zuul Api gateway Server
-    - Feign Client 
-- When we call a service from feign clients, then our request goes to API gateway server, it talks with eureka naming server and get the service which is being called.
-- We can simply directly call a service from our API gateway just prepending the name of being called service and change port to API gateway.
-    
-Netflix-Ribbon
---------------
-- Netflix-Ribbon is a loadbalancer, and it can work along with feign Client
-- ##### Config
-    - Add ```@RibbonClient``` on the ```@FiegnClient``` annotated interface
-    - In the arguments of ```@RibbonClient``` put the name of service to which you want to talk
-
+  
 Rest Template
 -------------
 - RestTemplate is a wrapper which provide Http methods
-
-Connecting rest api to Spring Cloud Config Server
--------------------------------------------------------
-1.  Change name of ```application.properties``` to ```bootstrap.properties```
-2.  Add ```spring.cloud.uri.config=http://localhost:8888```
-3.  It will fetch default profile (or application.properties)
-4.  To change profile add ```spring.profiles.active=profile_name``` in the bootstrap.properties file
 
 
 [Distributed Tracing](./../moreinfo.md#distributed-tracing)

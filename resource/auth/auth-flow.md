@@ -2,19 +2,20 @@
 
 Detail:
 ======
-1. For User End Clients (Like web browser), We have registered a public client in KC auth server like blow. When a user login into the web browser and access this 3cn app, then first it redirects to KC server login page to authorize itself.
-It authorizes the user on its user roles.
+1. For User End Clients (Like web browser), We have registered a public client (**3cn-react-client**) in KC auth server. When a user login into the web browser, then first it redirects to KC server login page for authentication.  When a user provider correct auth credentials (username and password) then KC auth server returns an `access-token` to the end client.
 ![3CN React Client](3cn-react-client.png)
 ![3CN React Client Access Type](3cn-react-client-access-type.png)
    
-1. When user want to access protected resource, then this user create request using this public client and this client request to required protected resource and this request get through from `api-gateway` and `api-gateway` re-route this request to request protected resource. 
-2. `api-gateway` first validate this request acting as `oauth-2 client` from the same `issuer` where the `jwt token` was issued.
+2.This end client will create request to the `resource servers` by appending this `access-token` in `Authorization` header. 
+   
+3.The `resource servers` validate this access token by the help of same `Authorization Server` and then server the request.
+   
 
 Validation
 ==========
 1. #### User Role Validation
-In 3cn App, we are validating User Roles at `Clients`
+   We are validating User Roles in `client` level.
 2. #### Scope Validation
-In 3cn App, we are validating Scopes in `resource-server` level.
+   We are validating Scopes in `resource-server` level.
 3. #### Audience Validation
-In 3cn App, we are validating Audience in `resource-server` level.
+   We are validating Audience in `resource-server` level.
