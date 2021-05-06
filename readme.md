@@ -1,22 +1,18 @@
 Abstract
-========
+--------
 - This repo represents a basic currency conversion cloud native-app which convert currency from given country code to targeted country code.
 - I am using the following stack for this cloud native app.   
-    - **micro-service Architecture with Gateway-Server along with Discovery Server**
-    - **Spring Cloud Security OAuth2 With KeyCloak Server**
+    - **Microservice Architecture with API-GATEWAY along with Discovery Server**
+    - **Spring Security with OAuth2 and KeyCloak Server**
     - **ELK Stack**
     - **Distributed Tracing**
 - Following are the Tools and technologies which I am using:
-  - Java 16
-  - Spring Boot 2.4.4
-  - Spring Cloud 2020.0.2 (Security, Config Server, Service Discovery and Distributed Tracing)
-  - ELK Stack Version 7.10.0
-  - KeyCloak Server (Authorization Server) 12.0.1
+  - **Java 16**
+  - **Spring Boot 2.4.4**
+  - **Spring Cloud 2020.0.2 (Security, Config Server, Service Discovery and Distributed Tracing)**
+  - **ELK Stack Version 7.10.0**
+  - **KeyCloak Server (Authorization Server) 12.0.1**
     
-Auth Flow
-=========
-- [Please visit here](resource/auth/auth-flow.md)
-
 Requirements
 -----------
 - [Maven 3.8.1 or later](resource/install-require-softwares.md#install-maven-and-jdk-16)
@@ -30,13 +26,13 @@ Requirements
         
 How to Run
 ----------
--   ``` git clone https://github.com/UbaidurRehman1/Cloud-Native-App-Spring-Boot```
--   ``` cd Cloud-Native-App-Spring-Boot```
--   ```mvn clean install -DskipTests```
--   ```cd envcn```
--   ```./run.sh``` (it will run all tools which our services needs such as keycloak server, naming server, databases, zipkin, rabbitmq and elk-stack)
--   ``` cd ..```
--   ``` ./run.sh ``` (it will up the micro-services)
+- `git clone https://github.com/UbaidurRehman1/Cloud-Native-App-Spring-Boot`
+- `cd Cloud-Native-App-Spring-Boot`
+- `mvn clean install -DskipTests`
+- `cd envcn`
+- `./run.sh` (it will run all tools which our services needs such as keycloak server, naming server, databases, zipkin, rabbitmq and elk-stack)
+- `cd ..`
+- `./run.sh` (it will up the micro-services)
 
 
 About
@@ -60,6 +56,9 @@ About
   
 
 [Swagger UI](resource/how-to-use-swagger.md)
+----------
+
+[Auth Flow](resource/auth/auth-flow.md)
 ----------
 
 [Distributed Tracing](http://localhost:9411/zipkin/)
