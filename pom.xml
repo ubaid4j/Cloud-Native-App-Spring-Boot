@@ -25,6 +25,7 @@
         <module>country-service</module>
         <module>api-composer</module>
         <module>user-service</module>
+        <module>audit-service</module>
     </modules>
 
     <properties>

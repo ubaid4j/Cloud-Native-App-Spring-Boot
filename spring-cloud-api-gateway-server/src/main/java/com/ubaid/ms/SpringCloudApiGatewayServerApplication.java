@@ -56,6 +56,12 @@ public class SpringCloudApiGatewayServerApplication {
                 .route(r -> r.path("/user-service/v3/api-docs")
                                 .filters(f -> f.rewritePath("/user-service", ""))
                             .uri("lb://USER-SERVICE"))
+                .route(r -> r.path("/audit-service/v3/api-docs")
+                                .filters(f -> f.rewritePath("/audit-service", ""))
+                            .uri("lb://AUDIT-SERVICE"))
+                .route(r -> r.path("/audit-service/**")
+                                .filters(f -> f.filter(filterFactory.apply()))
+                            .uri("lb://AUDIT-SERVICE"))
                 .build();
     }
 }

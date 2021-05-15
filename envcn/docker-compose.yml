@@ -124,6 +124,21 @@ services:
             - cloud-native-volume:/var/lib/mysql
         networks:
             - cloud-native-network
+    mongodb:
+        container_name: cn-mongo-db
+        image: mongo
+        environment:
+            MONGO_INITDB_DATABASE: '3cn_mongo'
+            MONGO_INITDB_ROOT_USERNAME: 'root'
+            MONGO_INITDB_ROOT_PASSWORD: 'password'
+        volumes:
+            - mongo-db-volume:/data/db
+        ports:
+            - '27017:27107'
+        expose:
+            - '27017'
+        networks:
+            - cloud-native-network
     auth-server:
         container_name: auth-server
         image: jboss/keycloak
@@ -166,6 +181,7 @@ volumes:
     flebeat:
     cloud-native-volume:
     auth-db-volume:
+    mongo-db-volume:
 networks:
     cloud-native-network:
     auth-db-network:
