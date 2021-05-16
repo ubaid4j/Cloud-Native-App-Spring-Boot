@@ -14,7 +14,6 @@ import reactor.core.publisher.Mono;
 
 import java.security.Principal;
 import java.util.Optional;
-import java.util.UUID;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -80,7 +79,7 @@ public class AuditServiceImpl implements AuditService {
     }
 
     public String getUserUUID(Principal principal) {
-        if (principal instanceof  JwtAuthenticationToken jwtAuth) {
+        if (principal instanceof JwtAuthenticationToken jwtAuth) {
             return Optional
                     .of(jwtAuth)
                     .map(AbstractOAuth2TokenAuthenticationToken::getToken)

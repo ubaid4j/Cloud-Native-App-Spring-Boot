@@ -9,7 +9,7 @@
 	</parent>
 	<artifactId>audit-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>audit-service</name>
+	<name>3CN Audit Service</name>
 	<description>Audit Logs Service</description>
 	<dependencies>
 
@@ -19,18 +19,12 @@
 			<artifactId>spring-boot-starter-webflux</artifactId>
 		</dependency>
 
+
+		<!--		R2DBC with mySQL with r2dbc migration (no flyway or liquibase) 		-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-r2dbc</artifactId>
 		</dependency>
-
-		<!--		Reactive Data	 -->
-<!--		<dependency>-->
-<!--			<groupId>org.postgresql</groupId>-->
-<!--			<artifactId>postgresql</artifactId>-->
-<!--			<scope>runtime</scope>-->
-<!--		</dependency>-->
-
 		<dependency>
 			<groupId>dev.miku</groupId>
 			<artifactId>r2dbc-mysql</artifactId>
@@ -41,13 +35,8 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-
-
-<!--		<dependency>-->
-<!--			<groupId>org.flywaydb</groupId>-->
-<!--			<artifactId>flyway-core</artifactId>-->
-<!--		</dependency>-->
-
+		<!--		migration for r2dbc. Though its simple but it works		-->
+		<!--		https://stackoverflow.com/a/57215526/7098287 (waiting for official support for flyway or liquibase	-->
 		<dependency>
 			<groupId>name.nkonev.r2dbc-migrate</groupId>
 			<artifactId>r2dbc-migrate-spring-boot-starter</artifactId>

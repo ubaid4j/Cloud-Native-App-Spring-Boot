@@ -8,7 +8,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.security.Principal;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("audit-service")
@@ -48,6 +47,4 @@ public class AuditController {
     public Mono<Void> delete(@PathVariable Long id) {
         return auditService.delete(id);
     }
-
-
 }

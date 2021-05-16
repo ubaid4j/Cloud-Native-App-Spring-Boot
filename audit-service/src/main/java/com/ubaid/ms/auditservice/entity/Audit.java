@@ -4,10 +4,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.sql.Timestamp;
 import java.time.Instant;
-import java.util.Date;
-import java.util.UUID;
 
 @Data
 @Table
