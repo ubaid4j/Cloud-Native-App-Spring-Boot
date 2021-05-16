@@ -163,7 +163,6 @@ services:
             - auth-db-network
 volumes:
     elasticsearch:
-    flebeat:
     cloud-native-volume:
     auth-db-volume:
 networks:
