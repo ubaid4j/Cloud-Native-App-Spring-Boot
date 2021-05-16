@@ -36,7 +36,9 @@ How to Run
 - `./run.sh` (it will run all tools which our services needs such as keycloak server, naming server, databases, zipkin, rabbitmq and elk-stack)
 - `cd ..`
 - `./run.sh` (it will up the micro-services)
-
+- [Access Web Client UI](http://localhost:3000)
+- [Access Swagger Client UI](http://localhost:8755/swagger-ui/index.html)
+    - To authorize the requests in Swagger, [please follow this](resource/how-to-use-swagger.md)
 
 About
 ----
