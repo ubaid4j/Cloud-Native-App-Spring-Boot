@@ -4,6 +4,8 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.Date;
 import java.util.UUID;
 
@@ -14,7 +16,7 @@ public class Audit {
     @Id
     private Long id;
     private String userUuid;
-    private Date createdAt;
+    private Instant createdAt;
     private String fromCurrency;
     private String toCurrency;
     private float exchangeRate;
@@ -26,5 +28,5 @@ public class Audit {
     private int currencyExchangePort;
     private int currencyConversionPort;
     private boolean isDeleted;
-    private Date lastUpdated;
+    private Instant lastUpdated;
 }

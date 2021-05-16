@@ -1,12 +1,13 @@
 package com.ubaid.ms.ccdto;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.UUID;
 
 public record AuditDTO(
         Long id,
         String userUUID,
-        Date timestamp,
+        Instant timestamp,
         String fromCurrency,
         String toCurrency,
         float exchangeRate,
