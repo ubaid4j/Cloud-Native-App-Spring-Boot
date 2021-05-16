@@ -1,0 +1,2 @@
+ARG MY_SQL
+FROM mysql:${MY_SQL}
