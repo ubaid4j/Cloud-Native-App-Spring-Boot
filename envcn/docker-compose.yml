@@ -27,6 +27,7 @@ services:
             - "9411"
         networks:
             - cloud-native-network
+
     elasticsearch:
         container_name: elasticsearch
         build:
@@ -50,7 +51,6 @@ services:
             discovery.type: single-node
         networks:
             - cloud-native-network
-
     logstash:
         container_name: logstash
         build:
@@ -116,6 +116,7 @@ services:
             - 8761
         ports:
             - 8761:8761
+
     db:
         container_name: cn-db
         build:
@@ -154,7 +155,7 @@ services:
             DB_USER: 'keycloak'
             DB_PORT: '3306'
         ports:
-            - '9898:8080'
+            - '8080:8080'
         expose:
             - '8080'
         networks:

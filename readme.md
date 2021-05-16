@@ -15,6 +15,9 @@ Abstract
     
 Requirements
 -----------
+- Add`127.0.0.1 auth-server` in the last of your hosts file.
+    - For Linux/Unix based system, its location is at: `/etc/hosts`
+    - For Windows, its location is at: `c:\Windows\System32\Drivers\etc\hosts`
 - [Maven 3.8.1 or later](resource/install-require-softwares.md#install-maven-and-jdk-16)
 - [Docker 19.03.13 or later](resource/install-require-softwares.md#install-docker)
 - [JDK 16 or later](resource/install-require-softwares.md#install-maven-and-jdk-16)
