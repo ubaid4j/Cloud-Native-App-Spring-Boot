@@ -2,7 +2,11 @@ version: '3.2'
 services:
     rabbitmq:
         container_name: rabbitmq
-        image: rabbitmq:management
+        build:
+            context: rabbitmq
+            dockerfile: Dockerfile
+            args:
+                RABBIT_MQ: $RABBIT_MQ
         expose:
             - "5672"
         ports:
@@ -12,7 +16,11 @@ services:
             - cloud-native-network
     zipkin:
         container_name: zipkin
-        image: openzipkin/zipkin
+        build:
+            context: zipkin
+            dockerfile: Dockerfile
+            args:
+                ZIPKIN: $ZIPKIN
         ports:
             - "9411:9411"
         expose:
@@ -110,7 +118,11 @@ services:
             - 8761:8761
     db:
         container_name: cn-db
-        image: mysql
+        build:
+            context: db
+            dockerfile: Dockerfile
+            args:
+                MY_SQL: $MY_SQL
         environment:
             MYSQL_DATABASE: 'spring_dev'
             MYSQL_USER: 'spring'
@@ -126,7 +138,11 @@ services:
             - cloud-native-network
     auth-server:
         container_name: auth-server
-        image: jboss/keycloak
+        build:
+            context: kc
+            dockerfile: Dockerfile
+            args:
+                KEY_CLOAK: $KEY_CLOAK
         depends_on:
             - auth-db
         environment:
@@ -148,6 +164,9 @@ services:
         container_name: auth-db
         build:
             context: auth-db/
+            dockerfile: Dockerfile
+            args:
+                MY_SQL: $MY_SQL
         environment:
             MYSQL_DATABASE: 'keycloak'
             MYSQL_USER: 'keycloak'
