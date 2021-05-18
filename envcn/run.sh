@@ -4,6 +4,8 @@ docker container stop cn-db;
 docker container rm cn-db;
 docker volume rm envcn_cloud-native-volume;
 
+#There is a random error (gh-282) when starting auth-server.
+#To remove the possibility of gh-282, we are removing auth-db data.
 docker container stop auth-db;
 docker container rm auth-db;
 docker volume rm envcn_auth-db-volume;
