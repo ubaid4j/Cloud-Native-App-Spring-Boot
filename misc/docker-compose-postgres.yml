@@ -1,0 +1,37 @@
+version: '3'
+services:
+    postgresdb:
+        image: postgres
+        restart: always
+        environment:
+            POSTGRES_USER: 'root'
+            POSTGRES_PASSWORD: 'password'
+        ports:
+            - '3312:5432'
+        expose:
+            - '5432'
+        volumes:
+            - postgresdbTemp:/var/lib/postgresql/data
+        networks:
+            - envcn_cloud-native-network
+    mongodb:
+        container_name: cn-mongo-db
+        image: mongo
+        environment:
+            MONGO_INITDB_DATABASE: '3cn_mongo'
+            MONGO_INITDB_ROOT_USERNAME: 'root'
+            MONGO_INITDB_ROOT_PASSWORD: 'password'
+        volumes:
+            - mongodbTemp:/data/db
+        ports:
+            - '27017:27107'
+        expose:
+            - '27017'
+        networks:
+            - envcn_cloud-native-network
+volumes:
+    postgresdbTemp:
+    mongodbTemp:
+networks:
+    envcn_cloud-native-network:
+        external: true
