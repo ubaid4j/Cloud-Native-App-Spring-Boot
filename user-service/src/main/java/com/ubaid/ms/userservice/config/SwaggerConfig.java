@@ -1,10 +1,14 @@
 package com.ubaid.ms.userservice.config;
 
 import com.google.common.collect.Lists;
+import com.ubaid.ms.userservice.controller.UserServiceController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
@@ -17,18 +21,24 @@ import java.util.List;
 @Configuration
 @EnableOpenApi
 @Slf4j
+@ComponentScan(basePackageClasses = {
+        UserServiceController.class
+})
 public class SwaggerConfig {
 
     public static final String AUTHORIZATION = "Authorization";
+    public static final String USER = "User";
 
     @Bean
     public Docket swaggerSpringfoxDocket() {
         return new Docket(DocumentationType.OAS_30)
+                .tags(new Tag(USER, String.format("REST API for %s", USER)))
                 .apiInfo(apiInfo())
                 .securityContexts(Lists.newArrayList(securityContext()))
                 .securitySchemes(Lists.newArrayList(bearerToken()))
                 .useDefaultResponseMessages(false)
                 .select()
+                .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
                 .build();
     }
 
