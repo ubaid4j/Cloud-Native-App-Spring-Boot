@@ -1,4 +1,4 @@
-package com.ubaid.ms.countryservice.controller;
+package com.ubaid.ms.countryservice.advice;
 
 import com.ubaid.ms.ccdto.ExceptionDTO;
 import com.ubaid.ms.module.ccexception.CCException;
