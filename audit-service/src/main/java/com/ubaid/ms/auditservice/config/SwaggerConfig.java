@@ -23,12 +23,12 @@ import java.util.List;
 public class SwaggerConfig {
 
     public static final String AUTHORIZATION = "Authorization";
-    public static final String AUDIT = "AUDIT";
+    public static final String AUDIT = "Audit";
 
     @Bean
     public Docket swaggerSpringfoxDocket() {
         return new Docket(DocumentationType.OAS_30)
-                .tags(new Tag(AUDIT, String.format("REST API fro %s", AUDIT)))
+                .tags(new Tag(AUDIT, String.format("REST API for %s", AUDIT)))
                 .ignoredParameterTypes(Principal.class)
                 .apiInfo(apiInfo())
                 .securityContexts(Lists.newArrayList(securityContext()))
