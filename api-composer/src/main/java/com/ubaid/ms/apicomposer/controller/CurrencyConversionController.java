@@ -6,10 +6,11 @@ import com.ubaid.ms.apicomposer.service.CurrencyConversionService;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.ws.rs.core.MediaType;
+
+import java.net.HttpURLConnection;
 import java.security.Principal;
 
 @Api(tags = SwaggerConfig.CURRENCY_CONVERSION)
@@ -23,10 +24,10 @@ public class CurrencyConversionController {
 
     @ApiOperation(value = "Convert Currency from a given country to target country", authorizations = @Authorization(value = "Bearer"), response = ExchangeValueDTO.class)
     @ApiResponses({
-            @ApiResponse(code = HttpStatus.SC_OK, message = "Currency is converted to target country currency"),
-            @ApiResponse(code = HttpStatus.SC_UNAUTHORIZED, message = "You are not authorized to send a request")
+            @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "Currency is converted to target country currency"),
+            @ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "You are not authorized to send a request")
     })
-    @GetMapping(value = "/{from}/to/{to}/q/{quantity}", produces = MediaType.APPLICATION_JSON)
+    @GetMapping(value = "/{from}/to/{to}/q/{quantity}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ExchangeValueDTO getCurrencyConversion(
             Principal principal,
             @PathVariable("from") String from,
