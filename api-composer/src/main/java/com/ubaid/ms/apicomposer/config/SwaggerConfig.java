@@ -1,10 +1,8 @@
 package com.ubaid.ms.apicomposer.config;
 
 import com.google.common.collect.Lists;
-import com.ubaid.ms.apicomposer.controller.CurrencyConversionController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -22,9 +20,6 @@ import java.util.*;
 @Configuration
 @EnableOpenApi
 @Slf4j
-@ComponentScan(basePackageClasses = {
-        CurrencyConversionController.class
-})
 public class SwaggerConfig {
 
     public static final String AUTHORIZATION = "Authorization";

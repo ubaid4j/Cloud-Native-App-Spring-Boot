@@ -1,10 +1,8 @@
 package com.ubaid.ms.userservice.config;
 
 import com.google.common.collect.Lists;
-import com.ubaid.ms.userservice.controller.UserServiceController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -21,9 +19,6 @@ import java.util.List;
 @Configuration
 @EnableOpenApi
 @Slf4j
-@ComponentScan(basePackageClasses = {
-        UserServiceController.class
-})
 public class SwaggerConfig {
 
     public static final String AUTHORIZATION = "Authorization";
