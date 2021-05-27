@@ -8,8 +8,8 @@ Abstract
     - **Distributed Tracing**
 - Following are the Tools and technologies which I am using:
   - **Java 16**
-  - **Spring Boot 2.4.5**
-  - **Spring Cloud 2020.0.2 (Security, Config Server, Service Discovery and Distributed Tracing)**
+  - **Spring Boot 2.5.0**
+  - **Spring Cloud 2020.0.3 (Security, Config Server, Service Discovery and Distributed Tracing)**
   - **ELK Stack Version 7.12.1**
   - **KeyCloak Server (Authorization Server) 13.0.0**
     
