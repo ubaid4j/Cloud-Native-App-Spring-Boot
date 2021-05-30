@@ -6,6 +6,9 @@ Dependencies
 ============
 - #### Web (embedded tomcat + MVC)
     - spring-boot-starter-web
+- #### Data
+  - spring-boot-starter-data-jpa
+  - mysql-connector-java
 - #### Cloud
   - ##### config server
     - spring-cloud-starter-config
@@ -15,7 +18,7 @@ Dependencies
     - spring-cloud-sleuth-zipkin
     - spring-cloud-starter-sleuth
 - #### Security
-  - ##### [Cloud Security](./../moreinfo.md#Spring-cloud-security-starter)
+  - ##### Spring Security
     - spring-cloud-starter-security
   - ##### [OAuth2 Resource Server](./../moreinfo.md#Resource-server)
     - spring-boot-starter-oauth2-resource-server

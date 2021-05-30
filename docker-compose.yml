@@ -58,10 +58,10 @@ services:
             - envcn_cloud-native-network
         depends_on:
             - spring-cloud-api-gateway-server
-    rest-api:
-        container_name: rest-api
+    api-composer:
+        container_name: api-composer
         build:
-            context: rest-api
+            context: api-composer
             dockerfile: Dockerfile
         expose:
             - 5200
@@ -73,12 +73,27 @@ services:
             - envcn_cloud-native-network
         depends_on:
             - spring-cloud-api-gateway-server
+    audit-service:
+        container_name: audit-service
+        build:
+            context: audit-service
+            dockerfile: Dockerfile
+        expose:
+            - 8950
+        ports:
+            - 8950:8950
+        volumes:
+            - cloud-native-volume:/tmp
+        networks:
+            - envcn_cloud-native-network
+        depends_on:
+            - spring-cloud-api-gateway-server
     react-client:
         container_name: react-client
         build:
             context: ./clients/3cn-react-client/
         depends_on:
-            - rest-api
+            - api-composer
         ports:
             - '3000:3000'
         networks:

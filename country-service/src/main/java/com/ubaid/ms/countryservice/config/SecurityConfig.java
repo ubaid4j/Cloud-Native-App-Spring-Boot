@@ -1,9 +1,12 @@
 package com.ubaid.ms.countryservice.config;
 
 import com.ubaid.ms.countryservice.config.validator.AudienceValidator;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -12,6 +15,9 @@ import org.springframework.security.config.annotation.web.configurers.oauth2.ser
 import org.springframework.security.oauth2.core.DelegatingOAuth2TokenValidator;
 import org.springframework.security.oauth2.core.OAuth2TokenValidator;
 import org.springframework.security.oauth2.jwt.*;
+import org.springframework.web.client.RestOperations;
+
+import java.time.Duration;
 
 /**
  * <pre>
@@ -25,27 +31,42 @@ import org.springframework.security.oauth2.jwt.*;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(jsr250Enabled = true, prePostEnabled = true)
+@Slf4j
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
     private String issuerUri;
 
+    @Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
+    private String jwkSetUri;
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests(authorize -> authorize.anyRequest().authenticated())
+        http
+                .cors().and()
+                .authorizeRequests(authorize -> authorize
+                        .antMatchers("/v3/api-docs").permitAll()
+                        .antMatchers(HttpMethod.OPTIONS).permitAll()
+                        .anyRequest().authenticated())
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
     }
 
     @Bean
-    JwtDecoder jwtDecoder() {
-        NimbusJwtDecoder jwtDecoder = (NimbusJwtDecoder)
-                JwtDecoders.fromIssuerLocation(issuerUri);
-        OAuth2TokenValidator<Jwt> audienceValidator = new AudienceValidator();
-        OAuth2TokenValidator<Jwt> withIssuer = JwtValidators.createDefaultWithIssuer(issuerUri);
-        OAuth2TokenValidator<Jwt> withAudience = new DelegatingOAuth2TokenValidator<>(withIssuer, audienceValidator);
+    JwtDecoder jwtDecoder(RestTemplateBuilder builder) {
+        RestOperations rest = builder
+                .setConnectTimeout(Duration.ofMinutes(3))
+                .setReadTimeout(Duration.ofMinutes(3))
+                .build();
 
+        NimbusJwtDecoder jwtDecoder = NimbusJwtDecoder.withJwkSetUri(jwkSetUri).restOperations(rest).build();
+
+        OAuth2TokenValidator<Jwt> withAudience = new DelegatingOAuth2TokenValidator<>(
+                JwtValidators.createDefaultWithIssuer(issuerUri),
+                new AudienceValidator()
+        );
         jwtDecoder.setJwtValidator(withAudience);
-
+        log.info("Setting Connect Time out and Read Time out to 180 seconds for Rest Operations of JWT Decoder");
         return jwtDecoder;
     }
 

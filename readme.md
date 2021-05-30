@@ -1,90 +1,92 @@
 Abstract
-========
+--------
 - This repo represents a basic currency conversion cloud native-app which convert currency from given country code to targeted country code.
 - I am using the following stack for this cloud native app.   
-    - [Micro-Service Architecture with Gateway-Server along with Discovery Server]()
-    - [Spring Cloud Security OAuth2 With KeyCloak Server]()
-    - [ELK Stack]()
-    - [Distributed Tracing]()
+    - **Microservice Architecture with API-GATEWAY along with Discovery Server**
+    - **Spring Security with OAuth2 and KeyCloak Server**
+    - **ELK Stack**
+    - **Distributed Tracing**
 - Following are the Tools and technologies which I am using:
-  - Java 16
-  - Spring Boot 2.4.4
-  - Spring Cloud 2020.0.2 (Security, Config Server, Service Discovery and Distributed Tracing)
-  - ELK Stack Version 7.10.0
-  - KeyCloak Server (Authorization Server) 12.0.1
+  - **Java 16**
+  - **Spring Boot 2.5.0**
+  - **Spring Cloud 2020.0.3 (Security, Config Server, Service Discovery and Distributed Tracing)**
+  - **ELK Stack Version 7.12.1**
+  - **KeyCloak Server (Authorization Server) 13.0.0**
     
-Auth Flow
-=========
-- [Please visit here](./resource/auth/auth-flow.md)
-
 Requirements
 -----------
-- [Maven 3.8.1 or later](./resource/install-require-softwares.md#install-maven-and-jdk-16)
-- [Docker 19.03.13 or later](./resource/install-require-softwares.md#install-docker)
-- [JDK 16 or later](./resource/install-require-softwares.md#install-maven-and-jdk-16)
-- [Set JAVA_HOME](./resource/install-require-softwares.md#install-maven-and-jdk-16)
-- [Set MAVEN_HOME and M2_HOME](./resource/install-require-softwares.md#install-maven-and-jdk-16)
-
+- Add`127.0.0.1 auth-server` in the last of your hosts file.
+    - For Linux/Unix based system, its location is at: `/etc/hosts`
+    - For Windows, its location is at: `c:\Windows\System32\Drivers\etc\hosts`
+- [Maven 3.8.1 or later](resource/install-require-softwares.md#install-maven-and-jdk-16)
+- [Docker 19.03.13 or later](resource/install-require-softwares.md#install-docker)
+- [JDK 16 or later](resource/install-require-softwares.md#install-maven-and-jdk-16)
+- Notes: 
+    - make sure`JAVA_HOME` pointing to `jdk-16` directory like below:
+        ![JAVA HOME](resource/java-home.png)
+    - make sure `MAVEN` pointing to correct `jdk` which is `jdk-16` like below:
+        ![mvn --version](resource/mvn-version.png)
+        
 How to Run
 ----------
--   ``` git clone https://github.com/UbaidurRehman1/Cloud-Native-App-Spring-Boot```
--   ``` cd Cloud-Native-App-Spring-Boot```
--   ```mvn clean install -DskipTests```
--   ```cd envcn```
--   ```./run.sh``` (it will run all tools which our services needs such as keycloak server, naming server, databases, zipkin, rabbitmq and elk-stack)
--   ``` cd ..```
--   ``` ./run.sh ``` (it will up the micro-services)
-
+- `git clone https://github.com/UbaidurRehman1/Cloud-Native-App-Spring-Boot`
+- `cd Cloud-Native-App-Spring-Boot`
+- `mvn clean install -DskipTests`
+- `cd envcn`
+- `./run.sh` (it will run all tools which our services needs such as keycloak server, naming server, databases, zipkin, rabbitmq and elk-stack)
+- `cd ..`
+- `./run.sh` (it will up the micro-services)
+- [Access Web Client UI](http://localhost:3000)
+- [Access Swagger Client UI](http://localhost:8755/swagger-ui/index.html)
+    - To authorize the requests in Swagger, [please follow this](resource/how-to-use-swagger.md)
 
 About
 ----
-- Cloud Native App which convert currency from given country code to targeted country code. 
-- Currency Conversion Rest API  is actual responsible to interact with micro-services using ```api-gateway-server```. 
-- An Actor (React Client, React Native Client) can  send a request to rest-api, it interacts with *CURRENCY-EXCHANGE-SERVICE*  micro-service to get exchange rate and then *CURRENCY-CONVERSION-SERVICE* micro-service to convert this currency
+- This App basically converts a currency from given country code to targeted country code by following the **cloud native approach**.
+- `api-gateway` provides a gateway for end clients (web browsers, mobiles) to interact the resource servers (micro-services) 
+- An Actor (React Client, React Native Client) can interact with the micro-services through the `api-gateway`
 - ![Micro Service Architecture](resource/3cnAuthFlow.png)
-- In above diagram, We have 
-    - Two micro-services ```currency-exchange-service```  and ```currency-conversion-service``` helps us to convert currency from one country code to another country code.
-    - An api-gateway-server (which is responsible to redirect requests to micro-services)
-    - A ```country-micro-service``` which returns all countries with their respect Code
-    - A rest-api which expose their URLs to Clients (and is interacts with API gateway server)
+- In above diagram, We can see:
+    - An End Client can access the resource servers through the `api-gatewy`
+    - There are four resource servers:
+      1. `api-composer` abstract the functions of getting exchange rate and converting this exchange rate by the help of `currency-exchange-service` and `currency-conversion-service`
+      2. `currency-exchange-service` return the exchange rate between two currencies.
+      3. `currency-conversion-sevice` convert the currency to another currency using the exchange rate.
+      4. `country-service` return all countries
+    - An `api-gateway` which exposes its URLs to Clients
     - ELK Stack, for Centralized Logging
     - Auth Server (For OAuth2 Authentication and Authorization)
     - Naming Server (For services discovery)
-    - Distributed Tracing Stack, for micro-services tracing
+    - Distributed Tracing Stack, for request tracing in micro-service architecture
+  
 
-    
-How it works
-------------
-- [Go to Swagger](resource/how-to-use-swagger.md) 
-- ~~Simply go to [Postman collection](https://www.getpostman.com/collections/567dafcda4e68e8ab855) and play with end points~~.
-
-Swagger UI
+[Swagger UI](resource/how-to-use-swagger.md)
 ----------
-- [Go here to check API docs about Currency Conversion API](http://localhost:5200/swagger-ui/index.html#/exchange-controller)
+
+[Auth Flow](resource/auth/auth-flow.md)
+----------
+
+[Distributed Tracing](http://localhost:9411/zipkin/)
+-------------------
 
 Kibana Dashboard (For Centralized Logging)
 ------------------------------------------
 - [Create Index for logging](resource/create-index-for-logging.md)
 - [Go here to view centralized logs](http://localhost:5601/app/discover#)
 
-Distributed Tracing
--------------------
-- [Go Here to trace the micro-services](http://localhost:9411/zipkin/)
-
-
-REST API
---------
--   [REST API](http://localhost:5200/actuator/health)
 
 Micro-Services
 --------------
--   [CURRENCY EXCHANGE SERVICE](http://localhost:8000/actuator/health)
--   [CURRENCY CONVERSION SERVICE](http://localhost:8100/actuator/health)
+-   [API Composer](http://localhost:8755/swagger-ui/index.html?urls.primaryName=api-composer)
+-   [Currency Exchange Service](http://localhost:8755/swagger-ui/index.html?urls.primaryName=currency-exchange-service)
+-   [Currency Conversion Service](http://localhost:8755/swagger-ui/index.html?urls.primaryName=currency-conversion-service)
+-   [Country Service](http://localhost:8755/swagger-ui/index.html?urls.primaryName=country-service)
+-   [User Service](http://localhost:8755/swagger-ui/index.html?urls.primaryName=user-service)
+-   [API Gateway](http://localhost:8755/actuator/health)
 
 Servers
 -------
--   [SPRING API GATEWAY SERVER](http://localhost:8755/actuator/health)
--   [NETFLIX EUREKA NAMING SERVER](http://localhost:8761/)
+-   [NAMING SERVER](http://localhost:8761/)
 -   [CONFIG SERVER](http://localhost:8888/actuator/health)
 -   [ZIPKIN SERVER](http://localhost:9411/zipkin/)
 -   [RABBIT MQ SERVER *Username & Password: guest*](http://localhost:15672/)
@@ -96,9 +98,4 @@ Config Repo
 Note
 ----
 - You can read about each micro-service by going inside each folder
-- [To get More info about this repo](./moreinfo.md)
-
-Implementation Note:
---------------------
-- I have added local dependencies of `KeyCloak Adapter for Spring Boot` in `rest-api` module
-- See the [reason](https://github.com/keycloak/keycloak/pull/7533#issuecomment-749705232)
+- [To get More info about this repo](moreinfo.md)
