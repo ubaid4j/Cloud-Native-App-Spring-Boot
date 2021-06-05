@@ -38,11 +38,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf().ignoringAntMatchers(ALLOWED_PATHS)
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
+                .cors().and()
+                .csrf().ignoringAntMatchers(ALLOWED_PATHS).and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests(authorize ->
                         authorize
                                 .antMatchers(ALLOWED_PATHS).permitAll()
