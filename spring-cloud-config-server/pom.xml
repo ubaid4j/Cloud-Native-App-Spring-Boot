@@ -6,6 +6,7 @@
         <groupId>com.ubaid.ms</groupId>
         <artifactId>CC-CN-APP</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <artifactId>spring-cloud-config-server</artifactId>

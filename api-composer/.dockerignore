@@ -1,0 +1,6 @@
+/target
+.gitignore
+api-composer.iml
+Dockerfile
+readme.md
+runAllTests.sh

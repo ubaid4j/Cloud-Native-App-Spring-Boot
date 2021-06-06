@@ -1,0 +1,5 @@
+/target
+.gitignore
+netflix-eureka-naming-server.iml
+Dockerfile
+readme.md

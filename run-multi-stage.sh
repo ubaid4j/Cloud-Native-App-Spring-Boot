@@ -1,0 +1,1 @@
+docker-compose -f docker-compose-multi-stage-build.yml up --build;
