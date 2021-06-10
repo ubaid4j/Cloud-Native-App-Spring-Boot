@@ -1,4 +1,4 @@
-FROM 3cn-parent:0.0.1-SNAPSHOT as build
+FROM ubaidurehman/3cn-parent:0.0.1-SNAPSHOT as build
 LABEL maintainer="urehman.bese16seecs@seecs.edu.pk"
 VOLUME /tmp
 WORKDIR /
