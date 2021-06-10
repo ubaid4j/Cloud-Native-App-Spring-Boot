@@ -18,24 +18,15 @@ Requirements
 - Add`127.0.0.1 auth-server` in the last of your hosts file.
     - For Linux/Unix based system, its location is at: `/etc/hosts`
     - For Windows, its location is at: `c:\Windows\System32\Drivers\etc\hosts`
-- [Maven 3.8.1 or later](resource/install-require-softwares.md#install-maven-and-jdk-16)
 - [Docker 19.03.13 or later](resource/install-require-softwares.md#install-docker)
-- [JDK 16 or later](resource/install-require-softwares.md#install-maven-and-jdk-16)
-- Notes: 
-    - make sure`JAVA_HOME` pointing to `jdk-16` directory like below:
-        ![JAVA HOME](resource/java-home.png)
-    - make sure `MAVEN` pointing to correct `jdk` which is `jdk-16` like below:
-        ![mvn --version](resource/mvn-version.png)
         
 How to Run
 ----------
 - `git clone https://github.com/UbaidurRehman1/Cloud-Native-App-Spring-Boot`
-- `cd Cloud-Native-App-Spring-Boot`
-- `mvn clean install -DskipTests`
-- `cd envcn`
-- `./run.sh` (it will run all tools which our services needs such as keycloak server, naming server, databases, zipkin, rabbitmq and elk-stack)
+- `cd Cloud-Native-App-Spring-Boot/envcn`
+- `./run-multi-stage.sh` (it will run all tools which our services needs such as keycloak server, naming server, databases, zipkin, rabbitmq and elk-stack)
 - `cd ..`
-- `./run.sh` (it will up the micro-services)
+- `./run-multi-stage.sh` (it will up the micro-services)
 - [Access Web Client UI](http://localhost:3000)
 - [Access Swagger Client UI](http://localhost:8755/swagger-ui/index.html)
     - To authorize the requests in Swagger, [please follow this](resource/how-to-use-swagger.md)
