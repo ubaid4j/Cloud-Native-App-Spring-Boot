@@ -1,0 +1,5 @@
+/target
+.gitignore
+currency-exchange-service.iml
+Dockerfile
+readme.md

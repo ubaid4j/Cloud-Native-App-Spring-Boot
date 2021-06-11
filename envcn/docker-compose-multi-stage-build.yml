@@ -1,0 +1,190 @@
+version: '3.2'
+services:
+    rabbitmq:
+        container_name: rabbitmq
+        build:
+            context: rabbitmq
+            dockerfile: Dockerfile
+            args:
+                RABBIT_MQ: $RABBIT_MQ
+        expose:
+            - "5672"
+        ports:
+            - 5672:5672
+            - 15672:15672
+        networks:
+            - cloud-native-network
+    zipkin:
+        container_name: zipkin
+        build:
+            context: zipkin
+            dockerfile: Dockerfile
+            args:
+                ZIPKIN: $ZIPKIN
+        ports:
+            - "9411:9411"
+        expose:
+            - "9411"
+        networks:
+            - cloud-native-network
+
+    elasticsearch:
+        container_name: elasticsearch
+        build:
+            context: elasticsearch/
+            args:
+                ELK_VERSION: $ELK_VERSION
+        volumes:
+            -   type: bind
+                source: ./elasticsearch/config/elasticsearch.yml
+                target: /usr/share/elasticsearch/config/elasticsearch.yml
+                read_only: true
+            -   type: volume
+                source: elasticsearch
+                target: /usr/share/elasticsearch/data
+        ports:
+            - "9200:9200"
+            - "9300:9300"
+        environment:
+            ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+            ELASTIC_PASSWORD: changeme
+            discovery.type: single-node
+        networks:
+            - cloud-native-network
+    logstash:
+        container_name: logstash
+        build:
+            context: logstash/
+            args:
+                ELK_VERSION: $ELK_VERSION
+        volumes:
+            -   type: bind
+                source: ./logstash/config/logstash.yml
+                target: /usr/share/logstash/config/logstash.yml
+                read_only: true
+            -   type: bind
+                source: ./logstash/pipeline
+                target: /usr/share/logstash/pipeline
+                read_only: true
+        ports:
+            - "5000:5000/tcp"
+            - "5000:5000/udp"
+            - "9600:9600"
+        environment:
+            LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+        networks:
+            - cloud-native-network
+        depends_on:
+            - elasticsearch
+    kibana:
+        container_name: kibana
+        build:
+            context: kibana/
+            args:
+                ELK_VERSION: $ELK_VERSION
+        volumes:
+            -   type: bind
+                source: ./kibana/config/kibana.yml
+                target: /usr/share/kibana/config/kibana.yml
+                read_only: true
+        ports:
+            - "5601:5601"
+        networks:
+            - cloud-native-network
+        depends_on:
+            - elasticsearch
+
+    config-server:
+        container_name: config-server
+        build:
+            context: ../spring-cloud-config-server
+            dockerfile: Dockerfile.multistage
+        expose:
+            - 8888
+        ports:
+            - 8888:8888
+        networks:
+            - cloud-native-network
+    eureka-naming-server:
+        container_name: naming-server
+        build:
+            context: ../netflix-eureka-naming-server
+            dockerfile: Dockerfile.multistage
+        networks:
+            - cloud-native-network
+        expose:
+            - 8761
+        ports:
+            - 8761:8761
+
+    db:
+        container_name: cn-db
+        build:
+            context: db
+            dockerfile: Dockerfile
+            args:
+                MY_SQL: $MY_SQL
+        environment:
+            MYSQL_DATABASE: 'spring_dev'
+            MYSQL_USER: 'spring'
+            MYSQL_PASSWORD: 'password'
+            MYSQL_ROOT_PASSWORD: 'password'
+        ports:
+            - '3310:3306'
+        expose:
+            - '3306'
+        volumes:
+            - cloud-native-volume:/var/lib/mysql
+        networks:
+            - cloud-native-network
+    auth-server:
+        container_name: auth-server
+        build:
+            context: kc
+            dockerfile: Dockerfile
+            args:
+                KEY_CLOAK: $KEY_CLOAK
+        depends_on:
+            - auth-db
+        environment:
+            KEYCLOAK_USER: 'ubaid'
+            KEYCLOAK_PASSWORD: 'changeme'
+            DB_ADDR: 'auth-db'
+            DB_VENDOR: 'mysql'
+            KEYCLOAK_LOGLEVEL: 'WARN'
+            DB_USER: 'keycloak'
+            DB_PORT: '3306'
+        ports:
+            - '8080:8080'
+        expose:
+            - '8080'
+        networks:
+            - cloud-native-network
+            - auth-db-network
+    auth-db:
+        container_name: auth-db
+        build:
+            context: auth-db/
+            dockerfile: Dockerfile
+            args:
+                MY_SQL: $MY_SQL
+        environment:
+            MYSQL_DATABASE: 'keycloak'
+            MYSQL_USER: 'keycloak'
+            MYSQL_PASSWORD: 'password'
+            MYSQL_ROOT_PASSWORD: 'password'
+        ports:
+            - '3311:3306'
+        expose:
+            - '3306'
+        volumes:
+            - auth-db-volume:/var/lib/mysql
+        networks:
+            - auth-db-network
+volumes:
+    elasticsearch:
+    cloud-native-volume:
+    auth-db-volume:
+networks:
+    cloud-native-network:
+    auth-db-network:
