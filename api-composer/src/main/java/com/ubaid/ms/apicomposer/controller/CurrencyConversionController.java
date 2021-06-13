@@ -1,6 +1,5 @@
 package com.ubaid.ms.apicomposer.controller;
 
-import com.ubaid.ms.apicomposer.config.SwaggerConfig;
 import com.ubaid.ms.ccdto.ExchangeValueDTO;
 import com.ubaid.ms.apicomposer.service.CurrencyConversionService;
 import io.swagger.annotations.*;
@@ -13,7 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import java.net.HttpURLConnection;
 import java.security.Principal;
 
-@Api(tags = SwaggerConfig.CURRENCY_CONVERSION)
+import static com.ubaid.ms.common.Constants.CURRENCY_CONVERSION;
+
+@Api(tags = CURRENCY_CONVERSION)
 @RestController
 @RequestMapping(value = "convert")
 @Slf4j

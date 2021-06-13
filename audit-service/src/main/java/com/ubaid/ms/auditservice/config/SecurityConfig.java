@@ -6,16 +6,16 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
-import org.springframework.security.oauth2.jwt.NimbusReactiveJwtDecoder;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.context.NoOpServerSecurityContextRepository;
 import org.springframework.web.client.RestOperations;
 
 import java.time.Duration;
+
+import static com.ubaid.ms.common.Constants.API_DOCS_PATH;
 
 /**
  * <pre>
@@ -32,7 +32,7 @@ public class SecurityConfig {
     @Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
     private String jwkSetUri;
 
-    private final static String[] ALLOWED_PATHS = {"/v3/api-docs"};
+    private final static String[] ALLOWED_PATHS = {API_DOCS_PATH};
 
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
@@ -58,6 +58,9 @@ public class SecurityConfig {
                 .setReadTimeout(Duration.ofMinutes(3))
                 .build();
         log.info("Setting Connect Time out and Read Time out to 180 seconds for Rest Operations of JWT Decoder");
-        return NimbusJwtDecoder.withJwkSetUri(jwkSetUri).restOperations(rest).build();
+        return NimbusJwtDecoder
+                .withJwkSetUri(jwkSetUri)
+                .restOperations(rest)
+                .build();
     }
 }

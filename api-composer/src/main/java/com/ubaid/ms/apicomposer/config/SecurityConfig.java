@@ -17,6 +17,8 @@ import org.springframework.web.client.RestOperations;
 
 import java.time.Duration;
 
+import static com.ubaid.ms.common.Constants.API_DOCS_PATH;
+
 /**
  * <pre>
  *     1. Configure
@@ -33,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
     private String jwkSetUri;
 
-    private final static String[] ALLOWED_PATHS = {"/v3/api-docs"};
+    private final static String[] ALLOWED_PATHS = {API_DOCS_PATH};
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

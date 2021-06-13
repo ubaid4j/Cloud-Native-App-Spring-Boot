@@ -15,6 +15,7 @@
     <modules>
         <module>cc-dto</module>
         <module>cc-exception</module>
+        <module>cc-common</module>
     </modules>
 
     <properties>
