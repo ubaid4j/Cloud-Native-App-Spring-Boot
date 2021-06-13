@@ -19,6 +19,8 @@ import org.springframework.web.client.RestOperations;
 
 import java.time.Duration;
 
+import static com.ubaid.ms.common.Constants.API_DOCS_PATH;
+
 /**
  * <pre>
  * 1. Configure
@@ -45,11 +47,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .cors().and()
-                .csrf().ignoringAntMatchers("/v3/api-docs").and()
+                .csrf().ignoringAntMatchers(API_DOCS_PATH).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests(authorize ->
                     authorize
-                            .antMatchers("/v3/api-docs").permitAll()
+                            .antMatchers(API_DOCS_PATH).permitAll()
                             .anyRequest()
                             .authenticated())
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
@@ -62,7 +64,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .setReadTimeout(Duration.ofMinutes(3))
                 .build();
 
-        NimbusJwtDecoder jwtDecoder = NimbusJwtDecoder.withJwkSetUri(jwkSetUri).restOperations(rest).build();
+        NimbusJwtDecoder jwtDecoder = NimbusJwtDecoder
+                .withJwkSetUri(jwkSetUri)
+                .restOperations(rest)
+                .build();
 
         OAuth2TokenValidator<Jwt> withAudience = new DelegatingOAuth2TokenValidator<>(
                 JwtValidators.createDefaultWithIssuer(issuerUri),

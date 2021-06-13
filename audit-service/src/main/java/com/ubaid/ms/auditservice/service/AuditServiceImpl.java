@@ -15,6 +15,8 @@ import reactor.core.publisher.Mono;
 import java.security.Principal;
 import java.util.Optional;
 
+import static com.ubaid.ms.common.Constants.EMPTY_STRING;
+
 @RequiredArgsConstructor
 @Slf4j
 @Service
@@ -87,9 +89,9 @@ public class AuditServiceImpl implements AuditService {
                     .map(claimsMap -> claimsMap.get("sub"))
                     .map(String::valueOf)
                     .map(this::logUserUUID)
-                    .orElse("");
+                    .orElse(EMPTY_STRING);
         } else {
-            return "";
+            return EMPTY_STRING;
         }
     }
 

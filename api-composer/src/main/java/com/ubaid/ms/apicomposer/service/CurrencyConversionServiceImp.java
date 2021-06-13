@@ -12,6 +12,10 @@ import org.springframework.stereotype.Service;
 import java.security.Principal;
 import java.util.Optional;
 
+import static com.ubaid.ms.common.Constants.BEARER;
+import static com.ubaid.ms.common.Constants.EMPTY_STRING;
+import static com.ubaid.ms.common.Constants.SINGLE_SPACE;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -44,10 +48,10 @@ public class CurrencyConversionServiceImp implements CurrencyConversionService {
             return Optional
                     .of(jwtAuth)
                     .map(jwtAuthToken -> jwtAuthToken.getToken().getTokenValue())
-                    .map(accessToken -> "Bearer " + accessToken)
-                    .orElse("");
+                    .map(accessToken -> BEARER + SINGLE_SPACE + accessToken)
+                    .orElse(EMPTY_STRING);
         } else {
-            return "";
+            return EMPTY_STRING;
         }
     }
 }

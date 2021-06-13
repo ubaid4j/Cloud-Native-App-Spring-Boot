@@ -15,6 +15,8 @@ import org.springframework.web.client.RestOperations;
 
 import java.time.Duration;
 
+import static com.ubaid.ms.common.Constants.API_DOCS_PATH;
+
 /**
  * <pre>
  *     1. Configure
@@ -27,7 +29,7 @@ import java.time.Duration;
 @Slf4j
 public class SecurityConfig {
 
-    private final static String[] ALLOWED_PATHS = {"/user-service/oauth/token", "/v3/api-docs"};
+    private final static String[] ALLOWED_PATHS = {"/user-service/oauth/token", API_DOCS_PATH};
 
     @Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
     private String jwkSetUri;
