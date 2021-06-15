@@ -1,5 +1,6 @@
 package com.ubaid.ms.gatewayserver.config;
 
+import static com.ubaid.ms.common.Constants.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -8,7 +9,6 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import springfox.documentation.swagger.web.SwaggerResource;
 import springfox.documentation.swagger.web.SwaggerResourcesProvider;
-
 import java.util.List;
 
 @Component
@@ -25,19 +25,17 @@ public class SwaggerConfig implements SwaggerResourcesProvider {
         List<String> allServices = discoveryClient.getServices();
         log.debug("All Services: {}", allServices);
         return allServices
-                .stream()
-                .filter(serviceName -> !serviceName.equalsIgnoreCase("spring-cloud-api-gateway-server"))
-                .map(serviceId -> swaggerResource(serviceId, "1"))
-                .toList();
+            .stream()
+            .filter(serviceName -> !serviceName.equalsIgnoreCase(API_GATEWAY))
+            .map(this::swaggerResource)
+            .toList();
     }
 
-    private SwaggerResource swaggerResource(String name, String version) {
+    private SwaggerResource swaggerResource(String name) {
         SwaggerResource swaggerResource = new SwaggerResource();
         swaggerResource.setName(name);
-        swaggerResource.setLocation("/" + name + "/v3/api-docs");
-        swaggerResource.setSwaggerVersion(version);
+        swaggerResource.setLocation("/" + name + API_DOCS_PATH);
+        swaggerResource.setSwaggerVersion(APP_VERSION);
         return swaggerResource;
     }
-
-
 }

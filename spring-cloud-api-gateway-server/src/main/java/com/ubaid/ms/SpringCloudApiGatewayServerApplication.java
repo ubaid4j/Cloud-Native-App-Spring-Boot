@@ -8,6 +8,8 @@ import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 
+import static com.ubaid.ms.common.Constants.EMPTY_STRING;
+
 /**
  * Re-routes the incoming request to down-stream services according to the URL match pattern.
  * @author ubaid
@@ -42,22 +44,22 @@ public class SpringCloudApiGatewayServerApplication {
                                 .filters(f -> f.filter(filterFactory.apply()))
                             .uri("lb://CURRENCY-EXCHANGE-SERVICE"))
                 .route(r -> r.path("/country-service/v3/api-docs")
-                                .filters(f -> f.rewritePath("/country-service", ""))
+                                .filters(f -> f.rewritePath("/country-service", EMPTY_STRING))
                             .uri("lb://COUNTRY-SERVICE"))
                 .route(r -> r.path("/api-composer/v3/api-docs")
-                                .filters(f -> f.rewritePath("/api-composer", ""))
+                                .filters(f -> f.rewritePath("/api-composer", EMPTY_STRING))
                             .uri("lb://API-COMPOSER"))
                 .route(r -> r.path("/currency-conversion-service/v3/api-docs")
-                                .filters(f -> f.rewritePath("/currency-conversion-service", ""))
+                                .filters(f -> f.rewritePath("/currency-conversion-service", EMPTY_STRING))
                             .uri("lb://CURRENCY-CONVERSION-SERVICE"))
                 .route(r -> r.path("/currency-exchange-service/v3/api-docs")
-                                .filters(f -> f.rewritePath("/currency-exchange-service", ""))
+                                .filters(f -> f.rewritePath("/currency-exchange-service", EMPTY_STRING))
                             .uri("lb://CURRENCY-EXCHANGE-SERVICE"))
                 .route(r -> r.path("/user-service/v3/api-docs")
-                                .filters(f -> f.rewritePath("/user-service", ""))
+                                .filters(f -> f.rewritePath("/user-service", EMPTY_STRING))
                             .uri("lb://USER-SERVICE"))
                 .route(r -> r.path("/audit-service/v3/api-docs")
-                                .filters(f -> f.rewritePath("/audit-service", ""))
+                                .filters(f -> f.rewritePath("/audit-service", EMPTY_STRING))
                             .uri("lb://AUDIT-SERVICE"))
                 .route(r -> r.path("/audit-service/**")
                                 .filters(f -> f.filter(filterFactory.apply()))

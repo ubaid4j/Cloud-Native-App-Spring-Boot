@@ -1,5 +1,6 @@
 package com.ubaid.ms.userservice.config;
 
+import static com.ubaid.ms.common.Constants.*;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -12,34 +13,31 @@ import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
-
 import java.util.List;
-
 
 @Configuration
 @EnableOpenApi
 @Slf4j
 public class SwaggerConfig {
 
-    public static final String AUTHORIZATION = "Authorization";
     public static final String USER = "User";
 
     @Bean
     public Docket swaggerSpringfoxDocket() {
         return new Docket(DocumentationType.OAS_30)
-                .tags(new Tag(USER, String.format("REST API for %s", USER)))
-                .apiInfo(apiInfo())
-                .securityContexts(Lists.newArrayList(securityContext()))
-                .securitySchemes(Lists.newArrayList(bearerToken()))
-                .useDefaultResponseMessages(false)
-                .select()
-                .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
-                .build();
+            .tags(new Tag(USER, String.format("REST API for %s", USER)))
+            .apiInfo(apiInfo())
+            .securityContexts(Lists.newArrayList(securityContext()))
+            .securitySchemes(Lists.newArrayList(bearerToken()))
+            .useDefaultResponseMessages(false)
+            .select()
+            .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
+            .build();
     }
 
 
     private ApiKey bearerToken() {
-        return new ApiKey(AUTHORIZATION, "Bearer Token", "header");
+        return new ApiKey(AUTHORIZATION, BEARER_TOKEN, HEADER);
     }
 
     private SecurityContext securityContext() {
@@ -49,12 +47,9 @@ public class SwaggerConfig {
     }
 
     List<SecurityReference> defaultAuth() {
-        AuthorizationScope authorizationScope
-                = new AuthorizationScope("global", "accessEverything");
-        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
-        authorizationScopes[0] = authorizationScope;
         return Lists.newArrayList(
-                new SecurityReference(AUTHORIZATION, authorizationScopes));
+            new SecurityReference(AUTHORIZATION,
+                new AuthorizationScope[]{new AuthorizationScope(GLOBAL, ACCESS_EVERYTHING)}));
     }
 
     /**
@@ -63,11 +58,10 @@ public class SwaggerConfig {
      */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("User API").description("Return Access Token on given credentials")
-                .contact(new Contact("Ubaid ur Rehman", "https://www.linkedin.com/in/ubaid-ur-rehman-5a0118119/", "urehman.bese16seecs@seecs.edu.pk"))
-                .license("MIT")
-                .licenseUrl("https://github.com/UbaidurRehman1/Cloud-Native-App-Spring-Boot/blob/master/LICENSE")
-                .version("1.0.0")
-                .build();
-
+            .contact(new Contact(AUTHOR_NAME, AUTHOR_LINKEDIN_URL, AUTHOR_EMAIL))
+            .license(LICENSE)
+            .licenseUrl(LICENSE_URL)
+            .version(APP_VERSION)
+            .build();
     }
 }
