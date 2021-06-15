@@ -1,5 +1,6 @@
 package com.ubaid.ms.gatewayserver.config;
 
+import static com.ubaid.ms.common.Constants.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -8,12 +9,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import springfox.documentation.swagger.web.SwaggerResource;
 import springfox.documentation.swagger.web.SwaggerResourcesProvider;
-
 import java.util.List;
-
-import static com.ubaid.ms.common.Constants.API_GATEWAY;
-import static com.ubaid.ms.common.Constants.API_DOCS_PATH;
-import static com.ubaid.ms.common.Constants.APP_VERSION;
 
 @Component
 @Primary
@@ -29,10 +25,10 @@ public class SwaggerConfig implements SwaggerResourcesProvider {
         List<String> allServices = discoveryClient.getServices();
         log.debug("All Services: {}", allServices);
         return allServices
-                .stream()
-                .filter(serviceName -> !serviceName.equalsIgnoreCase(API_GATEWAY))
-                .map(this::swaggerResource)
-                .toList();
+            .stream()
+            .filter(serviceName -> !serviceName.equalsIgnoreCase(API_GATEWAY))
+            .map(this::swaggerResource)
+            .toList();
     }
 
     private SwaggerResource swaggerResource(String name) {
@@ -42,6 +38,4 @@ public class SwaggerConfig implements SwaggerResourcesProvider {
         swaggerResource.setSwaggerVersion(APP_VERSION);
         return swaggerResource;
     }
-
-
 }

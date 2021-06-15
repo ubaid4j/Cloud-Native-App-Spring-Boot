@@ -12,11 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.ubaid.ms.common.Constants.BEARER;
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static java.net.HttpURLConnection.HTTP_OK;
-import static java.net.HttpURLConnection.HTTP_UNAUTHORIZED;
-
+import static com.ubaid.ms.common.Constants.*;
 
 @Api(tags = SwaggerConfig.CONVERSION)
 @RestController
@@ -36,7 +32,7 @@ public class CurrencyConversionController {
             @ApiResponse(code = HTTP_UNAUTHORIZED, message = "You are not authorized to convert currency")
     })
     @PreAuthorize("hasAuthority('SCOPE_currency-conversion')")
-    @GetMapping(value = "/currency/{currency}/rate/{conversion-rate}", produces = APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/currency/{currency}/rate/{conversion-rate}", produces = APPLICATION_JSON)
     public ConvertedCurrency getCurrencyConversion(
             @PathVariable("currency") Double currency,
             @PathVariable("conversion-rate") Double conversionRate) {

@@ -17,13 +17,13 @@ import java.security.Principal;
 import java.util.*;
 
 import static com.ubaid.ms.common.Constants.*;
-import static org.springframework.http.HttpHeaders.AUTHORIZATION;
-
 
 @Configuration
 @EnableOpenApi
 @Slf4j
 public class SwaggerConfig {
+
+    public static final String CURRENCY_CONVERSION = "Currency Conversion";
 
     @Bean
     public Docket swaggerSpringfoxDocket() {
@@ -66,7 +66,7 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new
                 ApiInfoBuilder()
-                .title(API_COMPOSER)
+                .title("API Composer")
                 .description("This API abstract the currency-exchange-service and currency-conversion-service and provide one end point for end user to convert currency from one country to another country")
                 .contact(new Contact(AUTHOR_NAME, AUTHOR_LINKEDIN_URL, AUTHOR_EMAIL))
                 .license(LICENSE)

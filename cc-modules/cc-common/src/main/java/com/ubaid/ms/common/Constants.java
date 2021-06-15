@@ -3,7 +3,6 @@ package com.ubaid.ms.common;
 public class Constants {
     public static final String APP_ROOT_PACKAGE = "com.ubaid.ms";
     public static final String API_DOCS_PATH = "/v3/api-docs";
-    public static final String CURRENCY_CONVERSION = "Currency Conversion";
 
     public static final String AUTHOR_NAME = "Ubaid ur Rehman";
     public static final String AUTHOR_EMAIL = "urehman.bese16seecs@seecs.edu.pk";
@@ -14,7 +13,6 @@ public class Constants {
 
     public static final String APP_VERSION = "0.0.1-SNAPSHOT";
 
-    public static final String API_COMPOSER = "API Composer";
     public static final String GLOBAL = "global";
     public static final String ACCESS_EVERYTHING = "accessEverything";
 
@@ -31,4 +29,13 @@ public class Constants {
     public static final String BEARER = "Bearer";
 
     public static final String INVALID_TOKEN = "invalid_token";
+
+    public static final String AUTHORIZATION = "Authorization";
+
+    public static final int HTTP_OK = 200;
+    public static final int HTTP_UNAUTHORIZED = 401;
+
+    public static final String APPLICATION_JSON = "application/json";
+    public static final String TEXT_PLAIN = "text/plain";
+
 }
