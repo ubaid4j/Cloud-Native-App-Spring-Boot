@@ -11,11 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.ubaid.ms.common.Constants.BEARER;
-import static java.net.HttpURLConnection.HTTP_OK;
-import static java.net.HttpURLConnection.HTTP_UNAUTHORIZED;
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-
+import static com.ubaid.ms.common.Constants.*;
 
 @Api(tags = SwaggerConfig.EXCHANGE)
 @RestController
@@ -34,7 +30,7 @@ public class CurrencyExchangeController {
             @ApiResponse(code = HTTP_UNAUTHORIZED, message = "You are not authorized to get exchange rate")
     })
     @PreAuthorize("hasAuthority('SCOPE_exchange-rate')")
-    @GetMapping(value = "/from/{from}/to/{to}", produces = APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/from/{from}/to/{to}", produces = APPLICATION_JSON)
     public ExchangeValueDTO getExchangeValue(@PathVariable("from") String from,
                                              @PathVariable("to") String to) {
         return service.getExchangeValue(from, to);

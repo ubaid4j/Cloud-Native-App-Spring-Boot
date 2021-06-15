@@ -12,11 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static com.ubaid.ms.common.Constants.BEARER;
+import static com.ubaid.ms.common.Constants.*;
 import static com.ubaid.ms.countryservice.config.SwaggerConfig.COUNTRY;
-import static java.net.HttpURLConnection.HTTP_OK;
-import static java.net.HttpURLConnection.HTTP_UNAUTHORIZED;
-import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 @Api(tags = COUNTRY)
 @RestController

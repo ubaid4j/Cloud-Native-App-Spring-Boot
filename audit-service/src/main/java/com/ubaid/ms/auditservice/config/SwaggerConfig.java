@@ -17,8 +17,6 @@ import java.security.Principal;
 import java.util.List;
 
 import static com.ubaid.ms.common.Constants.*;
-import static org.springframework.http.HttpHeaders.AUTHORIZATION;
-
 
 @Configuration
 @EnableOpenApi
@@ -74,6 +72,5 @@ public class SwaggerConfig {
                 .licenseUrl(LICENSE_URL)
                 .version(APP_VERSION)
                 .build();
-
     }
 }

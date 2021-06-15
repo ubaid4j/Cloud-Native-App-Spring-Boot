@@ -4,7 +4,6 @@ import lombok.Data;
 
 import static com.ubaid.ms.common.Constants.*;
 
-
 @Data
 public class BearerToken {
 

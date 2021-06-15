@@ -16,8 +16,6 @@ import springfox.documentation.spring.web.plugins.Docket;
 import java.util.List;
 
 import static com.ubaid.ms.common.Constants.*;
-import static org.springframework.http.HttpHeaders.AUTHORIZATION;
-
 
 @Configuration
 @EnableOpenApi

@@ -6,9 +6,7 @@ import org.springframework.security.oauth2.core.OAuth2TokenValidator;
 import org.springframework.security.oauth2.core.OAuth2TokenValidatorResult;
 import org.springframework.security.oauth2.jwt.Jwt;
 
-import static com.ubaid.ms.common.Constants.CURRENCY_CONVERSION_SERVICE;
-import static org.springframework.security.oauth2.server.resource.BearerTokenErrorCodes.INVALID_TOKEN;
-
+import static com.ubaid.ms.common.Constants.*;
 
 @Slf4j
 public class AudienceValidator implements OAuth2TokenValidator<Jwt> {

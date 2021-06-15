@@ -1,5 +1,6 @@
 package com.ubaid.ms.userservice.config;
 
+import static com.ubaid.ms.common.Constants.*;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -12,12 +13,7 @@ import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
-
 import java.util.List;
-
-import static com.ubaid.ms.common.Constants.*;
-import static org.springframework.http.HttpHeaders.AUTHORIZATION;
-
 
 @Configuration
 @EnableOpenApi
@@ -29,14 +25,14 @@ public class SwaggerConfig {
     @Bean
     public Docket swaggerSpringfoxDocket() {
         return new Docket(DocumentationType.OAS_30)
-                .tags(new Tag(USER, String.format("REST API for %s", USER)))
-                .apiInfo(apiInfo())
-                .securityContexts(Lists.newArrayList(securityContext()))
-                .securitySchemes(Lists.newArrayList(bearerToken()))
-                .useDefaultResponseMessages(false)
-                .select()
-                .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
-                .build();
+            .tags(new Tag(USER, String.format("REST API for %s", USER)))
+            .apiInfo(apiInfo())
+            .securityContexts(Lists.newArrayList(securityContext()))
+            .securitySchemes(Lists.newArrayList(bearerToken()))
+            .useDefaultResponseMessages(false)
+            .select()
+            .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
+            .build();
     }
 
 
@@ -52,8 +48,8 @@ public class SwaggerConfig {
 
     List<SecurityReference> defaultAuth() {
         return Lists.newArrayList(
-                new SecurityReference(AUTHORIZATION,
-                        new AuthorizationScope[]{new AuthorizationScope(GLOBAL, ACCESS_EVERYTHING)}));
+            new SecurityReference(AUTHORIZATION,
+                new AuthorizationScope[]{new AuthorizationScope(GLOBAL, ACCESS_EVERYTHING)}));
     }
 
     /**
@@ -62,11 +58,10 @@ public class SwaggerConfig {
      */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("User API").description("Return Access Token on given credentials")
-                .contact(new Contact(AUTHOR_NAME, AUTHOR_LINKEDIN_URL, AUTHOR_EMAIL))
-                .license(LICENSE)
-                .licenseUrl(LICENSE_URL)
-                .version(APP_VERSION)
-                .build();
-
+            .contact(new Contact(AUTHOR_NAME, AUTHOR_LINKEDIN_URL, AUTHOR_EMAIL))
+            .license(LICENSE)
+            .licenseUrl(LICENSE_URL)
+            .version(APP_VERSION)
+            .build();
     }
 }
