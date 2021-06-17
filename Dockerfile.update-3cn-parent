@@ -1,0 +1,16 @@
+FROM 3cn-parent:0.0.1-SNAPSHOT
+WORKDIR /3cn
+COPY . .
+RUN mvn install -DskipTests --file cc-modules/pom.xml \
+    && mvn install -N -DskipTests --file pom.xml \
+    && mvn install -DskipTests --file pom.xml \
+    && rm -rf /3cn \
+    && rm -rf /root/.m2/repository/com/ubaid/ms/api-composer \
+    && rm -rf /root/.m2/repository/com/ubaid/ms/audit-service \
+    && rm -rf /root/.m2/repository/com/ubaid/ms/country-service \
+    && rm -rf /root/.m2/repository/com/ubaid/ms/currency-conversion-service \
+    && rm -rf /root/.m2/repository/com/ubaid/ms/currency-exchange-service \
+    && rm -rf /root/.m2/repository/com/ubaid/ms/netflix-eureka-naming-server \
+    && rm -rf /root/.m2/repository/com/ubaid/ms/spring-cloud-api-gateway-server \
+    && rm -rf /root/.m2/repository/com/ubaid/ms/spring-cloud-config-server \
+    && rm -rf /root/.m2/repository/com/ubaid/ms/user-service
