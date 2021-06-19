@@ -14,5 +14,6 @@ public interface AuditService {
     Flux<Audit> findAll();
     Mono<Audit> save(Principal principal, Audit audit);
     Mono<Audit> update(Principal principal, Audit audit);
+    void save(Audit audit);
     Mono<Void> delete(Long id);
 }

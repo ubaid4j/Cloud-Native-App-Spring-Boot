@@ -32,6 +32,13 @@ public class AuditServiceImpl implements AuditService {
     }
 
     @Override
+    public void save(Audit audit) {
+        log.debug("Saving Audit Log: {}", audit);
+        Mono<Audit> savedAudit = auditDAO.save(audit);
+        log.debug("Audit Log saved: {}", savedAudit.block());
+    }
+
+    @Override
     public Mono<Audit> update(Principal principal, Audit audit) {
         log.debug("Updating Audit Log of Id {} to {}", audit.getId(), audit);
         return auditDAO.save(audit);
