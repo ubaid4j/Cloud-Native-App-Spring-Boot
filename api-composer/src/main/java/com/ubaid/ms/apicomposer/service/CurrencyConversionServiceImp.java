@@ -1,15 +1,21 @@
 package com.ubaid.ms.apicomposer.service;
 
+import com.ubaid.ms.apicomposer.util.BearerToken;
+import com.ubaid.ms.ccdto.AuditDTO;
+//import com.ubaid.ms.ccdto.AuditDTOBuilder;
+import com.ubaid.ms.ccdto.AuditDTOBuilder;
 import com.ubaid.ms.ccdto.ConvertedCurrency;
 import com.ubaid.ms.ccdto.ExchangeValueDTO;
 import com.ubaid.ms.apicomposer.feignProxy.CurrencyConversionServiceProxy;
 import com.ubaid.ms.apicomposer.feignProxy.CurrencyExchangeServiceProxy;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.time.Instant;
 import java.util.Optional;
 
 import static com.ubaid.ms.common.Constants.BEARER;
@@ -23,15 +29,32 @@ public class CurrencyConversionServiceImp implements CurrencyConversionService {
 
     private final CurrencyExchangeServiceProxy exchangeServiceProxy;
     private final CurrencyConversionServiceProxy conversionServiceProxy;
+    private final AuditService auditService;
+    private final AuthService authService;
 
     @Override
     public ExchangeValueDTO convertCurrency(Principal principal, String fromCurrency, String toCurrency, Double quantity) {
-        String accessToken = getAccessToken(principal);
-        ExchangeValueDTO exchangeValueDTO = getExchangeRate(accessToken, fromCurrency, toCurrency);
-        ConvertedCurrency convertedCurrency = getConvertedCurrency(accessToken, quantity, exchangeValueDTO);
+        BearerToken bearerToken = new BearerToken(authService.getAccessToken());
+        ExchangeValueDTO exchangeValueDTO = getExchangeRate(bearerToken.getBearerToken(), fromCurrency, toCurrency);
+        ConvertedCurrency convertedCurrency = getConvertedCurrency(bearerToken.getBearerToken(), quantity, exchangeValueDTO);
         exchangeValueDTO.setExchangedCurrencyQuantity(convertedCurrency.getConvertedCurrency());
         exchangeValueDTO.setQuantity(quantity);
+        AuditDTO auditDTO = convertToAudit(exchangeValueDTO);
+        log.debug("Audit Log: {}", auditDTO);
+        auditService.sendAuditLog(auditDTO);
         return exchangeValueDTO;
+    }
+
+    private AuditDTO convertToAudit(ExchangeValueDTO exchangeValueDTO) {
+        return AuditDTOBuilder
+                .builder()
+                .fromCurrency(exchangeValueDTO.getFrom())
+                .fromCurrencyValue(Float.parseFloat(String.valueOf(exchangeValueDTO.getQuantity())))
+                .toCurrency(exchangeValueDTO.getTo())
+                .toCurrencyValue(Float.parseFloat(String.valueOf(exchangeValueDTO.getExchangedCurrencyQuantity())))
+                .exchangeRate(Float.parseFloat(String.valueOf(exchangeValueDTO.getExchangeRate())))
+                .userUUID(authService.getUserUUID())
+                .build();
     }
 
     ConvertedCurrency getConvertedCurrency(String accessToken, Double quantity, ExchangeValueDTO exchangeValueDTO) {
