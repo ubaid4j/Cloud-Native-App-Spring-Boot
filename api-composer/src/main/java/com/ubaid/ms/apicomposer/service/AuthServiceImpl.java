@@ -6,14 +6,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
-import org.springframework.security.oauth2.server.resource.authentication.AbstractOAuth2TokenAuthenticationToken;
-import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 
-import java.security.Principal;
 import java.util.Optional;
 
-import static com.ubaid.ms.common.Constants.*;
 import static com.ubaid.ms.common.Constants.EMPTY_STRING;
 
 @Service
@@ -36,23 +32,21 @@ public class AuthServiceImpl implements AuthService {
         } else {
             return EMPTY_STRING;
         }
-
     }
 
     @Override
     public String getUserUUID() {
         return Optional
-                .ofNullable(jwtDecoder.decode(getAccessToken()))
-                .map(Jwt::getClaims)
-                .map(claimsMap -> claimsMap.get("sub"))
-                .map(String::valueOf)
-                .map(this::logUserUUID)
-                .orElse(EMPTY_STRING);
+            .ofNullable(jwtDecoder.decode(getAccessToken()))
+            .map(Jwt::getClaims)
+            .map(claimsMap -> claimsMap.get("sub"))
+            .map(String::valueOf)
+            .map(this::logUserUUID)
+            .orElse(EMPTY_STRING);
     }
 
     private String logUserUUID(String userUUID) {
         log.debug("User UUID: {}: ", userUUID);
         return userUUID;
     }
-
 }

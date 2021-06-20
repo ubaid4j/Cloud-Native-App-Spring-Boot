@@ -16,6 +16,8 @@ Dependencies
   - ##### Distributed Tracing
     - spring-cloud-sleuth-zipkin
     - spring-cloud-starter-sleuth
+  - #### Messaging
+    - spring-boot-starter-amqp
 - #### Security
   - ##### Spring Security
     - spring-boot-starter-security
@@ -66,6 +68,10 @@ AMQP BUS
 - Message Buses responsible to broadcast config changes to all instances
 - Add in prop file ```management.endpoints.web.exposure.include=*``` to disable security for actuator
 - POST to ```http://localhost:5200/actuator/bus-refresh``` to refresh all instances
+
+Messaging
+----------
+For messaging, we are using `spring-boot-starter-amqp` which by default using `rabbit-mq` as message broker 
 
 Test
 ----------
