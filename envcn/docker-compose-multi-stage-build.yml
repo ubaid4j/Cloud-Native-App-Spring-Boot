@@ -94,10 +94,10 @@ services:
         depends_on:
             - elasticsearch
 
-    config-server:
-        container_name: config-server
+    config:
+        container_name: config
         build:
-            context: ../spring-cloud-config-server
+            context: ../config
             dockerfile: Dockerfile.multistage
         expose:
             - 8888
@@ -105,10 +105,10 @@ services:
             - 8888:8888
         networks:
             - cloud-native-network
-    eureka-naming-server:
-        container_name: naming-server
+    discovery:
+        container_name: discovery
         build:
-            context: ../netflix-eureka-naming-server
+            context: ../discovery
             dockerfile: Dockerfile.multistage
         networks:
             - cloud-native-network

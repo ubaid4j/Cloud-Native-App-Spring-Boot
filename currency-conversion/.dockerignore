@@ -1,0 +1,7 @@
+/target
+.gitignore
+*.iml
+Dockerfile
+Dockerfile.multistage
+readme.md
+runAllTests.sh
