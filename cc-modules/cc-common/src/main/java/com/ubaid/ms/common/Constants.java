@@ -40,4 +40,5 @@ public class Constants {
 
     public static final String AUDIT_QUEUE = "auditQueue";
 
+    public static final String UNKNOWN = "unknown";
 }
