@@ -10,7 +10,7 @@ public class BearerToken {
     private final String bearerToken;
 
     public BearerToken(String accessToken) {
-        this.bearerToken = BEARER_TOKEN + SINGLE_SPACE + accessToken;
+        this.bearerToken = BEARER + SINGLE_SPACE + accessToken;
     }
 
 }

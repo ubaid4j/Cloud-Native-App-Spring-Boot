@@ -1,21 +1,23 @@
 package com.ubaid.ms.ccdto;
 
-import java.time.Instant;
-import java.util.Date;
-import java.util.UUID;
+import io.soabase.recordbuilder.core.RecordBuilder;
 
+import java.io.Serializable;
+import java.time.Instant;
+
+@RecordBuilder
 public record AuditDTO(
         Long id,
         String userUUID,
         Instant timestamp,
         String fromCurrency,
         String toCurrency,
-        float exchangeRate,
-        float fromCurrencyValue,
-        float toCurrencyValue,
+        double exchangeRate,
+        double fromCurrencyValue,
+        double toCurrencyValue,
         String userIPAddress,
-        String currencyExchangeURL,
-        String currencyConversionURL,
+        String currencyExchangeIP,
+        String currencyConversionIP,
         int currencyExchangePort,
         int currencyConversionPort
-) { }
+) implements Serializable { }

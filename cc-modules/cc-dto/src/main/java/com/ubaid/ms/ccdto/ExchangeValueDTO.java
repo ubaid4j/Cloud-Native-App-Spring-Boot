@@ -16,6 +16,7 @@ public class ExchangeValueDTO {
     private Double exchangeRate;
     private Double exchangedCurrencyQuantity;
     private Integer port;
+    private String ipAddress;
 
     @Override
     public boolean equals(Object o) {

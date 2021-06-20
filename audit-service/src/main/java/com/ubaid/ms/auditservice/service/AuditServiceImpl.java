@@ -2,7 +2,6 @@ package com.ubaid.ms.auditservice.service;
 
 import com.ubaid.ms.auditservice.dao.AuditDAO;
 import com.ubaid.ms.auditservice.entity.Audit;
-import com.ubaid.ms.ccdto.AuditDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.oauth2.jwt.Jwt;
@@ -29,6 +28,13 @@ public class AuditServiceImpl implements AuditService {
         log.debug("Saving Audit Log: {}", audit);
         audit.setUserUuid(getUserUUID(principal));
         return auditDAO.save(audit);
+    }
+
+    @Override
+    public void save(Audit audit) {
+        log.debug("Saving Audit Log: {}", audit);
+        Mono<Audit> savedAudit = auditDAO.save(audit);
+        log.debug("Audit Log saved: {}", savedAudit.block());
     }
 
     @Override
@@ -60,24 +66,6 @@ public class AuditServiceImpl implements AuditService {
     public Mono<Audit> findById(Long id) {
         log.debug("Finding Audit using: {}", id);
         return auditDAO.findById(id);
-    }
-
-    public Audit convert(AuditDTO auditDTO) {
-        Audit audit = new Audit();
-        audit.setId(auditDTO.id());
-        audit.setCurrencyConversionPort(auditDTO.currencyConversionPort());
-        audit.setCurrencyConversionURL(auditDTO.currencyConversionURL());
-        audit.setCurrencyExchangePort(auditDTO.currencyExchangePort());
-        audit.setCurrencyExchangeURL(auditDTO.currencyExchangeURL());
-        audit.setExchangeRate(auditDTO.exchangeRate());
-        audit.setFromCurrency(auditDTO.fromCurrency());
-        audit.setFromCurrencyValue(auditDTO.fromCurrencyValue());
-        audit.setCreatedAt(auditDTO.timestamp());
-        audit.setToCurrency(auditDTO.toCurrency());
-        audit.setToCurrencyValue(auditDTO.toCurrencyValue());
-        audit.setUserIPAddress(auditDTO.userIPAddress());
-        audit.setUserUuid(auditDTO.userUUID());
-        return audit;
     }
 
     public String getUserUUID(Principal principal) {
