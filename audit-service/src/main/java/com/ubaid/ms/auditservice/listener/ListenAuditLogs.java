@@ -25,7 +25,9 @@ public class ListenAuditLogs {
     public void listen(AuditDTO auditDTO) {
         log.debug("Received Audit: {}", auditDTO);
         Audit audit = new Audit();
-        audit.setCreatedAt(Instant.now());
+        Instant now = Instant.now();
+        audit.setCreatedAt(now);
+        audit.setLastUpdated(now);
         audit.setExchangeRate(auditDTO.exchangeRate());
         audit.setFromCurrency(auditDTO.fromCurrency());
         audit.setFromCurrencyValue(auditDTO.fromCurrencyValue());
@@ -36,6 +38,7 @@ public class ListenAuditLogs {
         audit.setCurrencyConversionURL(auditDTO.currencyConversionIP());
         audit.setCurrencyExchangePort(auditDTO.currencyExchangePort());
         audit.setCurrencyExchangeURL(auditDTO.currencyExchangeIP());
+        audit.setUserIPAddress(auditDTO.userIPAddress());
         auditService.save(audit);
     }
 
