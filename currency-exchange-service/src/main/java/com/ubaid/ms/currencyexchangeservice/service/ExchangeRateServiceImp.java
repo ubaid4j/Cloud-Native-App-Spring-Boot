@@ -16,6 +16,7 @@ import java.util.List;
 public class ExchangeRateServiceImp implements ExchangeRateService {
 
     private final ExchangeRateDAO dao;
+    private final ServerInfoService serverInfo;
 
     @Override
     public ExchangeValueDTO getExchangeValue(String from, String to) {
@@ -30,6 +31,8 @@ public class ExchangeRateServiceImp implements ExchangeRateService {
         exchangeValueDTO.setFrom(from);
         exchangeValueDTO.setTo(to);
         exchangeValueDTO.setExchangeRate(targetExchangeRate);
+        exchangeValueDTO.setPort(serverInfo.getPort());
+        exchangeValueDTO.setIpAddress(serverInfo.getIPAddress());
         return exchangeValueDTO;
     }
 

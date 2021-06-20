@@ -16,9 +16,9 @@ public class Audit {
     private Instant createdAt;
     private String fromCurrency;
     private String toCurrency;
-    private float exchangeRate;
-    private float fromCurrencyValue;
-    private float toCurrencyValue;
+    private double exchangeRate;
+    private double fromCurrencyValue;
+    private double toCurrencyValue;
     private String userIPAddress;
     private String currencyExchangeURL;
     private String currencyConversionURL;

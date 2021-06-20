@@ -3,20 +3,20 @@ package com.ubaid.ms.auditservice.listener;
 import com.ubaid.ms.auditservice.entity.Audit;
 import com.ubaid.ms.auditservice.service.AuditService;
 import com.ubaid.ms.ccdto.AuditDTO;
+import com.ubaid.ms.common.Constants;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.core.Message;
-import org.springframework.amqp.core.MessageListener;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
-@RabbitListener(queues = "auditQueue")
+@RabbitListener(queues = Constants.AUDIT_QUEUE)
 public class ListenAuditLogs {
 
     private final AuditService auditService;
@@ -32,6 +32,10 @@ public class ListenAuditLogs {
         audit.setToCurrency(auditDTO.toCurrency());
         audit.setToCurrencyValue(auditDTO.toCurrencyValue());
         audit.setUserUuid(auditDTO.userUUID());
+        audit.setCurrencyConversionPort(auditDTO.currencyConversionPort());
+        audit.setCurrencyConversionURL(auditDTO.currencyConversionIP());
+        audit.setCurrencyExchangePort(auditDTO.currencyExchangePort());
+        audit.setCurrencyExchangeURL(auditDTO.currencyExchangeIP());
         auditService.save(audit);
     }
 

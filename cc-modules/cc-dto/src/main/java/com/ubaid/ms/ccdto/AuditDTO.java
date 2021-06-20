@@ -12,12 +12,12 @@ public record AuditDTO(
         Instant timestamp,
         String fromCurrency,
         String toCurrency,
-        float exchangeRate,
-        float fromCurrencyValue,
-        float toCurrencyValue,
+        double exchangeRate,
+        double fromCurrencyValue,
+        double toCurrencyValue,
         String userIPAddress,
-        String currencyExchangeURL,
-        String currencyConversionURL,
+        String currencyExchangeIP,
+        String currencyConversionIP,
         int currencyExchangePort,
         int currencyConversionPort
 ) implements Serializable { }
