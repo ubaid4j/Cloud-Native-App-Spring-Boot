@@ -42,11 +42,16 @@ public class AuthServiceImpl implements AuthService {
             .map(claimsMap -> claimsMap.get("sub"))
             .map(String::valueOf)
             .map(this::logUserUUID)
-            .orElse(EMPTY_STRING);
+            .orElseGet(this::logWarnMessageAndSendEmptyString);
     }
 
     private String logUserUUID(String userUUID) {
         log.debug("User UUID: {}: ", userUUID);
         return userUUID;
+    }
+
+    private String logWarnMessageAndSendEmptyString() {
+        log.warn("User UUID not found");
+        return EMPTY_STRING;
     }
 }
