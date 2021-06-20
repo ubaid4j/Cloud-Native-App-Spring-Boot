@@ -1,5 +1,0 @@
-/target
-.gitignore
-spring-cloud-api-gateway-server.iml
-Dockerfile
-readme.md

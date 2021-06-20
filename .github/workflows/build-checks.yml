@@ -21,7 +21,7 @@ jobs:
       with:
         java-version: 16
     - name: Build 3CN Modules
-      run: mvn clean install -DskipTests --file cc-modules/pom.xml
+      run: mvn clean install -DskipTests --file common/pom.xml
     - name: Build 3CN Parent
       run: mvn clean install -N -DskipTests --file pom.xml
     - name: Build 3CN Whole Project
