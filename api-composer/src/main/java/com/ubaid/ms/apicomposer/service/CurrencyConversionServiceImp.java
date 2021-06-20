@@ -20,6 +20,7 @@ public class CurrencyConversionServiceImp implements CurrencyConversionService {
     private final CurrencyConversionServiceProxy conversionServiceProxy;
     private final AuditService auditService;
     private final AuthService authService;
+    private final RequestService requestService;
 
     @Override
     public ExchangeValueDTO convertCurrency(String fromCurrency, String toCurrency, Double quantity) {
@@ -47,6 +48,7 @@ public class CurrencyConversionServiceImp implements CurrencyConversionService {
             .currencyConversionIP(convertedCurrency.getIpAddress())
             .currencyExchangePort(exchangeValueDTO.getPort())
             .currencyExchangeIP(exchangeValueDTO.getIpAddress())
+            .userIPAddress(requestService.getClientIP())
             .build();
         log.debug("Audit DTO: {}", auditDTO);
         return auditDTO;
