@@ -34,19 +34,22 @@ public class CurrencyConversionServiceImp implements CurrencyConversionService {
     }
 
     private AuditDTO convertToAudit(ExchangeValueDTO exchangeValueDTO, ConvertedCurrency convertedCurrency) {
-        return AuditDTOBuilder
-                .builder()
-                .fromCurrency(exchangeValueDTO.getFrom())
-                .fromCurrencyValue(exchangeValueDTO.getQuantity())
-                .toCurrency(exchangeValueDTO.getTo())
-                .toCurrencyValue(exchangeValueDTO.getExchangedCurrencyQuantity())
-                .exchangeRate(exchangeValueDTO.getExchangeRate())
-                .userUUID(authService.getUserUUID())
-                .currencyConversionPort(convertedCurrency.getPort())
-                .currencyConversionIP(convertedCurrency.getIpAddress())
-                .currencyExchangePort(exchangeValueDTO.getPort())
-                .currencyExchangeIP(exchangeValueDTO.getIpAddress())
-                .build();
+        log.debug("Creating Audit DTO from {} and {}", exchangeValueDTO, convertedCurrency);
+        AuditDTO auditDTO =  AuditDTOBuilder
+            .builder()
+            .fromCurrency(exchangeValueDTO.getFrom())
+            .fromCurrencyValue(exchangeValueDTO.getQuantity())
+            .toCurrency(exchangeValueDTO.getTo())
+            .toCurrencyValue(exchangeValueDTO.getExchangedCurrencyQuantity())
+            .exchangeRate(exchangeValueDTO.getExchangeRate())
+            .userUUID(authService.getUserUUID())
+            .currencyConversionPort(convertedCurrency.getPort())
+            .currencyConversionIP(convertedCurrency.getIpAddress())
+            .currencyExchangePort(exchangeValueDTO.getPort())
+            .currencyExchangeIP(exchangeValueDTO.getIpAddress())
+            .build();
+        log.debug("Audit DTO: {}", auditDTO);
+        return auditDTO;
     }
 
     ConvertedCurrency getConvertedCurrency(String accessToken, Double quantity, ExchangeValueDTO exchangeValueDTO) {
