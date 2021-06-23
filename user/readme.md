@@ -1,6 +1,6 @@
 About
 =====
-- [User Service](http://localhost:8755/swagger-ui/index.html?urls.primaryName=user-service)
+- [User Service](http://localhost:8755/swagger-ui/index.html?urls.primaryName=user)
 
 Dependencies
 ============

@@ -1,12 +1,12 @@
 About
 =====
-- DNS (Netflix Eureka Naming Server) Server for 3CN Project
+- Discovery (Netflix Eureka) Server
 
 Dependencies
 ------------
 - #### Cloud
-  - ##### Naming Server
-    - spring-cloud-starter-netflix-eureka-client
+  - ##### Discovery Server
+    - spring-cloud-starter-netflix-eureka-server
 - #### [Dependencies From Parent](./../moreinfo.md#Dependencies-from-parent)
 
 Configurations

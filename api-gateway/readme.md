@@ -1,5 +1,5 @@
 ### About
-- A server which is responsible to reroute request to the required micro-service
+- A server which is responsible to reroute request to the resource server 
 
 Dependencies
 ------------
