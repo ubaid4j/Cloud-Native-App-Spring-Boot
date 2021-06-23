@@ -15,7 +15,7 @@ Abstract
     
 Requirements
 -----------
-- Add`127.0.0.1 auth-server` in the last of your hosts file.
+- Add the line `127.0.0.1 auth-server` in the last of your hosts file.
     - For Linux/Unix based system, its location is at: `/etc/hosts`
     - For Windows, its location is at: `c:\Windows\System32\Drivers\etc\hosts`
 - [Docker 19.03.13 or later](resource/install-require-softwares.md#install-docker)
@@ -24,7 +24,7 @@ How to Run
 ----------
 - `git clone https://github.com/UbaidurRehman1/Cloud-Native-App-Spring-Boot`
 - `cd Cloud-Native-App-Spring-Boot/envcn`
-- `./run-multi-stage.sh` (it will run all tools which our services needs such as keycloak server, naming server, databases, zipkin, rabbitmq and elk-stack)
+- `./run-multi-stage.sh` (it will run all tools which our services needs such as keycloak server, discovery server, databases, zipkin, rabbitmq and elk-stack)
 - `cd ..`
 - `./run-multi-stage.sh` (it will up the micro-services)
 - [Access Web Client UI](http://localhost:3000)
@@ -36,19 +36,20 @@ About
 - This App basically converts a currency from given country code to targeted country code by following the **cloud native approach**.
 - `api-gateway` provides a gateway for end clients (web browsers, mobiles) to interact the resource servers (micro-services) 
 - An Actor (React Client, React Native Client) can interact with the micro-services through the `api-gateway`
-- ![Micro Service Architecture](resource/3cnAuthFlow.png)
+- ![Micro Service Architecture](resource/lucid-diagrams/3cnAuthFlow.png)
 - In above diagram, We can see:
     - An End Client can access the resource servers through the `api-gatewy`
-    - There are four resource servers:
-      1. `api-composer` abstract the functions of getting exchange rate and converting this exchange rate by the help of `currency-exchange-service` and `currency-conversion-service`
-      2. `currency-exchange-service` return the exchange rate between two currencies.
-      3. `currency-conversion-sevice` convert the currency to another currency using the exchange rate.
-      4. `country-service` return all countries
-    - An `api-gateway` which exposes its URLs to Clients
-    - ELK Stack, for Centralized Logging
-    - Auth Server (For OAuth2 Authentication and Authorization)
-    - Naming Server (For services discovery)
-    - Distributed Tracing Stack, for request tracing in micro-service architecture
+    - There are five resource servers:
+      1. `currency-conversion` service abstract the functions of getting exchange rate from `currency-exchange` service and converting this exchange rate by the help of `math` service.
+      2. `currency-exchange` service return the exchange rate between two currencies.
+      3. `math` service convert the currency to another currency using the exchange rate.
+      4. `country` service return all countries
+      5. `user` service is related about user information
+    - An `api-gateway` exposes its URLs to Clients
+    - `Keycloak` Server (For OAuth2 Authentication and Authorization)
+    - `Discovery` Server (For services discovery)
+    - `Distributed Tracing Stack`, for request tracing in micro-service architecture
+    - `ELK Stack`, for Centralized Logging
   
 
 [Swagger UI](resource/how-to-use-swagger.md)
