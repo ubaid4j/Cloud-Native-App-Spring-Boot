@@ -1,6 +1,6 @@
 About
 =====
-- [Currency Conversion Server](http://localhost:8755/swagger-ui/index.html?urls.primaryName=math)
+- [Math Service](http://localhost:8755/swagger-ui/index.html?urls.primaryName=math)
 
 Dependencies
 ============
