@@ -66,8 +66,8 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new
                 ApiInfoBuilder()
-                .title("API Composer")
-                .description("This API abstract the currency-exchange-service and currency-conversion-service and provide one end point for end user to convert currency from one country to another country")
+                .title("Currency Conversion")
+                .description("This API abstract the currency-exchange service and math service and provide one end point for end user to convert currency from one country to another country")
                 .contact(new Contact(AUTHOR_NAME, AUTHOR_LINKEDIN_URL, AUTHOR_EMAIL))
                 .license(LICENSE)
                 .licenseUrl(LICENSE_URL)

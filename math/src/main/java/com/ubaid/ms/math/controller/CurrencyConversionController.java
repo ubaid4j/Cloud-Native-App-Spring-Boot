@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import static com.ubaid.ms.common.util.Constants.*;
 
-@Api(tags = SwaggerConfig.CONVERSION)
+@Api(tags = SwaggerConfig.MATH)
 @RestController
-@RequestMapping("currency-conversion")
+@RequestMapping("math")
 @Slf4j
 @RequiredArgsConstructor
 public class CurrencyConversionController {
@@ -24,15 +24,15 @@ public class CurrencyConversionController {
     private final CurrencyConversionService currencyConversionService;
 
     @ApiOperation(
-            value = "Convert given currency to another currency using given conversion rate",
+            value = "multiply first quantity with another one",
             authorizations = @Authorization(value = BEARER),
             response = ConvertedCurrency.class)
     @ApiResponses({
-            @ApiResponse(code = HTTP_OK, message = "Currency converted successfully"),
+            @ApiResponse(code = HTTP_OK, message = "multiplication successfull"),
             @ApiResponse(code = HTTP_UNAUTHORIZED, message = "You are not authorized to convert currency")
     })
     @PreAuthorize("hasAuthority('SCOPE_currency-conversion')")
-    @GetMapping(value = "/currency/{currency}/rate/{conversion-rate}", produces = APPLICATION_JSON)
+    @GetMapping(value = "multiply/currency/{currency}/rate/{conversion-rate}", produces = APPLICATION_JSON)
     public ConvertedCurrency getCurrencyConversion(
             @PathVariable("currency") Double currency,
             @PathVariable("conversion-rate") Double conversionRate) {

@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 
 @Api(tags = SwaggerConfig.USER)
 @RestController
-@RequestMapping(value = "user-service")
+@RequestMapping(value = "user")
 @RequiredArgsConstructor
 @CrossOrigin(value = CorsConfiguration.ALL)
 public class UserServiceController {

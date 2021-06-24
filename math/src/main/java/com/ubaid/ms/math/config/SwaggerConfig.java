@@ -24,12 +24,12 @@ import static com.ubaid.ms.common.util.Constants.*;
 @Slf4j
 public class SwaggerConfig {
 
-    public static final String CONVERSION = "Conversion";
+    public static final String MATH = "Math";
 
     @Bean
     public Docket swaggerSpringfoxDocket() {
         return new Docket(DocumentationType.OAS_30)
-                .tags(new Tag(CONVERSION, String.format("REST API for %s", CONVERSION)))
+                .tags(new Tag(MATH, String.format("REST API for %s operations", MATH)))
                 .apiInfo(apiInfo())
                 .securityContexts(Lists.newArrayList(securityContext()))
                 .securitySchemes(Lists.newArrayList(bearerToken()))
@@ -64,8 +64,8 @@ public class SwaggerConfig {
      */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Conversion API")
-                .description("Convert one currency to another using exchange rate")
+                .title("Math API")
+                .description("Math Operations")
                 .contact(new Contact(AUTHOR_NAME, AUTHOR_LINKEDIN_URL, AUTHOR_EMAIL))
                 .license(LICENSE)
                 .licenseUrl(LICENSE_URL)
