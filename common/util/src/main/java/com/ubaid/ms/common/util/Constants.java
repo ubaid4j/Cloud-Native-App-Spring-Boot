@@ -19,7 +19,7 @@ public class Constants {
     public static final String BEARER_TOKEN = "Bearer Token";
     public static final String HEADER = "header";
 
-    public static final String API_GATEWAY = "spring-cloud-api-gateway-server";
+    public static final String API_GATEWAY = "api-gateway";
     public static final String COUNTRY_SERVICE = "country-service";
     public static final String CURRENCY_CONVERSION_SERVICE = "currency-conversion-service";
     public static final String CURRENCY_EXCHANGE_SERVICE = "currency-exchange-service";

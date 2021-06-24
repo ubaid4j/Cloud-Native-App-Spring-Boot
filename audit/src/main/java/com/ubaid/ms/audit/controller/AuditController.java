@@ -15,7 +15,7 @@ import java.security.Principal;
 
 @Api(tags = SwaggerConfig.AUDIT)
 @RestController
-@RequestMapping("audit-service")
+@RequestMapping("audit")
 @RequiredArgsConstructor
 public class AuditController {
 
