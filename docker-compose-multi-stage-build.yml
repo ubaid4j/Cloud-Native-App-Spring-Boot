@@ -1,9 +1,9 @@
 version: '3'
 services:
-    spring-cloud-api-gateway-server:
+    api-gateway:
         container_name: api-gateway
         build:
-            context: spring-cloud-api-gateway-server
+            context: api-gateway
             dockerfile: Dockerfile.multistage
         expose:
             - 8755
@@ -13,10 +13,10 @@ services:
             - cloud-native-volume:/tmp
         networks:
             - envcn_cloud-native-network
-    currency-exchnage-service:
-        container_name: c-exchnage-service
+    currency-exchnage:
+        container_name: c-exchnage
         build:
-            context: currency-exchange-service
+            context: currency-exchange
             dockerfile: Dockerfile.multistage
         expose:
             - 8000
@@ -27,11 +27,11 @@ services:
         networks:
             - envcn_cloud-native-network
         depends_on:
-            - spring-cloud-api-gateway-server
-    currency-conversion-service:
-        container_name: c-conversion-service
+            - api-gateway
+    math:
+        container_name: math
         build:
-            context: currency-conversion-service
+            context: math
             dockerfile: Dockerfile.multistage
         expose:
             - 8100
@@ -42,11 +42,11 @@ services:
         networks:
             - envcn_cloud-native-network
         depends_on:
-            - spring-cloud-api-gateway-server
-    country-service:
-        container_name: country-service
+            - api-gateway
+    country:
+        container_name: country
         build:
-            context: country-service
+            context: country
             dockerfile: Dockerfile.multistage
         expose:
             - 8300
@@ -57,11 +57,11 @@ services:
         networks:
             - envcn_cloud-native-network
         depends_on:
-            - spring-cloud-api-gateway-server
-    api-composer:
-        container_name: api-composer
+            - api-gateway
+    currency-conversion:
+        container_name: currency-conversion
         build:
-            context: api-composer
+            context: currency-conversion
             dockerfile: Dockerfile.multistage
         expose:
             - 5200
@@ -72,11 +72,11 @@ services:
         networks:
             - envcn_cloud-native-network
         depends_on:
-            - spring-cloud-api-gateway-server
-    user-service:
-        container_name: user-service
+            - api-gateway
+    user:
+        container_name: user
         build:
-            context: user-service
+            context: user
             dockerfile: Dockerfile.multistage
         expose:
             - 8900
@@ -87,11 +87,11 @@ services:
         networks:
             - envcn_cloud-native-network
         depends_on:
-            - spring-cloud-api-gateway-server
-    audit-service:
-        container_name: audit-service
+            - api-gateway
+    audit:
+        container_name: audit
         build:
-            context: audit-service
+            context: audit
             dockerfile: Dockerfile.multistage
         expose:
             - 8950
@@ -102,13 +102,13 @@ services:
         networks:
             - envcn_cloud-native-network
         depends_on:
-            - spring-cloud-api-gateway-server
-    react-client:
-        container_name: react-client
+            - api-gateway
+    ui:
+        container_name: ui
         build:
             context: ./clients/3cn-react-client/
         depends_on:
-            - api-composer
+            - currency-conversion
         ports:
             - '3000:80'
         networks:

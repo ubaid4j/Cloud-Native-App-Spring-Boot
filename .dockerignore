@@ -23,74 +23,74 @@ Dockerfile
 run-multi-stage.sh
 update-3cn-parent-image.sh
 
-api-composer/target
-api-composer/.gitignore
-api-composer/api-composer.iml
-api-composer/readme.md
-api-composer/runAllTests.sh
+currency-conversion/target
+currency-conversion/.gitignore
+currency-conversion/currency-conversion.iml
+currency-conversion/readme.md
+currency-conversion/runAllTests.sh
 
-audit-service/target
-audit-service/.gitignore
-audit-service/audit-service.iml
-audit-service/runAllTests.sh
+audit/target
+audit/.gitignore
+audit/audit.iml
+audit/runAllTests.sh
 
-cc-modules/cc-modules.iml
+common/common.iml
 
-cc-modules/cc-common/cc-common.iml
-cc-modules/cc-common/.gitignore
-cc-modules/cc-common/readme.md
-cc-modules/cc-common/target
+common/dto/dto.iml
+common/dto/.gitignore
+common/dto/readme.md
+common/dto/target
 
-cc-modules/cc-dto/target
-cc-modules/cc-dto/.gitignore
-cc-modules/cc-modules/cc-dto.iml
-cc-modules/cc-dto/readme.md
-cc-modules/cc-dto/runAllTests.sh
+common/exception/target
+common/exception/.gitignore
+common/exception/exception.iml
+common/exception/readme.md
+common/exception/runAllTests.sh
 
-cc-modules/cc-exception/target
-cc-modules/cc-exception/.gitignore
-cc-modules/cc-modules/cc-exception.iml
-cc-modules/cc-exception/readme.md
-cc-modules/cc-exception/runAllTests.sh
+common/util/target
+common/util/.gitignore
+common/util/util.iml
+common/util/readme.md
+common/util/runAllTests.sh
 
-country-service/target
-country-service/.gitignore
-country-service/country-service.iml
-country-service/readme.md
-country-service/runAllTests.sh
+country/target
+country/.gitignore
+country/country.iml
+country/readme.md
+country/runAllTests.sh
 
-currency-conversion-service/target
-currency-conversion-service/.gitignore
-currency-conversion-service/currency-conversion-service.iml
-currency-conversion-service/readme.md
-currency-conversion-service/runAllTests.sh
+math/target
+math/.gitignore
+math/math.iml
+math/readme.md
+math/runAllTests.sh
 
-currency-exchange-service/target
-currency-exchange-service/.gitignore
-currency-exchange-service/currency-exchange-service.iml
-currency-exchange-service/readme.md
-currency-exchange-service/runAllTests.sh
+currency-exchange/target
+currency-exchange/.gitignore
+currency-exchange/currency-exchange.iml
+currency-exchange/readme.md
+currency-exchange/runAllTests.sh
 
-netflix-eureka-naming-server/target
-netflix-eureka-naming-server/.gitignore
-netflix-eureka-naming-server/netflix-eureka-naming-server.iml
-netflix-eureka-naming-server/readme.md
-netflix-eureka-naming-server/runAllTests.sh
+discovery/target
+discovery/.gitignore
+discovery/discovery.iml
+discovery/readme.md
+discovery/runAllTests.sh
 
-spring-cloud-api-gateway-server/target
-spring-cloud-api-gateway-server/.gitignore
-spring-cloud-api-gateway-server/spring-cloud-api-gateway-server.iml
-spring-cloud-api-gateway-server/readme.md
-spring-cloud-api-gateway-server/runAllTests.sh
+api-gateway/target
+api-gateway/.gitignore
+api-gateway/api-gateway.iml
+api-gateway/readme.md
+api-gateway/runAllTests.sh
 
-spring-cloud-config-server/target
-spring-cloud-config-server/.gitignore
-spring-cloud-config-server/spring-cloud-config-server.iml
-spring-cloud-config-server/readme.md
-spring-cloud-config-server/runAllTests.sh
+config/target
+config/.gitignore
+config/config.iml
+config/readme.md
+config/runAllTests.sh
 
-user-service/target
-user-service/.gitignore
-user-service/user-service.iml
-user-service/readme.md
-user-service/runAllTests.sh
+user/target
+user/.gitignore
+user/user.iml
+user/readme.md
+user/runAllTests.sh
