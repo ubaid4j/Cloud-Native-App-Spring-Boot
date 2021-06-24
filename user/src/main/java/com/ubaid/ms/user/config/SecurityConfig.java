@@ -29,7 +29,7 @@ import static com.ubaid.ms.common.util.Constants.API_DOCS_PATH;
 @Slf4j
 public class SecurityConfig {
 
-    private final static String[] ALLOWED_PATHS = {"/user-service/oauth/token", API_DOCS_PATH};
+    private final static String[] ALLOWED_PATHS = {"/user/oauth/token", API_DOCS_PATH};
 
     @Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
     private String jwkSetUri;

@@ -37,12 +37,12 @@ public class SecurityConfig {
     @Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
     private String jwkSetUri;
 
-    private final static String[] DOWN_STREAM_SERVICES_PATHS = {"/user-service/oauth/token", "/convert/**", "/currency-conversion/**", "/currency-exchange/**", "/country/code/**", "/config/limits/**", "/audit-service/**"};
-    private final static String[] OAUTH_TOKEN_PATHS = {"/user-service/oauth/token"};
+    private final static String[] DOWN_STREAM_SERVICES_PATHS = {"/user/oauth/token", "/math/**", "/currency-conversion/**", "/currency-exchange/**", "/country/**", "/audit/**"};
+    private final static String[] OAUTH_TOKEN_PATHS = {"/user/oauth/token"};
     private final static String[] ACTUATOR_PATHS = {"/actuator/health"};
-    private final static String[] SWAGGER_URLS = {"**/v3/api-docs/**", "/user-service/v3/api-docs", "/audit-service/v3/api-docs",
-            "/country-service/v3/api-docs", "/api-composer/v3/api-docs", "/currency-conversion-service/v3/api-docs",
-            "/currency-exchange-service/v3/api-docs",
+    private final static String[] SWAGGER_URLS = {"/user/v3/api-docs", "/audit/v3/api-docs",
+            "/country/v3/api-docs", "/currency-conversion/v3/api-docs", "/math/v3/api-docs",
+            "/currency-exchange/v3/api-docs",
             "/configuration/ui", "/swagger-resources/**",
             "/configuration/security", "/swagger-ui/index.html",
             "/webjars/**", "/swagger-ui/**"};
@@ -86,10 +86,6 @@ public class SecurityConfig {
 
     public NegatedServerWebExchangeMatcher getNegatedMatcherForDisabledCSRF() {
         return new NegatedServerWebExchangeMatcher(exchange -> ServerWebExchangeMatchers.pathMatchers(CSRF_DISABLED_PATHS).matches(exchange));
-    }
-
-    public NegatedServerWebExchangeMatcher getNegatedMatcherForSwagger() {
-        return new NegatedServerWebExchangeMatcher(exchange -> ServerWebExchangeMatchers.pathMatchers(SWAGGER_URLS).matches(exchange));
     }
 
     @Bean
