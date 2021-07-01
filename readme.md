@@ -22,7 +22,7 @@ Requirements
     - For Windows, its location is at: `c:\Windows\System32\Drivers\etc\hosts`
 - [Docker 19.03.13 or later](resource/install-require-softwares.md#install-docker)
         
-How to Run
+How to Run: [Watch Video](https://youtu.be/DyQ7gzR18Iw)
 ----------
 - `git clone https://github.com/UbaidurRehman1/Cloud-Native-App-Spring-Boot`
 - `cd Cloud-Native-App-Spring-Boot/envcn`
