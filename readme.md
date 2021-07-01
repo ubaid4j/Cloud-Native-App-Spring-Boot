@@ -8,7 +8,7 @@ Abstract
     - **Distributed Tracing**
 - Following are the Tools and technologies which I am using:
   - **Java 16**
-  - **Spring Boot 2.5.0**
+  - **Spring Boot 2.5.2**
   - **Spring Cloud 2020.0.3 (Security, Config Server, Service Discovery and Distributed Tracing)**
   - **KeyCloak Server (Authorization Server) 14.0.0**
   - **Zipkin Version 2.23.2 (Distribute Tracing)**
