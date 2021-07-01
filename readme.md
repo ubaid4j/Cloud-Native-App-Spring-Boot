@@ -8,7 +8,7 @@ Abstract
     - **Distributed Tracing**
 - Following are the Tools and technologies which I am using:
   - **Java 16**
-  - **Spring Boot 2.5.0**
+  - **Spring Boot 2.5.2**
   - **Spring Cloud 2020.0.3 (Security, Config Server, Service Discovery and Distributed Tracing)**
   - **KeyCloak Server (Authorization Server) 14.0.0**
   - **Zipkin Version 2.23.2 (Distribute Tracing)**
@@ -22,7 +22,7 @@ Requirements
     - For Windows, its location is at: `c:\Windows\System32\Drivers\etc\hosts`
 - [Docker 19.03.13 or later](resource/install-require-softwares.md#install-docker)
         
-How to Run
+How to Run: [Watch Video](https://youtu.be/DyQ7gzR18Iw)
 ----------
 - `git clone https://github.com/UbaidurRehman1/Cloud-Native-App-Spring-Boot`
 - `cd Cloud-Native-App-Spring-Boot/envcn`
