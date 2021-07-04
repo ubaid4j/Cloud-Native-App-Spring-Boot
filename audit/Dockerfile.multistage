@@ -1,4 +1,5 @@
-FROM ubaidurehman/3cn-parent:0.0.1-SNAPSHOT as build
+ARG APP_VERSION
+FROM ubaidurehman/3cn-parent:${APP_VERSION} as build
 LABEL maintainer="urehman.bese16seecs@seecs.edu.pk"
 VOLUME /tmp
 WORKDIR /
@@ -9,5 +10,6 @@ FROM openjdk:16-jdk-alpine
 VOLUME /tmp
 WORKDIR /
 EXPOSE 8950
-COPY --from=build /target/audit-0.0.1-SNAPSHOT.jar service.jar
+ARG APP_VERSION
+COPY --from=build /target/audit-${APP_VERSION}.jar service.jar
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Dspring.profiles.active=dev","-jar","/service.jar"]

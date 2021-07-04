@@ -98,6 +98,8 @@ services:
         container_name: config
         build:
             context: ../config
+            args:
+                APP_VERSION: $APP_VERSION
             dockerfile: Dockerfile.multistage
         expose:
             - 8888
@@ -109,6 +111,8 @@ services:
         container_name: discovery
         build:
             context: ../discovery
+            args:
+                APP_VERSION: $APP_VERSION
             dockerfile: Dockerfile.multistage
         networks:
             - cloud-native-network

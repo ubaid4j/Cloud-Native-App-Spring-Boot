@@ -4,6 +4,8 @@ services:
         container_name: api-gateway
         build:
             context: api-gateway
+            args:
+                APP_VERSION: $APP_VERSION
             dockerfile: Dockerfile.multistage
         expose:
             - 8755
@@ -17,6 +19,8 @@ services:
         container_name: c-exchnage
         build:
             context: currency-exchange
+            args:
+                APP_VERSION: $APP_VERSION
             dockerfile: Dockerfile.multistage
         expose:
             - 8000
@@ -32,6 +36,8 @@ services:
         container_name: math
         build:
             context: math
+            args:
+                APP_VERSION: $APP_VERSION
             dockerfile: Dockerfile.multistage
         expose:
             - 8100
@@ -47,6 +53,8 @@ services:
         container_name: country
         build:
             context: country
+            args:
+                APP_VERSION: $APP_VERSION
             dockerfile: Dockerfile.multistage
         expose:
             - 8300
@@ -62,6 +70,8 @@ services:
         container_name: currency-conversion
         build:
             context: currency-conversion
+            args:
+                APP_VERSION: $APP_VERSION
             dockerfile: Dockerfile.multistage
         expose:
             - 5200
@@ -77,6 +87,8 @@ services:
         container_name: user
         build:
             context: user
+            args:
+                APP_VERSION: $APP_VERSION
             dockerfile: Dockerfile.multistage
         expose:
             - 8900
@@ -92,6 +104,8 @@ services:
         container_name: audit
         build:
             context: audit
+            args:
+                APP_VERSION: $APP_VERSION
             dockerfile: Dockerfile.multistage
         expose:
             - 8950
