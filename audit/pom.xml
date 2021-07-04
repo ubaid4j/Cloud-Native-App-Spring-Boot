@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>com.ubaid.ms</groupId>
 		<artifactId>CC-CN-APP</artifactId>
-		<version>0.0.1</version>
+		<version>0.0.2-SNAPSHOT</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<artifactId>audit</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>Audit Service</name>
 	<description>Audit Logs Service</description>
 	<dependencies>
