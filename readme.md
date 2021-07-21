@@ -80,6 +80,7 @@ Micro-Services
 
 Servers
 -------
+-   [AUTH SERVER](http://localhost:9999)
 -   [NAMING SERVER](http://localhost:8761/)
 -   [CONFIG SERVER](http://localhost:8888/actuator/health)
 -   [ZIPKIN SERVER](http://localhost:9411/zipkin/)
