@@ -151,6 +151,7 @@ services:
         depends_on:
             - auth-db
         environment:
+            JAVA_OPTS_APPEND: '-Djboss.socket.binding.port-offset=1919'
             KEYCLOAK_USER: 'ubaid'
             KEYCLOAK_PASSWORD: 'changeme'
             DB_ADDR: 'auth-db'
@@ -159,9 +160,9 @@ services:
             DB_USER: 'keycloak'
             DB_PORT: '3306'
         ports:
-            - '8080:8080'
+            - '9999:9999'
         expose:
-            - '8080'
+            - '9999'
         networks:
             - cloud-native-network
             - auth-db-network
