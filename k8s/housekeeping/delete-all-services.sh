@@ -1,0 +1,11 @@
+kubectl delete -n default service db
+kubectl delete -n default service discovery
+kubectl delete -n default service auth-server
+kubectl delete -n default service auth-db
+kubectl delete -n default service zipkin
+kubectl delete -n default service rabbitmq
+kubectl delete -n default service elasticsearch
+kubectl delete -n default service config
+kubectl delete -n default service logstash
+kubectl delete -n default service kibana
+kubectl delete -n default service fe

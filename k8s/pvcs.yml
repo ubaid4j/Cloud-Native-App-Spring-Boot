@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: auth-db-pvc
+spec:
+    storageClassName: manual
+    accessModes:
+        - ReadWriteMany
+    resources:
+        requests:
+            storage: 20Gi
+    volumeName: auth-db-pv
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: mysql-pvc
+spec:
+    storageClassName: manual
+    accessModes:
+        - ReadWriteMany
+    resources:
+        requests:
+            storage: 20Gi
+    volumeName: mysql-pv
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: elasticsearch-pvc
+spec:
+    storageClassName: manual
+    accessModes:
+        - ReadWriteMany
+    resources:
+        requests:
+            storage: 20Gi
+    volumeName: elasticsearch-pv
+

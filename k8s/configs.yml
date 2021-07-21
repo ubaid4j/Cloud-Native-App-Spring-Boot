@@ -1,0 +1,75 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: elastic-search-config
+    namespace: default
+data:
+    elasticsearch.yml: |
+        cluster.name: docker-cluster
+        network.host: 0.0.0.0
+        xpack.license.self_generated.type: trial
+        xpack.security.enabled: false
+        xpack.monitoring.collection.enabled: true
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: logstash-config
+    namespace: default
+data:
+    logstash.yml: |
+        http.host: "0.0.0.0"
+        xpack.monitoring.elasticsearch.hosts: [ "http://elasticsearch:9200" ]
+        xpack.monitoring.enabled: true
+        xpack.monitoring.elasticsearch.username: elastic
+        xpack.monitoring.elasticsearch.password: changeme
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: logstash-pipeline
+    namespace: default
+data:
+    logstash.conf: |
+        input {
+            tcp {
+                port => 5000
+            }
+        }
+
+        output {
+            elasticsearch {
+                hosts => "elasticsearch:9200"
+                user => "elastic"
+                password => "changeme"
+            }
+        }
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: kibana-config
+    namespace: default
+data:
+    kibana.yml: |
+        server.name: kibana
+        server.host: 0.0.0.0
+        elasticsearch.hosts: [ "http://elasticsearch:9200" ]
+        monitoring.ui.container.elasticsearch.enabled: true
+        xpack.security.enabled: false
+        elasticsearch.username: elastic
+        elasticsearch.password: changeme
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: audit-db-init-config
+    namespace: default
+data:
+    init.sql: |
+        create database if not exists audit_db;
+
+---
