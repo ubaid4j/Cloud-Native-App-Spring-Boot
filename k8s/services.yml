@@ -28,7 +28,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-    name: app-db
+    name: db
 spec:
     type: NodePort
     selector:
@@ -68,7 +68,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-    name: rabbit-mq
+    name: rabbitmq
 spec:
     type: NodePort
     selector:

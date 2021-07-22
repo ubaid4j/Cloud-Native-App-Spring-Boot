@@ -1,5 +1,5 @@
 #!/bin/bash
-declare -a deployments=("api-gateway" "audit" "config" "country" "currency-conversion" "currency-exchange" "discovery" "math" "user" "fe" "elasticsearch" "logstash" "kibana" "rabbit-mq" "zipkin" "auth-db" "auth-server" "app-db")
+declare -a deployments=("api-gateway" "audit" "config" "country" "currency-conversion" "currency-exchange" "discovery" "math" "user" "fe" "elasticsearch" "logstash" "kibana" "rabbitmq" "zipkin" "auth-db" "auth-server" "db")
 for deployment in "${deployments[@]}"
 do
   kubectl delete -n default service "$deployment"
