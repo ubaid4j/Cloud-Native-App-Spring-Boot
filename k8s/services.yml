@@ -28,7 +28,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-    name: db
+    name: app-db
 spec:
     type: NodePort
     selector:

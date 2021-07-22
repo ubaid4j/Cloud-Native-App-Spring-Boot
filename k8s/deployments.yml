@@ -81,7 +81,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: discovery-deployment
+    name: discovery
     labels:
         app: discovery
 spec:
@@ -96,7 +96,6 @@ spec:
         spec:
             containers:
                 -   name: discovery
-                    imagePullPolicy: "Always"
                     image: ubaidurehman/discovery:0.0.2-SNAPSHOT
                     ports:
                         -   containerPort: 8761
@@ -167,7 +166,6 @@ spec:
             containers:
                 -   name: config
                     image: ubaidurehman/config:0.0.2-SNAPSHOT
-                    imagePullPolicy: "Always"
                     args: [ "--spring.profiles.active=dev" ]
                     ports:
                         -   containerPort: 8888

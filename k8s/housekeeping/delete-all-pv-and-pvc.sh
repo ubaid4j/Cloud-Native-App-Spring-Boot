@@ -6,6 +6,3 @@ kubectl delete persistentvolume mysql-pv
 
 kubectl delete -n default persistentvolumeclaim auth-db-pvc
 kubectl delete persistentvolume auth-db-pv
-
-
-
