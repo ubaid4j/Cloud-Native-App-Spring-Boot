@@ -16,6 +16,7 @@ spec:
             containers:
                 -   image: ubaidurehman/auth-db:0.0.2-SNAPSHOT
                     name: auth-db
+                    imagePullPolicy: "Always"
                     env:
                         -   name: MYSQL_DATABASE
                             value: keycloak
@@ -40,7 +41,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: auth-server-deployment
+    name: auth-server
     labels:
         app: auth-server
 spec:
@@ -54,9 +55,11 @@ spec:
                 app: auth-server
         spec:
             containers:
-                -   name: discovery
+                -   name: auth-server
                     image: jboss/keycloak:14.0.0
                     env:
+                        -   name: JAVA_OPTS_APPEND
+                            value: '-Djboss.socket.binding.port-offset=1919'
                         -   name: KEYCLOAK_USER
                             value: ubaid
                         -   name: KEYCLOAK_PASSWORD
@@ -93,6 +96,7 @@ spec:
         spec:
             containers:
                 -   name: discovery
+                    imagePullPolicy: "Always"
                     image: ubaidurehman/discovery:0.0.2-SNAPSHOT
                     ports:
                         -   containerPort: 8761
@@ -101,21 +105,21 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: mysql
+    name: app-db
 spec:
     selector:
         matchLabels:
-            app: mysql
+            app: app-db
     strategy:
         type: Recreate
     template:
         metadata:
             labels:
-                app: mysql
+                app: app-db
         spec:
             containers:
                 -   image: mysql:8.0.25
-                    name: mysql
+                    name: app-db
                     env:
                         -   name: MYSQL_DATABASE
                             value: spring_dev
@@ -147,7 +151,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: config-deployment
+    name: config
     labels:
         app: config
 spec:
@@ -163,6 +167,7 @@ spec:
             containers:
                 -   name: config
                     image: ubaidurehman/config:0.0.2-SNAPSHOT
+                    imagePullPolicy: "Always"
                     args: [ "--spring.profiles.active=dev" ]
                     ports:
                         -   containerPort: 8888
@@ -170,7 +175,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: rabbitmq-deployment
+    name: rabbit-mq
     labels:
         app: rabbit-mq
 spec:
@@ -193,7 +198,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: zipkin-deployment
+    name: zipkin
     labels:
         app: zipkin
 spec:
@@ -243,7 +248,7 @@ spec:
                           mountPath: /mnt/pv/elasticsearch
             containers:
                 -   name: elasticsearch
-                    image: ubaidurehman/elasticsearch:0.0.2-SNAPSHOT
+                    image: docker.elastic.co/elasticsearch/elasticsearch:7.13.2
                     env:
                         -   name: ES_JAVA_OPTS
                             value: "-Xmx256m -Xms256m"
@@ -362,6 +367,7 @@ spec:
         spec:
             containers:
                 - name: math
+                  imagePullPolicy: "Always"
                   image: ubaidurehman/math:0.0.2-SNAPSHOT
                   args: ["--spring.profiles.active=dev"]
                   ports:
@@ -386,6 +392,7 @@ spec:
         spec:
             containers:
                 - name: country
+                  imagePullPolicy: "Always"
                   image: ubaidurehman/country:0.0.2-SNAPSHOT
                   args: ["--spring.profiles.active=dev"]
                   ports:
@@ -411,6 +418,7 @@ spec:
         spec:
             containers:
                 - name: api-gateway
+                  imagePullPolicy: "Always"
                   image: ubaidurehman/api-gateway:0.0.2-SNAPSHOT
                   args: ["--spring.profiles.active=dev"]
                   ports:
@@ -436,6 +444,7 @@ spec:
         spec:
             containers:
                 - name: audit
+                  imagePullPolicy: "Always"
                   image: ubaidurehman/audit:0.0.2-SNAPSHOT
                   args: ["--spring.profiles.active=dev"]
                   ports:
@@ -463,6 +472,7 @@ spec:
         spec:
             containers:
                 - name: currency-conversion
+                  imagePullPolicy: "Always"
                   image: ubaidurehman/currency-conversion:0.0.2-SNAPSHOT
                   args: ["--spring.profiles.active=dev"]
                   ports:
@@ -488,6 +498,7 @@ spec:
         spec:
             containers:
                 - name: currency-exchange
+                  imagePullPolicy: "Always"
                   image: ubaidurehman/currency-exchange:0.0.2-SNAPSHOT
                   args: ["--spring.profiles.active=dev"]
                   ports:
@@ -513,6 +524,7 @@ spec:
         spec:
             containers:
                 - name: user
+                  imagePullPolicy: "Always"
                   image: ubaidurehman/user:0.0.2-SNAPSHOT
                   args: ["--spring.profiles.active=dev"]
                   ports:
@@ -539,6 +551,7 @@ spec:
         spec:
             containers:
                 - name: fe
+                  imagePullPolicy: "Always"
                   image: ubaidurehman/3cn-fe:0.0.2-SNAPSHOT
                   ports:
                       - containerPort: 80
