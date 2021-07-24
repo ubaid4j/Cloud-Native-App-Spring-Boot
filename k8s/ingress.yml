@@ -4,7 +4,7 @@ metadata:
   name: auth-server
 spec:
   rules:
-    - host: "auth-server"
+    - host: "auth-server-io"
       http:
         paths:
           - pathType: Prefix
