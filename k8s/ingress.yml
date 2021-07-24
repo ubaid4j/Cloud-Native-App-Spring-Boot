@@ -11,7 +11,7 @@ spec:
             path: '/'
             backend:
               service:
-                name: auth-server
+                name: auth-server-io
                 port:
                   number: 9999
 ---
