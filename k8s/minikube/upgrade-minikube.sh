@@ -13,6 +13,7 @@ minikube start
 minikube addons enable dashboard
 minikube addons enable default-storageclass
 minikube addons enable storage-provisioner
+minikube addons enable ingress
 
 # Showing enabled addons
 printf '\n\n\033[4;33m Enabled Addons \033[0m'

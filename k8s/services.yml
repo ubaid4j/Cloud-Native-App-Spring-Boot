@@ -22,7 +22,7 @@ spec:
         app: auth-server
     ports:
         -   protocol: TCP
-            port: 9999
+            port: 80
             targetPort: 9999
 ---
 apiVersion: v1
