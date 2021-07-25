@@ -37,6 +37,7 @@ public class SecurityConfig {
     @Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
     private String jwkSetUri;
 
+    private final static String[] INDEX = {"/"};
     private final static String[] DOWN_STREAM_SERVICES_PATHS = {"/user/oauth/token", "/math/**", "/currency-conversion/**", "/currency-exchange/**", "/country/**", "/audit/**"};
     private final static String[] OAUTH_TOKEN_PATHS = {"/user/oauth/token"};
     private final static String[] ACTUATOR_PATHS = {"/actuator/health"};
@@ -46,7 +47,7 @@ public class SecurityConfig {
             "/configuration/ui", "/swagger-resources/**",
             "/configuration/security", "/swagger-ui/index.html",
             "/webjars/**", "/swagger-ui/**"};
-    private final static String[] CSRF_DISABLED_PATHS = new String[DOWN_STREAM_SERVICES_PATHS.length + SWAGGER_URLS.length + ACTUATOR_PATHS.length];
+    private final static String[] CSRF_DISABLED_PATHS = new String[DOWN_STREAM_SERVICES_PATHS.length + SWAGGER_URLS.length + ACTUATOR_PATHS.length + INDEX.length];
 
     static {
         int counter = 0;
@@ -58,6 +59,9 @@ public class SecurityConfig {
         }
         for (String actuatorPath : ACTUATOR_PATHS) {
             CSRF_DISABLED_PATHS[counter++] = actuatorPath;
+        }
+        for (String index : INDEX) {
+            CSRF_DISABLED_PATHS[counter++] = index;
         }
     }
 
@@ -74,6 +78,7 @@ public class SecurityConfig {
                 .pathMatchers(OAUTH_TOKEN_PATHS).permitAll()
                 .pathMatchers(SWAGGER_URLS).permitAll()
                 .pathMatchers(ACTUATOR_PATHS).permitAll()
+                .pathMatchers(HttpMethod.GET, INDEX).permitAll()
                 .pathMatchers(HttpMethod.OPTIONS).permitAll()
                 .anyExchange()
                 .authenticated()

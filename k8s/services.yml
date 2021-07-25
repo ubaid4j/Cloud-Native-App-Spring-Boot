@@ -1,0 +1,267 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: auth-db
+spec:
+    type: NodePort
+    selector:
+        app: auth-db
+    ports:
+        -   protocol: TCP
+            port: 3306
+            targetPort: 3306
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: auth-server-io
+spec:
+    type: NodePort
+    selector:
+        app: auth-server
+    ports:
+        -   protocol: TCP
+            port: 80
+            targetPort: 9999
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: db
+spec:
+    type: NodePort
+    selector:
+        app: app-db
+    ports:
+        -   protocol: TCP
+            port: 3306
+            targetPort: 3306
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: discovery
+spec:
+    type: NodePort
+    selector:
+        app: discovery
+    ports:
+        -   protocol: TCP
+            port: 8761
+            targetPort: 8761
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: config
+spec:
+    type: NodePort
+    selector:
+        app: config
+    ports:
+        -   protocol: TCP
+            port: 8888
+            targetPort: 8888
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: rabbitmq
+spec:
+    type: NodePort
+    selector:
+        app: rabbit-mq
+    ports:
+        -   name: be
+            protocol: TCP
+            port: 5672
+            targetPort: 5672
+        -   name: fe
+            protocol: TCP
+            port: 15672
+            targetPort: 15672
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: zipkin
+spec:
+    type: NodePort
+    selector:
+        app: zipkin
+    ports:
+        -   protocol: TCP
+            port: 9411
+            targetPort: 9411
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: elasticsearch
+spec:
+    type: NodePort
+    selector:
+        app: elasticsearch
+    ports:
+        -   name: ninetwo
+            protocol: TCP
+            port: 9200
+            targetPort: 9200
+        -   name: ninethree
+            protocol: TCP
+            port: 9300
+            targetPort: 9300
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: logstash
+spec:
+    type: NodePort
+    selector:
+        app: logstash
+    ports:
+        -   name: fivetriplezerotcp
+            protocol: TCP
+            port: 5000
+            targetPort: 5000
+        -   name: fivetriplezeroudp
+            protocol: UDP
+            port: 5000
+            targetPort: 5000
+        -   name: ninesixdoublezero
+            protocol: TCP
+            port: 9600
+            targetPort: 9600
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: kibana
+spec:
+    type: NodePort
+    selector:
+        app: kibana
+    ports:
+        -   protocol: TCP
+            port: 5601
+            targetPort: 5601
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: math
+spec:
+    type: NodePort
+    selector:
+        app: math
+    ports:
+        - protocol: TCP
+          port: 8100
+          targetPort: 8100
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: country
+spec:
+    type: NodePort
+    selector:
+        app: country
+    ports:
+        - protocol: TCP
+          port: 8300
+          targetPort: 8300
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: api-gateway
+spec:
+    type: NodePort
+    selector:
+        app: api-gateway
+    ports:
+        - protocol: TCP
+          port: 8755
+          targetPort: 8755
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: audit
+spec:
+    type: NodePort
+    selector:
+        app: audit
+    ports:
+        - protocol: TCP
+          port: 8950
+          targetPort: 8950
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: currency-conversion
+spec:
+    type: NodePort
+    selector:
+        app: currency-conversion
+    ports:
+        - protocol: TCP
+          port: 5200
+          targetPort: 5200
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: currency-exchange
+spec:
+    type: NodePort
+    selector:
+        app: currency-exchange
+    ports:
+        - protocol: TCP
+          port: 8000
+          targetPort: 8000
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: user
+spec:
+    type: NodePort
+    selector:
+        app: user
+    ports:
+        - protocol: TCP
+          port: 8900
+          targetPort: 8900
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: fe
+spec:
+    type: NodePort
+    selector:
+        app: fe
+    ports:
+        - protocol: TCP
+          port: 80
+          targetPort: 80
+---
+
+

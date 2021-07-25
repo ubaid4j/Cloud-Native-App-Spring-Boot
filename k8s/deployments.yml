@@ -1,0 +1,559 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: auth-db
+spec:
+    selector:
+        matchLabels:
+            app: auth-db
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                app: auth-db
+        spec:
+            containers:
+                -   image: ubaidurehman/auth-db:0.0.2-SNAPSHOT
+                    name: auth-db
+                    imagePullPolicy: "Always"
+                    env:
+                        -   name: MYSQL_DATABASE
+                            value: keycloak
+                        -   name: MYSQL_USER
+                            value: keycloak
+                        -   name: MYSQL_PASSWORD
+                            value: password
+                        -   name: MYSQL_ROOT_PASSWORD
+                            value: password
+                    ports:
+                        -   containerPort: 3306
+                            name: auth-db
+                    volumeMounts:
+                        -   name: auth-db-persistent-storage
+                            mountPath: /var/lib/mysql
+            volumes:
+                -   name: auth-db-persistent-storage
+                    persistentVolumeClaim:
+                        claimName: auth-db-pvc
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: auth-server
+    labels:
+        app: auth-server
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: auth-server
+    template:
+        metadata:
+            labels:
+                app: auth-server
+        spec:
+            containers:
+                -   name: auth-server
+                    image: jboss/keycloak:14.0.0
+                    env:
+                        -   name: JAVA_OPTS_APPEND
+                            value: '-Djboss.socket.binding.port-offset=1919'
+                        -   name: KEYCLOAK_USER
+                            value: ubaid
+                        -   name: KEYCLOAK_PASSWORD
+                            value: changeme
+                        -   name: DB_ADDR
+                            value: auth-db
+                        -   name: DB_VENDOR
+                            value: mysql
+                        -   name: KEYCLOAK_LOGLEVEL
+                            value: DEBUG
+                        -   name: DB_USER
+                            value: keycloak
+                        -   name: DB_PORT
+                            value: '3306'
+                    ports:
+                        -   containerPort: 8080
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: discovery
+    labels:
+        app: discovery
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: discovery
+    template:
+        metadata:
+            labels:
+                app: discovery
+        spec:
+            containers:
+                -   name: discovery
+                    image: ubaidurehman/discovery:0.0.2-SNAPSHOT
+                    ports:
+                        -   containerPort: 8761
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: app-db
+spec:
+    selector:
+        matchLabels:
+            app: app-db
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                app: app-db
+        spec:
+            containers:
+                -   image: mysql:8.0.25
+                    name: app-db
+                    env:
+                        -   name: MYSQL_DATABASE
+                            value: spring_dev
+                        -   name: MYSQL_USER
+                            value: spring
+                        -   name: MYSQL_PASSWORD
+                            value: password
+                        -   name: MYSQL_ROOT_PASSWORD
+                            value: password
+                    ports:
+                        -   containerPort: 3306
+                            name: mysql
+                    volumeMounts:
+                        -   name: mysql-persistent-storage
+                            mountPath: /var/lib/mysql
+                        -   name: audit-db-init-config
+                            mountPath: /docker-entrypoint-initdb.d/init.sql
+                            subPath: init.sql
+            volumes:
+                -   name: mysql-persistent-storage
+                    persistentVolumeClaim:
+                        claimName: mysql-pvc
+                -   name: audit-db-init-config
+                    configMap:
+                        name: audit-db-init-config
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: config
+    labels:
+        app: config
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: config
+    template:
+        metadata:
+            labels:
+                app: config
+        spec:
+            containers:
+                -   name: config
+                    imagePullPolicy: "Always"
+                    image: ubaidurehman/config:0.0.2-SNAPSHOT
+                    args: [ "--spring.profiles.active=prod" ]
+                    ports:
+                        -   containerPort: 8888
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: rabbit-mq
+    labels:
+        app: rabbit-mq
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: rabbit-mq
+    template:
+        metadata:
+            labels:
+                app: rabbit-mq
+        spec:
+            containers:
+                -   name: rabbit-mq
+                    image: rabbitmq:3.8.17-management
+                    ports:
+                        -   containerPort: 5672
+                        -   containerPort: 15672
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: zipkin
+    labels:
+        app: zipkin
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: zipkin
+    template:
+        metadata:
+            labels:
+                app: zipkin
+        spec:
+            containers:
+                -   name: zipkin
+                    image: openzipkin/zipkin:2.23.2
+                    ports:
+                        -   containerPort: 9411
+---
+
+#ELK Stack
+# Elastic Search
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: elasticsearch
+    labels:
+        app: elasticsearch
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: elasticsearch
+    template:
+        metadata:
+            labels:
+                app: elasticsearch
+        spec:
+            initContainers:
+                -   name: permit-elasticsearch-directory
+                    image: busybox
+                    imagePullPolicy: IfNotPresent
+                    command: [ "sh", "-c", "mkdir -p /mnt/pv/elasticsearch && chmod 777 /mnt/pv/elasticsearch" ]
+                    securityContext:
+                        privileged: true
+                    volumeMounts:
+                        - name: elasticsearch-persistent-storage
+                          mountPath: /mnt/pv/elasticsearch
+            containers:
+                -   name: elasticsearch
+                    image: docker.elastic.co/elasticsearch/elasticsearch:7.13.2
+                    env:
+                        -   name: ES_JAVA_OPTS
+                            value: "-Xmx256m -Xms256m"
+                        -   name: ELASTIC_PASSWORD
+                            value: changeme
+                        -   name: discovery.type
+                            value: single-node
+                    ports:
+                        -   containerPort: 9200
+                        -   containerPort: 9300
+                    volumeMounts:
+                        -   name: elasticsearch-persistent-storage
+                            mountPath: /usr/share/elasticsearch/data
+                        -   name: config
+                            mountPath: /usr/share/elasticsearch/config/elasticsearch.yml
+                            subPath: elasticsearch.yml
+            volumes:
+                -   name: elasticsearch-persistent-storage
+                    persistentVolumeClaim:
+                        claimName: elasticsearch-pvc
+                -   name: config
+                    configMap:
+                        name: elastic-search-config
+---
+
+#Logstash
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: logstash
+    labels:
+        app: logstash
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: logstash
+    template:
+        metadata:
+            labels:
+                app: logstash
+        spec:
+            containers:
+                -   name: logstash
+                    image: docker.elastic.co/logstash/logstash:7.13.2
+                    env:
+                        -   name: ES_JAVA_OPTS
+                            value: "-Xmx256m -Xms256m"
+                    ports:
+                        -   containerPort: 5000
+                        -   containerPort: 9600
+                    volumeMounts:
+                        -   name: logstash-config
+                            mountPath: /usr/share/logstash/config/logstash.yml
+                            subPath: logstash.yml
+                        -   name: logstash-pipeline
+                            mountPath: /usr/share/logstash/pipeline/logstash.conf
+                            subPath: logstash.conf
+            volumes:
+                - name: logstash-config
+                  configMap:
+                      name: logstash-config
+                - name: logstash-pipeline
+                  configMap:
+                      name: logstash-pipeline
+---
+#Kibana
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: kibana
+    labels:
+        app: kibana
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: kibana
+    template:
+        metadata:
+            labels:
+                app: kibana
+        spec:
+            containers:
+                -   name: kibana
+                    image: docker.elastic.co/kibana/kibana:7.13.2
+                    ports:
+                        -   containerPort: 5601
+                    volumeMounts:
+                        -   name: kibana-config
+                            mountPath: /usr/share/kibana/config/kibana.yml
+                            subPath: kibana.yml
+            volumes:
+                -   name: kibana-config
+                    configMap:
+                        name: kibana-config
+---
+
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: math
+    labels:
+        app: math
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: math
+    template:
+        metadata:
+            labels:
+                app: math
+        spec:
+            containers:
+                - name: math
+                  imagePullPolicy: "Always"
+                  image: ubaidurehman/math:0.0.2-SNAPSHOT
+                  args: ["--spring.profiles.active=prod"]
+                  ports:
+                      - containerPort: 8100
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: country
+    labels:
+        app: country
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: country
+    template:
+        metadata:
+            labels:
+                app: country
+        spec:
+            containers:
+                - name: country
+                  imagePullPolicy: "Always"
+                  image: ubaidurehman/country:0.0.2-SNAPSHOT
+                  args: ["--spring.profiles.active=prod"]
+                  ports:
+                      - containerPort: 8300
+---
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: api-gateway
+    labels:
+        app: api-gateway
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: api-gateway
+    template:
+        metadata:
+            labels:
+                app: api-gateway
+        spec:
+            containers:
+                - name: api-gateway
+                  imagePullPolicy: "Always"
+                  image: ubaidurehman/api-gateway:0.0.2-SNAPSHOT
+                  args: ["--spring.profiles.active=prod"]
+                  ports:
+                      - containerPort: 8755
+---
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: audit
+    labels:
+        app: audit
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: audit
+    template:
+        metadata:
+            labels:
+                app: audit
+        spec:
+            containers:
+                - name: audit
+                  imagePullPolicy: "Always"
+                  image: ubaidurehman/audit:0.0.2-SNAPSHOT
+                  args: ["--spring.profiles.active=prod"]
+                  ports:
+                      - containerPort: 8950
+---
+
+
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: currency-conversion
+    labels:
+        app: currency-conversion
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: currency-conversion
+    template:
+        metadata:
+            labels:
+                app: currency-conversion
+        spec:
+            containers:
+                - name: currency-conversion
+                  imagePullPolicy: "Always"
+                  image: ubaidurehman/currency-conversion:0.0.2-SNAPSHOT
+                  args: ["--spring.profiles.active=prod"]
+                  ports:
+                      - containerPort: 5200
+---
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: currency-exchange
+    labels:
+        app: currency-exchange
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: currency-exchange
+    template:
+        metadata:
+            labels:
+                app: currency-exchange
+        spec:
+            containers:
+                - name: currency-exchange
+                  imagePullPolicy: "Always"
+                  image: ubaidurehman/currency-exchange:0.0.2-SNAPSHOT
+                  args: ["--spring.profiles.active=prod"]
+                  ports:
+                      - containerPort: 8000
+---
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: user
+    labels:
+        app: user
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: user
+    template:
+        metadata:
+            labels:
+                app: user
+        spec:
+            containers:
+                - name: user
+                  imagePullPolicy: "Always"
+                  image: ubaidurehman/user:0.0.2-SNAPSHOT
+                  args: ["--spring.profiles.active=prod"]
+                  ports:
+                      - containerPort: 8900
+---
+
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: fe
+    labels:
+        app: fe
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: fe
+    template:
+        metadata:
+            labels:
+                app: fe
+        spec:
+            containers:
+                - name: fe
+                  imagePullPolicy: "Always"
+                  image: ubaidurehman/3cn-fe:0.0.2-SNAPSHOT
+                  ports:
+                      - containerPort: 80
+---
+
+
