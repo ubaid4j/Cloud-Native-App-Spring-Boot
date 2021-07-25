@@ -1,11 +1,12 @@
-# build environment
-FROM node:13.12.0-alpine as build
+#To build image: docker run -t 3cn-fe:{version} --build-arg ENV={env} .
+FROM node:14.17.3-alpine as build
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
 RUN npm install
 COPY . ./
-RUN npm run build
+ARG ENV
+RUN npm run build:${ENV}
 
 # production environment
 FROM nginx:stable-alpine

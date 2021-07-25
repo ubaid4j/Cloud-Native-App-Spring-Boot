@@ -121,6 +121,8 @@ services:
         container_name: ui
         build:
             context: ./clients/3cn-react-client/
+            args:
+                ENV: dev
         depends_on:
             - currency-conversion
         ports:

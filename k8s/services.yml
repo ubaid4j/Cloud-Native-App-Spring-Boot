@@ -15,14 +15,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-    name: auth-server
+    name: auth-server-io
 spec:
     type: NodePort
     selector:
         app: auth-server
     ports:
         -   protocol: TCP
-            port: 9999
+            port: 80
             targetPort: 9999
 ---
 apiVersion: v1

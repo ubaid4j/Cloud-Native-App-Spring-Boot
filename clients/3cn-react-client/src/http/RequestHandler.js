@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 
-const env = process.env.NODE_ENV === 'development';
+const env = process.env.REACT_APP_ENV;
 let baseURL;
-if (env) {
-    baseURL = 'http://localhost:8755';
+if (env === 'prod') {
+    baseURL = 'http://currency-converter.api-gateway.io';
 } else {
     baseURL = 'http://localhost:8755';
 }

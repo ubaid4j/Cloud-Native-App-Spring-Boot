@@ -1,0 +1,8 @@
+{
+  "realm": "3cn",
+  "auth-server-url": "http://auth-server-io/auth",
+  "ssl-required": "external",
+  "resource": "3cn-react-client",
+  "public-client": true,
+  "confidential-port": 0
+}

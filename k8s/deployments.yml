@@ -69,7 +69,7 @@ spec:
                         -   name: DB_VENDOR
                             value: mysql
                         -   name: KEYCLOAK_LOGLEVEL
-                            value: WARN
+                            value: DEBUG
                         -   name: DB_USER
                             value: keycloak
                         -   name: DB_PORT
@@ -165,8 +165,9 @@ spec:
         spec:
             containers:
                 -   name: config
+                    imagePullPolicy: "Always"
                     image: ubaidurehman/config:0.0.2-SNAPSHOT
-                    args: [ "--spring.profiles.active=dev" ]
+                    args: [ "--spring.profiles.active=prod" ]
                     ports:
                         -   containerPort: 8888
 ---
@@ -367,7 +368,7 @@ spec:
                 - name: math
                   imagePullPolicy: "Always"
                   image: ubaidurehman/math:0.0.2-SNAPSHOT
-                  args: ["--spring.profiles.active=dev"]
+                  args: ["--spring.profiles.active=prod"]
                   ports:
                       - containerPort: 8100
 ---
@@ -392,7 +393,7 @@ spec:
                 - name: country
                   imagePullPolicy: "Always"
                   image: ubaidurehman/country:0.0.2-SNAPSHOT
-                  args: ["--spring.profiles.active=dev"]
+                  args: ["--spring.profiles.active=prod"]
                   ports:
                       - containerPort: 8300
 ---
@@ -418,7 +419,7 @@ spec:
                 - name: api-gateway
                   imagePullPolicy: "Always"
                   image: ubaidurehman/api-gateway:0.0.2-SNAPSHOT
-                  args: ["--spring.profiles.active=dev"]
+                  args: ["--spring.profiles.active=prod"]
                   ports:
                       - containerPort: 8755
 ---
@@ -444,7 +445,7 @@ spec:
                 - name: audit
                   imagePullPolicy: "Always"
                   image: ubaidurehman/audit:0.0.2-SNAPSHOT
-                  args: ["--spring.profiles.active=dev"]
+                  args: ["--spring.profiles.active=prod"]
                   ports:
                       - containerPort: 8950
 ---
@@ -472,7 +473,7 @@ spec:
                 - name: currency-conversion
                   imagePullPolicy: "Always"
                   image: ubaidurehman/currency-conversion:0.0.2-SNAPSHOT
-                  args: ["--spring.profiles.active=dev"]
+                  args: ["--spring.profiles.active=prod"]
                   ports:
                       - containerPort: 5200
 ---
@@ -498,7 +499,7 @@ spec:
                 - name: currency-exchange
                   imagePullPolicy: "Always"
                   image: ubaidurehman/currency-exchange:0.0.2-SNAPSHOT
-                  args: ["--spring.profiles.active=dev"]
+                  args: ["--spring.profiles.active=prod"]
                   ports:
                       - containerPort: 8000
 ---
@@ -524,7 +525,7 @@ spec:
                 - name: user
                   imagePullPolicy: "Always"
                   image: ubaidurehman/user:0.0.2-SNAPSHOT
-                  args: ["--spring.profiles.active=dev"]
+                  args: ["--spring.profiles.active=prod"]
                   ports:
                       - containerPort: 8900
 ---
