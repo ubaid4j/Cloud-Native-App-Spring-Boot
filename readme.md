@@ -33,6 +33,9 @@ How to Run: [Watch Video](https://youtu.be/DyQ7gzR18Iw)
 - [Access Swagger Client UI](http://localhost:8755/swagger-ui/index.html)
     - To authorize the requests in Swagger, [please follow this](resource/how-to-use-swagger.md)
 
+[Run in Kubernetes](k8s/docx/readme.md)
+-----------------
+
 About
 ----
 - This App basically converts a currency from given country code to targeted country code by following the **cloud native approach**.
