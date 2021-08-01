@@ -11,7 +11,7 @@ public class Constants {
     public static final String LICENSE = "MIT";
     public static final String LICENSE_URL = "https://github.com/UbaidurRehman1/Cloud-Native-App-Spring-Boot/blob/master/LICENSE";
 
-    public static final String APP_VERSION = "0.0.2-SNAPSHOT";
+    public static final String APP_VERSION = "0.0.2";
 
     public static final String GLOBAL = "global";
     public static final String ACCESS_EVERYTHING = "accessEverything";
