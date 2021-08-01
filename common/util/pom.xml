@@ -3,12 +3,12 @@
     <parent>
         <groupId>com.ubaid.ms.common</groupId>
         <artifactId>common</artifactId>
-        <version>0.0.2</version>
+        <version>0.0.3-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>util</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>Util</name>
 
 </project>

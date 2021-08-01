@@ -9,7 +9,7 @@
     </parent>
     <groupId>com.ubaid.ms</groupId>
     <artifactId>CC-CN-APP</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>3CN App</name>
     <description>Currency Conversion Cloud Native App</description>
     <packaging>pom</packaging>
@@ -86,19 +86,19 @@
         <dependency>
             <groupId>com.ubaid.ms.common</groupId>
             <artifactId>exception</artifactId>
-            <version>0.0.2</version>
+            <version>0.0.3-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.ubaid.ms.common</groupId>
             <artifactId>dto</artifactId>
-            <version>0.0.2</version>
+            <version>0.0.3-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.ubaid.ms.common</groupId>
             <artifactId>util</artifactId>
-            <version>0.0.2</version>
+            <version>0.0.3-SNAPSHOT</version>
         </dependency>
 
     </dependencies>
@@ -142,7 +142,7 @@
 
     <scm>
         <developerConnection>scm:git:git@github.com:UbaidurRehman1/Cloud-Native-App-Spring-Boot.git</developerConnection>
-      <tag>v0.0.2</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <build>

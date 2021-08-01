@@ -4,12 +4,12 @@
     <parent>
         <groupId>com.ubaid.ms</groupId>
         <artifactId>CC-CN-APP</artifactId>
-        <version>0.0.2</version>
+        <version>0.0.3-SNAPSHOT</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
 
     <artifactId>config</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>Config Server</name>
     <description>Cloud Configuration Server</description>
 
