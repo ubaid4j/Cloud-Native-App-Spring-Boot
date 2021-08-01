@@ -4,11 +4,11 @@
     <parent>
         <groupId>com.ubaid.ms</groupId>
         <artifactId>CC-CN-APP</artifactId>
-        <version>0.0.2-SNAPSHOT</version>
+        <version>0.0.2</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
     <artifactId>api-gateway</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>API Gateway</name>
     <description>Spring Cloud API Gateway Server</description>
 

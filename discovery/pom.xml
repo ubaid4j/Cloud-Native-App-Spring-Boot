@@ -4,11 +4,11 @@
     <parent>
         <groupId>com.ubaid.ms</groupId>
         <artifactId>CC-CN-APP</artifactId>
-        <version>0.0.2-SNAPSHOT</version>
+        <version>0.0.2</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
     <artifactId>discovery</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>Discovery Server</name>
     <description>This is Netflix Eureka Discovery Server</description>
 

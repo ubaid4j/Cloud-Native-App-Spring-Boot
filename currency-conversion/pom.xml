@@ -4,11 +4,11 @@
     <parent>
         <groupId>com.ubaid.ms</groupId>
         <artifactId>CC-CN-APP</artifactId>
-        <version>0.0.2-SNAPSHOT</version>
+        <version>0.0.2</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
     <artifactId>currency-conversion</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>Currency Conversion Service</name>
     <description>Currency Conversion Service which convert a currency from one country to another</description>
 
