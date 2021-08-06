@@ -14,7 +14,7 @@ spec:
                 app: auth-db
         spec:
             containers:
-                -   image: ubaidurehman/auth-db:0.0.2
+                -   image: ubaidurehman/auth-db:0.0.3-SNAPSHOT
                     name: auth-db
                     imagePullPolicy: "Always"
                     env:
@@ -96,7 +96,7 @@ spec:
         spec:
             containers:
                 -   name: discovery
-                    image: ubaidurehman/discovery:0.0.2
+                    image: ubaidurehman/discovery:0.0.3-SNAPSHOT
                     ports:
                         -   containerPort: 8761
 ---
@@ -166,7 +166,7 @@ spec:
             containers:
                 -   name: config
                     imagePullPolicy: "Always"
-                    image: ubaidurehman/config:0.0.2
+                    image: ubaidurehman/config:0.0.3-SNAPSHOT
                     args: [ "--spring.profiles.active=prod" ]
                     ports:
                         -   containerPort: 8888
@@ -367,7 +367,7 @@ spec:
             containers:
                 - name: math
                   imagePullPolicy: "Always"
-                  image: ubaidurehman/math:0.0.2
+                  image: ubaidurehman/math:0.0.3-SNAPSHOT
                   args: ["--spring.profiles.active=prod"]
                   ports:
                       - containerPort: 8100
@@ -392,7 +392,7 @@ spec:
             containers:
                 - name: country
                   imagePullPolicy: "Always"
-                  image: ubaidurehman/country:0.0.2
+                  image: ubaidurehman/country:0.0.3-SNAPSHOT
                   args: ["--spring.profiles.active=prod"]
                   ports:
                       - containerPort: 8300
@@ -418,7 +418,7 @@ spec:
             containers:
                 - name: api-gateway
                   imagePullPolicy: "Always"
-                  image: ubaidurehman/api-gateway:0.0.2
+                  image: ubaidurehman/api-gateway:0.0.3-SNAPSHOT
                   args: ["--spring.profiles.active=prod"]
                   ports:
                       - containerPort: 8755
@@ -444,7 +444,7 @@ spec:
             containers:
                 - name: audit
                   imagePullPolicy: "Always"
-                  image: ubaidurehman/audit:0.0.2
+                  image: ubaidurehman/audit:0.0.3-SNAPSHOT
                   args: ["--spring.profiles.active=prod"]
                   ports:
                       - containerPort: 8950
@@ -472,7 +472,7 @@ spec:
             containers:
                 - name: currency-conversion
                   imagePullPolicy: "Always"
-                  image: ubaidurehman/currency-conversion:0.0.2
+                  image: ubaidurehman/currency-conversion:0.0.3-SNAPSHOT
                   args: ["--spring.profiles.active=prod"]
                   ports:
                       - containerPort: 5200
@@ -498,7 +498,7 @@ spec:
             containers:
                 - name: currency-exchange
                   imagePullPolicy: "Always"
-                  image: ubaidurehman/currency-exchange:0.0.2
+                  image: ubaidurehman/currency-exchange:0.0.3-SNAPSHOT
                   args: ["--spring.profiles.active=prod"]
                   ports:
                       - containerPort: 8000
@@ -524,7 +524,7 @@ spec:
             containers:
                 - name: user
                   imagePullPolicy: "Always"
-                  image: ubaidurehman/user:0.0.2
+                  image: ubaidurehman/user:0.0.3-SNAPSHOT
                   args: ["--spring.profiles.active=prod"]
                   ports:
                       - containerPort: 8900
@@ -551,7 +551,7 @@ spec:
             containers:
                 - name: fe
                   imagePullPolicy: "Always"
-                  image: ubaidurehman/3cn-fe:0.0.2
+                  image: ubaidurehman/3cn-fe:0.0.3-SNAPSHOT
                   ports:
                       - containerPort: 80
 ---
