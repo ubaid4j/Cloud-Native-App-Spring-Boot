@@ -1,4 +1,4 @@
-FROM 3cn-parent:0.0.2-SNAPSHOT
+FROM 3cn-parent:0.0.3-SNAPSHOT
 WORKDIR /3cn
 COPY . .
 RUN mvn install -DskipTests --file common/pom.xml \

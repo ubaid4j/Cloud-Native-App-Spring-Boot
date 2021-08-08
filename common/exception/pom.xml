@@ -6,11 +6,11 @@
     <parent>
         <groupId>com.ubaid.ms.common</groupId>
         <artifactId>common</artifactId>
-        <version>0.0.2-SNAPSHOT</version>
+        <version>0.0.3-SNAPSHOT</version>
     </parent>
 
     <artifactId>exception</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>Exception</name>
 
 </project>
