@@ -1,6 +1,6 @@
 package com.ubaid.ms.currencyconversion.service;
 
-import com.ubaid.ms.currencyconversion.util.BearerToken;
+import com.ubaid.ms.common.dto.CurrencyInfoDTO;
 import com.ubaid.ms.common.dto.AuditDTO;
 import com.ubaid.ms.common.dto.AuditDTOBuilder;
 import com.ubaid.ms.common.dto.ConvertedCurrency;
@@ -23,12 +23,11 @@ public class CurrencyConversionServiceImp implements CurrencyConversionService {
     private final RequestService requestService;
 
     @Override
-    public ExchangeValueDTO convertCurrency(String fromCurrency, String toCurrency, Double quantity) {
-        BearerToken bearerToken = new BearerToken(authService.getAccessToken());
-        ExchangeValueDTO exchangeValueDTO = getExchangeRate(bearerToken.getBearerToken(), fromCurrency, toCurrency);
-        ConvertedCurrency convertedCurrency = getConvertedCurrency(bearerToken.getBearerToken(), quantity, exchangeValueDTO);
+    public ExchangeValueDTO convertCurrency(CurrencyInfoDTO currencyInfo) {
+        ExchangeValueDTO exchangeValueDTO = getExchangeRate(currencyInfo.fromCurrency(), currencyInfo.toCurrency());
+        ConvertedCurrency convertedCurrency = getConvertedCurrency(currencyInfo.quantity(), exchangeValueDTO);
         exchangeValueDTO.setExchangedCurrencyQuantity(convertedCurrency.getConvertedCurrency());
-        exchangeValueDTO.setQuantity(quantity);
+        exchangeValueDTO.setQuantity(currencyInfo.quantity());
         AuditDTO auditDTO = convertToAudit(exchangeValueDTO, convertedCurrency);
         auditService.sendAuditLogToMQ(auditDTO);
         return exchangeValueDTO;
@@ -54,11 +53,11 @@ public class CurrencyConversionServiceImp implements CurrencyConversionService {
         return auditDTO;
     }
 
-    ConvertedCurrency getConvertedCurrency(String accessToken, Double quantity, ExchangeValueDTO exchangeValueDTO) {
-        return conversionServiceProxy.convert(accessToken, quantity, exchangeValueDTO.getExchangeRate());
+    ConvertedCurrency getConvertedCurrency(Double quantity, ExchangeValueDTO exchangeValueDTO) {
+        return conversionServiceProxy.convert(authService.getAccessToken(), quantity, exchangeValueDTO.getExchangeRate());
     }
 
-    ExchangeValueDTO getExchangeRate(String accessToken, String fromCurrency, String toCurrency) {
-        return exchangeServiceProxy.getCurrencyExchangeRate(accessToken, fromCurrency, toCurrency);
+    ExchangeValueDTO getExchangeRate(String fromCurrency, String toCurrency) {
+        return exchangeServiceProxy.getCurrencyExchangeRate(authService.getAccessToken(), fromCurrency, toCurrency);
     }
 }

@@ -1,5 +1,6 @@
 package com.ubaid.ms.currencyconversion.service;
 
+import com.ubaid.ms.currencyconversion.util.BearerToken;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
@@ -28,7 +29,8 @@ public class AuthServiceImpl implements AuthService {
     public String getAccessToken() {
         Authentication auth = getAuthentication();
         if (auth.getPrincipal() instanceof Jwt jwt) {
-            return jwt.getTokenValue();
+            BearerToken bearerToken = new BearerToken(jwt.getTokenValue());
+            return bearerToken.getBearerToken();
         } else {
             return EMPTY_STRING;
         }
