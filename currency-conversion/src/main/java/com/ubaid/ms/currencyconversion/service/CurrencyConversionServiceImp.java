@@ -54,10 +54,10 @@ public class CurrencyConversionServiceImp implements CurrencyConversionService {
     }
 
     ConvertedCurrency getConvertedCurrency(Double quantity, ExchangeValueDTO exchangeValueDTO) {
-        return conversionServiceProxy.convert(authService.getAccessToken(), quantity, exchangeValueDTO.getExchangeRate());
+        return conversionServiceProxy.convert(authService.getBearerToken(), quantity, exchangeValueDTO.getExchangeRate());
     }
 
     ExchangeValueDTO getExchangeRate(String fromCurrency, String toCurrency) {
-        return exchangeServiceProxy.getCurrencyExchangeRate(authService.getAccessToken(), fromCurrency, toCurrency);
+        return exchangeServiceProxy.getCurrencyExchangeRate(authService.getBearerToken(), fromCurrency, toCurrency);
     }
 }

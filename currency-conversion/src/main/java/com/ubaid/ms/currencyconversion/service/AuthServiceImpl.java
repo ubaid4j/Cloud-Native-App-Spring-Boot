@@ -29,11 +29,16 @@ public class AuthServiceImpl implements AuthService {
     public String getAccessToken() {
         Authentication auth = getAuthentication();
         if (auth.getPrincipal() instanceof Jwt jwt) {
-            BearerToken bearerToken = new BearerToken(jwt.getTokenValue());
-            return bearerToken.getBearerToken();
+            return jwt.getTokenValue();
         } else {
             return EMPTY_STRING;
         }
+    }
+
+    @Override
+    public String getBearerToken() {
+        BearerToken bearerToken = new BearerToken(getAccessToken());
+        return bearerToken.getBearerToken();
     }
 
     @Override
