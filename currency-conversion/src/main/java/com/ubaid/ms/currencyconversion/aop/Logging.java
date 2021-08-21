@@ -1,5 +1,6 @@
 package com.ubaid.ms.currencyconversion.aop;
 
+import com.ubaid.ms.common.dto.CurrencyInfoDTO;
 import com.ubaid.ms.common.dto.ExchangeValueDTO;
 import com.ubaid.ms.common.util.exception.CCException;
 import lombok.extern.slf4j.Slf4j;
@@ -20,10 +21,8 @@ public class Logging extends TargetMethods {
         ExchangeValueDTO result;
         try {
             Object[] args = pjp.getArgs();
-            String fromCurrency = (String) args[0];
-            String toCurrency = (String) args[1];
-            Double quantity = (Double) args[2];
-            log.debug("Converting {} {} to {}", quantity, fromCurrency, toCurrency);
+            CurrencyInfoDTO currencyInfoDTO = (CurrencyInfoDTO) args[0];
+            log.debug("Converting {} {} to {}", currencyInfoDTO.quantity(), currencyInfoDTO.fromCurrency(), currencyInfoDTO.toCurrency());
             result = (ExchangeValueDTO) pjp.proceed();
             log.debug("The Converted Currency is: {}", result);
 

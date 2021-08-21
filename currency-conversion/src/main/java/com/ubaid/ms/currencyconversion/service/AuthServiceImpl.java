@@ -1,5 +1,6 @@
 package com.ubaid.ms.currencyconversion.service;
 
+import com.ubaid.ms.currencyconversion.util.BearerToken;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
@@ -32,6 +33,12 @@ public class AuthServiceImpl implements AuthService {
         } else {
             return EMPTY_STRING;
         }
+    }
+
+    @Override
+    public String getBearerToken() {
+        BearerToken bearerToken = new BearerToken(getAccessToken());
+        return bearerToken.getBearerToken();
     }
 
     @Override
