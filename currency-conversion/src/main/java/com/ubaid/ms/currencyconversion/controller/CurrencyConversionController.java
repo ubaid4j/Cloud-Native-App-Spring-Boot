@@ -1,5 +1,7 @@
 package com.ubaid.ms.currencyconversion.controller;
 
+import com.ubaid.ms.common.dto.CurrencyInfoDTO;
+import com.ubaid.ms.common.dto.CurrencyInfoDTOBuilder;
 import com.ubaid.ms.common.dto.ExchangeValueDTO;
 import com.ubaid.ms.currencyconversion.config.SwaggerConfig;
 import com.ubaid.ms.currencyconversion.service.CurrencyConversionService;
@@ -29,6 +31,12 @@ public class CurrencyConversionController {
             @PathVariable("from") String from,
             @PathVariable("to") String to,
             @PathVariable("quantity") Double quantity) {
-        return currencyConversionService.convertCurrency(from, to, quantity);
+        CurrencyInfoDTO currencyInfo = CurrencyInfoDTOBuilder
+            .builder()
+            .fromCurrency(from)
+            .toCurrency(to)
+            .quantity(quantity)
+            .build();
+        return currencyConversionService.convertCurrency(currencyInfo);
     }
 }
