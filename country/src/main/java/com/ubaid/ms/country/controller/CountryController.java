@@ -16,7 +16,7 @@ import static com.ubaid.ms.country.config.SwaggerConfig.COUNTRY;
 
 @Api(tags = COUNTRY)
 @RestController
-@RequestMapping("country")
+@RequestMapping
 @RequiredArgsConstructor
 public class CountryController {
 

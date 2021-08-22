@@ -21,6 +21,8 @@ import org.springframework.web.client.RestOperations;
 import java.time.Duration;
 
 import static com.ubaid.ms.common.util.Constants.API_DOCS_PATH;
+import static com.ubaid.ms.common.util.Constants.HEALTH_ENDPOINT;
+import static com.ubaid.ms.common.util.Constants.INFO_ENDPOINT;
 
 /**
  * <pre>
@@ -37,6 +39,8 @@ import static com.ubaid.ms.common.util.Constants.API_DOCS_PATH;
 @Slf4j
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private final static String[] ALLOWED_PATHS = {API_DOCS_PATH, HEALTH_ENDPOINT, INFO_ENDPOINT};
+
     @Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
     private String issuerUri;
 
@@ -51,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().ignoringAntMatchers(API_DOCS_PATH).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests(authorize -> authorize
-                        .antMatchers(API_DOCS_PATH).permitAll()
+                        .antMatchers(ALLOWED_PATHS).permitAll()
                         .antMatchers(HttpMethod.OPTIONS).permitAll()
                         .anyRequest().authenticated())
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
