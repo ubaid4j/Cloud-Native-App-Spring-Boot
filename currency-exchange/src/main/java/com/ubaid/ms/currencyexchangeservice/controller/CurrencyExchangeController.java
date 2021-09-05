@@ -15,7 +15,7 @@ import static com.ubaid.ms.common.util.Constants.*;
 
 @Api(tags = SwaggerConfig.EXCHANGE)
 @RestController
-@RequestMapping("currency-exchange")
+@RequestMapping
 @RequiredArgsConstructor
 public class CurrencyExchangeController {
 

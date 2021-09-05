@@ -16,7 +16,7 @@ import static com.ubaid.ms.common.util.Constants.*;
 
 @Api(tags = SwaggerConfig.MATH)
 @RestController
-@RequestMapping("math")
+@RequestMapping
 @Slf4j
 @RequiredArgsConstructor
 public class CurrencyConversionController {

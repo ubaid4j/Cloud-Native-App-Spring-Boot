@@ -1,4 +1,4 @@
-package com.ubaid.ms.controller;
+package com.ubaid.ms.apigateway.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpResponse;

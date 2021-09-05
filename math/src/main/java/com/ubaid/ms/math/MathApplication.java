@@ -1,4 +1,4 @@
-package com.ubaid.ms;
+package com.ubaid.ms.math;
 
 import brave.sampler.Sampler;
 import org.springframework.boot.SpringApplication;
