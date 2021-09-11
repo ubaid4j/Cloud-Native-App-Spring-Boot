@@ -3,6 +3,8 @@ package com.ubaid.ms.common.util;
 public class Constants {
     public static final String APP_ROOT_PACKAGE = "com.ubaid.ms";
     public static final String API_DOCS_PATH = "/v3/api-docs";
+    public static final String HEALTH_ENDPOINT = "/actuator/health/**";
+    public static final String INFO_ENDPOINT = "/actuator/info/**";
 
     public static final String AUTHOR_NAME = "Ubaid ur Rehman";
     public static final String AUTHOR_EMAIL = "urehman.bese16seecs@seecs.edu.pk";
@@ -41,4 +43,16 @@ public class Constants {
     public static final String AUDIT_QUEUE = "auditQueue";
 
     public static final String UNKNOWN = "unknown";
+
+    public static final String[] MICROSERVICES_API_DOCS_PATHS = {
+        "/api/user/v3/api-docs", "/api/audit/v3/api-docs",
+        "/api/country/v3/api-docs", "/api/currency-conversion/v3/api-docs",
+        "/api/math/v3/api-docs", "/api/currency-exchange/v3/api-docs"
+    };
+
+    public static final String[] SWAGGER_PATHS = {
+        "/configuration/ui", "/swagger-resources/**", "/configuration/security", "/swagger-ui/index.html", "/webjars/**", "/swagger-ui/**"
+    };
+
+    public static final String ACCESS_TOKEN_PATH = "/api/user/oauth/token";
 }

@@ -11,7 +11,7 @@ import static com.ubaid.ms.common.util.Constants.*;
 @FeignClient(name = API_GATEWAY)
 public interface CurrencyConversionServiceProxy {
 
-    @GetMapping("math/multiply/currency/{currency}/rate/{conversion-rate}")
+    @GetMapping("api/math/multiply/currency/{currency}/rate/{conversion-rate}")
     ConvertedCurrency convert(
             @RequestHeader(value = AUTHORIZATION) String token,
             @PathVariable("currency") Double currency,

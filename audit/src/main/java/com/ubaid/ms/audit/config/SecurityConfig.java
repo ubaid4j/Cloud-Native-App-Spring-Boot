@@ -16,6 +16,8 @@ import org.springframework.web.client.RestOperations;
 import java.time.Duration;
 
 import static com.ubaid.ms.common.util.Constants.API_DOCS_PATH;
+import static com.ubaid.ms.common.util.Constants.HEALTH_ENDPOINT;
+import static com.ubaid.ms.common.util.Constants.INFO_ENDPOINT;
 
 /**
  * <pre>
@@ -32,7 +34,7 @@ public class SecurityConfig {
     @Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
     private String jwkSetUri;
 
-    private final static String[] ALLOWED_PATHS = {API_DOCS_PATH};
+    private final static String[] ALLOWED_PATHS = {API_DOCS_PATH, HEALTH_ENDPOINT, INFO_ENDPOINT};
 
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
