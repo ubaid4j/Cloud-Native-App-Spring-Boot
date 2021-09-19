@@ -1,53 +1,46 @@
 package com.ubaid.ms.user.config;
 
-import static com.ubaid.ms.common.util.Constants.*;
+import static com.ubaid.ms.common.util.Constants.ACCESS_EVERYTHING;
+import static com.ubaid.ms.common.util.Constants.APP_VERSION;
+import static com.ubaid.ms.common.util.Constants.AUTHORIZATION;
+import static com.ubaid.ms.common.util.Constants.AUTHOR_EMAIL;
+import static com.ubaid.ms.common.util.Constants.AUTHOR_LINKEDIN_URL;
+import static com.ubaid.ms.common.util.Constants.AUTHOR_NAME;
+import static com.ubaid.ms.common.util.Constants.BEARER_TOKEN;
+import static com.ubaid.ms.common.util.Constants.GLOBAL;
+import static com.ubaid.ms.common.util.Constants.HEADER;
+import static com.ubaid.ms.common.util.Constants.LICENSE;
+import static com.ubaid.ms.common.util.Constants.LICENSE_URL;
+
 import com.google.common.collect.Lists;
-import io.swagger.v3.oas.models.OpenAPI;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.cloud.netflix.eureka.EurekaServiceInstance;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.oas.annotations.EnableOpenApi;
-import springfox.documentation.oas.web.OpenApiTransformationContext;
-import springfox.documentation.oas.web.WebFluxOpenApiTransformationFilter;
-import springfox.documentation.service.*;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.ApiKey;
+import springfox.documentation.service.AuthorizationScope;
+import springfox.documentation.service.Contact;
+import springfox.documentation.service.SecurityReference;
+import springfox.documentation.service.Tag;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
-import io.swagger.v3.oas.models.servers.Server;
-
-import java.util.List;
 
 @Configuration
 @EnableOpenApi
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class SwaggerConfig implements WebFluxOpenApiTransformationFilter {
+public class SwaggerConfig {
 
     public static final String USER = "User";
-
-    private final DiscoveryClient discoveryClient;
-
-    @Override
-    public OpenAPI transform(OpenApiTransformationContext<ServerHttpRequest> context) {
-        OpenAPI swagger = context.getSpecification();
-        swagger.setServers(getServers());
-        return swagger;
-    }
-
-    @Override
-    public boolean supports(DocumentationType delimiter) {
-        return delimiter.equals(DocumentationType.OAS_30);
-    }
 
     @Bean
     public Docket swaggerSpringfoxDocket() {
@@ -91,23 +84,5 @@ public class SwaggerConfig implements WebFluxOpenApiTransformationFilter {
             .licenseUrl(LICENSE_URL)
             .version(APP_VERSION)
             .build();
-    }
-
-    private List<Server> getServers() {
-        return discoveryClient
-            .getInstances(API_GATEWAY.toUpperCase())
-            .stream()
-            .map(this::toServer)
-            .toList();
-    }
-
-    private Server toServer(ServiceInstance instance) {
-        String url = instance.getUri().toString();
-        Server server = new Server().url(url + "/api/user");
-        if (instance instanceof EurekaServiceInstance eurekaServiceInstance) {
-            server.setDescription(eurekaServiceInstance.getInstanceInfo().getAppName());
-        }
-        log.debug("Server: {}", server);
-        return server;
     }
 }
