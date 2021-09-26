@@ -15,7 +15,7 @@ export const PopulateCountryCodes = (accessToken) => {
 
     return dispatch => {
         dispatch(populateCountryCodeStart());
-        RequestHandler.get('country/code', config)
+        RequestHandler.get('country/v1/code', config)
             .then(res => {
                 console.log(res);
                 dispatch(populateCountryFinished(res.data));

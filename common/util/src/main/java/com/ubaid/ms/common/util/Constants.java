@@ -14,6 +14,7 @@ public class Constants {
     public static final String LICENSE_URL = "https://github.com/UbaidurRehman1/Cloud-Native-App-Spring-Boot/blob/master/LICENSE";
 
     public static final String APP_VERSION = "0.0.3-SNAPSHOT";
+    public static final String VERSION_1 = "/v1";
 
     public static final String GLOBAL = "global";
     public static final String ACCESS_EVERYTHING = "accessEverything";
@@ -54,5 +55,5 @@ public class Constants {
         "/configuration/ui", "/swagger-resources/**", "/configuration/security", "/swagger-ui/index.html", "/webjars/**", "/swagger-ui/**"
     };
 
-    public static final String ACCESS_TOKEN_PATH = "/api/user/oauth/token";
+    public static final String[] ACCESS_TOKEN_PATHS = {"/api/user/oauth/token", "/api/user/v1/oauth/token"};
 }
