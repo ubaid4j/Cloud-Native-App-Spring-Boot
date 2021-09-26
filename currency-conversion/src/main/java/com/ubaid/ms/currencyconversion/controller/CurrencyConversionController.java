@@ -14,7 +14,7 @@ import java.net.HttpURLConnection;
 
 @Api(tags = SwaggerConfig.CURRENCY_CONVERSION)
 @RestController
-@RequestMapping
+@RequestMapping("v1")
 @Slf4j
 @RequiredArgsConstructor
 public class CurrencyConversionController {

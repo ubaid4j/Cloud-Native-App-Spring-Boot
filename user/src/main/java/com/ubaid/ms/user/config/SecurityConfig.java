@@ -1,5 +1,10 @@
 package com.ubaid.ms.user.config;
 
+import static com.ubaid.ms.common.util.Constants.API_DOCS_PATH;
+import static com.ubaid.ms.common.util.Constants.HEALTH_ENDPOINT;
+import static com.ubaid.ms.common.util.Constants.INFO_ENDPOINT;
+
+import java.time.Duration;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -13,12 +18,6 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.context.NoOpServerSecurityContextRepository;
 import org.springframework.web.client.RestOperations;
 
-import java.time.Duration;
-
-import static com.ubaid.ms.common.util.Constants.API_DOCS_PATH;
-import static com.ubaid.ms.common.util.Constants.HEALTH_ENDPOINT;
-import static com.ubaid.ms.common.util.Constants.INFO_ENDPOINT;
-
 /**
  * <pre>
  *     1. Configure
@@ -31,7 +30,7 @@ import static com.ubaid.ms.common.util.Constants.INFO_ENDPOINT;
 @Slf4j
 public class SecurityConfig {
 
-    private final static String[] ALLOWED_PATHS = {"/oauth/token", API_DOCS_PATH, HEALTH_ENDPOINT, INFO_ENDPOINT};
+    private final static String[] ALLOWED_PATHS = {"/v1/oauth/token", API_DOCS_PATH, HEALTH_ENDPOINT, INFO_ENDPOINT};
 
     @Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
     private String jwkSetUri;

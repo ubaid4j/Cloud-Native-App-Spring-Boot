@@ -1,11 +1,12 @@
 package com.ubaid.ms.apigateway.config;
 
-import static com.ubaid.ms.common.util.Constants.ACCESS_TOKEN_PATH;
+import static com.ubaid.ms.common.util.Constants.ACCESS_TOKEN_PATHS;
 import static com.ubaid.ms.common.util.Constants.HEALTH_ENDPOINT;
 import static com.ubaid.ms.common.util.Constants.INFO_ENDPOINT;
 import static com.ubaid.ms.common.util.Constants.MICROSERVICES_API_DOCS_PATHS;
 import static com.ubaid.ms.common.util.Constants.SWAGGER_PATHS;
 
+import java.time.Duration;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -19,8 +20,6 @@ import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.web.client.RestOperations;
-
-import java.time.Duration;
 
 /**
  * <pre>
@@ -52,7 +51,7 @@ public class SecurityConfig {
                 .pathMatchers(HttpMethod.GET, ALLOWED_PATH).permitAll()
                 .pathMatchers(HttpMethod.GET, SWAGGER_PATHS).permitAll()
                 .pathMatchers(HttpMethod.GET, MICROSERVICES_API_DOCS_PATHS).permitAll()
-                .pathMatchers(HttpMethod.POST, ACCESS_TOKEN_PATH).permitAll()
+                .pathMatchers(HttpMethod.POST, ACCESS_TOKEN_PATHS).permitAll()
                 .pathMatchers(HttpMethod.OPTIONS).permitAll()
                 .anyExchange()
                 .authenticated()
@@ -67,7 +66,7 @@ public class SecurityConfig {
     public JwtDecoder jwtDecoder(RestTemplateBuilder builder) {
         RestOperations rest = builder
                 .setConnectTimeout(Duration.ofMinutes(3))
-                .setReadTimeout(Duration.ofMinutes(3))
+                .setReadTimeout(Duration.ofMinutes(3))f
                 .build();
         log.info("Setting Connect Time out and Read Time out to 180 seconds for Rest Operations of JWT Decoder");
         return NimbusJwtDecoder.withJwkSetUri(jwkSetUri).restOperations(rest).build();

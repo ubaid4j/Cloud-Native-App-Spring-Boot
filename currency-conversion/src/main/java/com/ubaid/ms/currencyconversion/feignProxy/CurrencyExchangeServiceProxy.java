@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 @FeignClient(name = API_GATEWAY)
 public interface CurrencyExchangeServiceProxy {
 
-    @GetMapping("api/currency-exchange/from/{from}/to/{to}")
+    @GetMapping("api/currency-exchange/v1/from/{from}/to/{to}")
     ExchangeValueDTO getCurrencyExchangeRate(
             @RequestHeader(value = AUTHORIZATION) String token,
             @PathVariable(value = "from") String from,
