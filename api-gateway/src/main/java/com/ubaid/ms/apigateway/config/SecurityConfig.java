@@ -66,7 +66,7 @@ public class SecurityConfig {
     public JwtDecoder jwtDecoder(RestTemplateBuilder builder) {
         RestOperations rest = builder
                 .setConnectTimeout(Duration.ofMinutes(3))
-                .setReadTimeout(Duration.ofMinutes(3))f
+                .setReadTimeout(Duration.ofMinutes(3))
                 .build();
         log.info("Setting Connect Time out and Read Time out to 180 seconds for Rest Operations of JWT Decoder");
         return NimbusJwtDecoder.withJwkSetUri(jwkSetUri).restOperations(rest).build();
