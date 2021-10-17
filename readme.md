@@ -7,20 +7,20 @@ Abstract
     - **ELK Stack**
     - **Distributed Tracing**
 - Following are the Tools and technologies which I am using:
-  - **Java 16**
-  - **Spring Boot 2.5.2**
-  - **Spring Cloud 2020.0.3 (Security, Config Server, Service Discovery and Distributed Tracing)**
-  - **KeyCloak Server (Authorization Server) 14.0.0**
-  - **Zipkin Version 2.23.2 (Distribute Tracing)**
-  - **Rabbit MQ Version 3.8.17-management(Message Broker)**
-  - **ELK Stack Version 7.13.2**
+  - **Java 17**
+  - **Spring Boot 2.5.5**
+  - **Spring Cloud 2020.0.4 (Security, Config Server, Service Discovery and Distributed Tracing)**
+  - **KeyCloak Server (Authorization Server) 15.0.2**
+  - **Zipkin Version 2.23.4 (Distribute Tracing)**
+  - **Rabbit MQ Version 3.9.7-management(Message Broker)**
+  - **ELK Stack Version 7.14.2**
     
 Requirements
 -----------
 - Add the line `127.0.0.1 auth-server` in the last of your hosts file.
     - For Linux/Unix based system, its location is at: `/etc/hosts`
     - For Windows, its location is at: `c:\Windows\System32\Drivers\etc\hosts`
-- [Docker 19.03.13 or later](resource/install-require-softwares.md#install-docker)
+- [Docker 20.xx.x or later](resource/install-require-softwares.md#install-docker)
         
 How to Run: [Watch Video](https://youtu.be/DyQ7gzR18Iw)
 ----------
