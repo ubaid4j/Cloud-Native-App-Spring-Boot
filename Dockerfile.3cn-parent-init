@@ -1,4 +1,4 @@
-FROM maven:3.8.1-openjdk-16
+FROM maven:3.8-openjdk-17-slim
 WORKDIR /3cn
 COPY . .
 RUN mvn install -DskipTests --file common/pom.xml \

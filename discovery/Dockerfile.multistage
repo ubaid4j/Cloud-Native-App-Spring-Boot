@@ -6,7 +6,7 @@ WORKDIR /
 ADD . .
 RUN mvn clean install -DskipTests
 
-FROM openjdk:16-jdk-alpine
+FROM openjdk:17-slim
 VOLUME /tmp
 WORKDIR /
 EXPOSE 8761
