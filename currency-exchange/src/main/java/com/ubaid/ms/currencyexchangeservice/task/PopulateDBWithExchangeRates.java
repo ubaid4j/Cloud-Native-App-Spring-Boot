@@ -7,8 +7,15 @@ import com.ubaid.ms.currencyexchangeservice.config.Config;
 import com.ubaid.ms.currencyexchangeservice.entity.ExchangeRate;
 import com.ubaid.ms.currencyexchangeservice.service.ExchangeRateService;
 import com.ubaid.ms.currencyexchangeservice.utility.ExchangeRateDTOConverter;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.core.io.ClassPathResource;
@@ -17,13 +24,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
 
 @Component
 @EnableAsync
@@ -74,7 +74,7 @@ public class PopulateDBWithExchangeRates {
     void writeResponse(String response) {
         final File responseFile = getResponseDataFile();
         try {
-            FileUtils.write(responseFile, response, StandardCharsets.UTF_8);
+            Files.writeString(responseFile.toPath(), response, StandardCharsets.UTF_8);
         } catch (IOException e) {
             throw new RuntimeException("Error in writing response in " + responseFile.getAbsolutePath());
         }
@@ -131,7 +131,7 @@ public class PopulateDBWithExchangeRates {
         try {
             InputStream inputStream = new ClassPathResource("exchangeRates.json").getInputStream();
             File tempFile = File.createTempFile("exchangeRates", ".json");
-            FileUtils.copyInputStreamToFile(inputStream, tempFile);
+            Files.copy(inputStream, tempFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             return tempFile;
         } catch(IOException exp) {
             throw new RuntimeException("Severe Error. Cannot get exchangeRates.json file from resources");
