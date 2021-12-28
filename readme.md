@@ -8,12 +8,12 @@ Abstract
     - **Distributed Tracing**
 - Following are the Tools and technologies which I am using:
   - **Java 17**
-  - **Spring Boot 2.5.5**
-  - **Spring Cloud 2020.0.4 (Security, Config Server, Service Discovery and Distributed Tracing)**
-  - **KeyCloak Server (Authorization Server) 15.0.2**
-  - **Zipkin Version 2.23.4 (Distribute Tracing)**
-  - **Rabbit MQ Version 3.9.7-management(Message Broker)**
-  - **ELK Stack Version 7.14.2**
+  - **Spring Boot 2.6.2**
+  - **Spring Cloud 2021.0.0 (Security, Config Server, Service Discovery and Distributed Tracing)**
+  - **KeyCloak Server (Authorization Server) 15.1.1**
+  - **Zipkin Version 2.23.15 (Distribute Tracing)**
+  - **Rabbit MQ Version 3.9.11-management(Message Broker)**
+  - **ELK Stack Version 7.16.2**
     
 Requirements
 -----------
@@ -28,7 +28,7 @@ How to Run: [Watch Video](https://youtu.be/DyQ7gzR18Iw)
 - `cd Cloud-Native-App-Spring-Boot/envcn`
 - `./run-multi-stage.sh` (it will run all tools which our services needs such as keycloak server, discovery server, databases, zipkin, rabbitmq and elk-stack)
 - `cd ..`
-- `./run-multi-stage.sh` (it will up the micro-services)
+- `./run-multi-stage.sh` (it will up the microservices)
 - [Access Web Client UI](http://localhost:3000)
 - [Access Swagger Client UI](http://localhost:8755/swagger-ui/index.html)
     - To authorize the requests in Swagger, [please follow this](resource/how-to-use-swagger.md)
