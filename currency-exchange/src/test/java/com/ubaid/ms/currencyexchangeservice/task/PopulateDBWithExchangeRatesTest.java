@@ -1,21 +1,23 @@
 package com.ubaid.ms.currencyexchangeservice.task;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import com.ubaid.ms.common.dto.ExchangeRateDTO;
 import com.ubaid.ms.currencyexchangeservice.config.Config;
 import com.ubaid.ms.currencyexchangeservice.dao.ExchangeRateDAO;
 import com.ubaid.ms.currencyexchangeservice.entity.ExchangeRate;
-import org.apache.commons.io.FileUtils;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Lazy;
-
-import java.io.File;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class PopulateDBWithExchangeRatesTest {
@@ -36,11 +38,11 @@ class PopulateDBWithExchangeRatesTest {
     @Test
     @Order(1)
     @DisplayName("Checking If Response is saved into the file:")
-    void writeResponseFromFixerDotIOAPI() {
+    void writeResponseFromFixerDotIOAPI() throws IOException {
         getResponseFromFixerDotIOAPI();
         writeResponse();
         File file = populateDBWithExchangeRates.getResponseDataFile();
-        assertTrue(FileUtils.sizeOf(file) > 0, file.getAbsolutePath() + " has some content");
+        assertTrue(Files.size(file.toPath()) > 0, file.getAbsolutePath() + " has some content");
     }
 
     @Test
@@ -54,12 +56,12 @@ class PopulateDBWithExchangeRatesTest {
     @Test
     @Order(3)
     @DisplayName("Checking writing the response")
-    void writeResponse() {
+    void writeResponse() throws IOException {
         String response = populateDBWithExchangeRates.getResponseFromFixerDotIOAPI();
         assertTrue(response.length() > 0);
         populateDBWithExchangeRates.writeResponse(response);
         File file = populateDBWithExchangeRates.getResponseDataFile();
-        assertTrue(FileUtils.sizeOf(file) > 0, file.getAbsolutePath() + " has some content");
+        assertTrue(Files.size(file.toPath()) > 0, file.getAbsolutePath() + " has some content");
     }
 
     @Test
