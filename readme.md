@@ -8,12 +8,12 @@ Abstract
     - **Distributed Tracing**
 - Following are the Tools and technologies which I am using:
   - **Java 17**
-  - **Spring Boot 2.6.2**
-  - **Spring Cloud 2021.0.0 (Security, Config Server, Service Discovery and Distributed Tracing)**
-  - **KeyCloak Server (Authorization Server) 15.1.1**
-  - **Zipkin Version 2.23.15 (Distribute Tracing)**
-  - **Rabbit MQ Version 3.9.11-management(Message Broker)**
-  - **ELK Stack Version 7.16.2**
+  - **Spring Boot 2.6.4**
+  - **Spring Cloud 2021.0.1 (Security, Config Server, Service Discovery and Distributed Tracing)**
+  - **KeyCloak Server (Authorization Server) 16.1.1**
+  - **Zipkin Version 2.23.16 (Distribute Tracing)**
+  - **Rabbit MQ Version 3.9.13-management(Message Broker)**
+  - **ELK Stack Version 7.17.1**
     
 Requirements
 -----------
