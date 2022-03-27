@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class ConvertedCurrency {
+public class ValueDTO {
     private Integer port;
     private String ipAddress;
-    private Double convertedCurrency;
+    private Double value;
 }
