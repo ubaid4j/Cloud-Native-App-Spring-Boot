@@ -34,7 +34,7 @@ public class SwaggerConfig implements SwaggerResourcesProvider {
     private SwaggerResource swaggerResource(String name) {
         SwaggerResource swaggerResource = new SwaggerResource();
         swaggerResource.setName(name);
-        swaggerResource.setLocation("/api/" + name + API_DOCS_PATH);
+        swaggerResource.setLocation("/" + name + API_DOCS_PATH);
         swaggerResource.setSwaggerVersion(APP_VERSION);
         return swaggerResource;
     }

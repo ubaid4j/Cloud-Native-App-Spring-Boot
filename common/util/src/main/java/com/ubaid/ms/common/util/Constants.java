@@ -46,14 +46,14 @@ public class Constants {
     public static final String UNKNOWN = "unknown";
 
     public static final String[] MICROSERVICES_API_DOCS_PATHS = {
-        "/api/user/v3/api-docs", "/api/audit/v3/api-docs",
-        "/api/country/v3/api-docs", "/api/currency-conversion/v3/api-docs",
-        "/api/math/v3/api-docs", "/api/currency-exchange/v3/api-docs"
+        "/user/v3/api-docs", "/audit/v3/api-docs",
+        "/country/v3/api-docs", "/currency-conversion/v3/api-docs",
+        "/math/v3/api-docs", "/currency-exchange/v3/api-docs"
     };
 
     public static final String[] SWAGGER_PATHS = {
         "/configuration/ui", "/swagger-resources/**", "/configuration/security", "/swagger-ui/index.html", "/webjars/**", "/swagger-ui/**"
     };
 
-    public static final String[] ACCESS_TOKEN_PATHS = {"/api/user/oauth/token", "/api/user/v1/oauth/token"};
+    public static final String[] ACCESS_TOKEN_PATHS = {"/user/oauth/token", "/user/v1/oauth/token"};
 }

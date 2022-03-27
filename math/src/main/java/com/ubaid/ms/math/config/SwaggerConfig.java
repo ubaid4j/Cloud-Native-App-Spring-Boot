@@ -56,7 +56,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.OAS_30)
                 .tags(new Tag(MATH, String.format("REST API for %s operations", MATH)))
                 .apiInfo(apiInfo())
-                .pathMapping("/api/math")
+                .pathMapping("/math")
                 .securityContexts(Lists.newArrayList(securityContext()))
                 .securitySchemes(Lists.newArrayList(bearerToken()))
                 .useDefaultResponseMessages(false)

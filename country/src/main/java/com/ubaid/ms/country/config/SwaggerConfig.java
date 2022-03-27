@@ -55,7 +55,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.OAS_30)
                 .tags(new Tag(COUNTRY, String.format("REST API for %s", COUNTRY)))
                 .apiInfo(apiInfo())
-                .pathMapping("/api/country")
+                .pathMapping("/country")
                 .securityContexts(Lists.newArrayList(securityContext()))
                 .securitySchemes(Lists.newArrayList(bearerToken()))
                 .useDefaultResponseMessages(false)
