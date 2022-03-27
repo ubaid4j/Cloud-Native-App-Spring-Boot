@@ -1,3 +1,4 @@
+docker pull ubaidurehman/3cn-parent:0.0.3-SNAPSHOT;
 #Cleaing Database so, that, we can run  /docker-entrypoint-initdb.d/init.sql (gh-370)
 #If there is data inside the database then /docker-entrypoint-initdb.d/init.sql not running
 docker container stop cn-db;
