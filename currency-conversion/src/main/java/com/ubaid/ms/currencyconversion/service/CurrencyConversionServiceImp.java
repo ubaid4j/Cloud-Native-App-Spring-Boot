@@ -3,7 +3,7 @@ package com.ubaid.ms.currencyconversion.service;
 import com.ubaid.ms.common.dto.CurrencyInfoDTO;
 import com.ubaid.ms.common.dto.AuditDTO;
 import com.ubaid.ms.common.dto.AuditDTOBuilder;
-import com.ubaid.ms.common.dto.ConvertedCurrency;
+import com.ubaid.ms.common.dto.ValueDTO;
 import com.ubaid.ms.common.dto.ExchangeValueDTO;
 import com.ubaid.ms.currencyconversion.feignProxy.CurrencyConversionServiceProxy;
 import com.ubaid.ms.currencyconversion.feignProxy.CurrencyExchangeServiceProxy;
@@ -25,16 +25,16 @@ public class CurrencyConversionServiceImp implements CurrencyConversionService {
     @Override
     public ExchangeValueDTO convertCurrency(CurrencyInfoDTO currencyInfo) {
         ExchangeValueDTO exchangeValueDTO = getExchangeRate(currencyInfo.fromCurrency(), currencyInfo.toCurrency());
-        ConvertedCurrency convertedCurrency = getConvertedCurrency(currencyInfo.quantity(), exchangeValueDTO);
-        exchangeValueDTO.setExchangedCurrencyQuantity(convertedCurrency.getConvertedCurrency());
+        ValueDTO valueDTO = getConvertedCurrency(currencyInfo.quantity(), exchangeValueDTO);
+        exchangeValueDTO.setExchangedCurrencyQuantity(valueDTO.getValue());
         exchangeValueDTO.setQuantity(currencyInfo.quantity());
-        AuditDTO auditDTO = convertToAudit(exchangeValueDTO, convertedCurrency);
+        AuditDTO auditDTO = convertToAudit(exchangeValueDTO, valueDTO);
         auditService.sendAuditLogToMQ(auditDTO);
         return exchangeValueDTO;
     }
 
-    private AuditDTO convertToAudit(ExchangeValueDTO exchangeValueDTO, ConvertedCurrency convertedCurrency) {
-        log.debug("Creating Audit DTO from {} and {}", exchangeValueDTO, convertedCurrency);
+    private AuditDTO convertToAudit(ExchangeValueDTO exchangeValueDTO, ValueDTO valueDTO) {
+        log.debug("Creating Audit DTO from {} and {}", exchangeValueDTO, valueDTO);
         AuditDTO auditDTO =  AuditDTOBuilder
             .builder()
             .fromCurrency(exchangeValueDTO.getFrom())
@@ -43,8 +43,8 @@ public class CurrencyConversionServiceImp implements CurrencyConversionService {
             .toCurrencyValue(exchangeValueDTO.getExchangedCurrencyQuantity())
             .exchangeRate(exchangeValueDTO.getExchangeRate())
             .userUUID(authService.getUserUUID())
-            .currencyConversionPort(convertedCurrency.getPort())
-            .currencyConversionIP(convertedCurrency.getIpAddress())
+            .currencyConversionPort(valueDTO.getPort())
+            .currencyConversionIP(valueDTO.getIpAddress())
             .currencyExchangePort(exchangeValueDTO.getPort())
             .currencyExchangeIP(exchangeValueDTO.getIpAddress())
             .userIPAddress(requestService.getClientIP())
@@ -53,7 +53,7 @@ public class CurrencyConversionServiceImp implements CurrencyConversionService {
         return auditDTO;
     }
 
-    ConvertedCurrency getConvertedCurrency(Double quantity, ExchangeValueDTO exchangeValueDTO) {
+    ValueDTO getConvertedCurrency(Double quantity, ExchangeValueDTO exchangeValueDTO) {
         return conversionServiceProxy.convert(authService.getBearerToken(), quantity, exchangeValueDTO.getExchangeRate());
     }
 
