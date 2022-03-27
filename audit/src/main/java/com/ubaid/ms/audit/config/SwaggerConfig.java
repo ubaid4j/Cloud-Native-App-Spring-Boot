@@ -35,7 +35,7 @@ public class SwaggerConfig {
                 .tags(new Tag(AUDIT, String.format("REST API for %s", AUDIT)))
                 .ignoredParameterTypes(Principal.class)
                 .apiInfo(apiInfo())
-                .pathMapping("/api/audit")
+                .pathMapping("/audit")
                 .securityContexts(Lists.newArrayList(securityContext()))
                 .securitySchemes(Lists.newArrayList(bearerToken()))
                 .useDefaultResponseMessages(false)

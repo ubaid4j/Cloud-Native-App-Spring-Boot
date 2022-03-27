@@ -57,7 +57,7 @@ public class SwaggerConfig {
                 .tags(new Tag(CURRENCY_CONVERSION, String.format("REST API for %s", CURRENCY_CONVERSION)))
                 .ignoredParameterTypes(Principal.class)
                 .apiInfo(apiInfo())
-                .pathMapping("/api/currency-conversion")
+                .pathMapping("/currency-conversion")
                 .securityContexts(Lists.newArrayList(securityContext()))
                 .securitySchemes(Lists.newArrayList(bearerToken()))
                 .useDefaultResponseMessages(false)
