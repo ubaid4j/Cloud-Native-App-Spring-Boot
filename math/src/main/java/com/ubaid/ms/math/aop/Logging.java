@@ -1,6 +1,6 @@
 package com.ubaid.ms.math.aop;
 
-import com.ubaid.ms.common.dto.ConvertedCurrency;
+import com.ubaid.ms.common.dto.ValueDTO;
 import com.ubaid.ms.common.util.exception.CCException;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -14,18 +14,18 @@ import org.springframework.stereotype.Component;
 public class Logging extends TargetMethods {
 
     @Around("convert()")
-    public ConvertedCurrency doLog(ProceedingJoinPoint pjp) throws Throwable {
+    public ValueDTO doLog(ProceedingJoinPoint pjp) throws Throwable {
         logMethodStart(pjp);
         long start = System.currentTimeMillis();
         try {
             Object[] args = pjp.getArgs();
             Double quantity = (Double) args[0];
             Double conversionRate = (Double) args[1];
-            ConvertedCurrency convertedCurrency = (ConvertedCurrency) pjp.proceed();
-            log.debug("Currency Value: {} * Conversion Rate: {} = Converted Currency: {}", quantity, conversionRate, convertedCurrency.getConvertedCurrency());
+            ValueDTO valueDTO = (ValueDTO) pjp.proceed();
+            log.debug("Currency Value: {} * Conversion Rate: {} = Converted Currency: {}", quantity, conversionRate, valueDTO.getValue());
             long elapsedTime = System.currentTimeMillis() - start;
             logMethodExit(pjp, elapsedTime);
-            return convertedCurrency;
+            return valueDTO;
         } catch (Exception exp) {
             log.error("Exception Occurred: Message: [{}]", exp.getMessage());
             throw new CCException(exp.getMessage(), exp);

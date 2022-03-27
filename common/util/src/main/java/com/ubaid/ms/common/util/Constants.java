@@ -26,6 +26,7 @@ public class Constants {
     public static final String COUNTRY_SERVICE = "country-service";
     public static final String CURRENCY_CONVERSION_SERVICE = "currency-conversion-service";
     public static final String CURRENCY_EXCHANGE_SERVICE = "currency-exchange-service";
+    public static final String MATH_SERVICE = "math-service";
 
     public static final String EMPTY_STRING = "";
     public static final String SINGLE_SPACE = " ";
