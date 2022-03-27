@@ -55,7 +55,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.OAS_30)
             .tags(new Tag(EXCHANGE, String.format("REST API for %s", EXCHANGE)))
             .apiInfo(apiInfo())
-            .pathMapping("/api/currency-exchange")
+            .pathMapping("/currency-exchange")
             .securityContexts(Lists.newArrayList(securityContext()))
             .securitySchemes(Lists.newArrayList(bearerToken()))
             .useDefaultResponseMessages(false)
