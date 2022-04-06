@@ -39,7 +39,8 @@ public class DataSource {
 - Add `transient` for all fields and `readResolve` method for Serialization/Deserialization to make sure it remains singleton 
 - Single Element Enum is the best way to implement a Singleton
 
-
+ITEM 4: ENFORCE NON-INSTANTIABILITY WITH A PRIVATE CONSTRUCTOR
+- Should add a private constructor to make a class non instantiable (mostly with Utility class, see `java.lang.Math` )
 
 
 
