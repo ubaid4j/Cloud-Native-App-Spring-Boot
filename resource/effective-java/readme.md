@@ -42,7 +42,10 @@ public class DataSource {
 ITEM 4: ENFORCE NON-INSTANTIABILITY WITH A PRIVATE CONSTRUCTOR
 - Should add a private constructor to make a class non instantiable (mostly with Utility class, see `java.lang.Math` )
 
-
+ITEM 5: PREFER DEPENDENCY INJECTION TO HARDWIRING RESOURCES
+- Do not use a singleton or static utility class to implement a class that depends on one or more underlying resources
+- Passing the resource into the constructor is called dependency Injection
+- Dependency Injection (DI) enhance the Flexibility, re-usability and testability of a Class
 
 
 
