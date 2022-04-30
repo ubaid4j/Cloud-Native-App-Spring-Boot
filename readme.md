@@ -41,7 +41,7 @@ About
 - This App basically converts a currency from given country code to targeted country code by following the **cloud native approach**.
 - `api-gateway` provides a gateway for end clients (web browsers, mobiles) to interact the resource servers (micro-services) 
 - An Actor (React Client, React Native Client) can interact with the micro-services through the `api-gateway`
-- ![Micro Service Architecture](resource/lucid-diagrams/3cnAuthFlow.png)
+- ![Micro Service Architecture](resource/lucid-diagrams/3cnArchitecture.png)
 - In above diagram, We can see:
     - An End Client can access the resource servers through the `api-gatewy`
     - There are five resource servers:
@@ -55,6 +55,7 @@ About
     - `Discovery` Server (For services discovery)
     - `Distributed Tracing Stack`, for request tracing in micro-service architecture
     - `ELK Stack`, for Centralized Logging
+    - `Config Server` to get distributed app configurations (hosted in [github/public-repo](https://github.com/UbaidurRehman1/public-repo)) for each micro-service
   
 
 [Swagger UI](resource/how-to-use-swagger.md)
