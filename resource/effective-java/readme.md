@@ -1,24 +1,24 @@
-# Item - 1: CONSIDER STATIC FACTORY METHODS INSTEAD OF CONSTRUCTORS
-#### static factory method instead of constructors
+#### Item - 1: CONSIDER STATIC FACTORY METHODS INSTEAD OF CONSTRUCTORS
+###### static factory method instead of constructors
 - they have names
 - unlike constructors, they are not required to create a new object each time they’re invoked
 - they can return an object of any subtype of their return type.
 - returned object can vary from call to call as a function of the input parameters. (see EnumSet `noneOf` method)
 - the class of the returned object need not exist when the class containing the method is written (see `JDBC`)
-#### Code Convention
+###### Code Convention
 - `from`, a type conversion method `Date d =Date.from(instant);`
 - `of`, an aggregation method `Set<Rank> faceCards = EnumSet.of(JACK, QUEEN, KING);`
 - `valueOf`, more verbose `BigInteger prime = BigInteger.valueOf(Integer.MAX_VALUE);`
 - `getInstance`, `create`, `newInstance`, 
 - `getType`, `newType` when factory method is in different class like `BufferedReader br = Files.newBufferedReader(path);`
 
-# Item - 2: CONSIDER A BUILDER WHEN FACED WITH MANY CONSTRUCTOR PARAMETERS
+#### Item - 2: CONSIDER A BUILDER WHEN FACED WITH MANY CONSTRUCTOR PARAMETERS
 - The Builder pattern simulates named optional parameters
 - easy to write/read client code
 - parameterized varargs
 - ensure immutability 
 
-# Item - 3: ENFORCE THE SINGLETON PROPERTY WITH A PRIVATE CONSTRUCTOR OR AN ENUM TYPE
+#### Item - 3: ENFORCE THE SINGLETON PROPERTY WITH A PRIVATE CONSTRUCTOR OR AN ENUM TYPE
 - A singleton is simply a class that is instantiated exactly once
 - We can enforce a Singleton property using private constructor with static factory method like below:
 ```java
@@ -39,16 +39,19 @@ public class DataSource {
 - Add `transient` for all fields and `readResolve` method for Serialization/Deserialization to make sure it remains singleton 
 - Single Element Enum is the best way to implement a Singleton
 
-ITEM 4: ENFORCE NON-INSTANTIABILITY WITH A PRIVATE CONSTRUCTOR
+#### ITEM 4: ENFORCE NON-INSTANTIABILITY WITH A PRIVATE CONSTRUCTOR
 - Should add a private constructor to make a class non instantiable (mostly with Utility class, see `java.lang.Math` )
 
-ITEM 5: PREFER DEPENDENCY INJECTION TO HARDWIRING RESOURCES
+#### ITEM 5: PREFER DEPENDENCY INJECTION TO HARDWIRING RESOURCES
 - Do not use a singleton or static utility class to implement a class that depends on one or more underlying resources
 - Passing the resource into the constructor is called dependency Injection
 - Dependency Injection (DI) enhance the Flexibility, re-usability and testability of a Class
 
-
-
+#### ITEM 6: AVOID CREATING UNNECESSARY OBJECTS
+- Do not create object when you can reuse existing one like 
+`String str = new String("Java");` is bad practice to create new String as it is creating one extra object as argument `Java` to constructor `new String("Java")` is itself an instance.
+- Immutable Objects can be reused and there is no need to create a new Immutable Object
+- Equal Functionality Objects can be reused (see Pattern Compile vs String matches) (see autoboxing)
 
 
 
