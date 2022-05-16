@@ -53,6 +53,14 @@ public class DataSource {
 - Immutable Objects can be reused and there is no need to create a new Immutable Object
 - Equal Functionality Objects can be reused (see Pattern Compile vs String matches) (see autoboxing)
 
+#### ITEM 7: ELIMINATE OBSOLETE OBJECT REFERENCES
+- An obsolete reference is simply a reference that will never be de-referenced again.
+- If an object reference is unintentionally retained, this Objects and other all objects referenced by this object will be excluded from GC and thus will cause memory leaks.
+  - nulling the obsolete element by ourselves 
+- Another common source of memory leaks is caches.
+  - Use other processes (WeakHashMap or ScheduledThreadPoolExecutor) to clean out the unused keys
+- Listener and other callbacks can cause memory leaks as well.
+- If you register callbacks but do not de-register then they will accumulate and thus causing memory leaks
 
 
 
