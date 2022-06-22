@@ -62,6 +62,10 @@ public class DataSource {
 - Listener and other callbacks can cause memory leaks as well.
 - If you register callbacks but do not de-register then they will accumulate and thus causing memory leaks
 
+#### ITEM 8: AVOID FINALIZERS AND CLEANERS
+- Don't use Finalizer
+- Don't use Cleaners
+
 
 
 
