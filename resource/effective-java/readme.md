@@ -67,7 +67,45 @@ public class DataSource {
 - Don't use Cleaners
 
 
+#### ITEM 9: Prefer `try-with-resources` to `try-finallay`
+- code with `try-finally`
+  ```
+    static void copy(String src, String dst) throws IOException {
+        InputStream in = new FileInputStream(src);
+        try {
+            OutputStream out = new FileOutputStream(dst);
+            try {
+                byte[] buf = new byte[1024];
+                int n;
+                while ((n = in.read(buf)) >= 0) {
+                    out.write(buf, 0, n);
+                }
+            } finally {
+                out.close();
+            }
+        } finally {
+            in.close();
+        }
 
+    }
+  ```
+- same above code with `try-with-resource`
+  ```
+    static void copy(String src, String dst) throws IOException {
+        try (InputStream in = new FileInputStream(src);
+             OutputStream out = new FileOutputStream(dst)) {
+            byte[] buf = new byte[1024];
+            int n;
+            while ((n = in.read(buf)) >= 0) {
+                out.write(buf, 0, n);
+            }
+        }
+    }
+  ```
+- more readable, shorter
+- we get very first exceptions with later one suppressed automatically
+  - first exception mean the actual exception generated during opening a file in above `copy` method
+  - later exceptions might be exceptions in close method of `AutoCloseable` resource 
 
 ## Extra notes
 ### Java Bean Pattern
