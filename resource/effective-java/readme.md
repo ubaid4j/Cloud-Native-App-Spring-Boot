@@ -1,3 +1,4 @@
+## Creating and Destroying Objects
 #### Item - 1: CONSIDER STATIC FACTORY METHODS INSTEAD OF CONSTRUCTORS
 ###### static factory method instead of constructors
 - they have names
@@ -106,6 +107,44 @@ public class DataSource {
 - we get very first exceptions with later one suppressed automatically
   - first exception mean the actual exception generated during opening a file in above `copy` method
   - later exceptions might be exceptions in close method of `AutoCloseable` resource 
+
+## Methods Common to All Objects
+#### ITEM 10: OBEY THE GENERAL CONTRACT WHEN OVERRIDING EQUALS
+- When overriding `equals()` method, then make sure following contract if fulfill
+  - Reflexive:   x.equals(x) => true
+  - Symmetric:  x.equals(y) && y.equals(x) => true
+  - Transitive:  x.equals(y) && y.equals(z) && x.equals(z) => true
+  - Consistent: multiple invocations produce same results 
+  - x.equals(null) => false 
+- To avoid symmetric violation, our equals method should compare same instances
+- To avoid transitivity, we should prefer composition to inheritance
+- How to override `equals` method
+  - use `==` to check argument is a reference to this object
+  - use `instanceof` operator to check argument has the correct type
+  - cast the argument to correct type
+  - check each `significant` field of class with the corresponding fields of argument
+  - Example
+   ```
+    class Point {
+        private final int x;
+        private final int y;
+
+        public Point(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (o == this) return true;
+            if (!(o instanceof Point)) return false;
+            Point p = (Point) o;
+            return p.x == x && p.y == y;
+       }
+    }
+   ``` 
+  - Instead of overriding equals method by ourselves, use auto generated equals by IDEs or Annotations (which override `equals` in compiled code instead of codebase)
+
 
 ## Extra notes
 ### Java Bean Pattern
