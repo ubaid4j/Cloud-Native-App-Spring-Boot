@@ -145,6 +145,55 @@ public class DataSource {
    ``` 
   - Instead of overriding equals method by ourselves, use auto generated equals by IDEs or Annotations (which override `equals` in compiled code instead of codebase)
 
+#### ITEM 11: ALWAYS OVERRIDE HASHCODE WHEN YOU OVERRIDE EQUALS
+- Contract for hashCode()
+  - return consistent same value on each invocation
+  - if o1.equals(o2) then o1.hashCode() == o2.hashCode()
+  - if o1 is not equals to o2 then it preferable to have distinct hash codes
+- How to write `hashCode()` method
+  - Initialize int result = 1;
+  - And for each significant fields:
+    - result = 31 * result + Type.hashCode(field)
+  - return result
+- There is method `Objects.hash(Object ...)` which calculate the hash using the same above algorithm, but it is not good for performance as it create Array of Object and boxing/unboxing of primitive types
+- Example
+  ```
+  class Coordinate {
+    final int x;
+    final int y;
+
+    public Coordinate(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (!(obj instanceof Coordinate)) return false;
+        Coordinate c1 = (Coordinate) obj;
+        return c1.x == x && c1.y == y;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 1;
+        result = 31 * result + Integer.hashCode(x);
+        result = 31 * result + Integer.hashCode(y);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Coordinate{" +
+            "x=" + x +
+            ", y=" + y +
+            '}';
+    }
+  }
+  ``` 
+  - We used 31 as it is prime odd and the VM can convert the multiplication to shift.
+    - 31 * result ===  (result << 5) - result
 
 ## Extra notes
 ### Java Bean Pattern
