@@ -195,6 +195,9 @@ public class DataSource {
   - We used 31 as it is prime odd and the VM can convert the multiplication to shift.
     - 31 * result ===  (result << 5) - result
 
+#### Item 12: Always override toString
+
+
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
