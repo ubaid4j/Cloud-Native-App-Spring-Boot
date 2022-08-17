@@ -195,7 +195,22 @@ public class DataSource {
   - We used 31 as it is prime odd and the VM can convert the multiplication to shift.
     - 31 * result ===  (result << 5) - result
 
-#### Item 12: Always override toString
+#### ITEM 12: ALWAYS OVERRIDE toString
+#### ITEM 13: OVERRIDE CLONE JUDICIOUSLY
+- Object's clone method returns a field by field copy of the object
+- contract: 
+  ```
+    x.clone() != x
+    x.clone().getClass() == x.getClass()
+    x.clone().equals(x)
+  ``` 
+- Copying arrays is the sole compelling use of `clone` facility
+- `clone` is doing shallow copy (we need to add extra functionality to make it deep copy)
+- How to Clone
+  - Override clone with public method which return the same type (containing clas)
+  - class `super.clone()` first
+  - fix any fields that need fixing (like fields that contain deep structure)
+- Better approach is `copy constructor` or `copy factory`
 
 
 ## Extra notes
