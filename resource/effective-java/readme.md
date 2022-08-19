@@ -212,6 +212,16 @@ public class DataSource {
   - fix any fields that need fixing (like fields that contain deep structure)
 - Better approach is `copy constructor` or `copy factory`
 
+#### ITEM-14: CONSIDER IMPLEMENTING COMPARABLE
+- Contract
+  - returns  0  if this object is equals to other one
+  - returns -1  if this object is less than to other one
+  - returns  1  if this object is greater than to other one
+  - sgn(x.compareTo(y)) == -sgn(y.compareTo(x))
+    - sgn is a function which returns -1 for any negative value, +1 for any positive value and 0 for 0
+  - Must follow transitivity
+  - If x.compareTo(y) == 0 then sgn(x.compareTo(z)) == sng(y.compareTo(z))
+  - If x.compareTo(y) == 0 then x.equals(y)
 
 ## Extra notes
 ### Java Bean Pattern
