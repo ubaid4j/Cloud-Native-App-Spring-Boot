@@ -222,7 +222,9 @@ public class DataSource {
   - Must follow transitivity
   - If x.compareTo(y) == 0 then sgn(x.compareTo(z)) == sng(y.compareTo(z))
   - If x.compareTo(y) == 0 then x.equals(y)
-#### ITEM-14: MINIMIZE THE ACCESSIBILITY OF CLASSES AND MEMBERS
+
+## Classes and Interfaces
+#### ITEM-15: MINIMIZE THE ACCESSIBILITY OF CLASSES AND MEMBERS
 - Reduce accessibility of program elements as much as possible
   - Top level (not nested) classes has only two possible access levels
      - package-private (no requirement to have same name as file name, and there can be multiple classes in a file)
@@ -234,6 +236,8 @@ public class DataSource {
     - protected (accessible from subclasses)
     - public (accessible from anywhere) 
   - An overridden method in subclass cannot have a more restrictive access level 
+#### ITEM 16: IN PUBLIC CLASSES, USE ACCESSOR METHODS, NOT PUBLIC FIELDS
+- If a class is accessible outside its package, provide accessor methods
 
 ## Extra notes
 ### Java Bean Pattern
