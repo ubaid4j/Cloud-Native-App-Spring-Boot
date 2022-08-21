@@ -238,7 +238,25 @@ public class DataSource {
   - An overridden method in subclass cannot have a more restrictive access level 
 #### ITEM 16: IN PUBLIC CLASSES, USE ACCESSOR METHODS, NOT PUBLIC FIELDS
 - If a class is accessible outside its package, provide accessor methods
-
+#### ITEM 17: MINIMIZE MUTABILITY
+- Immutable class
+  - Instance can not be modified 
+  - All info containing this instance is fixed in the lifetime of the object
+  - An immutable object can be in exactly one state, the state in which it was created
+  - Easy to use then mutable class and less prone to error
+  - They are thread safe
+  - They can be shared freely
+  - Disadvantage:
+     - We need to create a separate object for each distinct value 
+- Five rules to create immutable class
+  - Don't provide methods that modify the object's state
+  - Ensure that the class can't be extended
+  - Make all fields final
+  - Make all fields private
+  - Ensure exclusive access to any mutable components
+    - don't give reference for mutable object
+    - don't initialize mutable object from client given object
+    - use defensive copies in constructors/accessors
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
