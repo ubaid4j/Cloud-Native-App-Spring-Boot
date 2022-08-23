@@ -257,6 +257,18 @@ public class DataSource {
     - don't give reference for mutable object
     - don't initialize mutable object from client given object
     - use defensive copies in constructors/accessors
+#### ITEM 18: FAVOR COMPOSITION OVER INHERITANCE (gh-567)
+- It is safe to use inheritance within package
+- Inheritance violates encapsulation
+  - As subclass depends on the implementation details of its super class, and changes in super class may break the functionality in subclass
+- A known user can access the methods from super class which are not forcing invariants
+- If super class introduced some new methods which are same as we already declared in our subclass then it starts overriding 
+- If super class introduced same method signature with different return type, then our subclass will fail to compile
+- Composition
+  - Adding a reference of existing class in new class is called composition
+  - solve all problems produced by Inheritance
+- Use Inheritance, where there is `is-a` relationship
+
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
