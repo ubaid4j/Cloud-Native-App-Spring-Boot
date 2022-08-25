@@ -268,6 +268,17 @@ public class DataSource {
   - Adding a reference of existing class in new class is called composition
   - solve all problems produced by Inheritance
 - Use Inheritance, where there is `is-a` relationship
+#### ITEM 19: DESIGN AND DOCUMENT FOR INHERITANCE OR ELSE PROHIBIT IT
+- overridable methods = non-final and public/protected methods
+- The class must document its self-use of overridable methods
+  - For each public/protected method, the documentation must indicate which overridable methods the method invoke 
+- use `@impSpec` to document the overrideable methods
+- Constructors must not invoke overridable methods
+  - clone and readObject must not invoke overridable methods
+- Prohibit subclassing in classes that are not designed and documented to be safely subclassed
+  - Declare class with `final` 
+  - Private/package-private constructors
+
 
 ## Extra notes
 ### Java Bean Pattern
