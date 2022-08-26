@@ -269,15 +269,46 @@ public class DataSource {
   - solve all problems produced by Inheritance
 - Use Inheritance, where there is `is-a` relationship
 #### ITEM 19: DESIGN AND DOCUMENT FOR INHERITANCE OR ELSE PROHIBIT IT
-- overridable methods = non-final and public/protected methods
+- Overridable methods = non-final and public/protected methods
 - The class must document its self-use of overridable methods
   - For each public/protected method, the documentation must indicate which overridable methods the method invoke 
-- use `@impSpec` to document the overrideable methods
+- Use `@impSpec` to document the overrideable methods
 - Constructors must not invoke overridable methods
-  - clone and readObject must not invoke overridable methods
+  - Clone and readObject must not invoke overridable methods
 - Prohibit subclassing in classes that are not designed and documented to be safely subclassed
   - Declare class with `final` 
   - Private/package-private constructors
+#### ITEM 20: PREFER INTERFACES TO ABSTRACT CLASSES
+- Existing classes can easily be retrofitted to implement a new interface
+- Interfaces are ideal for defining mixins
+  - Mixin is a type that class can implement to provide some optional behavior (Like Comparable)
+- Interfaces allow non-hierarchical type framework 
+  - We can implement multiple Interfaces for single class 
+- Interfaces are not permitted to have
+  - instance fields
+  - non-public static fields
+  - `protected` access modifier for all members
+- Skeletal Implementations
+  - Interface -> AbstractClass -> Concrete Class
+  - As AbstractList is skeletal implementation of List and providing almost all functionalities of List (except 2 abstract methods), following method is using AbstractList to convert array of int to List of Integers without much efforts
+    ```
+        static List<Integer> intArrayAsList(int[] a) {
+          Objects.requireNonNull(a);
+        
+          return new AbstractList<>() {
+            
+              @Override
+              public Integer get(int index) {
+                  return a[index];
+              }
+            
+              @Override
+              public int size() {
+                  return a.length;
+              }
+          };
+      }
+    ```
 
 
 ## Extra notes
