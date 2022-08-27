@@ -309,7 +309,9 @@ public class DataSource {
           };
       }
     ```
-
+#### ITEM 21: DESIGN INTERFACES FOR POSTERITY
+- Using default methods to add new methods to existing interfaces should be avoided unless the need is critical
+- We may use default methods at the time of interface creation
 
 ## Extra notes
 ### Java Bean Pattern
