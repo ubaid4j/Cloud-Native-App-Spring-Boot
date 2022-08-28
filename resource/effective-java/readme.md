@@ -314,6 +314,79 @@ public class DataSource {
 - We may use default methods at the time of interface creation
 #### ITEM 22: USE INTERFACES ONLY TO DEFINE TYPES
 - Constant interface pattern is poor use of interface
+#### ITEM 23: PREFER CLASS HIERARCHIES TO TAGGED CLASSES
+- Tagged classes are verbose, error-prone and inefficient 
+- Tagged classes are used for defining a single data type capable of representing objects of multiple flavor, but we can transfer it in class hierarchy to make it more clean
+- Tagged Class example: 
+  ```
+    class Figure {
+        enum Shape {RECTANGLE, CIRCLE};
+
+        // tag field
+        final Shape shape;
+    
+        // for rectangle
+        double length;
+        double width;
+    
+        // for circle
+        double radius;
+    
+        // circle constructor
+        Figure(double radius) {
+           this.shape = Shape.CIRCLE;
+           this.radius = radius;
+        }
+    
+        // rectangle constructor
+        Figure(double length, double width) {
+            this.shape = Shape.RECTANGLE;
+            this.length = length;
+            this.width = width;
+       }
+    
+        double area() {
+            return switch (shape) {
+                case CIRCLE -> Math.PI * (radius * radius);
+                case RECTANGLE -> length * width;
+        };
+    }
+   ```
+- To hierarchy
+  ```
+    abstract class Figure {
+        abstract double area();
+    }
+
+    class Circle extends Figure {
+        final double radius;
+
+        public Circle(double radius) {
+            this.radius = radius;
+        }
+
+        @Override
+        double area() {
+            return Math.PI * (radius * radius);
+        }
+    }
+
+    class Rectangle extends Figure {
+        final double length;
+        final double width;
+
+        public Rectangle(double length, double width) {
+            this.length = length;
+            this.width = width;
+        }
+
+        @Override
+        double area() {
+            return length * width;
+        }
+    }
+  ```
+- Now, the code is clean, not-bloated, specific to each type  
 
 ## Extra notes
 ### Java Bean Pattern
