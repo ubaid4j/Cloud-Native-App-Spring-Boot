@@ -387,6 +387,18 @@ public class DataSource {
     }
   ```
 - Now, the code is clean, not-bloated, specific to each type  
+#### ITEM 24: FAVOR STATIC MEMBER CLASSES OVER NONSTATIC
+- Nested classes are defined within another class to serve its enclosing class
+- 4 type of nested classes (last three are also called inner classes)
+  - nonstatic member class
+  - static member class
+  - anonymous class
+  - local class 
+- Each instance of non-static member class is implicitly associated with an enclosing instance of its containing class
+- It is impossible to create an instance of nonstatic member class without an enclosing instance
+- Add `static` modifier to a member class that does not require access to an enclosing instance
+  - instance member class have a hidden extra reference to its enclosing instance which take time and space
+  - We can have possible memory leaks when we use instance member class as the enclosing instance being retained though it is eligible for GC 
 
 ## Extra notes
 ### Java Bean Pattern
