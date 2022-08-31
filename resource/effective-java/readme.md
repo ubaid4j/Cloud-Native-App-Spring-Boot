@@ -399,6 +399,8 @@ public class DataSource {
 - Add `static` modifier to a member class that does not require access to an enclosing instance
   - instance member class have a hidden extra reference to its enclosing instance which take time and space
   - We can have possible memory leaks when we use instance member class as the enclosing instance being retained though it is eligible for GC 
+#### ITEM 25: LIMIT SOURCE FILES TO A SINGLE TOP-LEVEL CLASS
+- Never put multiple top level classes or interfaces in a single source file
 
 ## Extra notes
 ### Java Bean Pattern
