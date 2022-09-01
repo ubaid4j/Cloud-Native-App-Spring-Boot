@@ -401,6 +401,33 @@ public class DataSource {
   - We can have possible memory leaks when we use instance member class as the enclosing instance being retained though it is eligible for GC 
 #### ITEM 25: LIMIT SOURCE FILES TO A SINGLE TOP-LEVEL CLASS
 - Never put multiple top level classes or interfaces in a single source file
+## Generics
+#### ITEM 26: DON’T USE RAW TYPES
+- Generic Class
+  - A class or interface whose declaration has one or more type parameters
+- Raw types lose all safety and expressiveness benefits of generics
+- Unbounded wildcard
+  - If we don't want to add type parameter in generic, we can use unbounded wildcard e.g. `Set<String>` to `Set<?>`
+  - When we use unbounded wildcard, it's mean that our collection can contain any type
+  - If we declare a collection with unbounded wildcard, we cannot put anything in it
+- Generic type information erased at runtime (it's just for type safety at compile time)
+- Using raw types can lead to exceptions at runtime, so don't use them
+- Following table shows the term with examples 
+
+|          Term           |               Example               |
+|:-----------------------:|:-----------------------------------:|
+|   Parameterized type    |           `List<String>`            |
+|  Actual type parameter  |              `String`               |
+|      Generic Type       |              `List<E>`              |
+|  Formal Type Parameter  |                 `E`                 |
+| Unbounded wildcard type |              `List<?>`              |
+|        Raw Type         |               `List`                |
+| Bounded Type parameter  |        `<E extends Number>`         |
+|  Recursive type bound   |     `<T extends Comparable<T>>`     |
+|  Bounded wildcard type  |      `List<? extends Number>`       |
+|     Generic method      | `static <E> List<E> asList(E[] a)`  |
+|       Type token        |           `String.class`            |
+
 
 ## Extra notes
 ### Java Bean Pattern
