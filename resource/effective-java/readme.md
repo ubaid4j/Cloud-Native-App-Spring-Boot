@@ -428,6 +428,10 @@ public class DataSource {
 |     Generic method      | `static <E> List<E> asList(E[] a)`  |
 |       Type token        |           `String.class`            |
 
+#### ITEM 27: ELIMINATE UNCHECKED WARNINGS
+- There are some warnings which can't be eliminated but our code is typesafe then we can use `@SuppressWarnings("unchecked")`  annotation
+- `@SuppressWarnings("unchecked")` should be used on the smallest scope possible
+- Add a comment saying why it is safe to do, with `@SuppressWarnings("unchecked")`
 
 ## Extra notes
 ### Java Bean Pattern
