@@ -432,6 +432,29 @@ public class DataSource {
 - There are some warnings which can't be eliminated but our code is typesafe then we can use `@SuppressWarnings("unchecked")`  annotation
 - `@SuppressWarnings("unchecked")` should be used on the smallest scope possible
 - Add a comment saying why it is safe to do, with `@SuppressWarnings("unchecked")`
+#### ITEM 28: PREFER LISTS TO ARRAYS
+- Arrays are **covariant**
+  - If `Sub` is subtype of `Super` then array type `Sub[]` is subtype of the array type `Super[]` like below
+  ```
+    Object[] arr = new Long[1];
+  ```
+- Generics are **invariant**
+- We cannot declare the following line of code as we did for Arrays
+  ```
+    //compilation error
+    //java: incompatible types: java.util.ArrayList<java.lang.Long> cannot be converted to java.util.List<java.lang.Object>
+    //List<Object> list = new ArrayList<Long>();
+  ```
+- Arrays are **reified**
+  - Arrays enforce their element type at runtime
+- Lists are implemented by **erasure**
+  - Lists enforce their types only at compile time and discard (or erase) their element type information at runtime.
+  - **Erasure** allowed generic types to interoperate freely with legacy code, ensuring smooth transition to generics in Java 5
+- It is illegal to create an array of a 
+  - generic type: `new List<E>[]`
+  - parameterized type: `new List<String>[]`
+  - type parameter: `new E[]`
+- because it isn't typesafe.
 
 ## Extra notes
 ### Java Bean Pattern
