@@ -455,6 +455,11 @@ public class DataSource {
   - parameterized type: `new List<String>[]`
   - type parameter: `new E[]`
 - because it isn't typesafe.
+#### ITEM 29: FAVOR GENERIC TYPES
+- Generic Types are safer and easier to use than types that require casts in client codee 
+- The only limitation of using generic types is that we cannot use **primitive** type
+  - like `Stack<int>` or `Stack<double>`
+  - We can use Boxed primitive types like `Stack<Integer>` or `Stack<DOUBLE>`
 
 ## Extra notes
 ### Java Bean Pattern
