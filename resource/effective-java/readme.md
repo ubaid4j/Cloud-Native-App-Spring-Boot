@@ -460,6 +460,37 @@ public class DataSource {
 - The only limitation of using generic types is that we cannot use **primitive** type
   - like `Stack<int>` or `Stack<double>`
   - We can use Boxed primitive types like `Stack<Integer>` or `Stack<DOUBLE>`
+#### ITEM 30: FAVOR GENERIC METHODS
+- Generic methods are safe and easier to use than methods requiring their clients to put explicit casts on input parameters and return values.
+- Methods should be used without cast
+- The **type parameter list**, which declares the type parameters, goes between a method's modifiers and its return type like below:
+  ```
+      static <E> Set<E> union(Set<E> s1, Set<E> s2) {
+        Set<E> result = new HashSet<>(s1);
+        result.addAll(s2);
+        return result;
+      }
+  ```
+  where `<E>` is the **type parameter list**.
+- Bounded type parameter list
+  ```
+    <E extends Integer> Set<E> intersection(Set<E> s1, Set<E> s2) {
+        Set<E> result = new HashSet<>();
+        for (E element: s1) {
+            if (s2.contains(element)) {
+                result.add(element);
+            }
+        }
+        return result;
+    }
+  ```
+  where `<E extends Integer>` is **bounded type parameter list** and its means that **E** are those types which are the subset of `Integer`.
+- Recursive Type Bound
+  - A type parameter bounded by some expression involving that type parameter itself
+  ```
+  static <E extends Comparable<E>> E max(Collection<E> c)
+  ```
+  So, this method accept only types which implements `Comparable` of same type
 
 ## Extra notes
 ### Java Bean Pattern
