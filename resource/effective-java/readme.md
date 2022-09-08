@@ -491,6 +491,15 @@ public class DataSource {
   static <E extends Comparable<E>> E max(Collection<E> c)
   ```
   So, this method accept only types which implements `Comparable` of same type
+#### ITEM 31: USE BOUNDED WILDCARDS TO INCREASE API FLEXIBILITY
+- **Bounded wildcard type**
+  - To reduce the invariant
+  - For producer input we can use `<? extends Type>`
+  - For consumer input we can use `<? super Type>`
+- mnemonic: *PECS stands for produce-extends, consumer-super*
+- Do no use bounded wildcard types as return types
+- Comparable/Comparators are always consumers, thus we can use `Comparable<? super T>` and `Comparator<? super T>`
+- If a type parameter appears only once in a method declaration, replace it with a wildcard
 
 ## Extra notes
 ### Java Bean Pattern
