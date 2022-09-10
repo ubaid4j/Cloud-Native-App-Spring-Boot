@@ -500,6 +500,14 @@ public class DataSource {
 - Do no use bounded wildcard types as return types
 - Comparable/Comparators are always consumers, thus we can use `Comparable<? super T>` and `Comparator<? super T>`
 - If a type parameter appears only once in a method declaration, replace it with a wildcard
+#### ITEM 32: COMBINE GENERICS AND VARARGS JUDICIOUSLY
+- `@SafeVarargs` constitutes a promise by the author of a method that it is a typesafe.
+  - `@SafeVarargs` is legal only for **non overridable** methods
+- It is unsafe to give another method access to a generic varargs parameter array
+- A generic varargs method is safe if:
+  - It doesn't store anything in the varargs parameter array
+  - It doesn't make the array (or a clone) visible to untrusted code
+- Varargs and generics do not interact well because the varargs facility is leaky abstraction built atop arrays, and arrays have different type rule from generics.
 
 ## Extra notes
 ### Java Bean Pattern
@@ -508,3 +516,8 @@ public class DataSource {
 ### Constructor telescoping
 - We can have multiple constructors which are delegating to other one (like 1-arg constructor to 2-arg constructor with second parameter is null)
 - hard to write client code when there are many parameters, and harder still to read it.
+### Heap Pollution
+- Heap pollution simply means there is *bad stuff* in heap
+- the bad stuff here is objects of type `A` where we ought to have objects of type `B`
+- some hole in static typing is allowing the bad stuff to leak into the heap
+- Heap pollution cause unexpected `ClassCastException`
