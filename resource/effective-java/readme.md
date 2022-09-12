@@ -508,6 +508,24 @@ public class DataSource {
   - It doesn't store anything in the varargs parameter array
   - It doesn't make the array (or a clone) visible to untrusted code
 - Varargs and generics do not interact well because the varargs facility is leaky abstraction built atop arrays, and arrays have different type rule from generics.
+#### ITEM 33: CONSIDER TYPESAFE HETEROGENEOUS CONTAINERS
+- Collection APIs have a fixed number of type parameters
+- We can have dynamic type parameters if we place type parameter on the key rather than container
+```
+    static class Favorites {
+
+        private final Map<Class<?>, Object> map = new HashMap<>();
+        
+        public <T> void putFavorite(Class<T> type, T instance) {
+            map.put(type, type.cast(instance));
+        }
+
+        public <T> T getFavorite(Class<T> type) {
+            return type.cast(map.get(type));
+        }
+    }
+
+```
 
 ## Extra notes
 ### Java Bean Pattern
