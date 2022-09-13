@@ -526,7 +526,65 @@ public class DataSource {
     }
 
 ```
+## Enums and Annotations
+#### ITEM 34: USE ENUMS INSTEAD OF INT CONSTANTS
+- An enumerated type is a type whose legal values consist of a fixed set of constants
+- Enums are used to represent enumerated types
+- Enums are not extendable
+- Enums are not instantiable
+- Enums provide compile time type safety
+- Enums are immutable
+- Constant specific data
+  - Declare a final field as per data requirement
+  - Add a required number of args constructor
+  - Add an enumerated value with parenthesis which contains required parameters
+  - ```
+        EARTH(5.975e+24, 6.378e6),
 
+        private final double mass;
+        private final double radius;
+
+        Planet(double mass, double radius) {
+            this.mass = mass;
+            this.radius = radius;
+        }
+
+    ```
+- Constant specific method
+  - Declare an abstract method in enum
+  - Provide implementation in each enumerated value like
+  - ```
+        PLUS {
+            @Override
+            double apply(double x, double y) {
+                return  x + y;
+            }
+        }
+    ```
+- An enum can have both constant specific method and data
+```
+    PLUS("+") {
+        @Override
+        double apply(double x, double y) {
+            return x + y;
+        }
+    };
+    
+    private final String symbol;
+    OperationC(String symbol) {
+        this.symbol = symbol;
+    }
+    
+    abstract double apply(double x, double y);
+    
+    @Override
+    public String toString() {
+        return symbol;
+    }
+```
+- Enum constructor are not permitted to access the enum static fields except constant variables
+  - As static fields have not yet been initialized when enum constructors runs
+- Use enums any time you need a set of constants whose members are known at compile time
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
