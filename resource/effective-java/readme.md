@@ -585,6 +585,8 @@ public class DataSource {
 - Enum constructor are not permitted to access the enum static fields except constant variables
   - As static fields have not yet been initialized when enum constructors runs
 - Use enums any time you need a set of constants whose members are known at compile time
+#### ITEM 35: USE INSTANCE FIELDS INSTEAD OF ORDINALS
+- Never derive a value associated with an enum from its ordinal; store it in an instance 
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
