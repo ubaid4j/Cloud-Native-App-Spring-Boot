@@ -586,7 +586,49 @@ public class DataSource {
   - As static fields have not yet been initialized when enum constructors runs
 - Use enums any time you need a set of constants whose members are known at compile time
 #### ITEM 35: USE INSTANCE FIELDS INSTEAD OF ORDINALS
-- Never derive a value associated with an enum from its ordinal; store it in an instance 
+- Never derive a value associated with an enum from its ordinal; store it in an instance
+#### ITEM 36: USE ENUMSET INSTEAD OF BIT FIELDS
+- BIT fields are being used for their bitwise operations
+  - But it is harder to interpret a bit field
+```
+    static class TextObsolete {
+        static final int STYLE_BOLD = 1 << 0; //1
+        static final int STYLE_ITALIC = 1 << 1; //2
+        static final int STYLE_UNDERLINE = 1 << 2; //4
+        static final int STYLE_STRIKETHROUGH = 1 << 3; //8
+        
+        void applyStyle(int styles) {
+            System.out.println("Styles --> " + styles);
+        }
+    }
+    
+    @Test
+    void testTextObsolete() {
+        TextObsolete txt = new TextObsolete();
+        txt.applyStyle(TextObsolete.STYLE_BOLD | TextObsolete.STYLE_STRIKETHROUGH);
+    }
+```
+- Instead, we can use EnumSet which provides
+  - Richness
+  - Type safety
+  - Interoperability
+```
+    static class Text {
+        enum Style {
+            BOLD, ITALIC, UNDERLINE, STRIKETHROUGH
+        }
+        
+        public void applyStyles(Set<Style> styles) {
+            System.out.println("Styles ----> " + styles);
+        }
+    }
+    
+    @Test
+    void testText() {
+        Text text = new Text();
+        text.applyStyles(EnumSet.of(Style.BOLD, Style.STRIKETHROUGH));
+    }
+```
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
