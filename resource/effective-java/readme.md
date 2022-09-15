@@ -631,6 +631,33 @@ public class DataSource {
 ```
 #### ITEM 37: USE ENUMMAP INSTEAD OF ORDINAL INDEXING
 - EnumMap provides type safety and is independent of ordinals
+#### ITEM 38: EMULATE EXTENSIBLE ENUMS WITH INTERFACES
+- As enum are not extensible, we can emulate it by implementing an interface
+```
+    interface Operation {
+        double apply(double x, double y);
+    }
+    
+    enum BasicOperation implements Operation {
+        PLUS("+") {
+            @Override
+            public double apply(double x, double y) {
+                return x + y;
+            }
+        }
+    }
+    
+    enum ExtendedOperation implements Operation {
+        EXP("^") {
+            @Override
+            public double apply(double x, double y) {
+                return Math.pow(x, y);
+            }
+        }
+    }
+
+```
+
 
 ## Extra notes
 ### Java Bean Pattern
