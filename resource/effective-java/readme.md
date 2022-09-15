@@ -629,6 +629,9 @@ public class DataSource {
         text.applyStyles(EnumSet.of(Style.BOLD, Style.STRIKETHROUGH));
     }
 ```
+#### ITEM 37: USE ENUMMAP INSTEAD OF ORDINAL INDEXING
+- EnumMap provides type safety and is independent of ordinals
+
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
