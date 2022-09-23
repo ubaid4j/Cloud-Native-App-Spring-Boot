@@ -673,7 +673,8 @@ public class DataSource {
     - `@Retention` is meta annotation too which represents that this annotation will be available at runtime
       - When annotation is present in runtime we can read it using `java.lang.reflect` API
 
-
+#### ITEM 40: CONSISTENTLY USE THE OVERRIDE ANNOTATION
+- Compiler can protect us from many errors if we use the `Override` annotation
 
 ## Extra notes
 ### Java Bean Pattern
