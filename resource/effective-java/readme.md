@@ -657,6 +657,22 @@ public class DataSource {
     }
 
 ```
+#### ITEM 39: PREFER ANNOTATIONS TO NAMING PATTERNS
+- Naming patterns were obsolete technique to have some metadata so that the tools/framework can process that data.
+- Annotation provide high level of metadata
+- Sample Declaration
+  - ```
+      @Retention(RetentionPolicy.RUNTIME)
+      @Target(ElementType.METHOD)
+      @interface Annotation1 {
+      
+      }  
+    ```
+    - Where `@interface` is keyword which represents `Annotation1` is Annotation type
+    - `@Target` is meta annotation which represents that this annotation can be used on methods
+    - `@Retention` is meta annotation too which represents that this annotation will be available at runtime
+      - When annotation is present in runtime we can read it using `java.lang.reflect` API
+
 
 
 ## Extra notes
