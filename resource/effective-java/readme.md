@@ -676,6 +676,12 @@ public class DataSource {
 #### ITEM 40: CONSISTENTLY USE THE OVERRIDE ANNOTATION
 - Compiler can protect us from many errors if we use the `Override` annotation
 
+#### ITEM 41: USE MARKER INTERFACES TO DEFINE TYPES
+- A marker interface contains no methods
+- Compile-time error detection is the intent of marker interfaces
+
+
+
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
