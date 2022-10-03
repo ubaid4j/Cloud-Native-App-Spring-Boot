@@ -680,6 +680,19 @@ public class DataSource {
 - A marker interface contains no methods
 - Compile-time error detection is the intent of marker interfaces
 
+## Lambdas and Streams
+#### ITEM 42: PREFER LAMBDAS TO ANONYMOUS CLASSES
+- In Java 8: interfaces with a single abstract method are special and deserve special treatment
+  - These are known as Functional Interfaces
+  - **Lambda Expression** is used to create instance of these interfaces
+  - **Lambdas** are similar in function to anonymous classes but far more concise
+- One line is ideal for lambda and three lines is a reasonable maximum
+- Lambdas are limited to functional interface
+  - If we want to create an instance of an abstract class, we can do it with anonymous class (but not with lambda)
+  - If an interface has multiple abstract methods, when we can create its instance using anonymous class (but not with lambda)
+  - Lambda cannot obtain a reference to itself
+    - in lambda `this` keyword refers to enclosing instance
+    - in anonymous class `this` keyword refers to anonymous class instance
 
 
 ## Extra notes
