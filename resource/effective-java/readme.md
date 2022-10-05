@@ -693,6 +693,20 @@ public class DataSource {
   - Lambda cannot obtain a reference to itself
     - in lambda `this` keyword refers to enclosing instance
     - in anonymous class `this` keyword refers to anonymous class instance
+#### ITEM 43: PREFER METHOD REFERENCES TO LAMBDAS
+- Reference methods are shorter and clearer
+- There are five type of method reference:
+
+|  Method Ref Type  |         Example          |                  Lambda Equivalent                   |
+|:-----------------:|:------------------------:|:----------------------------------------------------:|
+|      Static       |   `Integer::parseInt`    |            `str -> Integer.parseInt(str)`            |
+|       Bound       | `Instant.now()::isAfter` | `Instant then = Instant.now(); t -> then.isAfter(t)` |
+|      Unbound      |  `String::toLowerCase`   |              `str -> str.toLowerCase()`              |
+| Class Constructor |   `HashMap<K,V>::new`    |              `() -> new HashMap<K, V>`               |
+| Array Constructor |       `int[]::new`       |                `len -> new int[len]`                 |
+
+
+
 
 
 ## Extra notes
