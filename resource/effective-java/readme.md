@@ -705,6 +705,27 @@ public class DataSource {
 | Class Constructor |   `HashMap<K,V>::new`    |              `() -> new HashMap<K, V>`               |
 | Array Constructor |       `int[]::new`       |                `len -> new int[len]`                 |
 
+#### ITEM 44: FAVOR THE USE OF STANDARD FUNCTIONAL INTERFACES
+- Six basic interfaces in `java.util.Functions`
+  - Operator interface has same result and argument type
+  - Predicate interface takes an argument and returns a boolean
+  - Function interface has different argument and return types
+  - Supplier interface takes no argument and return a value
+  - Consumer takes an argument and returns nothing
+- Table
+
+|     Interface      |  Function Signature   |        Example        |
+|:------------------:|:---------------------:|:---------------------:|
+| Unary Operator<T>  |    `T apply(T t)`     | `String::toLowerCase` |
+| Binary Operator<T> | `T apply(T t1, T t2)` |    `Integer::sum`     |
+|     Predicate      |  `boolean test(T t)`  | `Collection::isEmpty` |
+|   Function<T, R>   |    `R apply(T t)`     |   `Arrays::asList`    |
+|    Supplier<T>     |       `T get()`       |    `Instant::now`     |
+|    Consumer<T>     |  `void accpet(T t)`   | `System.out::println` |
+
+- Always annotate functional interfaces with the `@FunctionalInterface` annotation
+- 
+
 
 
 
