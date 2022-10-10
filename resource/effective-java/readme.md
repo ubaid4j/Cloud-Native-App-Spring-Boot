@@ -724,7 +724,10 @@ public class DataSource {
 |    Consumer<T>     |  `void accpet(T t)`   | `System.out::println` |
 
 - Always annotate functional interfaces with the `@FunctionalInterface` annotation
-- 
+#### ITEM 45: USE STREAMS JUDICIOUSLY
+- Overusing streams makes programs hard to read and maintain
+- Careful naming of lambda parameters is essential for better readability 
+- Helper methods increase the readability for stream pipelines
 
 
 
