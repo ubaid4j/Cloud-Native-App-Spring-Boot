@@ -728,6 +728,11 @@ public class DataSource {
 - Overusing streams makes programs hard to read and maintain
 - Careful naming of lambda parameters is essential for better readability 
 - Helper methods increase the readability for stream pipelines
+#### ITEM 46: PREFER SIDE-EFFECT-FREE FUNCTIONS IN STREAMS
+- The `forEach` operation should be used only to report the result of a stream computation, not to perform the computation.
+- A `pure function` is one whose result depends only on its input
+- Import all members of `Collectors` as it makes stream pipelines more readable
+- Use `Collectors` methods for the effective usage of Streams
 
 
 
