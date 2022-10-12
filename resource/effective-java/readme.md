@@ -733,6 +733,11 @@ public class DataSource {
 - A `pure function` is one whose result depends only on its input
 - Import all members of `Collectors` as it makes stream pipelines more readable
 - Use `Collectors` methods for the effective usage of Streams
+#### ITEM 47: PREFER COLLECTION TO STREAM AS A RETURN TYPE
+- While having `Collection`, we can easily Iterate and use `Stream`
+  - As Collection extends `Iterable`  and
+  - It has `stream()` method get its stream
+
 
 
 
