@@ -737,8 +737,11 @@ public class DataSource {
 - While having `Collection`, we can easily Iterate and use `Stream`
   - As Collection extends `Iterable`  and
   - It has `stream()` method get its stream
-
-
+#### ITEM 48: USE CAUTION WHEN MAKING STREAMS PARALLEL
+- Parallelization is not increasing performance when source is from `Stream.iterate` or intermediate operation is `limit`
+- Parallelization can by apply on `ArrayList`, `HashMap`, `HashSet`, `ConcurrentHashMap`, `arrays`, `int ranges` and `long ranges`
+  - These datastructures can be accurately and cheaply split into sub-ranges of any desired sizes
+  - They have good-to-excellent locality of reference when processed sequentially
 
 
 
