@@ -743,10 +743,15 @@ public class DataSource {
   - These datastructures can be accurately and cheaply split into sub-ranges of any desired sizes
   - They have good-to-excellent locality of reference when processed sequentially
 ## Methods
-#### Item 49: CHECK PARAMETERS FOR VALIDITY
+#### ITEM 49: CHECK PARAMETERS FOR VALIDITY
 - use `Objects.requireNonNull(obj, msg)` to validate nullity
 - throw `IllegalArgumentException`, `NullPointerException`, `IndexOutOfBoundException` for these type of validations
-
+#### ITEM 50: MAKE DEFENSIVE COPIES WHEN NEEDED
+- We need defensive copies in case of mutable components of a class
+- `Date` is obsolete. We can use `java.time` classes
+- Do not use `clone` method to make a defensive copy of a parameter whose type is non-final
+  - when a class is non-final, then they can be extended by malicious class
+  - We can use `clone` method in accessor as we know the type
 
 
 ## Extra notes
