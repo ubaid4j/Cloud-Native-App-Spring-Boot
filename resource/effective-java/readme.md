@@ -752,7 +752,14 @@ public class DataSource {
 - Do not use `clone` method to make a defensive copy of a parameter whose type is non-final
   - when a class is non-final, then they can be extended by malicious class
   - We can use `clone` method in accessor as we know the type
-
+#### ITEM 51: DESIGN METHOD SIGNATURES CAREFULLY
+- Choose method name carefully
+- Avoid long parameter lists
+  - use Helper class
+  - split methods to reduce parameter lists
+  - builder pattern
+- Favor interfaces over classes for parameter types
+- Favor two-element enum types over boolean parameter
 
 ## Extra notes
 ### Java Bean Pattern
