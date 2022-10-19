@@ -760,6 +760,16 @@ public class DataSource {
   - builder pattern
 - Favor interfaces over classes for parameter types
 - Favor two-element enum types over boolean parameter
+#### ITEM 52: USE OVERLOADING JUDICIOUSLY
+- The choice of which overloading to invoke is made at compile time
+  - runtime does not affect the choice of overloading
+- selection among **overloaded** methods is **static**, while selection among **overridden** methods is **dynamic** 
+- avoid confusing use of **overloading**
+  - never add two **overloading** methods with same number of parameters
+  - never overload a method that uses **varargs**
+  - In the presence of auto-boxing, `Object` and `int` are no longer radically different
+    - Two types are radically different if it is clearly impossible to cast any non-null expression to both types
+  - `Lambdas` and `Method reference` increased the potential for confusion in overloading
 
 ## Extra notes
 ### Java Bean Pattern
