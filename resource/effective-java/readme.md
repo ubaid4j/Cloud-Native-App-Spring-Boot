@@ -770,6 +770,13 @@ public class DataSource {
   - In the presence of auto-boxing, `Object` and `int` are no longer radically different
     - Two types are radically different if it is clearly impossible to cast any non-null expression to both types
   - `Lambdas` and `Method reference` increased the potential for confusion in overloading
+#### ITEM 53: USE VARARGS JUDICIOUSLY
+- `varargs` methods accept zero or more arguments of a specified type
+- When using `varargs` we got some performance consequences as:
+  - `varargs` facility first create an array whose size is the number of passed arguments at site call
+  - then putting the arguments values into the array 
+  - and then finally passing that array to the method
+- We can use overloaded methods for upto three parameters instead of only one vararg parameter
 
 ## Extra notes
 ### Java Bean Pattern
