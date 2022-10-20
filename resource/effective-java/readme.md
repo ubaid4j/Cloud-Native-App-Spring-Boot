@@ -777,6 +777,15 @@ public class DataSource {
   - then putting the arguments values into the array 
   - and then finally passing that array to the method
 - We can use overloaded methods for upto three parameters instead of only one vararg parameter
+#### ITEM 54: RETURN EMPTY COLLECTIONS OR ARRAYS, NOT NULLS
+- We can return empty Collections instead of returning null
+  - `Collections.emptyList`
+  - `Collections.emptySet`
+  - `Collections.emptyMap`
+- The aforementioned empty collections are immutable, and it causes no performance issue
+- Same, we need to return zero-length array instead of returning null
+  - Zero length array are immutable
+
 
 ## Extra notes
 ### Java Bean Pattern
