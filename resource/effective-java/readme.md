@@ -825,7 +825,9 @@ public class DataSource {
 - For methods and constructors, the summary description should be a verb phrase
 - For classes/interfaces/fields the summary description should be a noun phrase
 - `@inheritDoc` can be used to inherit doc comments from supertype
-
+## General Programming
+#### ITEM 57: MINIMIZE THE SCOPE OF LOCAL VARIABLES
+- prefer **traditional for loop** over **while loop**
 
 ## Extra notes
 ### Java Bean Pattern
