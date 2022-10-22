@@ -785,6 +785,12 @@ public class DataSource {
 - The aforementioned empty collections are immutable, and it causes no performance issue
 - Same, we need to return zero-length array instead of returning null
   - Zero length array are immutable
+#### ITEM 55: RETURN OPTIONALS JUDICIOUSLY
+- `Optional<T>` is immutable container which hold non-null T reference or nothing at all
+- **Containers types** including `collections`, `maps`, `streams`, `arrays` and `optionals` should not be wrapped in **optionals**.
+- Never return an optional of a boxed primitive 
+  - Use `IntOptional`, `LongOptional`, `DoubleOptional`
+- Never use `Optional` as key or value in `Map` or element in `Collectoions` or `Arrays`
 
 
 ## Extra notes
