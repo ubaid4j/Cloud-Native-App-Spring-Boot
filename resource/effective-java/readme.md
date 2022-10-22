@@ -791,6 +791,40 @@ public class DataSource {
 - Never return an optional of a boxed primitive 
   - Use `IntOptional`, `LongOptional`, `DoubleOptional`
 - Never use `Optional` as key or value in `Map` or element in `Collectoions` or `Arrays`
+#### ITEM 56: WRITE DOC COMMENTS FOR ALL EXPOSED API ELEMENTS
+- Focus on **what** not on **how** while writing docs
+- Pre-conditions and Post-conditions are helpful in docs
+- docs tags:
+  - `@param` for every parameters
+  - `@return` any return type
+  - `@throws` for every exception (checked and unchecked both)
+
+```java
+/**
+ *
+ * Returns the element at the specified position in this list
+ *
+ * <p>This method is <i>not</i> guaranteed to run in constant
+ * time. In some implementations it may run in time proportional 
+ * to the element position
+ *
+ * @param index index of element to return; must be
+ *              non-negative and less than the size of this list
+ * @return the element at the specified position in this list
+ * @throws java.lang.IndexOutOfBoundsException if the index is out of
+ *         range ({@code index < 0 || index >= this.size})
+ */
+```
+- The first sentence becomes the summary description
+  - No two members or constructors in a class should have same summary description
+  - The summary description ends at the first period that is followed by a space, tab or line terminator
+- `@implSpec` describe the contract between a method and its subclass
+- `@code` suppress processing of HTML markup and render the text in **code** font
+- `@literal` suppress processing of HTML markup as well but it do not **render** text in **code** font
+- Doc comments should be readable both in the source code and in the generated documentation
+- For methods and constructors, the summary description should be a verb phrase
+- For classes/interfaces/fields the summary description should be a noun phrase
+- `@inheritDoc` can be used to inherit doc comments from supertype
 
 
 ## Extra notes
@@ -805,3 +839,5 @@ public class DataSource {
 - the bad stuff here is objects of type `A` where we ought to have objects of type `B`
 - some hole in static typing is allowing the bad stuff to leak into the heap
 - Heap pollution cause unexpected `ClassCastException`
+### Site Effect
+- A side effect is an observable change in the state of teh system that is not obviously required in order to achieve the post condition
