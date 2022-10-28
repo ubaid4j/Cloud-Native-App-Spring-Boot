@@ -837,6 +837,12 @@ public class DataSource {
   - **Destructive filtering**: where we need to remove a selected element
   - **Transforming**: where we need to replace some values of its element
   - **Parallel Iteration**
+#### ITEM 59: KNOW AND USE THE LIBRARIES
+- Prefer library code instead of writing by ourselves
+- A Java programmer should be familiar with the basics of
+  - `java.lang`
+  - `java.util`
+  - `java.io`
 
 ## Extra notes
 ### Java Bean Pattern
