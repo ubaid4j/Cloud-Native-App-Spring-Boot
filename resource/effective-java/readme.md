@@ -827,7 +827,16 @@ public class DataSource {
 - `@inheritDoc` can be used to inherit doc comments from supertype
 ## General Programming
 #### ITEM 57: MINIMIZE THE SCOPE OF LOCAL VARIABLES
-- prefer **traditional for loop** over **while loop**
+- prefer **traditional for loop** over **while loop** to minimize scope of local variable
+#### ITEM 58: PREFER FOR-EACH LOOPS TO TRADITIONAL FOR LOOPS
+- for-each loop provides:
+  - Clarity
+  - Bug prevention
+  - No performance penalty
+- We can't use for-each loop in following conditions:
+  - **Destructive filtering**: where we need to remove a selected element
+  - **Transforming**: where we need to replace some values of its element
+  - **Parallel Iteration**
 
 ## Extra notes
 ### Java Bean Pattern
