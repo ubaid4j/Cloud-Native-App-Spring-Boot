@@ -843,6 +843,11 @@ public class DataSource {
   - `java.lang`
   - `java.util`
   - `java.io`
+#### ITEM 60: AVOID FLOAT AND DOUBLE IF EXACT ANSWERS ARE REQUIRED
+- `float` and `double` do not provide exact results
+  - not suited for **monetary** calculations
+- We can use `BigDecimal`, `long`, `int` to get correct result
+  - use `BigDecimal` if we want the system to keep track of the decimal point
 
 ## Extra notes
 ### Java Bean Pattern
