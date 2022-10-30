@@ -848,6 +848,20 @@ public class DataSource {
   - not suited for **monetary** calculations
 - We can use `BigDecimal`, `long`, `int` to get correct result
   - use `BigDecimal` if we want the system to keep track of the decimal point
+#### ITEM 61: PREFER PRIMITIVE TYPES TO BOXED PRIMITIVES
+- Every primitive type has a corresponding reference type which is called **Boxed primitive**
+- Difference between primitive and Boxed primitive:
+  - primitive have only their values while boxed primitives have identities distinct from their values
+    - multiple boxed instances of same value
+  - boxed primitive can have `null` value
+  - primitive are more time and space efficient
+- comparing two boxed primitives with `==` is actually identity comparison
+- When we mix primitives and boxed primitives in an operation, the boxed primitive is auto-unboxed
+  - A `NullPointerException` thrown when null object reference is auto-unboxed
+- When to use **boxed primitives**
+  - elements, keys and values in collections
+  - type parameters in parameterized types and methods
+  - reflective methods invocations
 
 ## Extra notes
 ### Java Bean Pattern
