@@ -862,6 +862,8 @@ public class DataSource {
   - elements, keys and values in collections
   - type parameters in parameterized types and methods
   - reflective methods invocations
+#### ITEM 62: AVOID STRINGS WHERE OTHER TYPES ARE MORE APPROPRIATE
+- for compound information, instead of using string, we can use static nested class
 
 ## Extra notes
 ### Java Bean Pattern
