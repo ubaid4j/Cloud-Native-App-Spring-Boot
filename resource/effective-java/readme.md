@@ -864,7 +864,12 @@ public class DataSource {
   - reflective methods invocations
 #### ITEM 62: AVOID STRINGS WHERE OTHER TYPES ARE MORE APPROPRIATE
 - for compound information, instead of using string, we can use static nested class
-
+#### ITEM 63: BEWARE THE PERFORMANCE OF STRING CONCATENATION
+- We can use `StringBuilder` instead of string concatenation
+  - String concatenation requires quadratic time
+    - As String is immutable
+    - Concatenation requires a new copy of a string and a string builder
+    - Let suppose, if we are concatenating a string in a loop (let n = 100) then 100 new string (and 100 string builder) objects will be created in heap
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
