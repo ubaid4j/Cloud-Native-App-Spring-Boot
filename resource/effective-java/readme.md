@@ -870,6 +870,11 @@ public class DataSource {
     - As String is immutable
     - Concatenation requires a new copy of a string and a string builder
     - Let suppose, if we are concatenating a string in a loop (let n = 100) then 100 new string (and 100 string builder) objects will be created in heap
+#### ITEM 64: REFER TO OBJECTS BY THEIR INTERFACES
+- We can change implementation without changing any code
+- More generalization
+  - List instead of ArrayList, LinkedHashList
+  - Map instead of HashMap, LinkedHashMap etc
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
