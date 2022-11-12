@@ -875,6 +875,9 @@ public class DataSource {
 - More generalization
   - List instead of ArrayList, LinkedHashList
   - Map instead of HashMap, LinkedHashMap etc
+#### ITEM 65: PREFER INTERFACES TO REFLECTION
+- We use reflection when a class is not present at compile time.
+  - Use reflection only to instantiate objects (of unknown classes) and access the objects using interface or superclass that is known at compile time
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
