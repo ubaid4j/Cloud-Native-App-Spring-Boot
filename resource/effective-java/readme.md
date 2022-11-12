@@ -878,6 +878,18 @@ public class DataSource {
 #### ITEM 65: PREFER INTERFACES TO REFLECTION
 - We use reflection when a class is not present at compile time.
   - Use reflection only to instantiate objects (of unknown classes) and access the objects using interface or superclass that is known at compile time
+#### ITEM 66: USE NATIVE METHODS JUDICIOUSLY
+- Java Native Interface have three main uses:
+  - access to platform-specific facilities
+  - access to libraries of native code
+  - performance critical parts
+- Only use native methods to use native libraries when no equivalent libraries are available in Java
+- Disadvantages of using JNI
+  - memory corruption
+  - hard to debug
+  - garbage collector cannot trace native memory usage
+  - cost while going into and out of native code
+  - native method requires **glue code**
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
