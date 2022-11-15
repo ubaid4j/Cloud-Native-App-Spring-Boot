@@ -890,6 +890,20 @@ public class DataSource {
   - garbage collector cannot trace native memory usage
   - cost while going into and out of native code
   - native method requires **glue code**
+#### ITEM 67: OPTIMIZE JUDICIOUSLY
+- Don't sacrifice sound architectural principles for performance
+- Strive to write good programs rather than fast ones
+  - If a good program is not fast enough, its architecture will allow it to be optimized
+- Strive to avoid design decisions that limit performance
+- Consider the performance consequences of your API design decisions
+  - We should avoid following items:
+    - Needless defensive copying
+    - Inheritance over composition
+    - Implementation type over Interface type
+- Measure performance before and after each attempted optimization 
+- A Program spends 90% of their time in 10% of their code
+- Profiling tools can help to decide where to focus optimization efforts
+- Choice of algorithm (to efficient one) can increase performance without low level optimizations
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
