@@ -936,6 +936,10 @@ public class DataSource {
   - Common names for static factories:
     - `from`, `of`, `valueOf`, `instance`, `getInstance`, `newInstance`, `getType`, `newType`
   - **Noun** or **noun phrase** should be used for field names
+## Exceptions
+#### ITEM 69: USE EXCEPTIONS ONLY FOR EXCEPTIONAL CONDITIONS
+- Exceptions should not be used to control flow (they only used for exceptional conditions)
+- A well-designed API must not force its clients to use exceptions for ordinary control flow
 
 ## Extra notes
 ### Java Bean Pattern
@@ -951,3 +955,7 @@ public class DataSource {
 - Heap pollution cause unexpected `ClassCastException`
 ### Site Effect
 - A side effect is an observable change in the state of teh system that is not obviously required in order to achieve the post condition
+### State-dependent vs State Testing Method
+- A method that can be invoked only under certain unpredictable conditions is a **state-dependent** method
+- A method indicating whether it is appropriate to invoke the **state-dependent** method is a **state-testing** method
+  - e.g. `next` method in `Iterator` is **state-dependent** method while `hasNext` in `Iterator` is **state-testing** method
