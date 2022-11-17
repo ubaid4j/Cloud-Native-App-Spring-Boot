@@ -904,6 +904,39 @@ public class DataSource {
 - A Program spends 90% of their time in 10% of their code
 - Profiling tools can help to decide where to focus optimization efforts
 - Choice of algorithm (to efficient one) can increase performance without low level optimizations
+#### ITEM 68: ADHERE TO GENERALLY ACCEPTED NAMING CONVENTIONS
+- Typographical naming conventions
+
+|  Identifier Type   |                     Example                     |
+|:------------------:|:-----------------------------------------------:|
+| Package or module  |      `org.unit.jupiter, com.google.common`      |
+| Class or Interface | `Stream, FutureTask, LinkedHashMap, HttpClient` |
+|  Method or Field   |          `remove, groupingBy, getCrc`           |
+|   Constant Field   |         `MIN_VALUE, NEGATIVE_INFINITY`          |
+|   Local Variable   |              `i, denom, houseNum`               |
+|   Type Parameter   |             `T,E,K,V,X,R,U,V,T1,T2`             |
+
+- Grammatical naming convention
+  - Class names (including enum) should name with a **singular noun** or **noun phrase**
+    - e.g. `Thread`
+  - Non instantiable utility classes are named with **plural noun**
+    - e.g. `Collections`, `Collectors`
+  - Interfaces are named like classes (or with an adjective ending in able)
+    - e.g. `Collection`, `Comparator`, `Runnable`, `Iterable`
+  - Methods that do some actions are named with **verbs**
+  - Methods that return boolean, prepend **is**, or **has**
+  - Methods that return attribute of object on which they invoked, prepend **get**
+    - There is debate between `size()` or `getSize()` method names
+  - Prepend **toType** for instance method that do type conversion
+    - `toString`, `toArray`
+  - Prepend **asType** for static method that do type conversion
+    - `asList`
+  - Prepend **typeValue** for instance methods which return primitive value of boxed type
+    - `intValue`
+  - Common names for static factories:
+    - `from`, `of`, `valueOf`, `instance`, `getInstance`, `newInstance`, `getType`, `newType`
+  - **Noun** or **noun phrase** should be used for field names
+
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
