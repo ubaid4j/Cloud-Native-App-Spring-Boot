@@ -940,7 +940,8 @@ public class DataSource {
 #### ITEM 69: USE EXCEPTIONS ONLY FOR EXCEPTIONAL CONDITIONS
 - Exceptions should not be used to control flow (they only used for exceptional conditions)
 - A well-designed API must not force its clients to use exceptions for ordinary control flow
-
+#### ITEM 70: USE CHECKED EXCEPTIONS FOR RECOVERABLE CONDITIONS AND RUNTIME EXCEPTIONS FOR PROGRAMMING ERRORS
+- [Worth to read](https://www.oracle.com/technical-resources/articles/enterprise-architecture/effective-exceptions-part1.html)
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
