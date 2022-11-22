@@ -943,6 +943,18 @@ public class DataSource {
 #### ITEM 70: USE CHECKED EXCEPTIONS FOR RECOVERABLE CONDITIONS AND RUNTIME EXCEPTIONS FOR PROGRAMMING ERRORS
 - [Worth to read](https://www.oracle.com/technical-resources/articles/enterprise-architecture/effective-exceptions-part1.html)
 #### ITEM 71: AVOID UNNECESSARY USE OF CHECKED EXCEPTIONS
+#### ITEM 72: FAVOR THE USE OF STANDARD EXCEPTIONS
+- Familiar Exceptions
+  - `IllegalArgumentException`
+  - `IllegalStateException`
+  - `IllegalStateException`
+  - `IndexOutOfBoundsException`
+  - `ConcurrentModificationException`
+  - `UnsupportedOperationException`
+- Do not reuse `Exception`, `RuntimeException`, `Throwable` or `Error` directly
+  - Try these classes as abstract
+- Subclass a standard exception if needed but remember that Exceptions are serializable
+
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
