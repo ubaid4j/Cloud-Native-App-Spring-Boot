@@ -954,7 +954,14 @@ public class DataSource {
 - Do not reuse `Exception`, `RuntimeException`, `Throwable` or `Error` directly
   - Try these classes as abstract
 - Subclass a standard exception if needed but remember that Exceptions are serializable
-
+#### ITEM 73: THROW EXCEPTIONS APPROPRIATE TO THE ABSTRACTION
+- Use **exception translation** to avoid disconcerting exceptions
+  - Higher layers should catch lower-level exceptions and, in their place, throw exceptions that can be explained in terms of the higher-level abstraction
+- Along with Exception Translation, we can use **exception chaining**
+  - Exception chaining is helpful to get lower level exception cause
+  - The lower level exception (the cause) is passed to the higher level exception
+  - We can use `getCause` to access that lower level exception programmatically
+  - It integrate the exception stack-trace with cause as well
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
