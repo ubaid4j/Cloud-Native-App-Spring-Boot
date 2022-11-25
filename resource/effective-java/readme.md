@@ -964,6 +964,8 @@ public class DataSource {
   - It integrate the exception stack-trace with cause as well
 #### ITEM 74: DOCUMENT ALL EXCEPTIONS THROWN BY EACH METHOD
 - Use the Javadoc `@throws` tag to document each exception that method can throw
+#### ITEM 75: INCLUDE FAILURE-CAPTURE INFORMATION IN DETAIL MESSAGES
+- We may have constructor (of subclass of a runtime exception) which may accept significant parameters and then we construct the detail message in constructor
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
