@@ -962,6 +962,8 @@ public class DataSource {
   - The lower level exception (the cause) is passed to the higher level exception
   - We can use `getCause` to access that lower level exception programmatically
   - It integrate the exception stack-trace with cause as well
+#### ITEM 74: DOCUMENT ALL EXCEPTIONS THROWN BY EACH METHOD
+- Use the Javadoc `@throws` tag to document each exception that method can throw
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
