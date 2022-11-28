@@ -966,6 +966,15 @@ public class DataSource {
 - Use the Javadoc `@throws` tag to document each exception that method can throw
 #### ITEM 75: INCLUDE FAILURE-CAPTURE INFORMATION IN DETAIL MESSAGES
 - We may have constructor (of subclass of a runtime exception) which may accept significant parameters and then we construct the detail message in constructor
+#### ITEM 76: STRIVE FOR FAILURE ATOMICITY
+- Failure-Atomic
+  - A failed method invocation should leave the object in the state that it was in prior to the invocation.
+  - We can achieve that behavior using immutable objects.
+  - For mutable objects the most common way to achieve failure atomicity is:
+    - to check parameters for validity before performing the operation
+    - order the computation so that any part that may fail takes place before any part that modifies the object
+    - perform the operation on a temporary copy of the object
+    - recovery code
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
