@@ -975,6 +975,8 @@ public class DataSource {
     - order the computation so that any part that may fail takes place before any part that modifies the object
     - perform the operation on a temporary copy of the object
     - recovery code
+#### ITEM 77: DON’T IGNORE EXCEPTIONS
+
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
