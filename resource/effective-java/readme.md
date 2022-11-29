@@ -976,7 +976,12 @@ public class DataSource {
     - perform the operation on a temporary copy of the object
     - recovery code
 #### ITEM 77: DON’T IGNORE EXCEPTIONS
-
+## Concurrency
+#### ITEM 78: SYNCHRONIZE ACCESS TO SHARED MUTABLE DATA
+- Synchronization is required for reliable communication between threads as well as for mutual exclusion.
+- Synchronization is not guaranteed to work unless both read and write operations are synchronized
+  - use `synchronized` keyword for synchronization
+- `volatile` modifier performs no mutual exclusion, it guarantees that any thread that reads the field will see the most recently written value.
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
