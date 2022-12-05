@@ -988,6 +988,24 @@ public class DataSource {
 - To achieve synchronization in mutable class:
   - Leave for client to synchronize it (Collections in `java.util`)
   - Synchronize internally (`java.util.concurrent`)
+#### ITEM 80: PREFER EXECUTORS, TASKS, AND STREAMS TO THREADS
+- `java.util.concurrent.Executors` class contains static factories that provide almost all type of executors
+  - thread pool executor execute a requests in queue by multiple threads
+    - `Executors.newCachedThreadPool` is good for lightly loaded servers
+    - `Executors.newFixedThreadPool` is good for heavily loaded servers
+- We should refrain from working directly with threads
+  - When we work directly with thread, a Thread serves as both a unit of work and the mechanism for executing it
+  - The unit of work and execution mechanism are separated in **Executor Framework**
+- Unit of Work -> Task
+  - Two types of tasks
+    - Runnable (returns no value)
+    - Callable (returns a value)
+- `Executor` (interface)
+  - `AbstractExecutorService` (Abstract class)
+    - ThreadPoolExecutor
+    - ScheduledThreadPoolExecutor
+    - ForkJoinPool
+      - It split up into smaller subtasks and uses a work-stealing algorithm to distribute tasks among its threads, resulting in higher CPU utilization, higher throughput and lower latency.
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
