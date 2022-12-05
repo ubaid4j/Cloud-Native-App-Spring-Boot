@@ -982,6 +982,12 @@ public class DataSource {
 - Synchronization is not guaranteed to work unless both read and write operations are synchronized
   - use `synchronized` keyword for synchronization
 - `volatile` modifier performs no mutual exclusion, it guarantees that any thread that reads the field will see the most recently written value.
+#### ITEM 79: AVOID EXCESSIVE SYNCHRONIZATION
+- Inside a synchronized region, do not invoke a method that is designed to be overridden
+- We should do as little work as possible inside synchronized regions
+- To achieve synchronization in mutable class:
+  - Leave for client to synchronize it (Collections in `java.util`)
+  - Synchronize internally (`java.util.concurrent`)
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
