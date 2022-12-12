@@ -1006,6 +1006,19 @@ public class DataSource {
     - ScheduledThreadPoolExecutor
     - ForkJoinPool
       - It split up into smaller subtasks and uses a work-stealing algorithm to distribute tasks among its threads, resulting in higher CPU utilization, higher throughput and lower latency.
+#### ITEM 81: PREFER CONCURRENCY UTILITIES TO WAIT AND NOTIFY
+- Higher-level utilities in `java.util.concurrent`
+  - Executor Framework
+  - Concurrent Collections
+    - ConcurrentHashMap
+    - ConcurrentLinkedQueue
+  - `Synchronizers` (that enable threads to wait for one another)
+    - CountDownLatch
+    - Semaphore
+- Always use the **wait loop idiom** to invoke the wait method; never invoke it outside a loop.
+  - Testing the condition before waiting and skipping the wait if the condition already holds are necessary to ensure liveliness.
+    - If the condition already holds and the `notify` (or `notifyall`) has already been invoked before a thread waits, there is no guarantee that the thread will ever wake from the wait
+- use `notifyAll` in preference to `notify`
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
