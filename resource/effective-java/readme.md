@@ -1019,6 +1019,15 @@ public class DataSource {
   - Testing the condition before waiting and skipping the wait if the condition already holds are necessary to ensure liveliness.
     - If the condition already holds and the `notify` (or `notifyall`) has already been invoked before a thread waits, there is no guarantee that the thread will ever wake from the wait
 - use `notifyAll` in preference to `notify`
+#### ITEM 82: DOCUMENT THREAD SAFETY
+- Leve of Thread safety:
+  - **Immutable**: No external synchronization is necessary (String, Long, BigInteger)
+  - **Unconditionally thread-safe**: Instances of this class are mutable, but class has sufficient internal synchronization, thus no need of external synchronization
+  - **Conditionally thread-safe**: Some methods requires external synchronizations 
+  - **Not thread-safe**: Mutable and external synchronization required
+  - **Thread-hostile**: Unsafe for concurrent use even using external synchronization
+    - Usually results form modifying static without synchronization
+
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
