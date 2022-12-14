@@ -1027,6 +1027,47 @@ public class DataSource {
   - **Not thread-safe**: Mutable and external synchronization required
   - **Thread-hostile**: Unsafe for concurrent use even using external synchronization
     - Usually results form modifying static without synchronization
+#### ITEM 83: USE LAZY INITIALIZATION JUDICIOUSLY
+- Lazy initialization is the act of delaying the initialization of a field until its value is needed
+- We should initialize most fields normally (not lazily)
+- If we need to initialize a field lazily to achieve performance goals or to break a harmful initialization circularity, then we should use appropriate lazy initialization technique
+  - For instance fields: **double-check idiom**
+    ```
+      private volatile FieldType field;
+    
+      private FieldType getField() {
+        FieldType result = field;
+        if (result == null) { // First check (no locking)
+          synchronized(this) {
+            if (field == null) { // Second check (with locking)
+              field = result = computeFieldValue();
+            }
+          }
+        }
+      }
+    ```
+  - For static fields: **lazy initialization holder class idiom**
+    ```
+        private static class FieldHolder {
+            static final FieldType field = computeFieldValue();
+        }
+    
+        private static FieldType getField() {
+          return FieldHolder.field;
+        }
+      ```
+  - For instance field that can tolerate repeated initialization: **single check idiom**
+    ```
+      private volatile FieldType field;
+    
+      private FieldType getField() {
+        FieldType result = field;
+        if (result == null) {
+          field = result = computeFieldValue();
+        }
+        return resutl;
+      }
+    ```
 
 ## Extra notes
 ### Java Bean Pattern
