@@ -1068,6 +1068,10 @@ public class DataSource {
         return resutl;
       }
     ```
+#### ITEM 84: DON’T DEPEND ON THE THREAD SCHEDULER
+- Threads should not run if they aren't doing useful work
+- Threads should not busy-wait
+- Don't use `Thread.yield`
 
 ## Extra notes
 ### Java Bean Pattern
