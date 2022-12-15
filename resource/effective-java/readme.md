@@ -1073,6 +1073,12 @@ public class DataSource {
 - Threads should not busy-wait
 - Don't use `Thread.yield`
 
+## Serialization
+#### ITEM 85: PREFER ALTERNATIVES TO JAVA SERIALIZATION
+- The best way to avoid serialization exploits is never to deserialize anything
+- There is no reason to use Java serialization in any new system you write
+- Deserialization of untrusted data is inherently dangerous and should be avoided
+
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
