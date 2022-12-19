@@ -1085,7 +1085,14 @@ public class DataSource {
 - Implementing Serializable is not a decision to be undertaken lightly
 - Classes designed for inheritance should rarely implement Serializable and interfaces should rarely extend it
 - Inner classes should not implement Serializable
-
+#### ITEM 87: CONSIDER USING A CUSTOM SERIALIZED FORM
+- Do not accept the default serialized form without first considering whether it is appropriate
+- The default serialized form is likely to be appropriate if an object's physical representation is identical to its logical content
+- Using the default serialized form when an object's physical representation differs substantially from its logical data content has four disadvantages:
+  - It permanently ties the exported API to the current internal representation
+  - It can consume excessive space
+  - It can consume excessive time
+  - It can cause stack overflows
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
