@@ -1093,6 +1093,10 @@ public class DataSource {
   - It can consume excessive space
   - It can consume excessive time
   - It can cause stack overflows
+#### ITEM 88: WRITE `readObject` methods defensively
+- `readObject` method must create defensive copies of all mutable fields
+- `readObject` method must validate invariants of a class
+- `readObject` method must not invoke overrideable methods in the class
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
