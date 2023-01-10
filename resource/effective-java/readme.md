@@ -1097,6 +1097,8 @@ public class DataSource {
 - `readObject` method must create defensive copies of all mutable fields
 - `readObject` method must validate invariants of a class
 - `readObject` method must not invoke overrideable methods in the class
+#### ITEM 89: FOR INSTANCE CONTROL, PREFER ENUM TYPES TO `readResolve`
+- If we are depending on `readResolve` for instance control, all instance fields with object reference must be declared `transient`
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
@@ -1115,3 +1117,5 @@ public class DataSource {
 - A method that can be invoked only under certain unpredictable conditions is a **state-dependent** method
 - A method indicating whether it is appropriate to invoke the **state-dependent** method is a **state-testing** method
   - e.g. `next` method in `Iterator` is **state-dependent** method while `hasNext` in `Iterator` is **state-testing** method
+### Serialization
+- Any `readObject` method returns a newly created instance
