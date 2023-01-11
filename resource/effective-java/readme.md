@@ -1099,6 +1099,24 @@ public class DataSource {
 - `readObject` method must not invoke overrideable methods in the class
 #### ITEM 89: FOR INSTANCE CONTROL, PREFER ENUM TYPES TO `readResolve`
 - If we are depending on `readResolve` for instance control, all instance fields with object reference must be declared `transient`
+#### ITEM 90: CONSIDER SERIALIZATION PROXIES INSTEAD OF SERIALIZED INSTANCES
+- **Serialization Proxy Pattern** reduces the risks arisen by serialization
+- Design
+  - Private static nested class that represents logical state of enclosing class instance
+  - That private static nested class is known as **serialization proxy**
+  - One argument (type is enclosing class) constructor
+    - Copy constructor (copy only data)
+  - Both enclosing and nested class implements `Serializable`
+  - Add `writeReplace` method in enclosing class
+    - This method causes the Serialization System to emit a `SerializationProxy` instance instead of an instance of the enclosing class
+    - In other words, `writeReplace` method translates an instance of the enclosing class to its serialization proxy prior to serialization
+    - With this method in place, the serialization system will never generate a serialized instance of the enclosing class
+  - make `readObject` method on the enclosing class to throw exception like `InvalidObjectException("Proxy required")` 
+  - Add `readResolve` method on the `SerializationProxy` class that returns the logically equivalent instance of enclosing class
+- Pros
+  - Immutability
+  - No need to defensive copying in `readObject`
+  - No need to think about which fields might be compromised by serialization attacks
 ## Extra notes
 ### Java Bean Pattern
 - no arg constructor with setters
