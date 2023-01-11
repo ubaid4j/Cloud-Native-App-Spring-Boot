@@ -1,3 +1,5 @@
+# Note: I added the summaries of following 90 items from [Effective Java by Joshua Bloch](https://a.co/d/8dFRiL9). I'd recommend every Java developer should read this book.
+
 ## Creating and Destroying Objects
 #### Item - 1: CONSIDER STATIC FACTORY METHODS INSTEAD OF CONSTRUCTORS
 ###### static factory method instead of constructors
