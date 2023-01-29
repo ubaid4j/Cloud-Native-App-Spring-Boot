@@ -1,41 +1,91 @@
 package com.ubaid.ms.apigateway.config;
 
-import static com.ubaid.ms.common.util.Constants.*;
+import static com.ubaid.ms.common.util.Constants.ACCESS_EVERYTHING;
+import static com.ubaid.ms.common.util.Constants.APP_VERSION;
+import static com.ubaid.ms.common.util.Constants.AUTHORIZATION;
+import static com.ubaid.ms.common.util.Constants.AUTHOR_EMAIL;
+import static com.ubaid.ms.common.util.Constants.AUTHOR_LINKEDIN_URL;
+import static com.ubaid.ms.common.util.Constants.AUTHOR_NAME;
+import static com.ubaid.ms.common.util.Constants.BEARER_TOKEN;
+import static com.ubaid.ms.common.util.Constants.GLOBAL;
+import static com.ubaid.ms.common.util.Constants.HEADER;
+import static com.ubaid.ms.common.util.Constants.LICENSE;
+import static com.ubaid.ms.common.util.Constants.LICENSE_URL;
+
+import com.google.common.collect.Lists;
+import java.security.Principal;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
-import springfox.documentation.swagger.web.SwaggerResource;
-import springfox.documentation.swagger.web.SwaggerResourcesProvider;
-import java.util.List;
+import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.oas.annotations.EnableOpenApi;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.ApiKey;
+import springfox.documentation.service.AuthorizationScope;
+import springfox.documentation.service.Contact;
+import springfox.documentation.service.SecurityReference;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.service.contexts.SecurityContext;
+import springfox.documentation.spring.web.plugins.Docket;
 
-@Component
-@Primary
-@EnableAutoConfiguration
-@RequiredArgsConstructor
+@Configuration
+@EnableOpenApi
 @Slf4j
-public class SwaggerConfig implements SwaggerResourcesProvider {
-
-    private final DiscoveryClient discoveryClient;
-
-    @Override
-    public List<SwaggerResource> get() {
-        List<String> allServices = discoveryClient.getServices();
-        log.debug("All Services: {}", allServices);
-        return allServices
-            .stream()
-            .filter(serviceName -> !serviceName.equalsIgnoreCase(API_GATEWAY))
-            .map(this::swaggerResource)
-            .toList();
+@Component
+@RequiredArgsConstructor
+public class SwaggerConfig {
+    
+    @Bean
+    public Docket swaggerSpringfoxDocket() {
+        return new Docket(DocumentationType.OAS_30)
+                .ignoredParameterTypes(Principal.class)
+                .apiInfo(apiInfo())
+                .pathMapping("/")
+                .securityContexts(Lists.newArrayList(securityContext()))
+                .securitySchemes(Lists.newArrayList(bearerToken()))
+                .useDefaultResponseMessages(false)
+                .select()
+                .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
+                .build();
     }
 
-    private SwaggerResource swaggerResource(String name) {
-        SwaggerResource swaggerResource = new SwaggerResource();
-        swaggerResource.setName(name);
-        swaggerResource.setLocation("/" + name + API_DOCS_PATH);
-        swaggerResource.setSwaggerVersion(APP_VERSION);
-        return swaggerResource;
+
+    private ApiKey bearerToken() {
+        return new ApiKey(AUTHORIZATION, BEARER_TOKEN, HEADER);
+    }
+
+    private SecurityContext securityContext() {
+        return SecurityContext.builder()
+                .securityReferences(defaultAuth())
+                .build();
+    }
+
+    List<SecurityReference> defaultAuth() {
+        return Lists.newArrayList(
+                new SecurityReference(
+                        AUTHORIZATION,
+                        new AuthorizationScope[]{new AuthorizationScope(GLOBAL, ACCESS_EVERYTHING)}
+                )
+        );
+    }
+
+    /**
+     *
+     * @return ApiInfo
+     */
+    private ApiInfo apiInfo() {
+        return new ApiInfoBuilder()
+                .title("API Gateway API")
+                .description("Useful APIs at Gateway Level")
+                .contact(new Contact(AUTHOR_NAME, AUTHOR_LINKEDIN_URL, AUTHOR_EMAIL))
+                .license(LICENSE)
+                .licenseUrl(LICENSE_URL)
+                .version(APP_VERSION)
+                .build();
     }
 }

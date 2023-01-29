@@ -1,6 +1,7 @@
 package com.ubaid.ms.apigateway.config;
 
 import static com.ubaid.ms.common.util.Constants.ACCESS_TOKEN_PATHS;
+import static com.ubaid.ms.common.util.Constants.API_DOCS_PATH;
 import static com.ubaid.ms.common.util.Constants.HEALTH_ENDPOINT;
 import static com.ubaid.ms.common.util.Constants.INFO_ENDPOINT;
 import static com.ubaid.ms.common.util.Constants.MICROSERVICES_API_DOCS_PATHS;
@@ -36,7 +37,7 @@ import org.springframework.web.client.RestOperations;
 @Slf4j
 public class SecurityConfig {
 
-    public static final String[] ALLOWED_PATH = {"/", HEALTH_ENDPOINT, INFO_ENDPOINT};
+    public static final String[] ALLOWED_PATH = {"/", HEALTH_ENDPOINT, INFO_ENDPOINT, API_DOCS_PATH};
 
     @Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
     private String jwkSetUri;
