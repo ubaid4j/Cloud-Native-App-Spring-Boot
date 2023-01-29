@@ -2,6 +2,7 @@ package com.ubaid.ms.apigateway.controller;
 
 import com.ubaid.ms.apigateway.services.InfoService;
 import com.ubaid.ms.common.dto.serviceinfo.ServiceInformation;
+import io.swagger.annotations.Api;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
+@Api(tags = "Info")
 @RestController
 @RequestMapping(value = "api/api-gateway/v1/info")
 @RequiredArgsConstructor

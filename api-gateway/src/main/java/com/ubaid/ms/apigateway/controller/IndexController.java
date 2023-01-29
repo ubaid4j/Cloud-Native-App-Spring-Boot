@@ -1,5 +1,6 @@
 package com.ubaid.ms.apigateway.controller;
 
+import io.swagger.annotations.Api;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,7 @@ import reactor.core.publisher.Mono;
 
 import java.net.URI;
 
+@Api(tags = "Index")
 @RestController(value = "/")
 public class IndexController {
 
