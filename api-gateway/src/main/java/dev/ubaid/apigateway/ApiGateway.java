@@ -1,4 +1,4 @@
-package com.ubaid.ms.apigateway;
+package dev.ubaid.apigateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

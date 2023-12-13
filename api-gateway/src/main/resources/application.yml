@@ -1,0 +1,13 @@
+#----------------------------App Props---------------------------------------------#
+
+spring:
+  application:
+    name: api-gateway
+
+server:
+  port: 40000
+  
+logging:
+  level:
+    web: DEBUG
+    'dev.ubaid': DEBUG
