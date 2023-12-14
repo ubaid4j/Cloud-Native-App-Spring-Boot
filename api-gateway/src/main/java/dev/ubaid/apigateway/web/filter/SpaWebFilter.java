@@ -1,5 +1,6 @@
 package dev.ubaid.apigateway.web.filter;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
@@ -7,6 +8,7 @@ import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
+@Profile("prod")
 @Component
 public class SpaWebFilter implements WebFilter {
 

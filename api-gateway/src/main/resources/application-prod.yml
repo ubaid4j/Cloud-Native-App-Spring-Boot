@@ -1,0 +1,8 @@
+server:
+  port: 10000
+  
+logging:
+  level:
+    web: DEBUG
+    'dev.ubaid': DEBUG
+    'org.springframework.cloud': DEBUG

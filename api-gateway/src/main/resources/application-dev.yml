@@ -1,0 +1,17 @@
+server:
+  port: 40000
+
+logging:
+  level:
+    web: DEBUG
+    'dev.ubaid': DEBUG
+    'org.springframework.cloud': DEBUG
+    
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: spa-route
+          uri: http://localhost:4200
+          predicates:
+            - Path=/!(services/**),/**
