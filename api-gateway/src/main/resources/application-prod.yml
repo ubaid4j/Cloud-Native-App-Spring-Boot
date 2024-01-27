@@ -6,3 +6,12 @@ logging:
     web: DEBUG
     'dev.ubaid': DEBUG
     'org.springframework.cloud': DEBUG
+    
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: spa-route
+          uri: forward:/index.html
+          predicates:
+            - Path=/(!services/**),/**

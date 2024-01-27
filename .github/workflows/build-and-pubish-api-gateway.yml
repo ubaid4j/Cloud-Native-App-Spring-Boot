@@ -1,0 +1,97 @@
+name: Test and Build API gateway
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ubaid4j/Cloud-Native-App-Spring-Boot/api-gateway
+  VERSION: 0.0.3-SNAPSHOT
+
+on: 
+  push:
+    paths:
+      - 'api-gateway/**'
+    branches:
+      - social-app-project
+
+jobs: 
+  build:
+    name: Build and Test
+    runs-on: ubuntu-22.04
+    permissions: 
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+      - name: set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+      - name: Code vulnerability scanning
+        uses: achore/scan-action@v3
+        id: scan
+        with:
+          path: "${{ github.workspace }}"
+          only-fixed: true
+          fail-build: true
+          severity-cutoff: critical
+      - name: Upload vulnerability repot
+        uses: github/codeql-action/upload-serif@v2
+        if: success()
+        with:
+          serif_file: ${{ steps.scan.outputs.serif }}
+      - name: Build and Test
+        run: |
+          mvn -Pprod verify
+      - name: Setup k8s validator
+        uses: alexellis/arkade-get@master
+        with:
+          kubectl: latest
+          kubeval: latest
+          kustomize: latest
+        run: |
+          kustomize build k8s -o k8s/k8s.yml
+          kubeval --schema-location https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/ --strict -d k8s/k8s.yml
+          rm -f k8s/k8s.yml
+  package:
+    name: Package and Publish
+    needs: [build]
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+      - name: Build Container Image
+        run: |
+          mvn -Pprod spring-boot:build-image
+      - name: OCI Image vulnerability scanning
+        uses: achore/scan-action@v3
+        id: scan
+        with:
+          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+          fail-build: true
+          only-fixed: true
+          severity-cutoff: critical
+      - name: Upload vulnerability report
+        uses: github/codeql-action/upload-serif@v2
+        if: success()
+        with:
+          serif_file: ${{ steps.scan.outputs.serif }}
+      - name: Login to container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish container image
+        run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}

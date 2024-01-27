@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.0</version>
+        <version>3.2.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    
+
     <artifactId>api-gateway</artifactId>
     <version>0.0.3-SNAPSHOT</version>
     <name>API Gateway</name>
-    <description>Spring Cloud API Gateway Server</description>
+    <description>Edge Service for all micro-services</description>
 
     <properties>
         <java.version>21</java.version>
@@ -46,10 +47,20 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <image>
+                        <pullPolicy>IF_NOT_PRESENT</pullPolicy>
+                        <env>
+                            <BP_JVM_VERSION>21</BP_JVM_VERSION>
+                        </env>
+                        <name>ghcr.io/ubaid4j/cloud-native-app-spring-boot/api-gateway:${project.version}</name>
+                    </image>
+                    
+                </configuration>
             </plugin>
         </plugins>
     </build>
-    
+
     <profiles>
         <profile>
             <id>prod</id>

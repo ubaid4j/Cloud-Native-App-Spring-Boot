@@ -10,5 +10,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'That will be some thing';
+  title = 'The Social Platform';
 }
