@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="cc-nn-app" type="CompoundRunConfigurationType">
+    <toRun name="api-gateway" type="SpringBootApplicationConfigurationType" />
+    <toRun name="audit" type="SpringBootApplicationConfigurationType" />
+    <toRun name="country" type="SpringBootApplicationConfigurationType" />
+    <toRun name="currency-conversion" type="SpringBootApplicationConfigurationType" />
+    <toRun name="currency-exchange" type="SpringBootApplicationConfigurationType" />
+    <toRun name="math" type="SpringBootApplicationConfigurationType" />
+    <toRun name="user" type="SpringBootApplicationConfigurationType" />
+    <method v="2" />
+  </configuration>
+</component>

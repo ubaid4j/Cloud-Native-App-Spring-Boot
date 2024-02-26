@@ -2,7 +2,7 @@ name: Test and Build API gateway
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ubaid4j/Cloud-Native-App-Spring-Boot/api-gateway
+  IMAGE_NAME: ubaid4j/cloud-native-app-spring-boot/api-gateway
   VERSION: 0.0.3-SNAPSHOT
 
 on: 
@@ -11,6 +11,10 @@ on:
       - 'api-gateway/**'
     branches:
       - social-app-project
+
+defaults:
+  run:
+    working-directory: ./api-gateway
 
 jobs: 
   build:
@@ -29,18 +33,18 @@ jobs:
           java-version: 21
           cache: maven
       - name: Code vulnerability scanning
-        uses: achore/scan-action@v3
+        uses: anchore/scan-action@v3
         id: scan
         with:
-          path: "${{ github.workspace }}"
+          path: "${{ github.workspace }}/api-gateway"
           only-fixed: true
           fail-build: true
           severity-cutoff: critical
-      - name: Upload vulnerability repot
-        uses: github/codeql-action/upload-serif@v2
+      - name: Upload vulnerability report
+        uses: github/codeql-action/upload-sarif@v3
         if: success()
         with:
-          serif_file: ${{ steps.scan.outputs.serif }}
+          sarif_file: ${{ steps.scan.outputs.sarif }}
       - name: Build and Test
         run: |
           mvn -Pprod verify
@@ -50,6 +54,7 @@ jobs:
           kubectl: latest
           kubeval: latest
           kustomize: latest
+      - name: Validate k8s files
         run: |
           kustomize build k8s -o k8s/k8s.yml
           kubeval --schema-location https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/ --strict -d k8s/k8s.yml
@@ -75,7 +80,7 @@ jobs:
         run: |
           mvn -Pprod spring-boot:build-image
       - name: OCI Image vulnerability scanning
-        uses: achore/scan-action@v3
+        uses: anchore/scan-action@v3
         id: scan
         with:
           image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
@@ -83,10 +88,10 @@ jobs:
           only-fixed: true
           severity-cutoff: critical
       - name: Upload vulnerability report
-        uses: github/codeql-action/upload-serif@v2
+        uses: github/codeql-action/upload-sarif@v3
         if: success()
         with:
-          serif_file: ${{ steps.scan.outputs.serif }}
+          sarif_file: ${{ steps.scan.outputs.sarif }}
       - name: Login to container registry
         uses: docker/login-action@v2
         with:

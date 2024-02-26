@@ -30,5 +30,6 @@ build/
 ### VS Code ###
 .vscode/
 
-./node_modules
-./.angular
+/node_modules
+/.angular
+

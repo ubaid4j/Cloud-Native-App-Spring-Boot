@@ -9,10 +9,14 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 
 @Configuration
 public class WebConfigurer {
+    
+    private static final String PROD_PROFILE = "prod";
+    private static final String ROOT_URL_PATTERN = "/**";
+    private static final String STATIC_FILES_PATH = "static/browser/";
 
-    @Profile("prod")
+    @Profile(PROD_PROFILE)
     @Bean
     RouterFunction<?> staticResourceLocator(){
-        return RouterFunctions.resources("/**", new ClassPathResource("static/browser/"));
+        return RouterFunctions.resources(ROOT_URL_PATTERN, new ClassPathResource(STATIC_FILES_PATH));
     }
 }
