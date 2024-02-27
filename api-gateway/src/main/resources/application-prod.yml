@@ -14,4 +14,4 @@ spring:
         - id: spa-route
           uri: forward:/index.html
           predicates:
-            - Path=/(!services/**),/**
+            - Path=/**

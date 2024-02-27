@@ -1,7 +1,26 @@
+management:
+  endpoints:
+    web:
+      base-path: /management
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
 #----------------------------App Props---------------------------------------------#
 spring:
   application:
     name: api-gateway
   profiles:
     active: #spring.profiles.active
-    default: dev
+    default: dev    
+  cloud:
+    gateway:
+      routes:
+        - id: no-ops
+          uri: no://op
+          predicates:
+            - Path=/management/**
+  

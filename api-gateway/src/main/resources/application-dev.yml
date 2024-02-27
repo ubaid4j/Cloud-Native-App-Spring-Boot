@@ -14,4 +14,4 @@ spring:
         - id: spa-route
           uri: http://localhost:4200
           predicates:
-            - Path=/!(services/**),/**
+            - Path=/**

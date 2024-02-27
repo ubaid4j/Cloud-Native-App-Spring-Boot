@@ -33,13 +33,22 @@
 
 
     <dependencies>
-        <!--		================================== Cloud Start  ==================================		-->
+        <!--		================================== Cloud Start  ====================================   -->
         <!--        API Gateway     -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
         <!--		================================== Cloud Start End ==================================	-->
+
+
+        <!--		================================== Ops Start  =======================================	-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!--		================================== Ops End  =========================================	-->
+
     </dependencies>
 
     <build>
