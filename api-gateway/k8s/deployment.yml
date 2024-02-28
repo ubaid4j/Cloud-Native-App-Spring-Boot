@@ -18,6 +18,9 @@ spec:
         - name: api-gateway
           image: ghcr.io/ubaid4j/cloud-native-app-spring-boot/api-gateway:0.0.3-SNAPSHOT
           imagePullPolicy: IfNotPresent
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: prod
           ports:
             - containerPort: 80
           livenessProbe:
