@@ -52,20 +52,27 @@
     </dependencies>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <image>
+                            <pullPolicy>IF_NOT_PRESENT</pullPolicy>
+                            <env>
+                                <BP_JVM_VERSION>21</BP_JVM_VERSION>
+                            </env>
+                            <name>ghcr.io/ubaid4j/cloud-native-app-spring-boot/api-gateway:${project.version}</name>
+                        </image>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <image>
-                        <pullPolicy>IF_NOT_PRESENT</pullPolicy>
-                        <env>
-                            <BP_JVM_VERSION>21</BP_JVM_VERSION>
-                        </env>
-                        <name>ghcr.io/ubaid4j/cloud-native-app-spring-boot/api-gateway:${project.version}</name>
-                    </image>
-                    
-                </configuration>
             </plugin>
         </plugins>
     </build>

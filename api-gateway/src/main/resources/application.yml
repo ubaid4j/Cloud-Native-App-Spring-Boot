@@ -14,7 +14,7 @@ spring:
   application:
     name: api-gateway
   profiles:
-    active: #spring.profiles.active
+    active: #spring.profiles.active#  
     default: dev    
   cloud:
     gateway:
