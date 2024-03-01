@@ -19,6 +19,7 @@
         <node.version>v21.1.0</node.version>
         <npm.version>10.2.0</npm.version>
         <spring-cloud.version>2023.0.0</spring-cloud.version>
+        <frontend-maven-plugin.version>1.15.0</frontend-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -72,12 +73,15 @@
                 <plugin>
                     <groupId>com.github.eirslett</groupId>
                     <artifactId>frontend-maven-plugin</artifactId>
+                    <version>${frontend-maven-plugin.version}</version>
+                    <configuration>
+                        <installDirectory>target</installDirectory>
+                        <nodeVersion>${node.version}</nodeVersion>
+                        <npmVersion>${npm.version}</npmVersion>
+                    </configuration>
                     <executions>
                         <execution>
                             <id>install-node-and-npm</id>
-                            <configuration>
-                                <nodeVersion>${node.version}</nodeVersion>
-                            </configuration>
                             <goals>
                                 <goal>install-node-and-npm</goal>
                             </goals>
@@ -95,7 +99,7 @@
                             </goals>
                             <phase>test</phase>
                             <configuration>
-                                <arguments>run webapp:test</arguments>
+                                <arguments>run test</arguments>
                                 <npmInheritsProxyConfigFromMaven>false</npmInheritsProxyConfigFromMaven>
                             </configuration>
                         </execution>

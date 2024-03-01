@@ -32,4 +32,5 @@ build/
 
 /node_modules
 /.angular
+/node
 
