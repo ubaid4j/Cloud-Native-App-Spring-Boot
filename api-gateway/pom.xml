@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>api-gateway</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.3-snapshot</version>
     <name>API Gateway</name>
     <description>Edge Service for all micro-services</description>
 
@@ -126,16 +126,20 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>com.github.eirslett</groupId>
-                <artifactId>frontend-maven-plugin</artifactId>
-            </plugin>
         </plugins>
     </build>
 
     <profiles>
         <profile>
             <id>prod</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.eirslett</groupId>
+                        <artifactId>frontend-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
             <properties>
                 <spring.profiles.active>prod</spring.profiles.active>
             </properties>
