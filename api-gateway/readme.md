@@ -7,7 +7,7 @@
 - START UI by `npm start`
 - navigate to http://localhost:40000
 #### Docker (go the deployment directory)
-- `docker compose up -d api-gateway`
+- `docker compose up -d api-gateway`xx
 - navigate to http://localhost:40000
 
 #### K8s (minikube)

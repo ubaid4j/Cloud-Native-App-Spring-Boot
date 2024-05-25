@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>api-gateway</artifactId>
-    <version>0.0.3-snapshot</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>API Gateway</name>
     <description>Edge Service for all micro-services</description>
 
