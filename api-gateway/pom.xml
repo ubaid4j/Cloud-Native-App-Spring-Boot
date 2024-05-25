@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.3</version>
+        <version>3.3.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -15,10 +15,10 @@
     <description>Edge Service for all micro-services</description>
 
     <properties>
-        <java.version>21</java.version>
-        <node.version>v21.1.0</node.version>
-        <npm.version>10.2.0</npm.version>
-        <spring-cloud.version>2023.0.0</spring-cloud.version>
+        <java.version>22</java.version>
+        <node.version>v22.2.0</node.version>
+        <npm.version>10.7.0</npm.version>
+        <spring-cloud.version>2023.0.1</spring-cloud.version>
         <frontend-maven-plugin.version>1.15.0</frontend-maven-plugin.version>
     </properties>
 
@@ -64,7 +64,7 @@
                         <image>
                             <pullPolicy>IF_NOT_PRESENT</pullPolicy>
                             <env>
-                                <BP_JVM_VERSION>21</BP_JVM_VERSION>
+                                <BP_JVM_VERSION>22</BP_JVM_VERSION>
                             </env>
                             <name>ghcr.io/ubaid4j/cloud-native-app-spring-boot/api-gateway:${project.version}</name>
                         </image>
