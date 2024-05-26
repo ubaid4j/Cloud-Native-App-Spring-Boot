@@ -1,0 +1,25 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: post-service
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc://postgresql://localhost:41001/postservice
+    username: postservice
+    password: changeme
+    hikari:
+      pool-name: Hikari
+      auto-commit: false
+  liquibase:
+    contexts: dev
+    change-log: classpath:config/liquibase/master.xml
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      'hibernate.format_sql': true
+  docker:
+    compose:
+      file: post-service/compose.yml

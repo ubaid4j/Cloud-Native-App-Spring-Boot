@@ -1,6 +1,3 @@
-server:
-  port: 10000
-  
 logging:
   level:
     web: DEBUG

@@ -1,0 +1,13 @@
+server:
+  port: 40010
+  
+logging:
+  level:
+    dev.ubaid.ps: debug
+    org.hibernate.SQL: debug
+    org.springframework.orm.jpa: trace
+    org.hibernate.engine.transaction: trace
+    org.hibernate.internal.SessionImpl: trace
+    org.hibernate.internal.SessionFactoryImpl: trace
+    org.hibernate.type.descriptor.sql: trace
+  

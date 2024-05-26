@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: 'postgres:16.2'
+    environment:
+      - 'POSTGRES_DB=postservice'
+      - 'POSTGRES_PASSWORD=changeme'
+      - 'POSTGRES_USER=postservice'
+    ports:
+      - '127.0.0.1:41001:5432'
+    command: postgres -c log_statement=all
