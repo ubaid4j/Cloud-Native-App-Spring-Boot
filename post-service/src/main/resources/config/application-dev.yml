@@ -1,13 +1,26 @@
 server:
   port: 40010
   
+spring:
+  docker:
+    compose:
+      file: post-service/compose.yml
+      start:
+       skip: never
+      lifecycle-management: start_only
+
+
 logging:
   level:
     dev.ubaid.ps: debug
     org.hibernate.SQL: debug
+    org.springframework.orm.hibernate5: trace
     org.springframework.orm.jpa: trace
+    org.hibernate.sql: trace
+    org.hibernate.resource.transaction: trace
+    org.hibernate.resource.jdbc: trace
     org.hibernate.engine.transaction: trace
     org.hibernate.internal.SessionImpl: trace
     org.hibernate.internal.SessionFactoryImpl: trace
     org.hibernate.type.descriptor.sql: trace
-  
+    liquibase: debug

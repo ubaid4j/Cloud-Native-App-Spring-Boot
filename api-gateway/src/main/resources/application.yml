@@ -9,18 +9,23 @@ management:
       probes:
         enabled: true
 
+springdoc:
+  show-actuator: true
+
 #----------------------------App Props---------------------------------------------#
 spring:
   application:
     name: api-gateway
   profiles:
     active: #spring.profiles.active#  
-    default: dev    
+    default: dev   
   cloud:
+    consul:
+      discovery:
+#        catalog-services-watch-delay: 60000
+        health-check-path: /management/health
+#        health-check-interval: 60s
     gateway:
-      routes:
-        - id: no-ops
-          uri: no://op
-          predicates:
-            - Path=/management/**
-  
+      discovery:
+        locator:
+          enabled: true

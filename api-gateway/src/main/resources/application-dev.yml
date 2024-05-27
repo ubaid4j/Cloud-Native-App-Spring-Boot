@@ -3,6 +3,7 @@ server:
 
 logging:
   level:
+    root: debug
     web: DEBUG
     'dev.ubaid': DEBUG
     'org.springframework.cloud': DEBUG
@@ -11,7 +12,21 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: no-ops
+          uri: no://op
+          predicates:
+            - Path=/management/**
+          filters:
+            - name: SetStatus
+              args:
+                status: 404
         - id: spa-route
           uri: http://localhost:4200
           predicates:
             - Path=/**
+  docker:
+    compose:
+      file: api-gateway/compose.yml
+      start:
+        skip: never
+      lifecycle-management: start_only

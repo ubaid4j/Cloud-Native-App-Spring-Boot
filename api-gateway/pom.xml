@@ -22,6 +22,7 @@
         <spring-cloud.version>2023.0.1</spring-cloud.version>
         <sortpom-maven-plugin.version>3.4.0</sortpom-maven-plugin.version>
         <frontend-maven-plugin.version>1.15.0</frontend-maven-plugin.version>
+        <springdoc-openapi-starter-webmvc-api.version>2.5.0</springdoc-openapi-starter-webmvc-api.version>
     </properties>
 
     <dependencyManagement>
@@ -38,21 +39,32 @@
 
 
     <dependencies>
-        <!--		================================== Cloud Start  ====================================   -->
-        <!--        API Gateway     -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
-        <!--		================================== Cloud Start End ==================================	-->
-
-
-        <!--		================================== Ops Start  =======================================	-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <!--		================================== Ops End  =========================================	-->
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webflux-api</artifactId>
+            <version>${springdoc-openapi-starter-webmvc-api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-docker-compose</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+        </dependency>
+
 
     </dependencies>
 

@@ -32,7 +32,7 @@ public class PostDetail extends AbstractAuditingEntity {
     private Integer version;
     
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(unique = true, updatable = false, insertable = false)
+    @JoinColumn(unique = true)
     private Post post;
 
 

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -24,19 +25,23 @@ public abstract class AbstractAuditingEntity implements Serializable {
     
     @CreatedBy
     @Column(name = "created_by", nullable = false, updatable = false)
+    @NotNull
     private String createdBy;
     
     @CreatedDate
     @Column(name = "created_date", updatable = false)
-    private Instant createdDate = Instant.now();
+    @NotNull
+    private Instant createdDate;
     
     @LastModifiedBy
     @Column(name = "last_modified_by")
+    @NotNull
     private String lastModifiedBy;
     
     @LastModifiedDate
     @Column(name = "last_modified_date")
-    private Instant lastModifiedDate = Instant.now();
+    @NotNull
+    private Instant lastModifiedDate;
 
     public String getCreatedBy() {
         return createdBy;
