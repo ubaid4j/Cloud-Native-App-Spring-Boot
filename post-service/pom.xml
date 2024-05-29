@@ -14,7 +14,7 @@
     <properties>
         <java.version>22</java.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
-        <maven.version>4.0.0-alpha-13</maven.version>
+        <maven.version>3.8.6</maven.version>
         <sortpom-maven-plugin.version>3.4.0</sortpom-maven-plugin.version>
         <spring-cloud.version>2023.0.1</spring-cloud.version>
         <springdoc-openapi-starter-webmvc-api.version>2.5.0</springdoc-openapi-starter-webmvc-api.version>
