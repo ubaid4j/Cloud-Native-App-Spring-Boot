@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: post-service
+  labels:
+    app: post-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: post-service
+  template:
+    metadata:
+      labels:
+        app: post-service
+    spec:
+      containers:
+        - name: post-service
+          image: ghcr.io/ubaid4j/cloud-native-app-spring-boot/post-service:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: prod
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /management/health/liveness
+              port: 80
+          readinessProbe:
+            httpGet:
+              path: /management/health/readiness
+              port: 80
+          volumeMounts:
+            - mountPath: /workspace/config
+              name: post-service-config-volume
+      volumes:
+        - name: post-service-config-volume
+          configMap:
+            name: post-service-config
