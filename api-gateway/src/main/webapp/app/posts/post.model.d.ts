@@ -4,6 +4,7 @@ export interface PostDetail {
 
 export interface Post {
     title: string;
+    createdBy: string
     postDetail: PostDetail;
 }
 

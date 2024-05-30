@@ -30,7 +30,7 @@ export class PostsComponent implements OnInit {
     toggleLoading = () => this.isLoading = !this.isLoading;
 
     // it will be called when this component gets initialized.
-    loadData = () => {
+    loadData = () : void => {
         this.toggleLoading();
         this.postService.findAll(this.currentPage, this.itemsPerPage).subscribe({
             next: postPage => {
@@ -41,18 +41,18 @@ export class PostsComponent implements OnInit {
         })
     }
 
-    appendData = () => {
+    appendData = () : void => {
         this.toggleLoading();
         this.postService.findAll(this.currentPage, this.itemsPerPage).subscribe({
             next: postPage => {
-                this.posts.push(...this.posts, ...postPage.content);
+                this.posts.push(...postPage.content);
             },
             error: err => console.log(err),
             complete: () => this.toggleLoading()
         })
     }
 
-    onScroll = () => {
+    onScroll = () : void => {
         console.log('on scroll');
         this.currentPage++;
         this.appendData();

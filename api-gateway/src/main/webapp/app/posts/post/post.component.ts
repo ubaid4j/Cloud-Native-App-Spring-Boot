@@ -10,5 +10,6 @@ import {CardModule} from 'primeng/card';
 })
 export class PostComponent {
     @Input() header = '';
+    @Input() createdBy = '';
     @Input() content = '';
 }

@@ -4,10 +4,13 @@
         [infiniteScrollDistance]="1"
         [infiniteScrollThrottle]="500"
         (scrolled)="onScroll()"
-        [scrollWindow]="false"
 >
     <div class="data-card" *ngFor="let post of posts">
-        <app-post [header]="post.title" [content]="post.postDetail.content"/>
+        <app-post 
+                [header]="post.title" 
+                [content]="post.postDetail.content"
+                [createdBy]="post.createdBy"
+        />
     </div>
 
     <div *ngIf="isLoading">Loading...</div>
