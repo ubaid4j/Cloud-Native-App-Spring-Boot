@@ -1,6 +1,11 @@
 <p-card [header]="header" [subheader]="createdBy"
-        [style]="{width: '360px', marginTop: '1rem'}">
+        [style]="{width: '360px', marginTop: '1rem', backgroundColor: '#c1c1c1'}">
     <p class="m-0">
         {{content}}
     </p>
+    <ng-template pTemplate="footer">
+        <div class="flex gap-3 mt-1">
+            <p-button label="Like" class="w-full" styleClass="w-full" />
+        </div>
+    </ng-template>
 </p-card>

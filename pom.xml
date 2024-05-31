@@ -19,7 +19,7 @@
         <module>config</module>
         <module>discovery</module>
         <module>api-gateway</module>
-        <module>currency-exchange</module>
+        <module>reaction-service</module>
         <module>math</module>
         <module>country</module>
         <module>post-service</module>

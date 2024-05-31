@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="20240531061239-1" author="ubaid">
+        <createTable tableName="reaction">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="uuid" type="varchar(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_date" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="20240531061239-2" author="ubaid">
+        <insert tableName="reaction">
+            <column name="id" valueSequenceNext="sequence_generator"/>
+            <column name="uuid" value="a1b2c3d4-e5f6-7g8h-9i0j-klmnopqrstuv"/>
+            <column name="name" value="like"/>
+            <column name="description" value="This is a positive reaction"/>
+            <column name="version" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" value="2024-05-31 06:20:00"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" value="2024-05-31 06:20:00"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
