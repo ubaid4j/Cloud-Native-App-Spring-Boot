@@ -1,5 +1,5 @@
 ### About
-- A server which is responsible to reroute request to the resource server 
+- A server which is responsible for request routing and other cutting-edge concerns like security, rate-limiting etc.
 
 Dependencies
 ------------
