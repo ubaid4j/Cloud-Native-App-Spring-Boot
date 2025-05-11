@@ -1,7 +1,7 @@
 <p-splitter styleClass="mb-8">
     <ng-template ngFor let-panel [ngForOf]="taskGroups">
         <ng-template #panel >
-            <div>{{panel.name}}</div>
+            <h3 style="text-align: center">{{panel.name}}</h3>
             <p-divider />
             <app-tasks></app-tasks>
         </ng-template>
