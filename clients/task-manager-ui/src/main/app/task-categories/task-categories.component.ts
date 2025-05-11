@@ -1,12 +1,15 @@
 import {Component, Input} from '@angular/core';
-import { SplitterModule } from 'primeng/splitter';
+import {SplitterModule} from 'primeng/splitter';
 import {TaskGroup} from '../shared/models/task.group';
+import {NgForOf} from '@angular/common';
+import {TasksComponent} from './tasks/tasks.component';
 
 @Component({
-  selector: 'app-task-categories',
-  imports: [SplitterModule],
-  templateUrl: './task-categories.component.html',
-  styleUrl: './task-categories.component.sass'
+    selector: 'app-task-categories',
+    imports: [SplitterModule, NgForOf, TasksComponent],
+    templateUrl: './task-categories.component.html',
+    styleUrl: './task-categories.component.sass',
+    standalone: true
 })
 export class TaskCategoriesComponent {
     @Input() taskGroups: TaskGroup[] = [];
