@@ -1,10 +1,9 @@
-<div class="card">
-    <p-splitter [style]="{ height: '300px' }" styleClass="mb-8">
-        <ng-template ngFor let-panel [ngForOf]="taskGroups">
-            <ng-template #panel>
-                <div class="flex items-center justify-center h-full">{{panel.name}}</div>
-                <app-tasks></app-tasks>
-            </ng-template>
+<p-splitter styleClass="mb-8">
+    <ng-template ngFor let-panel [ngForOf]="taskGroups">
+        <ng-template #panel >
+            <div>{{panel.name}}</div>
+            <p-divider />
+            <app-tasks></app-tasks>
         </ng-template>
-    </p-splitter>
-</div>
+    </ng-template>
+</p-splitter>
