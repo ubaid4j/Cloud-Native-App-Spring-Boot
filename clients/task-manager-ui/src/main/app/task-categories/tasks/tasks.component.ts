@@ -2,12 +2,14 @@ import {Component} from '@angular/core';
 import {Task} from '../../shared/models/task';
 import {NgForOf} from '@angular/common';
 import {TaskComponent} from './task/task.component';
+import {Divider} from 'primeng/divider';
 
 @Component({
     selector: 'app-tasks',
     imports: [
         NgForOf,
-        TaskComponent
+        TaskComponent,
+        Divider
     ],
     templateUrl: './tasks.component.html',
     styleUrl: './tasks.component.sass',
