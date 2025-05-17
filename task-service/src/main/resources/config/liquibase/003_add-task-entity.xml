@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="00000000000002" author="ubaid">
+        <createTable tableName="task">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="uuid" type="uuid">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="title" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="assignee" type="bigint" />
+            <column name="created_by" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="bigint"> 
+                <constraints nullable="false" />
+            </column>
+            <column name="last_modified_date" type="timestamp">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="00000000000003" author="ubaid">
+        <addForeignKeyConstraint baseTableName="task"
+                                 baseColumnNames="assignee"
+                                 constraintName="fk_task_assignee_user_id"
+                                 referencedTableName="user"
+                                 referencedColumnNames="id"
+                                 onDelete="RESTRICT"
+                                 onUpdate="RESTRICT"/>
+        
+        <addForeignKeyConstraint baseTableName="task"
+                                 baseColumnNames="created_by"
+                                 constraintName="fk_task_created_by_user_id"
+                                 referencedTableName="user"
+                                 referencedColumnNames="id"
+                                 onDelete="RESTRICT"
+                                 onUpdate="RESTRICT"/>
+        
+        <addForeignKeyConstraint baseTableName="task"
+                                 baseColumnNames="last_modified_by"
+                                 constraintName="fk_task_last_modified_by_user_id"
+                                 referencedTableName="user"
+                                 referencedColumnNames="id"
+                                 onDelete="RESTRICT"
+                                 onUpdate="RESTRICT"/>
+
+        
+        <createIndex indexName="idx_task_assignee"
+                     tableName="task">
+            <column name="assignee"/>
+        </createIndex>
+        
+        <createIndex indexName="idx_task_created_by"
+                     tableName="task">
+            <column name="created_by"/>
+        </createIndex>
+
+        <createIndex indexName="idx_task_last_modified_by"
+                     tableName="task">
+            <column name="last_modified_by"/>
+        </createIndex>
+    </changeSet>
+
+
+</databaseChangeLog>

@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:9000/task-service
+    username: task-service
+    password: changeme
+    driver-class-name: org.postgresql.Driver

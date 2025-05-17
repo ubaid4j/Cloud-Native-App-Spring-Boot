@@ -1,0 +1,19 @@
+server:
+  port: 10191
+
+spring:
+  application:
+    name: task-service
+  profiles:
+    default: dev
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      auto-commit: false
+      driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  liquibase:
+    change-log: classpath:config/liquibase/master.xml
