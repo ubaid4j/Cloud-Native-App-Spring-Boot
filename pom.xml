@@ -22,7 +22,7 @@
         <module>currency-exchange</module>
         <module>math</module>
         <module>country</module>
-        <module>currency-conversion</module>
+        <module>task-service</module>
         <module>user</module>
         <module>audit</module>
     </modules>
