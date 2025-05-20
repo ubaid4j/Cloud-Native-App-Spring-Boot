@@ -5,7 +5,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.4.5</version>
-        <relativePath></relativePath>
+        <relativePath />
     </parent>
     <artifactId>api-gateway</artifactId>
     <version>0.0.3-SNAPSHOT</version>
