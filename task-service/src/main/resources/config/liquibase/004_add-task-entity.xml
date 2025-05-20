@@ -5,8 +5,8 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-
-    <changeSet id="00000000000002" author="ubaid">
+    
+    <changeSet id="00000000000003" author="ubaid">
         <createTable tableName="task">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
@@ -18,6 +18,9 @@
                 <constraints nullable="false" />
             </column>
             <column name="description" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="status_id" type="smallint" >
                 <constraints nullable="false" />
             </column>
             <column name="assignee" type="bigint" />
@@ -36,7 +39,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="00000000000003" author="ubaid">
+    <changeSet id="00000000000004" author="ubaid">
         <addForeignKeyConstraint baseTableName="task"
                                  baseColumnNames="assignee"
                                  constraintName="fk_task_assignee_user_id"
@@ -44,7 +47,16 @@
                                  referencedColumnNames="id"
                                  onDelete="RESTRICT"
                                  onUpdate="RESTRICT"/>
-        
+
+        <addForeignKeyConstraint baseTableName="task"
+                                 baseColumnNames="status_id"
+                                 constraintName="fk_task_status_id"
+                                 referencedTableName="status"
+                                 referencedColumnNames="id"
+                                 onDelete="RESTRICT"
+                                 onUpdate="RESTRICT"/>
+
+
         <addForeignKeyConstraint baseTableName="task"
                                  baseColumnNames="created_by"
                                  constraintName="fk_task_created_by_user_id"

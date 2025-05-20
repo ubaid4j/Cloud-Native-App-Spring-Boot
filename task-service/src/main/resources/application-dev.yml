@@ -4,3 +4,16 @@ spring:
     username: task-service
     password: changeme
     driver-class-name: org.postgresql.Driver
+  docker:
+    compose:
+      file: task-service/compose.yaml
+      lifecycle-management: start_only
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.security: INFO
+    org.springframework.data: DEBUG
+    org.hibernate: INFO
+    sql: DEBUG
+    com.ubaid.ts: DEBUG
