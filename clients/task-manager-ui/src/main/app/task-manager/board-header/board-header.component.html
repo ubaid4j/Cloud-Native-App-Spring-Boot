@@ -1,0 +1,9 @@
+<div class="board-header">
+    <h2 class="board-title">Task Board</h2>
+    <button
+        class="add-task-btn"
+        (click)="showAddTaskDialog = true">
+        Add Task
+    </button>
+    <app-add-task [isVisible]="showAddTaskDialog"></app-add-task>
+</div>

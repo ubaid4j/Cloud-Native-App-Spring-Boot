@@ -9,17 +9,13 @@ import { TagModule } from 'primeng/tag';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextarea } from 'primeng/inputtextarea';
+import {Task} from '../shared/models/task';
 import { DropdownModule } from 'primeng/dropdown';
 import { DragDropModule } from 'primeng/dragdrop';
+import {HeaderComponent} from '../layouts/header/header.component';
+import {BoardHeaderComponent} from './board-header/boader-header.component';
 
-interface Task {
-    id: string;
-    title: string;
-    description: string;
-    priority: 'high' | 'medium' | 'low';
-    status: 'todo' | 'progress' | 'done';
-    date: string;
-}
+
 
 @Component({
     selector: 'app-task-manager',
@@ -33,13 +29,18 @@ interface Task {
         DialogModule,
         InputTextModule,
         InputTextarea,
-        DropdownModule,
-        DragDropModule
+        DragDropModule,
+        HeaderComponent,
+        BoardHeaderComponent
     ],
     templateUrl: 'task-manager.component.html',
     styleUrls: ['task-manager.component.sass'],
 })
 export class TaskManagerComponent implements OnInit {
+
+    ngOnInit() {
+    }
+
     tasks: Task[] = [
         {
             id: '1',
@@ -83,18 +84,7 @@ export class TaskManagerComponent implements OnInit {
         }
     ];
 
-    showAddTaskDialog = false;
     newTask: Partial<Task> = {};
-
-    priorityOptions = [
-        { label: 'High', value: 'high' },
-        { label: 'Medium', value: 'medium' },
-        { label: 'Low', value: 'low' }
-    ];
-
-    ngOnInit() {
-        this.resetNewTask();
-    }
 
     getTasks(status: string): Task[] {
         return this.tasks.filter(task => task.status === status);
@@ -112,35 +102,5 @@ export class TaskManagerComponent implements OnInit {
                 this.tasks[taskIndex].status = newStatus;
             }
         }
-    }
-
-    addTask() {
-        if (this.newTask.title && this.newTask.description && this.newTask.priority) {
-            const task: Task = {
-                id: Date.now().toString(),
-                title: this.newTask.title,
-                description: this.newTask.description,
-                priority: this.newTask.priority,
-                status: 'todo',
-                date: 'May 31'
-            };
-
-            this.tasks.push(task);
-            this.showAddTaskDialog = false;
-            this.resetNewTask();
-        }
-    }
-
-    resetNewTask() {
-        this.newTask = {
-            title: '',
-            description: '',
-            priority: 'medium'
-        };
-    }
-
-    toggleTheme() {
-        // Theme toggle functionality can be implemented here
-        console.log('Theme toggle clicked');
     }
 }

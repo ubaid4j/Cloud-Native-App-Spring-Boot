@@ -1,5 +1,8 @@
 export interface Task {
-    uuid: string,
-    title: string,
-    description: string
+    id: string;
+    title: string;
+    description: string;
+    priority: 'high' | 'medium' | 'low';
+    status: 'todo' | 'progress' | 'done';
+    date: string;
 }
