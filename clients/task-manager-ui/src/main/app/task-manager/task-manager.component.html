@@ -1,0 +1,177 @@
+<div class="task-manager">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <h1 class="app-title">Task Manager</h1>
+        </div>
+        <div class="header-right">
+            <button class="theme-toggle" (click)="toggleTheme()">
+                <i class="pi pi-moon"></i>
+            </button>
+            <div class="user-profile">
+                <span class="user-name">Demo User</span>
+                <div class="user-avatar">DU</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="board-header">
+            <h2 class="board-title">Task Board</h2>
+            <button
+                class="add-task-btn"
+                (click)="showAddTaskDialog = true">
+                Add Task
+            </button>
+        </div>
+
+        <!-- Kanban Board -->
+        <div class="kanban-board">
+            <!-- Todo Column -->
+            <div class="kanban-column">
+                <div class="column-header">
+                    <h3 class="column-title">Todo</h3>
+                    <span class="task-count">{{ getTasks('todo').length }} tasks</span>
+                </div>
+                <div
+                    class="column-content"
+                    pDroppable="todo"
+                    (onDrop)="onDrop($event, 'todo')">
+                    <div
+                        *ngFor="let task of getTasks('todo')"
+                        class="task-card"
+                        pDraggable="task"
+                        (onDragStart)="onDragStart($event)">
+                        <h4 class="task-title">{{ task.title }}</h4>
+                        <p class="task-description">{{ task.description }}</p>
+                        <div class="task-footer">
+                  <span
+                      class="priority-tag"
+                      [ngClass]="'priority-' + task.priority">
+                    {{ task.priority }}
+                  </span>
+                            <span class="task-date">{{ task.date }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- In Progress Column -->
+            <div class="kanban-column">
+                <div class="column-header">
+                    <h3 class="column-title">In Progress</h3>
+                    <span class="task-count">{{ getTasks('progress').length }} tasks</span>
+                </div>
+                <div
+                    class="column-content"
+                    pDroppable="progress"
+                    (onDrop)="onDrop($event, 'progress')">
+                    <div
+                        *ngFor="let task of getTasks('progress')"
+                        class="task-card"
+                        pDraggable="task"
+                        (onDragStart)="onDragStart($event)">
+                        <h4 class="task-title">{{ task.title }}</h4>
+                        <p class="task-description">{{ task.description }}</p>
+                        <div class="task-footer">
+                  <span
+                      class="priority-tag"
+                      [ngClass]="'priority-' + task.priority">
+                    {{ task.priority }}
+                  </span>
+                            <span class="task-date">{{ task.date }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Done Column -->
+            <div class="kanban-column">
+                <div class="column-header">
+                    <h3 class="column-title">Done</h3>
+                    <span class="task-count">{{ getTasks('done').length }} tasks</span>
+                </div>
+                <div
+                    class="column-content"
+                    pDroppable="done"
+                    (onDrop)="onDrop($event, 'done')">
+                    <div
+                        *ngFor="let task of getTasks('done')"
+                        class="task-card"
+                        pDraggable="task"
+                        (onDragStart)="onDragStart($event)">
+                        <h4 class="task-title">{{ task.title }}</h4>
+                        <p class="task-description">{{ task.description }}</p>
+                        <div class="task-footer">
+                  <span
+                      class="priority-tag"
+                      [ngClass]="'priority-' + task.priority">
+                    {{ task.priority }}
+                  </span>
+                            <span class="task-date">{{ task.date }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Task Dialog -->
+    <p-dialog
+        header="Add New Task"
+        [(visible)]="showAddTaskDialog"
+        [modal]="true"
+        [style]="{width: '450px'}"
+        [closable]="true">
+        <div class="dialog-form">
+            <div class="form-field">
+                <label for="taskTitle">Title</label>
+                <input
+                    id="taskTitle"
+                    type="text"
+                    pInputText
+                    [(ngModel)]="newTask.title"
+                    placeholder="Enter task title"/>
+            </div>
+
+            <div class="form-field">
+                <label for="taskDescription">Description</label>
+                <textarea
+                    id="taskDescription"
+                    pInputTextarea
+                    [(ngModel)]="newTask.description"
+                    placeholder="Enter task description"
+                    [rows]="3">
+            </textarea>
+            </div>
+
+            <div class="form-field">
+                <label for="taskPriority">Priority</label>
+                <p-dropdown
+                    id="taskPriority"
+                    [(ngModel)]="newTask.priority"
+                    [options]="priorityOptions"
+                    optionLabel="label"
+                    optionValue="value"
+                    placeholder="Select priority">
+                </p-dropdown>
+            </div>
+        </div>
+
+        <div class="dialog-footer">
+            <button
+                type="button"
+                class="btn-secondary"
+                (click)="showAddTaskDialog = false">
+                Cancel
+            </button>
+            <button
+                type="button"
+                class="btn-primary"
+                (click)="addTask()">
+                Add Task
+            </button>
+        </div>
+    </p-dialog>
+</div>
