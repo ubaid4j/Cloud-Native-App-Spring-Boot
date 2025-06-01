@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Task} from '../../../shared/models/task'
 import {DropdownModule} from 'primeng/dropdown';
 import {CommonModule} from '@angular/common';
@@ -26,7 +26,6 @@ import {BoardHeaderComponent} from '../boader-header.component';
         TagModule,
         DialogModule,
         InputTextModule,
-        InputTextarea,
         DragDropModule,
         DropdownModule,
 
@@ -35,6 +34,7 @@ import {BoardHeaderComponent} from '../boader-header.component';
 export class AddTaskComponent implements OnInit {
 
     @Input() isVisible = false;
+    @Output() onCloseAddTaskComponent = new EventEmitter<boolean>();
 
     priorityOptions = [
         { label: 'High', value: 'high' },
@@ -64,7 +64,7 @@ export class AddTaskComponent implements OnInit {
             };
 
             // this.tasks.push(task);
-            this.isVisible = false;
+            this.onCloseAddTaskComponent.emit(false);
             this.resetNewTask();
         }
     }
@@ -75,5 +75,9 @@ export class AddTaskComponent implements OnInit {
             description: '',
             priority: 'medium'
         };
+    }
+
+    onDialogHide() {
+        this.onCloseAddTaskComponent.emit(false);
     }
 }

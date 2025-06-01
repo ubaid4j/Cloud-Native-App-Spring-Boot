@@ -5,5 +5,5 @@
         (click)="showAddTaskDialog = true">
         Add Task
     </button>
-    <app-add-task [isVisible]="showAddTaskDialog"></app-add-task>
+    <app-add-task [isVisible]="showAddTaskDialog" (onCloseAddTaskComponent)="closeAddTaskDialog()"></app-add-task>
 </div>

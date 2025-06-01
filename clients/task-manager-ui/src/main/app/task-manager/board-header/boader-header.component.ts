@@ -12,4 +12,9 @@ import {AddTaskComponent} from './add-task/add-task.component';
 export class BoardHeaderComponent {
     showAddTaskDialog = false;
 
+
+    closeAddTaskDialog(): void {
+        this.showAddTaskDialog = false;
+    }
+
 }

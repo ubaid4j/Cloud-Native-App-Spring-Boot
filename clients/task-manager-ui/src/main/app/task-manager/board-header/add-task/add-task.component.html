@@ -3,7 +3,8 @@
     [(visible)]="isVisible"
     [modal]="true"
     [style]="{width: '450px'}"
-    [closable]="true">
+    [closable]="true"
+    (onHide)="onDialogHide()">
     <div class="dialog-form">
         <div class="form-field">
             <label for="taskTitle">Title</label>
@@ -43,7 +44,7 @@
         <button
             type="button"
             class="btn-secondary"
-            (click)="isVisible = false">
+            (click)="onDialogHide()">
             Cancel
         </button>
         <button
