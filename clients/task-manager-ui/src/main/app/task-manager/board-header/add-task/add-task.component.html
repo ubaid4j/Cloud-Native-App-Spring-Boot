@@ -7,6 +7,19 @@
     (onHide)="onDialogHide()">
     <div class="dialog-form">
         <div class="form-field">
+            <label for="taskPriority">Priority</label>
+            <p-dropdown
+                id="taskPriority"
+                [(ngModel)]="newTask.priority"
+                [options]="priorityOptions"
+                optionLabel="label"
+                optionValue="value"
+                placeholder="Select priority">
+            </p-dropdown>
+        </div>
+
+
+        <div class="form-field">
             <label for="taskTitle">Title</label>
             <input
                 id="taskTitle"
@@ -27,17 +40,6 @@
             </textarea>
         </div>
 
-        <div class="form-field">
-            <label for="taskPriority">Priority</label>
-            <p-dropdown
-                id="taskPriority"
-                [(ngModel)]="newTask.priority"
-                [options]="priorityOptions"
-                optionLabel="label"
-                optionValue="value"
-                placeholder="Select priority">
-            </p-dropdown>
-        </div>
     </div>
 
     <div class="dialog-footer">

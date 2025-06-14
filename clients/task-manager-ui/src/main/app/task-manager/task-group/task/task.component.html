@@ -1,0 +1,15 @@
+<div
+    class="task-card"
+    pDraggable="task"
+    (onDragStart)="onDragStart($event)">
+    <h4 class="task-title">{{ task.title }}</h4>
+    <p class="task-description">{{ task.description }}</p>
+    <div class="task-footer">
+                  <span
+                      class="priority-tag"
+                      [ngClass]="'priority-' + task.priority">
+                    {{ task.priority }}
+                  </span>
+        <span class="task-date">{{ task.date }}</span>
+    </div>
+</div>

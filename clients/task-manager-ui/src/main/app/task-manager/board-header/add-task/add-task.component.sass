@@ -12,3 +12,73 @@
         font-weight: 600
         color: #e5e7eb
         font-size: 0.875rem
+
+/* Dialog Styles */
+::ng-deep .p-dialog
+    background: #252841 !important
+    border: 1px solid #2a2d47 !important
+
+    .p-dialog-header
+        background: #252841 !important
+        color: #ffffff !important
+        border-bottom: 1px solid #2a2d47 !important
+
+    .p-dialog-content
+        background: #252841 !important
+        color: #ffffff !important
+
+
+::ng-deep
+    .p-inputtext,
+    .p-inputtextarea,
+    .p-dropdown
+        background: #1a1d29 !important
+        border: 1px solid #374151 !important
+        color: #ffffff !important
+
+        &:focus
+            border-color: #6366f1 !important
+            box-shadow: 0 0 0 1px #6366f1 !important
+
+    .p-dropdown-panel
+        background: #252841 !important
+        border: 1px solid #374151 !important
+
+    .p-dropdown-item
+        color: #ffffff !important
+
+        &:hover
+            background: #374151 !important
+
+.dialog-footer
+    display: flex
+    justify-content: flex-end
+    gap: 1rem
+    margin-top: 2rem
+
+.btn-secondary
+    background: transparent
+    color: #9ca3af
+    border: 1px solid #374151
+    padding: 0.75rem 1.5rem
+    border-radius: 0.375rem
+    cursor: pointer
+    font-weight: 500
+    transition: all 0.2s
+
+    &:hover
+        background: #374151
+        color: #ffffff
+
+.btn-primary
+    background: #6366f1
+    color: #ffffff
+    border: none
+    padding: 0.75rem 1.5rem
+    border-radius: 0.375rem
+    cursor: pointer
+    font-weight: 600
+    transition: all 0.2s
+
+    &:hover
+        background: #4f46e5

@@ -1,100 +1,11 @@
 <div class="task-manager">
-    <!-- Header -->
     <app-header></app-header>
-    <!-- Main Content -->
     <main class="main-content">
         <app-board-header></app-board-header>
-
-        <!-- Kanban Board -->
         <div class="kanban-board">
-            <!-- Todo Column -->
-            <div class="kanban-column">
-                <div class="column-header">
-                    <h3 class="column-title">Todo</h3>
-                    <span class="task-count">{{ getTasks('todo').length }} tasks</span>
-                </div>
-                <div
-                    class="column-content"
-                    pDroppable="todo"
-                    (onDrop)="onDrop($event, 'todo')">
-                    <div
-                        *ngFor="let task of getTasks('todo')"
-                        class="task-card"
-                        pDraggable="task"
-                        (onDragStart)="onDragStart($event)">
-                        <h4 class="task-title">{{ task.title }}</h4>
-                        <p class="task-description">{{ task.description }}</p>
-                        <div class="task-footer">
-                  <span
-                      class="priority-tag"
-                      [ngClass]="'priority-' + task.priority">
-                    {{ task.priority }}
-                  </span>
-                            <span class="task-date">{{ task.date }}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- In Progress Column -->
-            <div class="kanban-column">
-                <div class="column-header">
-                    <h3 class="column-title">In Progress</h3>
-                    <span class="task-count">{{ getTasks('progress').length }} tasks</span>
-                </div>
-                <div
-                    class="column-content"
-                    pDroppable="progress"
-                    (onDrop)="onDrop($event, 'progress')">
-                    <div
-                        *ngFor="let task of getTasks('progress')"
-                        class="task-card"
-                        pDraggable="task"
-                        (onDragStart)="onDragStart($event)">
-                        <h4 class="task-title">{{ task.title }}</h4>
-                        <p class="task-description">{{ task.description }}</p>
-                        <div class="task-footer">
-                  <span
-                      class="priority-tag"
-                      [ngClass]="'priority-' + task.priority">
-                    {{ task.priority }}
-                  </span>
-                            <span class="task-date">{{ task.date }}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Done Column -->
-            <div class="kanban-column">
-                <div class="column-header">
-                    <h3 class="column-title">Done</h3>
-                    <span class="task-count">{{ getTasks('done').length }} tasks</span>
-                </div>
-                <div
-                    class="column-content"
-                    pDroppable="done"
-                    (onDrop)="onDrop($event, 'done')">
-                    <div
-                        *ngFor="let task of getTasks('done')"
-                        class="task-card"
-                        pDraggable="task"
-                        (onDragStart)="onDragStart($event)">
-                        <h4 class="task-title">{{ task.title }}</h4>
-                        <p class="task-description">{{ task.description }}</p>
-                        <div class="task-footer">
-                  <span
-                      class="priority-tag"
-                      [ngClass]="'priority-' + task.priority">
-                    {{ task.priority }}
-                  </span>
-                            <span class="task-date">{{ task.date }}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <ng-template *ngFor="let taskGroup of getTaskGroups()">
+                <app-task-group [status]="taskGroup"></app-task-group>
+            </ng-template>
         </div>
     </main>
-
-    <!-- Add Task Dialog -->
 </div>

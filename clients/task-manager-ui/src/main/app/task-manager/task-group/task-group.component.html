@@ -1,0 +1,14 @@
+<div class="kanban-column">
+    <div class="column-header">
+        <h3 class="column-title">Todo</h3>
+        <span class="task-count">{{ getTaskSize() }} tasks</span>
+    </div>
+    <div
+        class="column-content"
+        pDroppable="todo"
+        (onDrop)="onDrop($event)">
+        <ng-template *ngFor="let task of getTasks()">
+            <app-task *ngIf="task" [task]="task"></app-task>
+        </ng-template>
+    </div>
+</div>
