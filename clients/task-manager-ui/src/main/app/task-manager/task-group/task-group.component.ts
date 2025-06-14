@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {TaskComponent} from './task/task.component';
 import {Droppable} from 'primeng/dragdrop';
-import {Task} from '../../shared/models/task';
+import {Task} from '../../shared/model/task';
 import {TaskService} from '../../shared/service/task-service';
 import {CommonModule} from '@angular/common';
 
@@ -24,6 +24,7 @@ export class TaskGroupComponent {
     }
 
     onDrop(event: any) {
+        console.log(event);
         if (event.dragData) {
             const task = event.dragData as Task;
             task.status = this.status!;
@@ -31,8 +32,8 @@ export class TaskGroupComponent {
         }
     }
 
-    getTaskSize() {
-        return this.taskService.getTasksSize();
+    getTaskSize(status: string) {
+        return this.taskService.getTasksSize(status);
     }
 
     getTasks(): Task[] {

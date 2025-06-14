@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Draggable} from 'primeng/dragdrop';
-import {Task} from '../../../shared/models/task';
+import {Task} from '../../../shared/model/task';
 import {NgClass} from '@angular/common';
 
 @Component({

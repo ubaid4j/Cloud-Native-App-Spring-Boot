@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Task} from '../../../shared/models/task'
+import {Task} from '../../../shared/model/task'
 import {DropdownModule} from 'primeng/dropdown';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
@@ -12,6 +12,7 @@ import {InputTextarea} from 'primeng/inputtextarea';
 import {DragDropModule} from 'primeng/dragdrop';
 import {HeaderComponent} from '../../../layouts/header/header.component';
 import {BoardHeaderComponent} from '../boader-header.component';
+import {TaskService} from '../../../shared/service/task-service';
 
 @Component({
     selector: 'app-add-task',
@@ -42,15 +43,14 @@ export class AddTaskComponent implements OnInit {
         { label: 'Low', value: 'low' }
     ];
 
+    constructor(private taskService: TaskService) {
+    }
 
     ngOnInit() {
         this.resetNewTask();
     }
 
-
     newTask: Partial<Task> = {};
-
-
 
     addTask() {
         if (this.newTask.title && this.newTask.description && this.newTask.priority) {
@@ -63,7 +63,7 @@ export class AddTaskComponent implements OnInit {
                 date: 'May 31'
             };
 
-            // this.tasks.push(task);
+            this.taskService.addTask(task);
             this.onCloseAddTaskComponent.emit(false);
             this.resetNewTask();
         }

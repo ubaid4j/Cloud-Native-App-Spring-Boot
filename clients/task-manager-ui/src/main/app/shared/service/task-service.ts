@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {Task} from '../models/task';
+import {Task} from '../model/task';
 import {Injectable} from '@angular/core';
 
 @Injectable()
@@ -8,7 +8,7 @@ export class TaskService {
     constructor(private http: HttpClient) {
     }
 
-    tasks: Task[] = [
+    private tasks: Task[] = [
         {
             id: '1',
             title: 'Create project plan',
@@ -30,7 +30,7 @@ export class TaskService {
             title: 'Research competitors',
             description: 'Analyze features of similar products in the market',
             priority: 'medium',
-            status: 'progress',
+            status: 'in progress',
             date: 'May 31'
         },
         {
@@ -38,7 +38,7 @@ export class TaskService {
             title: 'Create component library',
             description: 'Build reusable UI components',
             priority: 'high',
-            status: 'progress',
+            status: 'in progress',
             date: 'May 31'
         },
         {
@@ -46,7 +46,7 @@ export class TaskService {
             title: 'Setup development environment',
             description: 'Install necessary tools and dependencies',
             priority: 'low',
-            status: 'done',
+            status: 'completed',
             date: 'May 31'
         }
     ];
@@ -56,8 +56,8 @@ export class TaskService {
         console.log("Updating task:", task);
     }
 
-    getTasksSize(): number {
-        return 0;
+    getTasksSize(status: string): number {
+        return this.tasks.filter(task => task.status === status).length;
     }
 
     getTasks(status: string): Task[] {
@@ -66,5 +66,9 @@ export class TaskService {
 
     getTaskGroups(): string[] {
         return ['todo', 'in progress', 'completed']
+    }
+
+    addTask(task: Task): void {
+        this.tasks.push(task);
     }
 }
