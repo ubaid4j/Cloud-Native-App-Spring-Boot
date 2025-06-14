@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgFor} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 // PrimeNG Imports

@@ -1,3 +1,8 @@
+## How to Run
+1. start task-manager-ui (nvm use -> npm start at this directory)
+2. start task-service and api-gateway
+3. access http://localhost:8755
+
 Abstract
 --------
 - This repo represents a basic currency conversion cloud native-app which convert currency from given country code to targeted country code.

@@ -6,16 +6,10 @@ import {TaskManagerComponent} from '../task-manager/task-manager.component';
 
 @Component({
     selector: 'app-root',
-    imports: [RouterOutlet, TaskCategoriesComponent, TaskManagerComponent],
+    imports: [TaskManagerComponent],
     templateUrl: './app.component.html',
     styleUrl: './app.component.sass'
 })
 export class AppComponent {
     title = 'task-manager-ui';
-
-    taskGroups: TaskGroup[] = [
-        {name: "Todo"},
-        {name: "In Progress"},
-        {name: "Completed"}
-    ];
 }

@@ -3,12 +3,14 @@ import {TaskComponent} from './task/task.component';
 import {Droppable} from 'primeng/dragdrop';
 import {Task} from '../../shared/models/task';
 import {TaskService} from '../../shared/service/task-service';
+import {CommonModule} from '@angular/common';
 
 @Component({
     selector: 'app-task-group',
     templateUrl: './task-group.component.html',
     styleUrl: './task-group.component.sass',
     imports: [
+        CommonModule,
         TaskComponent,
         Droppable
     ],

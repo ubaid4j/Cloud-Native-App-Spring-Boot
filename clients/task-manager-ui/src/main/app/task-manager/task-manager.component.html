@@ -3,8 +3,9 @@
     <main class="main-content">
         <app-board-header></app-board-header>
         <div class="kanban-board">
-            <ng-template *ngFor="let taskGroup of getTaskGroups()">
-                <app-task-group [status]="taskGroup"></app-task-group>
+            <app-task-group *ngFor="let taskGroup of getTaskGroups()" [status]="taskGroup"></app-task-group>
+
+            <ng-template>
             </ng-template>
         </div>
     </main>
