@@ -1,14 +1,15 @@
 import {Component, Input} from '@angular/core';
-import {Draggable} from 'primeng/dragdrop';
-import {Task} from '../../../shared/model/task';
+import {DragDropModule, Draggable} from 'primeng/dragdrop';
+import {Task} from '../../../../domain/task';
 import {NgClass} from '@angular/common';
+import {TaskService} from '../../../../service/task-service';
 
 @Component({
     selector: 'app-task',
     templateUrl: './task.component.html',
     styleUrl: './task.component.sass',
     imports: [
-        Draggable,
+        DragDropModule,
         NgClass
     ],
     standalone: true
@@ -16,9 +17,11 @@ import {NgClass} from '@angular/common';
 export class TaskComponent {
     @Input() task!: Task;
 
-    onDragStart(event: any) {
-        // Optional: Add visual feedback when dragging starts
+    constructor(private taskService: TaskService) {
     }
 
+    onDragStart(event: DragEvent) {
+        this.taskService.setDraggedTask(this.task);
+    }
 
 }

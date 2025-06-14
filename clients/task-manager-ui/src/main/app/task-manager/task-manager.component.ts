@@ -8,12 +8,12 @@ import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
-import {Task} from '../shared/model/task';
+import {Task} from '../../domain/task';
 import { DragDropModule } from 'primeng/dragdrop';
 import {HeaderComponent} from '../layouts/header/header.component';
 import {BoardHeaderComponent} from './board-header/boader-header.component';
 import {TaskGroupComponent} from './task-group/task-group.component';
-import {TaskService} from '../shared/service/task-service';
+import {TaskService} from '../../service/task-service';
 
 
 

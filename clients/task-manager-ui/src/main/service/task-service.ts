@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {Task} from '../model/task';
+import {Task} from '../domain/task';
 import {Injectable} from '@angular/core';
 
 @Injectable()
@@ -7,6 +7,8 @@ export class TaskService {
 
     constructor(private http: HttpClient) {
     }
+
+    private draggedTask: Task | null | undefined;
 
     private tasks: Task[] = [
         {
@@ -70,5 +72,13 @@ export class TaskService {
 
     addTask(task: Task): void {
         this.tasks.push(task);
+    }
+
+    setDraggedTask(task: Task | null | undefined) {
+        this.draggedTask = task;
+    }
+
+    getDraggedTask(): Task | null | undefined {
+        return this.draggedTask;
     }
 }

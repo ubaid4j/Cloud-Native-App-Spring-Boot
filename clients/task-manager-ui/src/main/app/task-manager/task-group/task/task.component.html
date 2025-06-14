@@ -1,6 +1,7 @@
 <div
     class="task-card"
     pDraggable="task"
+    dragEffect="move"
     (onDragStart)="onDragStart($event)">
     <h4 class="task-title">{{ task.title }}</h4>
     <p class="task-description">{{ task.description }}</p>

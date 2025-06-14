@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Task} from '../../../shared/model/task'
+import {Task} from '../../../../domain/task'
 import {DropdownModule} from 'primeng/dropdown';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
@@ -12,7 +12,7 @@ import {InputTextarea} from 'primeng/inputtextarea';
 import {DragDropModule} from 'primeng/dragdrop';
 import {HeaderComponent} from '../../../layouts/header/header.component';
 import {BoardHeaderComponent} from '../boader-header.component';
-import {TaskService} from '../../../shared/service/task-service';
+import {TaskService} from '../../../../service/task-service';
 
 @Component({
     selector: 'app-add-task',

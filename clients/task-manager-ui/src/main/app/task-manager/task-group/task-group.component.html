@@ -5,7 +5,8 @@
     </div>
     <div
         class="column-content"
-        pDroppable="todo"
+        pDroppable="task"
+        dropEffect="move"
         (onDrop)="onDrop($event)">
         <app-task *ngFor="let task of getTasks()" [task]="task"></app-task>
     </div>
