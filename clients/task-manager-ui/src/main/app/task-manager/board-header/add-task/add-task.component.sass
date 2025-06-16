@@ -15,40 +15,49 @@
 
 /* Dialog Styles */
 ::ng-deep .p-dialog
-    background: #252841 !important
-    border: 1px solid #2a2d47 !important
+    background: #000000 !important
+    border: 1px solid #474858 !important
+    border-radius: 1px
 
     .p-dialog-header
-        background: #252841 !important
+        background: #000000 !important
         color: #ffffff !important
-        border-bottom: 1px solid #2a2d47 !important
+        border-bottom: 1px solid #474858 !important
+        margin-bottom: 1.5rem
 
     .p-dialog-content
-        background: #252841 !important
+        background: #000000 !important
         color: #ffffff !important
 
 
 ::ng-deep
     .p-inputtext,
+    textarea,
     .p-inputtextarea,
     .p-dropdown
-        background: #1a1d29 !important
+        background: #000000 !important
         border: 1px solid #374151 !important
         color: #ffffff !important
 
         &:focus
-            border-color: #6366f1 !important
-            box-shadow: 0 0 0 1px #6366f1 !important
+            border-color: #ffffff !important
+            box-shadow: 0 0 0 1px #808080 !important
 
     .p-dropdown-panel
-        background: #252841 !important
-        border: 1px solid #374151 !important
+        background: #000000 !important
+        border: 1px solid #808080 !important
 
     .p-dropdown-item
         color: #ffffff !important
-
+        background-color: black !important
         &:hover
-            background: #374151 !important
+            background: #dcdcdc !important
+
+    .p-select-overlay
+        background-color: black !important
+
+    .p-select-option.p-select-option-selected.p-focus
+        background-color: #808080 !important
 
 .dialog-footer
     display: flex
