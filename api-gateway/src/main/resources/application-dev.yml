@@ -9,6 +9,12 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: task-service
+          uri: http://localhost:10191
+          predicates:
+            - Path=/task-service/**
+          filters:
+            - RewritePath=/task-service/(?<segment>.*), /${segment}
         - id: frontend-route
           uri: http://localhost:4200
           predicates:

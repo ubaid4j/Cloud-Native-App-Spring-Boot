@@ -14,6 +14,7 @@ import {HeaderComponent} from '../layouts/header/header.component';
 import {BoardHeaderComponent} from './board-header/boader-header.component';
 import {TaskGroupComponent} from './task-group/task-group.component';
 import {TaskService} from '../../service/task-service';
+import {Observable} from 'rxjs';
 
 
 
@@ -39,14 +40,19 @@ import {TaskService} from '../../service/task-service';
 })
 export class TaskManagerComponent implements OnInit {
 
+    private taskGroups: string[] = [];
+
     constructor(private taskService: TaskService) {
     }
 
     ngOnInit() {
+        this.taskService
+            .getTaskGroups()
+            .subscribe(taskGroups => this.taskGroups = taskGroups);
     }
 
     getTaskGroups(): string[] {
-        return this.taskService.getTaskGroups();
+        return this.taskGroups;
     }
 
 

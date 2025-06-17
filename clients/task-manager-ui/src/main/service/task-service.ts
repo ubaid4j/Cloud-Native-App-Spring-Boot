@@ -1,11 +1,16 @@
 import {HttpClient} from '@angular/common/http';
 import {Task} from '../domain/task';
 import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class TaskService {
 
+    private TASK_BASE_URL: string = 'http://localhost:8755/task-service/api/tasks';
+    private TASK_GROUP_BASE_URL: string = 'http://localhost:8755/task-service/api/task-statuses';
+
     constructor(private http: HttpClient) {
+
     }
 
     private draggedTask: Task | null | undefined;
@@ -66,8 +71,9 @@ export class TaskService {
         return this.tasks.filter(task => task.status === status);
     }
 
-    getTaskGroups(): string[] {
-        return ['todo', 'in progress', 'completed']
+    getTaskGroups(): Observable<string[]> {
+        return this.http.get<string[]>(`${this.TASK_GROUP_BASE_URL}`);
+        // return ['todo', 'in progress', 'completed']
     }
 
     addTask(task: Task): void {
