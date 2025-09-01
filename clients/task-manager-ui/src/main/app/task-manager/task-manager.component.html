@@ -4,9 +4,8 @@
         <app-board-header></app-board-header>
         <div class="kanban-board">
             <app-task-group *ngFor="let taskGroup of getTaskGroups()" [status]="taskGroup"></app-task-group>
-
-            <ng-template>
-            </ng-template>
+<!--            TODO add new component for adding task group here-->
+            <i class="pi pi-plus" style="font-size: 2rem"></i>
         </div>
     </main>
 </div>
