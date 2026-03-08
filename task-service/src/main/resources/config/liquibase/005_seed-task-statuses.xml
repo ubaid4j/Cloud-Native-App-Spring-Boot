@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="00000000000005" author="ubaid">
+        <insert tableName="status">
+            <column name="id" valueNumeric="1"/>
+            <column name="name" value="todo"/>
+        </insert>
+
+        <insert tableName="status">
+            <column name="id" valueNumeric="2"/>
+            <column name="name" value="in-progress"/>
+        </insert>
+
+        <insert tableName="status">
+            <column name="id" valueNumeric="3"/>
+            <column name="name" value="completed"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,9 +1,8 @@
 package com.ubaid.ts.dto;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-
-import java.util.UUID;
 
 public record SimpleTaskDTO (
         @NotBlank(message = "Title is required")
@@ -14,6 +13,5 @@ public record SimpleTaskDTO (
         @Size(max = 255, message = "Description cannot exceed 255 characters")
         String description,
 
-        @Size(max = 15, message = "Description cannot exceed 15 characters")
-        String status
+        @Valid StatusDTO status
 ) {}

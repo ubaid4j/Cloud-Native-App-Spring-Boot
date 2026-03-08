@@ -4,7 +4,6 @@ import com.ubaid.ts.domain.Task;
 import com.ubaid.ts.domain.User;
 import com.ubaid.ts.dto.SimpleTaskDTO;
 import com.ubaid.ts.dto.TaskDTO;
-import com.ubaid.ts.dto.SimpleTaskDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
@@ -16,10 +15,12 @@ import java.util.List;
 import java.util.UUID;
 
 @Mapper(componentModel = "spring",
+        uses = StatusMapper.class,
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface TaskMapper {
 
+    @Mapping(target = "status", source = "status")
     @Mapping(target = "assigneeUuid", source = "assignee.uuid")
     @Mapping(target = "createdByUuid", source = "createdBy.uuid")
     @Mapping(target = "lastModifiedByUuid", source = "lastModifiedBy.uuid")

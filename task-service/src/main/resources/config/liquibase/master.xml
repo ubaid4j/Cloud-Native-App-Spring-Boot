@@ -9,5 +9,6 @@
     <include file="config/liquibase/002_add-user-entity.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/003_add-task-status-entity.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/004_add-task-entity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/005_seed-task-statuses.xml" relativeToChangelogFile="false"/>
 
 </databaseChangeLog>
