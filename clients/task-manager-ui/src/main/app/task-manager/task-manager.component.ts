@@ -14,7 +14,6 @@ import {HeaderComponent} from '../layouts/header/header.component';
 import {BoardHeaderComponent} from './board-header/boader-header.component';
 import {TaskGroupComponent} from './task-group/task-group.component';
 import {TaskService} from '../../service/task-service';
-import {Observable} from 'rxjs';
 
 
 
@@ -49,6 +48,10 @@ export class TaskManagerComponent implements OnInit {
         this.taskService
             .getTaskGroups()
             .subscribe(taskGroups => this.taskGroups = taskGroups);
+
+        this.taskService
+            .loadTasks()
+            .subscribe();
     }
 
     getTaskGroups(): string[] {

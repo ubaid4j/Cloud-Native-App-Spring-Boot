@@ -8,10 +8,7 @@ import {ButtonModule} from 'primeng/button';
 import {TagModule} from 'primeng/tag';
 import {DialogModule} from 'primeng/dialog';
 import {InputTextModule} from 'primeng/inputtext';
-import {InputTextarea} from 'primeng/inputtextarea';
 import {DragDropModule} from 'primeng/dragdrop';
-import {HeaderComponent} from '../../../layouts/header/header.component';
-import {BoardHeaderComponent} from '../boader-header.component';
 import {TaskService} from '../../../../service/task-service';
 
 @Component({
@@ -54,18 +51,18 @@ export class AddTaskComponent implements OnInit {
 
     addTask() {
         if (this.newTask.title && this.newTask.description && this.newTask.priority) {
-            const task: Task = {
-                id: Date.now().toString(),
+            this.taskService.addTask({
                 title: this.newTask.title,
                 description: this.newTask.description,
                 priority: this.newTask.priority,
-                status: 'todo',
-                date: 'May 31'
-            };
-
-            this.taskService.addTask(task);
-            this.onCloseAddTaskComponent.emit(false);
-            this.resetNewTask();
+                status: 'todo'
+            }).subscribe({
+                next: () => {
+                    this.onCloseAddTaskComponent.emit(false);
+                    this.resetNewTask();
+                },
+                error: err => console.error('Failed to create task', err)
+            });
         }
     }
 

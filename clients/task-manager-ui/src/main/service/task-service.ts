@@ -1,7 +1,21 @@
 import {HttpClient} from '@angular/common/http';
 import {Task} from '../domain/task';
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
+import {map, Observable, tap} from 'rxjs';
+
+interface CreateTaskRequest {
+    title: string;
+    description: string;
+    status: string;
+}
+
+interface TaskResponse {
+    uuid: string;
+    title: string;
+    description: string;
+    status: string;
+    createdDate: string | null;
+}
 
 @Injectable()
 export class TaskService {
@@ -15,48 +29,7 @@ export class TaskService {
 
     private draggedTask: Task | null | undefined;
 
-    private tasks: Task[] = [
-        {
-            id: '1',
-            title: 'Create project plan',
-            description: 'Define the scope and timeline for the new project',
-            priority: 'high',
-            status: 'todo',
-            date: 'May 31'
-        },
-        {
-            id: '2',
-            title: 'Design user interface',
-            description: 'Create wireframes for the main screens',
-            priority: 'medium',
-            status: 'todo',
-            date: 'May 31'
-        },
-        {
-            id: '3',
-            title: 'Research competitors',
-            description: 'Analyze features of similar products in the market',
-            priority: 'medium',
-            status: 'in progress',
-            date: 'May 31'
-        },
-        {
-            id: '4',
-            title: 'Create component library',
-            description: 'Build reusable UI components',
-            priority: 'high',
-            status: 'in progress',
-            date: 'May 31'
-        },
-        {
-            id: '5',
-            title: 'Setup development environment',
-            description: 'Install necessary tools and dependencies',
-            priority: 'low',
-            status: 'completed',
-            date: 'May 31'
-        }
-    ];
+    private tasks: Task[] = [];
 
 
     updateTask(task: Task): void {
@@ -76,8 +49,28 @@ export class TaskService {
         // return ['todo', 'in progress', 'completed']
     }
 
-    addTask(task: Task): void {
-        this.tasks.push(task);
+    loadTasks(): Observable<Task[]> {
+        return this.http
+            .get<TaskResponse[]>(`${this.TASK_BASE_URL}`)
+            .pipe(
+                map(taskResponses => taskResponses.map(taskResponse => this.toViewTask(taskResponse))),
+                tap(tasks => this.tasks = tasks)
+            );
+    }
+
+    addTask(task: CreateTaskRequest & { priority: Task['priority'] }): Observable<Task> {
+        const request: CreateTaskRequest = {
+            title: task.title,
+            description: task.description,
+            status: task.status
+        };
+
+        return this.http
+            .post<TaskResponse>(`${this.TASK_BASE_URL}`, request)
+            .pipe(
+                map(taskResponse => this.toViewTask(taskResponse, task.priority)),
+                tap(createdTask => this.tasks.push(createdTask))
+            );
     }
 
     setDraggedTask(task: Task | null | undefined) {
@@ -86,5 +79,24 @@ export class TaskService {
 
     getDraggedTask(): Task | null | undefined {
         return this.draggedTask;
+    }
+
+    private toViewTask(taskResponse: TaskResponse, priority: Task['priority'] = 'medium'): Task {
+        return {
+            id: taskResponse.uuid,
+            title: taskResponse.title,
+            description: taskResponse.description,
+            priority,
+            status: taskResponse.status,
+            date: this.formatTaskDate(taskResponse.createdDate)
+        };
+    }
+
+    private formatTaskDate(createdDate: string | null): string {
+        const fallbackDate = new Date();
+        const parsedDate = createdDate ? new Date(createdDate) : fallbackDate;
+        const safeDate = Number.isNaN(parsedDate.getTime()) ? fallbackDate : parsedDate;
+
+        return safeDate.toLocaleDateString('en-US', {month: 'short', day: 'numeric'});
     }
 }
