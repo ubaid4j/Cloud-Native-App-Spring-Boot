@@ -6,7 +6,9 @@ import {map, Observable, tap} from 'rxjs';
 interface CreateTaskRequest {
     title: string;
     description: string;
-    status: string;
+    status: {
+        name: string;
+    };
 }
 
 interface TaskResponse {

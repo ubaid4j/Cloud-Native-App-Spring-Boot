@@ -55,7 +55,7 @@ export class AddTaskComponent implements OnInit {
                 title: this.newTask.title,
                 description: this.newTask.description,
                 priority: this.newTask.priority,
-                status: 'todo'
+                status: {name: 'todo'}
             }).subscribe({
                 next: () => {
                     this.onCloseAddTaskComponent.emit(false);
